@@ -220,7 +220,7 @@ $tooltip-animation-time : $animation-duration-short;
 * Animation
 */
 .#{$prefix}-animation-tooltip-in {
-    animation: tooltipIn var(--animation-time) ease-in forwards;
+    animation: tooltipIn $tooltip-animation-time ease-in forwards;
 }
 
 @keyframes tooltipIn {

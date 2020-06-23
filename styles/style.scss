@@ -68,8 +68,8 @@
     --outline: 1px solid transparent;
 }
 
-@import 'styles/variables';
-@import 'styles/mixins';
+@import 'variables';
+@import 'mixins';
 
 html {
     margin                  : 0;
@@ -92,55 +92,55 @@ body {
 
 // Commons
 
-@import 'styles/core/visibility';
-@import 'styles/core/spaces';
-@import 'styles/core/widths';
-@import 'styles/core/height';
-@import 'styles/animations';
+@import 'core/visibility';
+@import 'core/spaces';
+@import 'core/widths';
+@import 'core/height';
+@import 'animations';
 // Base
-@import 'styles/core/flex';
-@import 'styles/core/heads';
-@import 'styles/core/containers';
-@import 'styles/core/section';
-@import 'styles/core/grid';
-@import 'styles/core/position';
-@import 'styles/core/transition';
-@import 'styles/core/slide';
-@import 'styles/core/sticky';
+@import 'core/flex';
+@import 'core/heads';
+@import 'core/containers';
+@import 'core/section';
+@import 'core/grid';
+@import 'core/position';
+@import 'core/transition';
+@import 'core/slide';
+@import 'core/sticky';
 // Components
-@import 'styles/components/navbar';
-@import 'styles/components/accordion';
-@import 'styles/components/dialog';
-@import 'styles/components/tab';
-@import 'styles/components/tooltip';
-@import 'styles/components/buttons';
-@import 'styles/components/banner';
-@import 'styles/components/links';
-@import 'styles/components/text';
-@import 'styles/components/icon';
-@import 'styles/components/card';
-@import 'styles/components/breadcrumb';
-@import 'styles/components/input';
+@import 'components/navbar';
+@import 'components/accordion';
+@import 'components/dialog';
+@import 'components/tab';
+@import 'components/tooltip';
+@import 'components/buttons';
+@import 'components/banner';
+@import 'components/links';
+@import 'components/text';
+@import 'components/icon';
+@import 'components/card';
+@import 'components/breadcrumb';
+@import 'components/input';
 //@import 'styles/components/notification';
 //@import 'styles/components/sortable';
-@import 'styles/components/spinner';
-@import 'styles/components/table';
-@import 'styles/components/drop';
-@import 'styles/components/switch';
-@import 'styles/components/switcher';
-@import 'styles/components/list';
-@import 'styles/components/overlay';
-@import 'styles/components/progress';
-@import 'styles/components/background';
-@import 'styles/components/badge';
-@import 'styles/components/toast';
-@import 'styles/components/offcanvas';
-@import 'styles/components/hint';
-@import 'styles/components/special';
-@import 'styles/components/cover';
-@import 'styles/components/transitions';
+@import 'components/spinner';
+@import 'components/table';
+@import 'components/drop';
+@import 'components/switch';
+@import 'components/switcher';
+@import 'components/list';
+@import 'components/overlay';
+@import 'components/progress';
+@import 'components/background';
+@import 'components/badge';
+@import 'components/toast';
+@import 'components/offcanvas';
+@import 'components/hint';
+@import 'components/special';
+@import 'components/cover';
+@import 'components/transitions';
 // Dark
-@import 'styles/dark';
+@import 'dark';
 
 //Print 
-@import 'styles/components/print';
+@import 'components/print';

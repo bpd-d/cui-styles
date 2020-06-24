@@ -1,10 +1,15 @@
 $hint-background-default        : $component-background-shade;
 $hint-background-default-dark   : $component-background-shade-dark;
-$hint-background-accent         : $component-background-accent-muted;
-$hint-background-secondary      : $component-background-secondary-muted;
-$hint-background-error          : $component-background-error-muted;
-$hint-background-warning        : $component-background-warning-muted;
-$hint-background-success        : $component-background-success-muted;
+$hint-background-accent         : $component-background-accent-shade;
+$hint-background-accent-dark    : $component-background-accent-shade-dark;
+$hint-background-secondary      : $component-background-secondary-shade;
+$hint-background-secondary-dark : $component-background-secondary-shade-dark;
+$hint-background-error          : $component-background-error-shade;
+$hint-background-error-dark     : $component-background-error-shade-dark;
+$hint-background-warning        : $component-background-warning-shade;
+$hint-background-warning-dark   : $component-background-warning-shade-dark;
+$hint-background-success        : $component-background-success-shade;
+$hint-background-success-dark   : $component-background-success-shade-dark;
 $hint-color-default             : $component-color-default;
 $hint-color-dark                : $component-color-default-dark;
 $hint-border-color-default      : $component-color-muted;
@@ -18,6 +23,7 @@ $hint-border-color-success      : $component-background-success;
 .#{$prefix}-hint {
     border-left     : 8px solid $hint-border-color-default;
     background-color: $hint-background-default;
+    color           : $hint-color-default;
 
     &.#{$prefix}-body {
         @include component-padding(same);
@@ -43,31 +49,26 @@ $hint-border-color-success      : $component-background-success;
 
     &.#{$prefix}-accent {
         background-color: $hint-background-accent;
-        color           : $hint-color-default;
         border-color    : $hint-border-color-accent;
     }
 
     &.#{$prefix}-secondary {
         background-color: $hint-background-secondary;
-        color           : $hint-color-default;
         border-color    : $hint-border-color-secondary;
     }
 
     &.#{$prefix}-warning {
         background-color: $hint-background-warning;
-        color           : $hint-color-default;
         border-color    : $hint-border-color-warning;
     }
 
     &.#{$prefix}-error {
         background-color: $hint-background-error;
-        color           : $hint-color-default;
         border-color    : $hint-border-color-error;
     }
 
     &.#{$prefix}-success {
         background-color: $hint-background-success;
-        color           : $hint-color-default;
         border-color    : $hint-border-color-success;
     }
 }
@@ -77,10 +78,30 @@ $hint-border-color-success      : $component-background-success;
 */
 
 .#{$prefix}-dark {
-    .#{$prefix}-hint:not(.#{$prefix}-success):not(.#{$prefix}-warning):not(.#{$prefix}-error):not(.#{$prefix}-secondary):not(.#{$prefix}-accent) {
+    .#{$prefix}-hint {
         border-color    : $hint-border-color-default-dark;
         color           : $hint-color-dark;
         background-color: $hint-background-default-dark;
+    }
+
+    &.#{$prefix}-accent {
+        background-color: $hint-background-accent-dark;
+    }
+
+    &.#{$prefix}-secondary {
+        background-color: $hint-background-secondary-dark;
+    }
+
+    &.#{$prefix}-warning {
+        background-color: $hint-background-warning-dark;
+    }
+
+    &.#{$prefix}-error {
+        background-color: $hint-background-error-dark;
+    }
+
+    &.#{$prefix}-success {
+        background-color: $hint-background-success-dark;
     }
 }
 

@@ -4,9 +4,10 @@
 * 
 */
 // Variables
-$section-padding-normal         : $padding-global;
-$section-padding-large          : $padding-global-large;
-$section-shade-background-color : var(--color-shade);
+$section-padding-normal              : $padding-global;
+$section-padding-large               : $padding-global-large;
+$section-shade-background-color      : $component-background-shade;
+$section-shade-background-color-dark : $component-background-shade-dark;
 
 $section-background-default      :$component-background-default;
 $section-background-default-dark :$component-background-default-dark;
@@ -19,8 +20,10 @@ $section-color-default-dark :$component-color-default-dark;
 $section-color-inverse      :$component-color-inverse;
 $section-color-inverse-dark :$component-color-inverse-dark;
 
-$section-background-accent   : $component-background-accent-active;
-$section-background-secondary: $component-background-secondary-active;
+$section-background-accent        : $component-background-accent-shade;
+$section-background-secondary     : $component-background-secondary-shade;
+$section-background-accent-dark   : $component-background-accent-shade-dark;
+$section-background-secondary-dark: $component-background-secondary-shade-dark;
 
 .#{$prefix}-section {
     display: block;
@@ -29,12 +32,10 @@ $section-background-secondary: $component-background-secondary-active;
 
     &.#{$prefix}-accent {
         background-color: $section-background-accent;
-        color           : $section-color-default-dark;
     }
 
     &.#{$prefix}-secondary {
         background-color: $section-background-secondary;
-        color           : $section-color-default-dark;
     }
 
     &.#{$prefix}-inverse {
@@ -60,6 +61,18 @@ $section-background-secondary: $component-background-secondary-active;
         &.#{$prefix}-inverse {
             background-color: $section-background-inverse-dark;
             color           : $section-color-inverse-dark;
+        }
+
+        &.#{$prefix}-accent {
+            background-color: $section-background-accent-dark;
+        }
+
+        &.#{$prefix}-secondary {
+            background-color: $section-background-secondary-dark;
+        }
+
+        &.#{$prefix}-shade {
+            background-color: $section-shade-background-color-dark;
         }
     }
 }

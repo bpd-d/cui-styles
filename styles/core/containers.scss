@@ -1,12 +1,17 @@
-$container-background-default      :$component-background-default;
-$container-background-default-dark :$component-background-default-dark;
-$container-background-inverse      :$component-background-inverse;
-$container-background-inverse-dark :$component-background-inverse-dark;
+$container-background-default       :$component-background-default;
+$container-background-default-dark  :$component-background-default-dark;
+$container-background-inverse       :$component-background-inverse;
+$container-background-inverse-dark  :$component-background-inverse-dark;
+$container-background-accent        :$component-background-accent-shade;
+$container-background-accent-dark   :$component-background-accent-shade-dark;
+$container-background-secondary     : $component-background-secondary-shade;
+$container-background-secondary-dark: $component-background-secondary-shade-dark;
 
-$container-color-default     :$component-color-default;
-$container-color-default-dark:$component-color-default-dark;
-$container-color-inverse     :$component-color-inverse;
-$container-color-inverse-dark:$component-color-inverse-dark;
+$container-color-default      :$component-color-default;
+$container-color-default-dark :$component-color-default-dark;
+$container-color-inverse      :$component-color-inverse;
+$container-color-inverse-dark :$component-color-inverse-dark;
+
 
 $container-padding-large : $padding-global-large;
 $container-padding-normal: $padding-global;
@@ -41,13 +46,11 @@ $container-padding-normal: $padding-global;
     }
 
     &.#{$prefix}-accent {
-        @include background-color(primary, lighten);
-        @include color(dark);
+        background-color: $container-background-accent;
     }
 
     &.#{$prefix}-secondary {
-        @include background-color(secondary, lighten);
-        @include color(dark);
+        background-color: $container-background-secondary;
     }
 
     &.#{$prefix}-inverse {
@@ -55,38 +58,6 @@ $container-padding-normal: $padding-global;
         color           : $container-color-inverse;
     }
 }
-
-/**
-* Media
-*/
-
-// // View small
-// @media (min-width: $breakpoint-s) {
-//     .#{$prefix}-container {
-//         @include container(--s);
-//     }
-// }
-
-// // View medium
-// @media (min-width: $breakpoint-m) {
-//     .#{$prefix}-container {
-//         @include container(--m);
-//     }
-// }
-
-// // View medium
-// @media (min-width: $breakpoint-l) {
-//     .#{$prefix}-container {;
-//         @include container(--l);
-//     }
-// }
-
-// // View medium
-// @media (min-width: $breakpoint-xl) {
-//     .#{$prefix}-container {
-//         @include container(--xl);
-//     }
-// }
 
 /*
 * Dark
@@ -102,6 +73,14 @@ $container-padding-normal: $padding-global;
         &.#{$prefix}-inverse {
             background-color: $container-background-inverse-dark;
             color           : $container-color-inverse-dark;
+        }
+
+        &.#{$prefix}-accent {
+            background-color: $container-background-accent-dark;
+        }
+
+        &.#{$prefix}-secondary {
+            background-color: $container-background-secondary-dark;
         }
     }
 }

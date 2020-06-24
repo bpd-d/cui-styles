@@ -15,7 +15,6 @@ module.exports = {
     devtool: 'source-map',
     optimization: {
         runtimeChunk: false,
-        minimize: true,
         minimizer: [new OptimizeCssAssetsPlugin({
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
@@ -75,7 +74,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'cui-light.[name].css'
+            filename: 'cui-light.[name].css',
+            esModule: true
         })
     ]
 };

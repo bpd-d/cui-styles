@@ -113,30 +113,40 @@ $component-color-inverse-dark: var(--cui-color-light-base);
 $button-border-color     : var(--cui-color-light-muted);
 $button-border-color-dark: var(--cui-color-dark-muted);
 
-$component-background-accent       : var(--cui-color-primary);
-$component-background-accent-hover : var(--cui-color-primary);
-$component-background-accent-active: var(--cui-color-primary-active);
-$component-background-accent-muted : var(--cui-color-primary-muted);
+$component-background-accent            : var(--cui-color-primary);
+$component-background-accent-hover      : var(--cui-color-primary);
+$component-background-accent-active     : var(--cui-color-primary-active);
+$component-background-accent-muted      : var(--cui-color-primary-muted);
+$component-background-accent-shade      : var(--cui-color-primary-shade);
+$component-background-accent-shade-dark : var(--cui-color-primary-shade-dark);
 
-$component-background-secondary       : var(--cui-color-secondary);
-$component-background-secondary-hover : var(--cui-color-secondary);
-$component-background-secondary-active: var(--cui-color-secondary-active);
-$component-background-secondary-muted : var(--cui-color-secondary-muted);
+$component-background-secondary            : var(--cui-color-secondary);
+$component-background-secondary-hover      : var(--cui-color-secondary);
+$component-background-secondary-active     : var(--cui-color-secondary-active);
+$component-background-secondary-muted      : var(--cui-color-secondary-muted);
+$component-background-secondary-shade      : var(--cui-color-secondary-shade);
+$component-background-secondary-shade-dark : var(--cui-color-secondary-shade-dark);
 
-$component-background-error        : var(--cui-color-error);
-$component-background-error-hover  : var(--cui-color-error-muted);
-$component-background-error-active : var(--cui-color-error-active);
-$component-background-error-muted  : var(--cui-color-error-muted);
+$component-background-error            : var(--cui-color-error);
+$component-background-error-hover      : var(--cui-color-error-muted);
+$component-background-error-active     : var(--cui-color-error-active);
+$component-background-error-muted      : var(--cui-color-error-muted);
+$component-background-error-shade      : var(--cui-color-error-shade);
+$component-background-error-shade-dark : var(--cui-color-error-shade-dark);
 
-$component-background-warning        : var(--cui-color-warning);
-$component-background-warning-hover  : var(--cui-color-warning);
-$component-background-warning-active : var(--cui-color-warning-active);
-$component-background-warning-muted  : var(--cui-color-warning-muted);
+$component-background-warning            : var(--cui-color-warning);
+$component-background-warning-hover      : var(--cui-color-warning);
+$component-background-warning-active     : var(--cui-color-warning-active);
+$component-background-warning-muted      : var(--cui-color-warning-muted);
+$component-background-warning-shade      : var(--cui-color-warning-shade);
+$component-background-warning-shade-dark : var(--cui-color-warning-shade-dark);
 
-$component-background-success       : var(--cui-color-success);
-$component-background-success-hover : var(--cui-color-success);
-$component-background-success-active: var(--cui-color-success-active);
-$component-background-success-muted : var(--cui-color-success-muted);
+$component-background-success            : var(--cui-color-success);
+$component-background-success-hover      : var(--cui-color-success);
+$component-background-success-active     : var(--cui-color-success-active);
+$component-background-success-muted      : var(--cui-color-success-muted);
+$component-background-success-shade      : var(--cui-color-success-shade);
+$component-background-success-shade-dark : var(--cui-color-success-shade-dark);
 
 $component-print-background   : white !important;
 $component-print-color        : black !important;

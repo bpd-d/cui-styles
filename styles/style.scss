@@ -24,28 +24,37 @@ $prefix: 'cui';
     --#{$prefix}-color-dark-active         : #777;
     --#{$prefix}-color-dark-muted          : #ccc;
     // --primary pink      : FF0066
-    --#{$prefix}-color-primary             : #0e84c0;
-    --#{$prefix}-color-primary-active      : #0e5f89;
-    --#{$prefix}-color-primary-muted       : #119ae0;
+    --#{$prefix}-color-primary             : #2585B5;
+    --#{$prefix}-color-primary-active      : #1E6A91;
+    --#{$prefix}-color-primary-muted       : #519DC4;
+    --#{$prefix}-color-primary-shade       : #D3E7F0;
+    --#{$prefix}-color-primary-shade-dark  : #0F3548;
 
     // Secondary
-    --#{$prefix}-color-secondary       : #8a3f9e;
-    --#{$prefix}-color-secondary-active: #6c317d;
-    --#{$prefix}-color-secondary-muted : #b54bd3;
-
+    --#{$prefix}-color-secondary           : #8a3f9e;
+    --#{$prefix}-color-secondary-active    : #6E327E;
+    --#{$prefix}-color-secondary-muted     : #A165B1;
+    --#{$prefix}-color-secondary-shade     : #E8D9EC;
+    --#{$prefix}-color-secondary-shade-dark: #37193F;
     // Signals 
     // Warning
-    --#{$prefix}-color-warning       : #fb8c00;
-    --#{$prefix}-color-warning-active: #955300;
-    --#{$prefix}-color-warning-muted : #FFBA62;
+    --#{$prefix}-color-warning             : #fb8c00;
+    --#{$prefix}-color-warning-active      : #C97000;
+    --#{$prefix}-color-warning-muted       : #FCA333;
+    --#{$prefix}-color-warning-shade       : #FEE8CC;
+    --#{$prefix}-color-warning-shade-dark  : #643800;
     // Success
-    --#{$prefix}-color-success       : #7cb342;
-    --#{$prefix}-color-success-active: #486827;
-    --#{$prefix}-color-success-muted : #AED388;
+    --#{$prefix}-color-success             : #7cb342;
+    --#{$prefix}-color-success-active      : #638F35;
+    --#{$prefix}-color-success-muted       : #96C268;
+    --#{$prefix}-color-success-shade       : #E5F0D9;
+    --#{$prefix}-color-success-shade-dark  : #32481A;
     //Error
-    --#{$prefix}-color-error         : #f44336;
-    --#{$prefix}-color-error-active  : #BA160A;
-    --#{$prefix}-color-error-muted   : #F99D97;
+    --#{$prefix}-color-error               : #f44336;
+    --#{$prefix}-color-error-active        : #E21B0C;
+    --#{$prefix}-color-error-muted         : #F6695E;
+    --#{$prefix}-color-error-shade         : #FDD9D7;
+    --#{$prefix}-color-error-shade-dark    : #710D06;
 
     --#{$prefix}-input-background-color: transparent;
 

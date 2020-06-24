@@ -3,6 +3,7 @@ var path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const pkg = require('./package.json');
 const NODE_ENV = process.env.NODE_ENV;
 const setPath = function (folderName) {
     return path.join(__dirname, folderName);
@@ -10,6 +11,9 @@ const setPath = function (folderName) {
 const isProd = function () {
     return (process.env.NODE_ENV === 'production') ? true : false;
 };
+
+const appName = pkg.name;
+
 module.exports = {
     mode: isProd ? 'production' : 'development',
     devtool: 'source-map',
@@ -68,13 +72,16 @@ module.exports = {
         extensions: ['.js'],
     },
     output: {
-        filename: 'cui-light.[name].js',
+        filename: appName + '.js',
         path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'umd',
+        library: appName,
+        umdNamedDefine: true
     },
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'cui-light.[name].css',
+            filename: appName + '.css',
             esModule: true
         })
     ]

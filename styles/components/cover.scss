@@ -12,18 +12,18 @@ $cover-transition-duration: $animation-duration-long;
 
 @mixin cover {
     .#{$prefix}-cover {
+        position        : fixed;
         top             : 0px;
         left            : 0px;
         height          : 100vh;
         width           : 100vw;
-        opacity         : 0;
-        transform       : scale(0, 0);
-        transform-origin: bottom center;
-        position        : absolute;
-
         background-color: $cover-background-default;
         color           : $cover-color-default;
         z-index         : 1250;
+        transform-origin: bottom center;
+        opacity         : 0;
+        transform       : scale(0, 0);
+
 
         &.#{$prefix}-active {
             transition: transform $cover-transition-duration ease-in-out,
@@ -31,12 +31,22 @@ $cover-transition-duration: $animation-duration-long;
             opacity  : 1;
             transform: scale(1, 1);
         }
+
+        .#{$prefix}-cover-container {
+            top       : 0px;
+            left      : 0px;
+            width     : 100%;
+            max-height: 100%;
+            overflow-y: auto;
+            position  : absolute;
+        }
     }
+
 }
 
 @mixin cover-dark {
     .#{$prefix}-dark {
-        .#{$prefix}-cover {
+        .#{$prefix}-cover-container {
             background-color: $cover-background-dark;
             color           : $cover-color-dark;
         }
@@ -45,7 +55,7 @@ $cover-transition-duration: $animation-duration-long;
 
 @mixin cover-print {
     .#{$prefix}-print {
-        .#{$prefix}-cover {
+        .#{$prefix}-cover-container {
             background-color: $component-print-background;
             color           : $component-print-color;
         }

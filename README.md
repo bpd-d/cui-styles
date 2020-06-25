@@ -4,6 +4,11 @@ Library can be compiled manually and used on it's own as CSS based components li
 The best experiance can be received when combined with cUI javascript libraries.
 
 # CHANGELOG:
+## [0.0.7] 
+* [Fixed] Hints not properly displayed in dark mode
+* [Fixed] Cover not behaving properly on overflow - added cover container
+* [Added] New class: overflow-hidden
+
 ## [0.0.6] 2020-06-25
 * [Fixed] Various fixes around framework - increased usage of global CSS variables
 * [Changed] Framework refactoring - introduced flexibility in terms of custom framework build
@@ -17,3 +22,6 @@ The best experiance can be received when combined with cUI javascript libraries.
 
 ## [0.0.3] 2020-06-18
 * [Changed] CSS variables are now prefixed with the same prefix as all other components
+
+# Documentation
+## WIP

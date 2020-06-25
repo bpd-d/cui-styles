@@ -273,6 +273,10 @@ $sides: "top",
         @include margin(l);
     }
 
+    .#{$prefix}-overflow-hidden {
+        overflow: hidden;
+    }
+
     .#{$prefix}-overflow-x {
         overflow-x: scroll;
     }

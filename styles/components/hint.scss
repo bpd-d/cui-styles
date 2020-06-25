@@ -29,6 +29,7 @@ $hint-border-color-success      : $component-background-success;
         background-color: $hint-background-default;
         color           : $hint-color-default;
 
+
         &.#{$prefix}-body {
             @include component-padding(same);
         }
@@ -93,9 +94,12 @@ $hint-border-color-success      : $component-background-success;
 @mixin hint-dark {
     .#{$prefix}-dark {
         .#{$prefix}-hint {
-            border-color    : $hint-border-color-default-dark;
-            color           : $hint-color-dark;
-            background-color: $hint-background-default-dark;
+            &:not(.#{$prefix}-accent):not(.#{$prefix}-accent):not(.#{$prefix}-secondary):not(.#{$prefix}-error):not(.#{$prefix}-success) {
+                border-color    : $hint-border-color-default-dark;
+                background-color: $hint-background-default-dark;
+            }
+
+            color : $hint-color-dark;
         }
 
 

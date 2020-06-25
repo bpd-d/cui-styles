@@ -1,58 +1,44 @@
+@use "variables.scss"as *;
+@use "sass:string";
+@use "sass:map";
+
 $item-padding      : $padding-global;
 $item-padding-large: $padding-global-large;
 $item-padding-small: $padding-global-small;
 
 $item-background-default: $component-background-default;
+
 @mixin color($color) {
     @if $color==light {
-        color: var(--cui-color-light-base)
+        color: $component-color-default
     }
 
     @else if $color==dark {
-        color: var(--cui-color-dark-base)
+        color: $component-color-default-dark;
     }
 
     @else {
-        color: var(--cui-color-#{$color})
+        color: get-theme-color($color);
     }
-
 }
 
-@mixin color-darken($color) {
-    color: var(--cui-color-#{$color}-darken)
-}
-
-@mixin background-color($color, $shade: normal) {
+@mixin background-color($color) {
     @if $color==light {
         background-color: $item-background-default;
     }
 
     @else if $color==dark {
-        background-color: var(--cui-color-dark-background);
+        background-color: $component-background-default-dark;
     }
 
     @else if $color==transparent {
         background-color: transparent;
     }
-
-    @else {
-        @if $shade==darken {
-            background-color: var(--cui-color-#{$color}-darken);
-        }
-
-        @else if $shade==lighten {
-            background-color: var(--cui-color-#{$color}-lighten);
-        }
-
-        @else {
-            background-color: var(--cui-color-#{$color});
-        }
-    }
 }
 
 @mixin component-header {
-    font-size  : 1.5em;
-    font-weight: 300;
+    font-size  : $font-larger;
+    font-weight: $text-weight-thin;
 }
 
 @mixin component-padding($size: normal) {
@@ -79,15 +65,15 @@ $item-background-default: $component-background-default;
 
 @mixin component-padding-complex($part: body) {
     @if $part==header {
-        padding: 1rem 1rem 0.5rem 1rem;
+        padding: $padding-global $padding-global $padding-global-small $padding-global;
     }
 
     @else if $part==body {
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        padding: $padding-global-small $padding-global $padding-global-small $padding-global;
     }
 
     @else if $part==footer {
-        padding: 0.5rem 1rem 1rem 1rem;
+        padding: $padding-global-small $padding-global $padding-global $padding-global;
     }
 
 }
@@ -98,15 +84,23 @@ $item-background-default: $component-background-default;
     appearance        : none;
 }
 
-@mixin size-media() {
+@function get-theme-color($color) {
+    @if map-has-key($colors-map, $color) {
+        @return map-get($colors-map, $color);
+    }
 
-    // View small
-    @media (max-width: $cui-breakpoint-s) {}
-
-    // View medium
-    @media (max-width: $cui-breakpoint-m) {}
-
-
-    // View large
-    @media (max-width: $cui-breakpoint-l) {}
+    @error "Color #{$color} does not exist in map";
 }
+
+// @mixin size-media() {
+
+//     // View small
+//     @media (max-width: $cui-breakpoint-s) {}
+
+//     // View medium
+//     @media (max-width: $cui-breakpoint-m) {}
+
+
+//     // View large
+//     @media (max-width: $cui-breakpoint-l) {}
+// }

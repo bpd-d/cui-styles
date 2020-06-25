@@ -1,0 +1,13 @@
+@use 'core/visibility';
+@use 'core/spaces';
+@use 'core/widths';
+@use 'core/height';
+@use 'animations';
+
+@mixin definitions {
+    @include visibility.definitions;
+    @include spaces.definitions;
+    @include widths.definitions;
+    @include height.definitions;
+    @include animations.definitions;
+}

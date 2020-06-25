@@ -1,8 +1,7 @@
-@media print {
-    /**
-    * Base
-    */
+@use '../variables'as *;
 
+
+@mixin definitions {
     body.#{$prefix}-print {
         background-color: white !important;
         color           : $app-color !important;

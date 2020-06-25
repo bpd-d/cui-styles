@@ -1,3 +1,5 @@
+@use '../variables'as *;
+
 $link-color-default  : $component-color-default;
 $link-color-muted    : $component-color-muted;
 $link-color-accent   : $component-background-accent;
@@ -6,38 +8,20 @@ $link-color-error    : $component-background-error;
 $link-color-warning  : $component-background-warning;
 $link-color-success  : $component-background-success;
 
+@mixin link {
+    .#{$prefix}-link {
+        text-decoration: none;
+        color          : $link-color-default;
 
-.#{$prefix}-link {
-    text-decoration: none;
-    color          : $link-color-default;
-
-    &.#{$prefix}-accent {
-        color: $link-color-accent;
+        &:hover {
+            text-decoration      : underline;
+            text-decoration-color: var(--color-light-lighten);
+        }
     }
+}
 
-    &.#{$prefix}-secondary {
-        color: $link-color-secondary;
-    }
-
-    &.#{$prefix}-error {
-        color: $link-color-error;
-    }
-
-    &.#{$prefix}-warning {
-        color: $link-color-warning;
-    }
-
-    &.#{$prefix}-success {
-        color: $link-color-success;
-    }
-
-    &:hover {
-        text-decoration      : underline;
-        text-decoration-color: var(--color-light-lighten);
-    }
-
-    &:visited {
-
+@mixin link-theme {
+    .#{$prefix}-link {
         &.#{$prefix}-accent {
             color: $link-color-accent;
         }
@@ -46,6 +30,20 @@ $link-color-success  : $component-background-success;
             color: $link-color-secondary;
         }
 
+        &:visited {
+            &.#{$prefix}-accent {
+                color: $link-color-accent;
+            }
+
+            &.#{$prefix}-secondary {
+                color: $link-color-secondary;
+            }
+        }
+    }
+}
+
+@mixin link-signals {
+    .#{$prefix}-link {
         &.#{$prefix}-error {
             color: $link-color-error;
         }
@@ -57,15 +55,34 @@ $link-color-success  : $component-background-success;
         &.#{$prefix}-success {
             color: $link-color-success;
         }
+
+        &:visited {
+            &.#{$prefix}-error {
+                color: $link-color-error;
+            }
+
+            &.#{$prefix}-warning {
+                color: $link-color-warning;
+            }
+
+            &.#{$prefix}-success {
+                color: $link-color-success;
+            }
+        }
     }
 }
 
-/**
-* print
-*/
-
-.#{$prefix}-print {
-    .#{$prefix}-link {
-        color: $component-print-color;
+@mixin link-print {
+    .#{$prefix}-print {
+        .#{$prefix}-link {
+            color: $component-print-color;
+        }
     }
+}
+
+@mixin definitions {
+    @include link();
+    @include link-theme();
+    @include link-signals();
+    @include link-print();
 }

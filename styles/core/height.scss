@@ -1,6 +1,7 @@
 /**
 * Heights
 */
+@use '../variables'as *;
 
 // Variables
 // Mixins
@@ -40,32 +41,37 @@
     }
 }
 
-// Nomral
 
-@include heights();
+// Exports
+@mixin definitions {
 
-// Custom height
+    // Nomral
 
-[#{$prefix}-item-height] {
-    height: attr(#{$prefix}-item-height);
-}
+    @include heights();
+
+    // Custom height
+
+    [#{$prefix}-item-height] {
+        height: attr(#{$prefix}-item-height);
+    }
 
 
-@media (min-width: $breakpoint-s) {
-    @include heights(--s)
-}
+    @media (min-width: $breakpoint-s) {
+        @include heights(--s)
+    }
 
-// View medium
-@media (min-width: $breakpoint-m) {
-    @include heights(--m)
-}
+    // View medium
+    @media (min-width: $breakpoint-m) {
+        @include heights(--m)
+    }
 
-// View medium
-@media (min-width: $breakpoint-l) {
-    @include heights(--l)
-}
+    // View medium
+    @media (min-width: $breakpoint-l) {
+        @include heights(--l)
+    }
 
-// View medium
-@media (min-width: $breakpoint-xl) {
-    @include heights(--xl)
+    // View medium
+    @media (min-width: $breakpoint-xl) {
+        @include heights(--xl)
+    }
 }

@@ -1,0 +1,13 @@
+//$prefix : 'cui' !default;
+
+@use '../variables'as vars;
+
+@mixin main-body() {
+    font-size       : vars.$font-normal;
+    box-sizing      : border-box;
+    font-family     : vars.$font-family;
+    margin          : 0;
+    padding         : 0;
+    background-color: vars.$app-background;
+    color           : vars.$app-color;
+}

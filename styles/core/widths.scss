@@ -1,3 +1,5 @@
+@use '../variables'as *;
+
 @mixin widths($size:"") {
     @for $i from 1 through 6 {
         .#{$prefix}-width-1-#{$i}#{$size} {
@@ -44,50 +46,52 @@
     }
 }
 
-[class*="#{$prefix}-width"] {
-    box-sizing: border-box;
-    width     : 100%;
-    max-width : 100%;
-}
+@mixin definitions {
+    [class*="#{$prefix}-width"] {
+        box-sizing: border-box;
+        width     : 100%;
+        max-width : 100%;
+    }
 
-.#{$prefix}-width-1-1 {
-    width: 100%;
-}
+    .#{$prefix}-width-1-1 {
+        width: 100%;
+    }
 
-.#{$prefix}-width-auto {
-    flex: auto;
-}
+    .#{$prefix}-width-auto {
+        flex: auto;
+    }
 
-.#{$prefix}-width-grow {
-    flex: 1 0 auto;
-}
+    .#{$prefix}-width-grow {
+        flex: 1 0 auto;
+    }
 
-.#{$prefix}-width-shrink {
-    flex: 0 1 auto;
-}
+    .#{$prefix}-width-shrink {
+        flex: 0 1 auto;
+    }
 
-@include widths();
+    @include widths();
 
-@media (max-width: $breakpoint-s) {
-    @include widths_small();
-}
+    @media (max-width: $breakpoint-s) {
+        @include widths_small();
+    }
 
-// View small
-@media (min-width: $breakpoint-s) {
-    @include widths(--s);
-}
+    // View small
+    @media (min-width: $breakpoint-s) {
+        @include widths(--s);
+    }
 
-// View medium
-@media (min-width: $breakpoint-m) {
-    @include widths(--m);
-}
+    // View medium
+    @media (min-width: $breakpoint-m) {
+        @include widths(--m);
+    }
 
-// View medium
-@media (min-width: $breakpoint-l) {
-    @include widths(--l);
-}
+    // View medium
+    @media (min-width: $breakpoint-l) {
+        @include widths(--l);
+    }
 
-// View medium
-@media (min-width: $breakpoint-xl) {
-    @include widths(--xl);
+    // View medium
+    @media (min-width: $breakpoint-xl) {
+        @include widths(--xl);
+    }
 }

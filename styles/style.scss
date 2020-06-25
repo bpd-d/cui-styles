@@ -1,146 +1,30 @@
-// accent           : #1565c0
-$prefix: 'cui';
+$prefix : 'cui' !default;
+
+@use 'variables'with($prefix: $prefix);
+@use "core/root"with($prefix: $prefix);
+@use 'core/head';
+@use 'core/body';
+@use 'dark';
+@use 'components/print';
+@use 'commons';
+@use 'base';
+@use 'components';
 
 :root {
-    --#{$prefix}-font-size                 : 16px;
-    --#{$prefix}-line-height               : 20px;
-    --#{$prefix}-animation-time            : 0.3s;
-    --#{$prefix}-animation-time-long       : 0.5s;
-    --#{$prefix}-animation-time-short      : 0.15s;
-    //Breakpoints
-    // colors
-    // Light
-    --#{$prefix}-color-light-app-background: #ffffff;
-    --#{$prefix}-color-light-background    : #fff;
-    --#{$prefix}-color-light-border        : #f3f3f3;
-    --#{$prefix}-color-light-base          : #333;
-    --#{$prefix}-color-light-active        : #222;
-    --#{$prefix}-color-light-muted         : #aaa;
-    //Dark
-    --#{$prefix}-color-dark-app-background : #222;
-    --#{$prefix}-color-dark-background     : #262626;
-    --#{$prefix}-color-dark-border         : #303030;
-    --#{$prefix}-color-dark-base           : #fff;
-    --#{$prefix}-color-dark-active         : #777;
-    --#{$prefix}-color-dark-muted          : #ccc;
-    // --primary pink      : FF0066
-    --#{$prefix}-color-primary             : #2585B5;
-    --#{$prefix}-color-primary-active      : #1E6A91;
-    --#{$prefix}-color-primary-muted       : #519DC4;
-    --#{$prefix}-color-primary-shade       : #D3E7F0;
-    --#{$prefix}-color-primary-shade-dark  : #0F3548;
-
-    // Secondary
-    --#{$prefix}-color-secondary           : #8a3f9e;
-    --#{$prefix}-color-secondary-active    : #6E327E;
-    --#{$prefix}-color-secondary-muted     : #A165B1;
-    --#{$prefix}-color-secondary-shade     : #E8D9EC;
-    --#{$prefix}-color-secondary-shade-dark: #37193F;
-    // Signals 
-    // Warning
-    --#{$prefix}-color-warning             : #fb8c00;
-    --#{$prefix}-color-warning-active      : #C97000;
-    --#{$prefix}-color-warning-muted       : #FCA333;
-    --#{$prefix}-color-warning-shade       : #FEE8CC;
-    --#{$prefix}-color-warning-shade-dark  : #643800;
-    // Success
-    --#{$prefix}-color-success             : #7cb342;
-    --#{$prefix}-color-success-active      : #638F35;
-    --#{$prefix}-color-success-muted       : #96C268;
-    --#{$prefix}-color-success-shade       : #E5F0D9;
-    --#{$prefix}-color-success-shade-dark  : #32481A;
-    //Error
-    --#{$prefix}-color-error               : #f44336;
-    --#{$prefix}-color-error-active        : #E21B0C;
-    --#{$prefix}-color-error-muted         : #F6695E;
-    --#{$prefix}-color-error-shade         : #FDD9D7;
-    --#{$prefix}-color-error-shade-dark    : #710D06;
-
-    --#{$prefix}-input-background-color: transparent;
-
-    // Static
-    --#{$prefix}-color-shade              : #00000010;
-    --#{$prefix}-color-shade-darker       : #00000030;
-    --#{$prefix}-color-shade-light        : #ffffff10;
-    --#{$prefix}-color-shade-light-lighter: #ffffff30;
-
-    // Outline
-    --#{$prefix}-outline: 1px solid transparent;
+    @include root.variables;
 }
 
-@import 'variables';
-@import 'mixins';
-
 html {
-    margin                  : 0;
-    padding                 : 0;
-    box-sizing              : border-box;
-    -webkit-text-size-adjust: 100%;
-    text-rendering          : optimizeLegibility;
+    @include head.html;
 }
 
 body {
-    font-size       : var(--#{$prefix}-font-size);
-    box-sizing      : border-box;
-    font-family     : $font-family;
-    margin          : 0;
-    padding         : 0;
-    background-color: $app-background;
-    color           : $app-color;
-    //overflow-y: hidden;
+    @include body.main-body;
 }
 
 // Commons
-
-@import 'core/visibility';
-@import 'core/spaces';
-@import 'core/widths';
-@import 'core/height';
-@import 'animations';
-// Base
-@import 'core/flex';
-@import 'core/heads';
-@import 'core/containers';
-@import 'core/section';
-@import 'core/grid';
-@import 'core/position';
-@import 'core/transition';
-@import 'core/slide';
-@import 'core/sticky';
-// Components
-@import 'components/navbar';
-@import 'components/accordion';
-@import 'components/dialog';
-@import 'components/tab';
-@import 'components/tooltip';
-@import 'components/buttons';
-@import 'components/banner';
-@import 'components/links';
-@import 'components/text';
-@import 'components/icon';
-@import 'components/card';
-@import 'components/breadcrumb';
-@import 'components/input';
-//@import 'styles/components/notification';
-//@import 'styles/components/sortable';
-@import 'components/spinner';
-@import 'components/table';
-@import 'components/drop';
-@import 'components/switch';
-@import 'components/switcher';
-@import 'components/list';
-@import 'components/overlay';
-@import 'components/progress';
-@import 'components/background';
-@import 'components/badge';
-@import 'components/toast';
-@import 'components/offcanvas';
-@import 'components/hint';
-@import 'components/special';
-@import 'components/cover';
-@import 'components/transitions';
-// Dark
-@import 'dark';
-
-//Print 
-@import 'components/print';
+@include commons.definitions;
+@include base.definitions;
+@include components.definitions;
+@include dark.definitions;
+@include print.definitions;

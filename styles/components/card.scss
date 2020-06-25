@@ -1,3 +1,6 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
 $card-background-default      : $component-background-default;
 $card-background-inverse      : $component-background-inverse;
 $card-background-inverse-dark : $component-background-inverse-dark;
@@ -10,177 +13,178 @@ $card-color-inverse-dark      : $component-color-inverse-dark;
 $card-color-default-dark      : $component-color-default-dark;
 $card-separator-color         : $color-border-light;
 $card-separator-color-dark    : $color-border-dark;
-$card-separator-color-accent  : #ffffff10;
-$card-border-color            :$color-border-light;
-$card-border-color-dark       :$color-border-dark;
+$card-separator-color-accent  : $color-border-dark;
+$card-border-color            : $color-border-light;
+$card-border-color-dark       : $color-border-dark;
 
-.#{$prefix}-card {
-    display             : block;
-    box-sizing          : border-box;
-    background-color    : transparent;
-    border              : 1px solid transparent;
-    border-radius       : $border-radius-default;
-    //transform       : scale(1, 1);
-    //transition        : box-shadow 150ms ease-in;
 
-    &.#{$prefix}-card-expand {
-        width: 100%;
-    }
+@mixin card {
+    .#{$prefix}-card {
+        display         : block;
+        box-sizing      : border-box;
+        background-color: transparent;
+        border          : 1px solid transparent;
+        border-radius   : $border-radius-default;
 
-    &.#{$prefix}-side {
-        //width    : 600px;
-        display    : flex;
-        flex-wrap  : wrap;
-        box-sizing : border-box;
-        align-items: baseline;
-
-        .#{$prefix}-content {
-            height: 100%;
+        &.#{$prefix}-card-expand {
+            width: 100%;
         }
-    }
 
-    &.#{$prefix}-hover {
-        &:hover {
-            box-shadow: $shadow2;
+        &.#{$prefix}-side {
+            display    : flex;
+            flex-wrap  : wrap;
+            box-sizing : border-box;
+            align-items: baseline;
+
+            .#{$prefix}-content {
+                height: 100%;
+            }
         }
-    }
 
-    &.#{$prefix}-body {
-        @include component-padding(same);
-    }
+        &.#{$prefix}-hover {
+            &:hover {
+                box-shadow: $shadow2;
+            }
+        }
 
-    &.#{$prefix}-large {
+        &.#{$prefix}-body {
+            @include component-padding(same);
+        }
+
+        &.#{$prefix}-large {
+
+            .#{$prefix}-card-header,
+            .#{$prefix}-card-body,
+            .#{$prefix}-card-footer {
+                @include component-padding(large);
+            }
+
+        }
+
+        .#{$prefix}-card-title {
+            @include component-header;
+        }
+
         .#{$prefix}-card-header {
-            @include component-padding(large);
+            padding      : 1rem; //1rem 0.5rem 1rem;
+            border-bottom: 1px solid $card-separator-color;
         }
 
         .#{$prefix}-card-body {
-            @include component-padding(large);
+            padding  : 1rem; //1rem 0.5rem 1rem;
+            max-width: 100%;
         }
 
         .#{$prefix}-card-footer {
-            @include component-padding(large);
-        }
-    }
-
-    .#{$prefix}-card-title {
-        @include component-header;
-    }
-
-    .#{$prefix}-card-header {
-        padding      : 1rem; //1rem 0.5rem 1rem;
-        border-bottom: 1px solid $card-separator-color;
-    }
-
-    .#{$prefix}-card-body {
-        padding  : 1rem; //1rem 0.5rem 1rem;
-        max-width: 100%;
-    }
-
-    .#{$prefix}-card-footer {
-        padding   : 1rem; // 1rem 1rem 1rem;
-        border-top: 1px solid $card-separator-color;
-    }
-
-    &.#{$prefix}-default {
-        background-color: $card-background-default;
-        box-shadow      : $shadow;
-        color           : $card-color-default;
-        border          : 1px solid $card-border-color;
-
-    }
-
-    &.#{$prefix}-accent {
-        background-color: $card-background-accent;
-        box-shadow      : $shadow;
-    }
-
-    &.#{$prefix}-secondary {
-        background-color: $card-background-secondary;
-        box-shadow      : $shadow;
-    }
-
-    &.#{$prefix}-accent,
-    &.#{$prefix}-secondary {
-        color: $card-color-default-dark;
-
-        .#{$prefix}-card-header,
-        .#{$prefix}-card-footer {
-            border-color: $card-separator-color-accent;
-        }
-    }
-
-
-    &.#{$prefix}-inverse {
-        background-color: $card-background-inverse;
-        box-shadow      : $shadow;
-        color           : $card-color-inverse;
-
-        .#{$prefix}-card-header,
-        .#{$prefix}-card-footer {
-            border-color: $card-separator-color-dark;
-        }
-    }
-}
-
-/**
-* Dark
-*/
-
-
-.#{$prefix}-dark {
-    .#{$prefix}-card {
-        .#{$prefix}-card-header {
-            border-bottom: 1px solid $card-separator-color-dark;
-        }
-
-        .#{$prefix}-card-footer {
-            border-top: 1px solid $card-separator-color-dark;
+            padding   : 1rem; // 1rem 1rem 1rem;
+            border-top: 1px solid $card-separator-color;
         }
 
         &.#{$prefix}-default {
-            background-color: $card-background-default-dark;
+            background-color: $card-background-default;
             box-shadow      : $shadow;
-            color           : $card-color-default-dark;
-            border          : 1px solid $card-border-color-dark;
+            color           : $card-color-default;
+            border          : 1px solid $card-border-color;
+
         }
 
         &.#{$prefix}-inverse {
-            background-color: $card-background-inverse-dark;
+            background-color: $card-background-inverse;
             box-shadow      : $shadow;
-            color           : $card-color-inverse-dark;
-            border          : 1px solid $card-border-color;
+            color           : $card-color-inverse;
 
             .#{$prefix}-card-header,
             .#{$prefix}-card-footer {
-                border-color: $card-separator-color;
+                border-color: $card-separator-color-dark;
             }
         }
     }
 }
 
-/**
-* Print
-*/
-
-.#{$prefix}-print {
+@mixin card-theme {
     .#{$prefix}-card {
-        box-shadow: $component-print-shadow;
+        &.#{$prefix}-accent {
+            background-color: $card-background-accent;
+            box-shadow      : $shadow;
+        }
 
-        &.#{$prefix}-default,
+        &.#{$prefix}-secondary {
+            background-color: $card-background-secondary;
+            box-shadow      : $shadow;
+        }
+
         &.#{$prefix}-accent,
         &.#{$prefix}-secondary {
-            background-color: $component-print-background;
-            color           : $component-print-color;
-            border          : $component-print-border;
-        }
+            color: $card-color-default-dark;
 
-        .#{$prefix}-card-header {
-            border-bottom: $component-print-border
-        }
-
-        .#{$prefix}-card-footer {
-            border-top: $component-print-border
+            .#{$prefix}-card-header,
+            .#{$prefix}-card-footer {
+                border-color: $card-separator-color-accent;
+            }
         }
     }
+}
+
+@mixin card-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-card {
+            .#{$prefix}-card-header {
+                border-bottom: 1px solid $card-separator-color-dark;
+            }
+
+            .#{$prefix}-card-footer {
+                border-top: 1px solid $card-separator-color-dark;
+            }
+
+            &.#{$prefix}-default {
+                background-color: $card-background-default-dark;
+                box-shadow      : $shadow;
+                color           : $card-color-default-dark;
+                border          : 1px solid $card-border-color-dark;
+            }
+
+            &.#{$prefix}-inverse {
+                background-color: $card-background-inverse-dark;
+                box-shadow      : $shadow;
+                color           : $card-color-inverse-dark;
+                border          : 1px solid $card-border-color;
+
+                .#{$prefix}-card-header,
+                .#{$prefix}-card-footer {
+                    border-color: $card-separator-color;
+                }
+            }
+        }
+    }
+}
+
+@mixin card-print {
+    .#{$prefix}-print {
+        .#{$prefix}-card {
+            box-shadow: $component-print-shadow;
+
+            &.#{$prefix}-default,
+            &.#{$prefix}-accent,
+            &.#{$prefix}-secondary {
+                background-color: $component-print-background;
+                color           : $component-print-color;
+                border          : $component-print-border;
+            }
+
+            .#{$prefix}-card-header {
+                border-bottom: $component-print-border
+            }
+
+            .#{$prefix}-card-footer {
+                border-top: $component-print-border
+            }
+        }
+    }
+}
+
+@mixin definitions {
+    @include card();
+    @include card-theme();
+    @include card-dark();
+    @include card-print();
 }

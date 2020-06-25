@@ -1,0 +1,21 @@
+@use 'core/flex';
+@use 'core/heads';
+@use 'core/containers';
+@use 'core/section';
+@use 'core/grid';
+@use 'core/position';
+@use 'core/transition';
+@use 'core/slide';
+@use 'core/sticky';
+
+@mixin definitions {
+    @include flex.definitions;
+    @include heads.definitions;
+    @include containers.definitions;
+    @include section.definitions;
+    @include grid.definitions;
+    @include position.definitions;
+    @include transition.definitions;
+    @include slide.definitions;
+    @include sticky.definitions;
+}

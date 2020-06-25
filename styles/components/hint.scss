@@ -1,3 +1,6 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
 $hint-background-default        : $component-background-shade;
 $hint-background-default-dark   : $component-background-shade-dark;
 $hint-background-accent         : $component-background-accent-shade;
@@ -20,99 +23,144 @@ $hint-border-color-error        : $component-background-error;
 $hint-border-color-warning      : $component-background-warning;
 $hint-border-color-success      : $component-background-success;
 
-.#{$prefix}-hint {
-    border-left     : 8px solid $hint-border-color-default;
-    background-color: $hint-background-default;
-    color           : $hint-color-default;
+@mixin hint {
+    .#{$prefix}-hint {
+        border-left     : 8px solid $hint-border-color-default;
+        background-color: $hint-background-default;
+        color           : $hint-color-default;
 
-    &.#{$prefix}-body {
-        @include component-padding(same);
-    }
+        &.#{$prefix}-body {
+            @include component-padding(same);
+        }
 
-    .#{$prefix}-hint-title {
-        @include component-header;
-        @include component-padding-complex(header);
-    }
+        .#{$prefix}-hint-title {
+            @include component-header;
+            @include component-padding-complex(header);
+        }
 
-    .#{$prefix}-hint-body {
-        @include component-padding-complex(body);
-    }
+        .#{$prefix}-hint-body {
+            @include component-padding-complex(body);
+        }
 
-    .#{$prefix}-hint-footer {
-        display        : flex;
-        justify-content: flex-end;
-        align-items    : center;
-        text-align     : end;
-        font-style     : italic;
-        @include component-padding-complex(footer);
-    }
+        .#{$prefix}-hint-footer {
+            display        : flex;
+            justify-content: flex-end;
+            align-items    : center;
+            text-align     : end;
+            font-style     : italic;
+            @include component-padding-complex(footer);
+        }
 
-    &.#{$prefix}-accent {
-        background-color: $hint-background-accent;
-        border-color    : $hint-border-color-accent;
-    }
 
-    &.#{$prefix}-secondary {
-        background-color: $hint-background-secondary;
-        border-color    : $hint-border-color-secondary;
-    }
 
-    &.#{$prefix}-warning {
-        background-color: $hint-background-warning;
-        border-color    : $hint-border-color-warning;
-    }
 
-    &.#{$prefix}-error {
-        background-color: $hint-background-error;
-        border-color    : $hint-border-color-error;
     }
+}
 
-    &.#{$prefix}-success {
-        background-color: $hint-background-success;
-        border-color    : $hint-border-color-success;
+@mixin hint-theme {
+    .#{$prefix}-hint {
+        &.#{$prefix}-accent {
+            background-color: $hint-background-accent;
+            border-color    : $hint-border-color-accent;
+        }
+
+        &.#{$prefix}-secondary {
+            background-color: $hint-background-secondary;
+            border-color    : $hint-border-color-secondary;
+        }
     }
+}
+
+@mixin hint-signals {
+    .#{$prefix}-hint {
+        &.#{$prefix}-warning {
+            background-color: $hint-background-warning;
+            border-color    : $hint-border-color-warning;
+        }
+
+        &.#{$prefix}-error {
+            background-color: $hint-background-error;
+            border-color    : $hint-border-color-error;
+        }
+
+        &.#{$prefix}-success {
+            background-color: $hint-background-success;
+            border-color    : $hint-border-color-success;
+        }
+    }
+}
+
+@mixin hint-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-hint {
+            border-color    : $hint-border-color-default-dark;
+            color           : $hint-color-dark;
+            background-color: $hint-background-default-dark;
+        }
+
+
+
+    }
+}
+
+@mixin hint-theme-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-hint {
+            &.#{$prefix}-accent {
+                background-color: $hint-background-accent-dark;
+            }
+
+            &.#{$prefix}-secondary {
+                background-color: $hint-background-secondary-dark;
+            }
+        }
+    }
+}
+
+@mixin hint-signals-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-hint {
+            &.#{$prefix}-warning {
+                background-color: $hint-background-warning-dark;
+            }
+
+            &.#{$prefix}-error {
+                background-color: $hint-background-error-dark;
+            }
+
+            &.#{$prefix}-success {
+                background-color: $hint-background-success-dark;
+            }
+        }
+    }
+}
+
+@mixin hint-print {
+    .#{$prefix}-print {
+        .#{$prefix}-hint {
+            border          : $component-print-border;
+            color           : $component-print-color;
+            background-color: $component-print-background;
+        }
+    }
+}
+
+@mixin definitions {
+    @include hint();
+    @include hint-theme();
+    @include hint-theme-dark();
+    @include hint-signals();
+    @include hint-signals-dark();
+    @include hint-dark();
+    @include hint-print();
 }
 
 /**
 * Dark
 */
 
-.#{$prefix}-dark {
-    .#{$prefix}-hint {
-        border-color    : $hint-border-color-default-dark;
-        color           : $hint-color-dark;
-        background-color: $hint-background-default-dark;
-    }
 
-    &.#{$prefix}-accent {
-        background-color: $hint-background-accent-dark;
-    }
-
-    &.#{$prefix}-secondary {
-        background-color: $hint-background-secondary-dark;
-    }
-
-    &.#{$prefix}-warning {
-        background-color: $hint-background-warning-dark;
-    }
-
-    &.#{$prefix}-error {
-        background-color: $hint-background-error-dark;
-    }
-
-    &.#{$prefix}-success {
-        background-color: $hint-background-success-dark;
-    }
-}
 
 /**
 * Print
 */
-
-.#{$prefix}-print {
-    .#{$prefix}-hint {
-        border          : $component-print-border;
-        color           : $component-print-color;
-        background-color: $component-print-background;
-    }
-}

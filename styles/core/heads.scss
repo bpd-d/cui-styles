@@ -1,28 +1,47 @@
-.#{$prefix}-heading {
-    font-weight: $text-weight-thin;
+@use '../variables'as *;
+
+$head-text-weight-thin: $text-weight-thin;
+$head-text-weight-bold: $text-weight-bold;
+$head-font-large      : $font-large;
+$head-font-larger     : $font-larger;
+$head-font-xlarge     : $font-xlarge;
+$head-font-normal     : $font-normal;
+
+
+@mixin headings {
+    .#{$prefix}-h1 {
+        font-size  : $head-font-xlarge;
+        font-weight: $head-text-weight-thin;
+    }
+
+    .#{$prefix}-h2 {
+        font-size  : $head-font-larger;
+        font-weight: $head-text-weight-thin;
+    }
+
+    .#{$prefix}-h3 {
+        font-size  : $head-font-large;
+        font-weight: 400;
+    }
+
+    .#{$prefix}-h4 {
+        font-size  : $head-font-normal;
+        font-weight: $head-text-weight-bold;
+    }
+
+    .#{$prefix}-heading {
+        font-weight: $head-text-weight-thin;
+    }
 }
 
-.#{$prefix}-title {
-    font-size  : 2em;
-    font-weight: $text-weight-thin;
+@mixin title {
+    .#{$prefix}-title {
+        font-size  : $head-font-xlarge;
+        font-weight: $head-text-weight-thin;
+    }
 }
 
-.#{$prefix}-h1 {
-    font-size  : 2rem;
-    font-weight: $text-weight-thin;
-}
-
-.#{$prefix}-h2 {
-    font-size  : 1.6rem;
-    font-weight: $text-weight-thin;
-}
-
-.#{$prefix}-h3 {
-    font-size  : 1.2rem;
-    font-weight: 400;
-}
-
-.#{$prefix}-h4 {
-    font-size  : 1rem;
-    font-weight: $text-weight-bold;
+@mixin definitions {
+    @include headings;
+    @include title;
 }

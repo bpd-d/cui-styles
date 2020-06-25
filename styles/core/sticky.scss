@@ -1,10 +1,12 @@
-.#{$prefix}-sticky:not(table) {
-    position          : sticky;
-    top               : 0px;
-    //display         : block;
+@use "../variables.scss"as *;
 
-    &.#{$prefix}-hidden {
-        display: none;
+@mixin definitions {
+    .#{$prefix}-sticky:not(table) {
+        position: sticky;
+        top     : 0px;
+
+        &.#{$prefix}-hidden {
+            display: none;
+        }
     }
-
 }

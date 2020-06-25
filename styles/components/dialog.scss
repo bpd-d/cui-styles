@@ -1,3 +1,6 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
 $dialog-border-color           : $color-border-light;
 $dialog-border-color-dark      : $color-border-dark;
 $dialog-backdrop-color         : $color-backdrop-light;
@@ -9,196 +12,201 @@ $dialog-color-default-dark     : $component-color-default-dark;
 $dialog-animation-time         : $animation-duration-long;
 $dialog-animation-time-short   : $animation-duration-short;
 
-.#{$prefix}-dialog {
-    position        : fixed;
-    top             : 0px;
-    z-index         : 1200;
-    height          : 100vh;
-    width           : 100vw;
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
-    background-color: $dialog-backdrop-color;
-
-    &:not(.animation-progress):not(.#{$prefix}-active) {
-        display: none;
-    }
-
-    .#{$prefix}-dialog-container {
-        opacity           : 0;
-        width             : 500px;
-        background-color  : $dialog-background-default;
-        color             : $dialog-color-default;
-        box-shadow        : $shadow3;
-        border            : 1px solid $dialog-border-color;
-        border-radius     : $border-radius-default;
-        //transition      : width 300ms linear;
-
-        .#{$prefix}-dialog-header {
-            @include component-padding(same);
-            border-bottom  : 1px solid $dialog-border-color;
-            display        : flex;
-            flex-wrap      : nowrap;
-            justify-content: space-between;
-            align-items    : center;
-
-            .#{$prefix}-dialog-title {
-                font-size: 1.4rem;
-            }
-        }
-
-        .#{$prefix}-dialog-body {
-            // padding   : 0.5em 1em;
-            @include component-padding(same);
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .#{$prefix}-dialog-footer {
-            border-top: 1px solid $dialog-border-color;
-            @include component-padding(same);
-        }
-    }
-
-    &.#{$prefix}-active {
-        .#{$prefix}-dialog-container {
-            opacity: 1;
-        }
-    }
-
-    &.#{$prefix}-expanded {
-        .#{$prefix}-dialog-container {
-            width: 90vw;
-
-            .#{$prefix}-dialog-body {
-                height    : 70vh;
-                max-height: 70vh;
-            }
-        }
-    }
-
-    &.#{$prefix}-large {
-        .#{$prefix}-dialog-container {
-            width: 50vw;
-
-            .#{$prefix}-dialog-body {
-                height    : 50vh;
-                max-height: 50vh;
-            }
-        }
-
-    }
-}
-
-body[#{$prefix}-dialog-show='noscroll'] {
-    overflow: hidden;
-}
-
-/**
-* Dark
-*/
-
-.#{$prefix}-dark {
+@mixin dialog {
     .#{$prefix}-dialog {
-        background-color: $dialog-backdrop-color-dark;
+        position        : fixed;
+        top             : 0px;
+        z-index         : 1200;
+        height          : 100vh;
+        width           : 100vw;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        background-color: $dialog-backdrop-color;
+
+        &:not(.animation-progress):not(.#{$prefix}-active) {
+            display: none;
+        }
 
         .#{$prefix}-dialog-container {
-            background-color: $dialog-background-default-dark;
-            color           : $dialog-color-default-dark;
-            border          : 1px solid $dialog-border-color-dark;
+            opacity           : 0;
+            width             : 500px;
+            background-color  : $dialog-background-default;
+            color             : $dialog-color-default;
+            box-shadow        : $shadow3;
+            border            : 1px solid $dialog-border-color;
+            border-radius     : $border-radius-default;
+            //transition      : width 300ms linear;
 
             .#{$prefix}-dialog-header {
-                border-bottom: 1px solid $dialog-border-color-dark;
+                @include component-padding(same);
+                border-bottom  : 1px solid $dialog-border-color;
+                display        : flex;
+                flex-wrap      : nowrap;
+                justify-content: space-between;
+                align-items    : center;
+
+                .#{$prefix}-dialog-title {
+                    font-size: 1.4rem;
+                }
+            }
+
+            .#{$prefix}-dialog-body {
+                // padding   : 0.5em 1em;
+                @include component-padding(same);
+                max-height: 400px;
+                overflow-y: auto;
             }
 
             .#{$prefix}-dialog-footer {
-                border-top: 1px solid $dialog-border-color-dark;
+                border-top: 1px solid $dialog-border-color;
+                @include component-padding(same);
+            }
+        }
+
+        &.#{$prefix}-active {
+            .#{$prefix}-dialog-container {
+                opacity: 1;
+            }
+        }
+
+        &.#{$prefix}-expanded {
+            .#{$prefix}-dialog-container {
+                width: 90vw;
+
+                .#{$prefix}-dialog-body {
+                    height    : 70vh;
+                    max-height: 70vh;
+                }
+            }
+        }
+
+        &.#{$prefix}-large {
+            .#{$prefix}-dialog-container {
+                width: 50vw;
+
+                .#{$prefix}-dialog-body {
+                    height    : 50vh;
+                    max-height: 50vh;
+                }
+            }
+
+        }
+    }
+
+    body[#{$prefix}-dialog-show='noscroll'] {
+        overflow: hidden;
+    }
+
+}
+
+@mixin dialog-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-dialog {
+            background-color: $dialog-backdrop-color-dark;
+
+            .#{$prefix}-dialog-container {
+                background-color: $dialog-background-default-dark;
+                color           : $dialog-color-default-dark;
+                border          : 1px solid $dialog-border-color-dark;
+
+                .#{$prefix}-dialog-header {
+                    border-bottom: 1px solid $dialog-border-color-dark;
+                }
+
+                .#{$prefix}-dialog-footer {
+                    border-top: 1px solid $dialog-border-color-dark;
+                }
             }
         }
     }
 }
 
-/**
-* Print
-*/
-
-.#{$prefix}-print {
-    .#{$prefix}-dialog {
-        background-color: $component-print-background;
-
-        .#{$prefix}-dialog-container {
+@mixin dialog-print {
+    .#{$prefix}-print {
+        .#{$prefix}-dialog {
             background-color: $component-print-background;
-            color           : $component-print-color;
-            border          : $component-print-border;
-            box-shadow      : $component-print-shadow;
 
-            .#{$prefix}-dialog-header {
-                border-bottom: $component-print-border;
-            }
+            .#{$prefix}-dialog-container {
+                background-color: $component-print-background;
+                color           : $component-print-color;
+                border          : $component-print-border;
+                box-shadow      : $component-print-shadow;
 
-            .#{$prefix}-dialog-footer {
-                border-top: $component-print-border;
+                .#{$prefix}-dialog-header {
+                    border-bottom: $component-print-border;
+                }
+
+                .#{$prefix}-dialog-footer {
+                    border-top: $component-print-border;
+                }
             }
         }
     }
 }
 
+@mixin dialog-animations {
+    .#{$prefix}-dialog-default-in {
+        animation: animFadeIn $dialog-animation-time-short ease-in forwards;
 
-/****
-* Animations
-*/
-.#{$prefix}-dialog-default-in {
-    animation: animFadeIn $dialog-animation-time-short ease-in forwards;
+        .#{$prefix}-dialog-container {
+            animation: animDialogIn $dialog-animation-time ease-in forwards;
+        }
+    }
 
-    .#{$prefix}-dialog-container {
-        animation: animDialogIn $dialog-animation-time ease-in forwards;
+    .#{$prefix}-dialog-default-out {
+        animation: animFadeOut $dialog-animation-time-short ease-in forwards;
+
+        .#{$prefix}-dialog-container {
+            animation: animDialogOut $dialog-animation-time ease-in forwards;
+        }
+    }
+
+
+    @keyframes animDialogIn {
+        0% {
+            opacity  : 0;
+            transform: scale(0, 0);
+        }
+
+        35% {
+            opacity    : 0.5;
+            //transform: scale(0.5, 0.5);
+        }
+
+        70% {
+            opacity  : 1;
+            transform: scale(1.1, 1.1);
+        }
+
+        100% {
+            opacity  : 1;
+            transform: scale(1, 1);
+        }
+    }
+
+    @keyframes animDialogOut {
+        0% {
+            opacity  : 1;
+            transform: scale(1, 1);
+        }
+
+        30% {
+            opacity  : 0.5;
+            transform: scale(0.3, 0.3);
+        }
+
+        100% {
+            opacity  : 0;
+            transform: scale(0, 0);
+        }
     }
 }
 
-.#{$prefix}-dialog-default-out {
-    animation: animFadeOut $dialog-animation-time-short ease-in forwards;
+@mixin definitions {
+    @include dialog;
+    @include dialog-dark;
+    @include dialog-print;
+    @include dialog-animations;
 
-    .#{$prefix}-dialog-container {
-        animation: animDialogOut $dialog-animation-time ease-in forwards;
-    }
-}
-
-
-@keyframes animDialogIn {
-    0% {
-        opacity  : 0;
-        transform: scale(0, 0);
-    }
-
-    35% {
-        opacity    : 0.5;
-        //transform: scale(0.5, 0.5);
-    }
-
-    70% {
-        opacity  : 1;
-        transform: scale(1.1, 1.1);
-    }
-
-    100% {
-        opacity  : 1;
-        transform: scale(1, 1);
-    }
-}
-
-@keyframes animDialogOut {
-    0% {
-        opacity  : 1;
-        transform: scale(1, 1);
-    }
-
-    30% {
-        opacity  : 0.5;
-        transform: scale(0.3, 0.3);
-    }
-
-    100% {
-        opacity  : 0;
-        transform: scale(0, 0);
-    }
 }

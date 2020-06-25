@@ -3,6 +3,7 @@
 * Separates page contents vertically
 * 
 */
+@use '../variables'as *;
 // Variables
 $section-padding-normal              : $padding-global;
 $section-padding-large               : $padding-global-large;
@@ -25,65 +26,69 @@ $section-background-secondary     : $component-background-secondary-shade;
 $section-background-accent-dark   : $component-background-accent-shade-dark;
 $section-background-secondary-dark: $component-background-secondary-shade-dark;
 
-.#{$prefix}-section {
-    display: block;
-    margin : 0;
-    padding: $section-padding-normal;
-
-    &.#{$prefix}-accent {
-        background-color: $section-background-accent;
-    }
-
-    &.#{$prefix}-secondary {
-        background-color: $section-background-secondary;
-    }
-
-    &.#{$prefix}-inverse {
-        background-color: $section-background-inverse;
-        color           : $section-color-inverse;
-    }
-
-    &.#{$prefix}-shade {
-        background-color: $section-shade-background-color;
-    }
-
-    &.#{$prefix}-large {
-        padding: $section-padding-large;
-    }
-}
-
-/**
-* Dark
-*/
-
-.#{$prefix}-dark {
+@mixin section {
     .#{$prefix}-section {
-        &.#{$prefix}-inverse {
-            background-color: $section-background-inverse-dark;
-            color           : $section-color-inverse-dark;
-        }
+        display: block;
+        margin : 0;
+        padding: $section-padding-normal;
 
         &.#{$prefix}-accent {
-            background-color: $section-background-accent-dark;
+            background-color: $section-background-accent;
         }
 
         &.#{$prefix}-secondary {
-            background-color: $section-background-secondary-dark;
+            background-color: $section-background-secondary;
+        }
+
+        &.#{$prefix}-inverse {
+            background-color: $section-background-inverse;
+            color           : $section-color-inverse;
         }
 
         &.#{$prefix}-shade {
-            background-color: $section-shade-background-color-dark;
+            background-color: $section-shade-background-color;
+        }
+
+        &.#{$prefix}-large {
+            padding: $section-padding-large;
         }
     }
 }
 
-/**
-* Print
-*/
+@mixin section-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-section {
+            &.#{$prefix}-inverse {
+                background-color: $section-background-inverse-dark;
+                color           : $section-color-inverse-dark;
+            }
 
-.#{$prefix}-print {
-    .#{$prefix}-section {
-        background-color: $component-print-background;
-        color           : $component-print-color;
+            &.#{$prefix}-accent {
+                background-color: $section-background-accent-dark;
+            }
+
+            &.#{$prefix}-secondary {
+                background-color: $section-background-secondary-dark;
+            }
+
+            &.#{$prefix}-shade {
+                background-color: $section-shade-background-color-dark;
+            }
+        }
     }
+}
+
+@mixin section-print {
+    .#{$prefix}-print {
+        .#{$prefix}-section {
+            background-color: $component-print-background;
+            color           : $component-print-color;
+        }
+    }
+}
+
+@mixin definitions {
+    @include section();
+    @include section-dark();
+    @include section-print();
 }

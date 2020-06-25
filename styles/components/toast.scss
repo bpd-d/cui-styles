@@ -1,3 +1,6 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
 $toast-margin-bottom        : -48px;
 $toast-background-color     : $component-background-default;
 $toast-background-color-dark: $component-background-default-dark;
@@ -6,106 +9,106 @@ $toast-color-dark           : $component-color-default-dark;
 $toast-animation-duration   : $animation-duration-default;
 
 
-
-
-.#{$prefix}-toast {
-    position     : fixed;
-    z-index      : 1000;
-    bottom       : 0px;
-    left         : 50%;
-    transform    : translateX(-50%) translateY($toast-margin-bottom) scale(1, 1);
-    max-width    : 300px;
-    color        : $toast-color;
-    background   : $toast-background-color;
-    box-shadow   : $shadow4;
-    border-radius: 50px;
-    opacity      : 0;
-
-    @include component-padding(large);
-
-    &:not(.animation-progress):not(.#{$prefix}-active) {
-        display: none;
-    }
-
-    &.#{$prefix}-active {
-        opacity: 1;
-    }
-}
-
-/**
-* Dark
-*/
-
-.#{$prefix}-dark {
+@mixin toast {
     .#{$prefix}-toast {
-        color     : $toast-color-dark;
-        background: $toast-background-color-dark;
-    }
-}
+        position     : fixed;
+        z-index      : 1000;
+        bottom       : 0px;
+        left         : 50%;
+        transform    : translateX(-50%) translateY($toast-margin-bottom) scale(1, 1);
+        max-width    : 300px;
+        color        : $toast-color;
+        background   : $toast-background-color;
+        box-shadow   : $shadow4;
+        border-radius: 50px;
+        opacity      : 0;
 
-/**
-* Print
-*/
+        @include component-padding(large);
 
-.#{$prefix}-print {
-    .#{$prefix}-toast {
-        color     : $component-print-color;
-        background: $component-print-background;
-        box-shadow: $component-print-shadow;
-        border    : $component-print-border;
-    }
-}
+        &:not(.animation-progress):not(.#{$prefix}-active) {
+            display: none;
+        }
 
-
-/**
-* Animations
-*/
-
-
-.#{$prefix}-toast-animation-in {
-    animation: #{$prefix}AnimToastIn $toast-animation-duration linear forwards;
-}
-
-.#{$prefix}-toast-animation-out {
-    animation: #{$prefix}AnimToastOut $toast-animation-duration ease-in-out forwards;
-}
-
-@keyframes #{$prefix}AnimToastIn {
-    0% {
-        opacity  : 0;
-        transform: translateX(-50%) translateY(0%) scale(0, 0);
-    }
-
-    30% {
-        opacity  : 1;
-        transform: translateX(-50%) translateY(-24px) scale(0.5, 0.5);
-    }
-
-    70% {
-        opacity  : 1;
-        transform: translateX(-50%) translateY(-60px) scale(1.1, 1.1);
-    }
-
-    100% {
-        opacity  : 1;
-        transform: translateX(-50%) translateY($toast-margin-bottom) scale(1, 1);
+        &.#{$prefix}-active {
+            opacity: 1;
+        }
     }
 }
 
 
-@keyframes #{$prefix}AnimToastOut {
-    0% {
-        opacity  : 1;
-        transform: translateX(-50%) translateY($toast-margin-bottom) scale(1, 1);
+@mixin toast-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-toast {
+            color     : $toast-color-dark;
+            background: $toast-background-color-dark;
+        }
+    }
+}
+
+@mixin toast-print {
+    .#{$prefix}-print {
+        .#{$prefix}-toast {
+            color     : $component-print-color;
+            background: $component-print-background;
+            box-shadow: $component-print-shadow;
+            border    : $component-print-border;
+        }
+    }
+}
+
+@mixin toast-animations {
+    .#{$prefix}-toast-animation-in {
+        animation: #{$prefix}AnimToastIn $toast-animation-duration linear forwards;
     }
 
-    50% {
-        opacity  : 0.5;
-        transform: translateX(-50%) translateY(-24px) scale(0.5, 0.5);
+    .#{$prefix}-toast-animation-out {
+        animation: #{$prefix}AnimToastOut $toast-animation-duration ease-in-out forwards;
     }
 
-    100% {
-        opacity  : 0;
-        transform: translateX(-50%) translateY(0%) scale(0, 0);
+    @keyframes #{$prefix}AnimToastIn {
+        0% {
+            opacity  : 0;
+            transform: translateX(-50%) translateY(0%) scale(0, 0);
+        }
+
+        30% {
+            opacity  : 1;
+            transform: translateX(-50%) translateY(-24px) scale(0.5, 0.5);
+        }
+
+        70% {
+            opacity  : 1;
+            transform: translateX(-50%) translateY(-60px) scale(1.1, 1.1);
+        }
+
+        100% {
+            opacity  : 1;
+            transform: translateX(-50%) translateY($toast-margin-bottom) scale(1, 1);
+        }
     }
+
+
+    @keyframes #{$prefix}AnimToastOut {
+        0% {
+            opacity  : 1;
+            transform: translateX(-50%) translateY($toast-margin-bottom) scale(1, 1);
+        }
+
+        50% {
+            opacity  : 0.5;
+            transform: translateX(-50%) translateY(-24px) scale(0.5, 0.5);
+        }
+
+        100% {
+            opacity  : 0;
+            transform: translateX(-50%) translateY(0%) scale(0, 0);
+        }
+    }
+}
+
+@mixin definitions {
+    @include toast();
+    @include toast-dark();
+    @include toast-print();
+    @include toast-animations();
 }

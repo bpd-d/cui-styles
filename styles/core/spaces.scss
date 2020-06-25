@@ -4,10 +4,12 @@
 * They can be used when default component settings are not sufficient
 *
 */
+@use '../variables'as *;
+
 // Variables
-$item-padding      : $padding-global;
-$item-padding-large: $padding-global-large;
-$item-padding-small: $padding-global-small;
+$item-padding-large : $padding-global-large;
+$item-padding       : $padding-global;
+$item-padding-small : $padding-global-small;
 
 $item-margin      : $margin-global;
 $item-margin-large: $margin-global-large;
@@ -107,214 +109,211 @@ $sides: "top",
     }
 }
 
-.#{$prefix}-margin {
-    margin: 1rem;
-}
+@mixin definitions {
+    .#{$prefix}-margin {
+        margin: 1rem;
+    }
 
-.#{$prefix}-margin-top {
-    margin-top: 1rem !important;
-}
+    .#{$prefix}-margin-top {
+        margin-top: 1rem !important;
+    }
 
-.#{$prefix}-margin-bottom {
-    margin-bottom: 1rem !important;
-}
+    .#{$prefix}-margin-bottom {
+        margin-bottom: 1rem !important;
+    }
 
-.#{$prefix}-margin-left {
-    margin-left: 1rem !important;
-}
+    .#{$prefix}-margin-left {
+        margin-left: 1rem !important;
+    }
 
-.#{$prefix}-margin-right {
-    margin-right: 1rem !important;
-}
+    .#{$prefix}-margin-right {
+        margin-right: 1rem !important;
+    }
 
-.#{$prefix}-margin-auto {
-    margin: 0 auto;
-}
+    .#{$prefix}-margin-auto {
+        margin: 0 auto;
+    }
 
-/**
+    /**
     * Small
     */
 
-.#{$prefix}-margin-small {
-    margin: $item-margin-small;
-}
+    .#{$prefix}-margin-small {
+        margin: $item-margin-small;
+    }
 
-.#{$prefix}-margin-small-top {
-    margin-top: $item-margin-small !important;
-}
+    .#{$prefix}-margin-small-top {
+        margin-top: $item-margin-small !important;
+    }
 
-.#{$prefix}-margin-small-bottom {
-    margin-bottom: $item-margin-small !important;
-}
+    .#{$prefix}-margin-small-bottom {
+        margin-bottom: $item-margin-small !important;
+    }
 
-.#{$prefix}-margin-small-left {
-    margin-left: $item-margin-small !important;
-}
+    .#{$prefix}-margin-small-left {
+        margin-left: $item-margin-small !important;
+    }
 
-.#{$prefix}-margin-small-right {
-    margin-right: $item-margin-small !important;
-}
+    .#{$prefix}-margin-small-right {
+        margin-right: $item-margin-small !important;
+    }
 
-/**
+    /**
 * Large
 */
 
-.#{$prefix}-margin-large {
-    margin: $item-margin-large;
-}
+    .#{$prefix}-margin-large {
+        margin: $item-margin-large;
+    }
 
-.#{$prefix}-margin-large-top {
-    margin-top: $item-margin-large !important;
-}
+    .#{$prefix}-margin-large-top {
+        margin-top: $item-margin-large !important;
+    }
 
-.#{$prefix}-margin-large-bottom {
-    margin-bottom: $item-margin-large !important;
-}
+    .#{$prefix}-margin-large-bottom {
+        margin-bottom: $item-margin-large !important;
+    }
 
-.#{$prefix}-margin-large-left {
-    margin-left: $item-margin-large !important;
-}
+    .#{$prefix}-margin-large-left {
+        margin-left: $item-margin-large !important;
+    }
 
-.#{$prefix}-margin-large-right {
-    margin-right: $item-margin-large !important;
-}
+    .#{$prefix}-margin-large-right {
+        margin-right: $item-margin-large !important;
+    }
 
-/**
+    /**
 * Padding
 */
 
 
-.#{$prefix}-padding {
-    padding: $item-padding;
-}
+    .#{$prefix}-padding {
+        padding: $item-padding;
+    }
 
-.#{$prefix}-padding-top {
-    padding-top: $item-padding;
-}
+    .#{$prefix}-padding-top {
+        padding-top: $item-padding;
+    }
 
-.#{$prefix}-padding-bottom {
-    padding-bottom: $item-padding;
-}
+    .#{$prefix}-padding-bottom {
+        padding-bottom: $item-padding;
+    }
 
-.#{$prefix}-padding-left {
-    padding-left: $item-padding;
-}
+    .#{$prefix}-padding-left {
+        padding-left: $item-padding;
+    }
 
-.#{$prefix}-padding-right {
-    padding-left: $item-padding;
-}
+    .#{$prefix}-padding-right {
+        padding-left: $item-padding;
+    }
 
-/**
+    /**
 * Padding small
 */
 
-.#{$prefix}-padding-small {
-    padding: $item-padding-small;
-}
+    .#{$prefix}-padding-small {
+        padding: $item-padding-small;
+    }
 
-.#{$prefix}-padding-small-top {
-    padding-top: $item-padding-small;
-}
+    .#{$prefix}-padding-small-top {
+        padding-top: $item-padding-small;
+    }
 
-.#{$prefix}-padding-small-bottom {
-    padding-bottom: $item-padding-small;
-}
+    .#{$prefix}-padding-small-bottom {
+        padding-bottom: $item-padding-small;
+    }
 
-.#{$prefix}-padding-small-left {
-    padding-left: $item-padding-small;
-}
+    .#{$prefix}-padding-small-left {
+        padding-left: $item-padding-small;
+    }
 
-.#{$prefix}-padding-small-right {
-    padding-left: $item-padding-small;
-}
+    .#{$prefix}-padding-small-right {
+        padding-left: $item-padding-small;
+    }
 
-/**
+    /**
 * Large
 */
-.#{$prefix}-padding-large {
-    padding: $item-padding-large;
-}
+    .#{$prefix}-padding-large {
+        padding: $item-padding-large;
+    }
 
-.#{$prefix}-padding-large-top {
-    padding-top: $item-padding-large;
-}
+    .#{$prefix}-padding-large-top {
+        padding-top: $item-padding-large;
+    }
 
-.#{$prefix}-padding-large-bottom {
-    padding-bottom: $item-padding-large;
-}
+    .#{$prefix}-padding-large-bottom {
+        padding-bottom: $item-padding-large;
+    }
 
-.#{$prefix}-padding-large-left {
-    padding-left: $item-padding-large;
-}
+    .#{$prefix}-padding-large-left {
+        padding-left: $item-padding-large;
+    }
 
-.#{$prefix}-padding-large-right {
-    padding-left: $item-padding-large;
-}
+    .#{$prefix}-padding-large-right {
+        padding-left: $item-padding-large;
+    }
 
-/**
+    /**
 * Media Queries
 */
-// View small
-@media (max-width: $breakpoint-s) {
-    @include margin(s);
-}
+    // View small
+    @media (max-width: $breakpoint-s) {
+        @include margin(s);
+    }
 
-// View medium
-@media (max-width: $breakpoint-m) {
-    @include margin(m);
-}
-
-
-// View large
-@media (max-width: $breakpoint-l) {
-    @include margin(l);
-}
+    // View medium
+    @media (max-width: $breakpoint-m) {
+        @include margin(m);
+    }
 
 
-/**
-*
-*/
+    // View large
+    @media (max-width: $breakpoint-l) {
+        @include margin(l);
+    }
 
-.#{$prefix}-overflow-x {
-    overflow-x: scroll;
-}
+    .#{$prefix}-overflow-x {
+        overflow-x: scroll;
+    }
 
-.#{$prefix}-overflow-x-auto {
-    overflow-x: auto;
-}
+    .#{$prefix}-overflow-x-auto {
+        overflow-x: auto;
+    }
 
-.#{$prefix}-overflow-x-hidden {
-    overflow-x: hidden;
-}
+    .#{$prefix}-overflow-x-hidden {
+        overflow-x: hidden;
+    }
 
-.#{$prefix}-overflow-y {
-    overflow-y: scroll;
-}
+    .#{$prefix}-overflow-y {
+        overflow-y: scroll;
+    }
 
-.#{$prefix}-overflow-y-auto {
-    overflow-y: auto;
-}
+    .#{$prefix}-overflow-y-auto {
+        overflow-y: auto;
+    }
 
-.#{$prefix}-overflow-y-hidden {
-    overflow-y: hidden;
-}
+    .#{$prefix}-overflow-y-hidden {
+        overflow-y: hidden;
+    }
 
-// Display 
-.#{$prefix}-inline {
-    display: inline;
-}
+    // Display 
+    .#{$prefix}-inline {
+        display: inline;
+    }
 
-.#{$prefix}-inline-block {
-    display: inline-block;
-}
+    .#{$prefix}-inline-block {
+        display: inline-block;
+    }
 
-.#{$prefix}-clearfix {
-    &:after {
-        content    : ".";
-        display    : block;
-        clear      : both;
-        visibility : hidden;
-        line-height: 0;
-        height     : 0;
+    .#{$prefix}-clearfix {
+        &:after {
+            content    : ".";
+            display    : block;
+            clear      : both;
+            visibility : hidden;
+            line-height: 0;
+            height     : 0;
+        }
     }
 }

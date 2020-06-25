@@ -1,9 +1,12 @@
-$container-background-default       :$component-background-default;
-$container-background-default-dark  :$component-background-default-dark;
-$container-background-inverse       :$component-background-inverse;
-$container-background-inverse-dark  :$component-background-inverse-dark;
-$container-background-accent        :$component-background-accent-shade;
-$container-background-accent-dark   :$component-background-accent-shade-dark;
+@use "../variables.scss"as *;
+@use "../mixins.scss"as *;
+
+$container-background-default       : $component-background-default;
+$container-background-default-dark  : $component-background-default-dark;
+$container-background-inverse       : $component-background-inverse;
+$container-background-inverse-dark  : $component-background-inverse-dark;
+$container-background-accent        : $component-background-accent-shade;
+$container-background-accent-dark   : $component-background-accent-shade-dark;
 $container-background-secondary     : $component-background-secondary-shade;
 $container-background-secondary-dark: $component-background-secondary-shade-dark;
 
@@ -16,82 +19,93 @@ $container-color-inverse-dark :$component-color-inverse-dark;
 $container-padding-large : $padding-global-large;
 $container-padding-normal: $padding-global;
 
-.#{$prefix}-container {
-    @include component-padding(same);
-    //width : 100%;
 
-    &.#{$prefix}-no-padding {
-        padding: 0;
-    }
-
-    &.#{$prefix}-space {
-        padding: $container-padding-large;
-    }
-
-    &.#{$prefix}-lean {
-        @include component-padding(smallSame);
-    }
-
-    // @include container();
-
-    &.#{$prefix}-center {
-        display        : flex;
-        justify-content: center;
-        align-items    : center;
-    }
-
-    &.#{$prefix}-default {
-        background-color: $container-background-default;
-        color           : $container-color-default;
-    }
-
-    &.#{$prefix}-accent {
-        background-color: $container-background-accent;
-    }
-
-    &.#{$prefix}-secondary {
-        background-color: $container-background-secondary;
-    }
-
-    &.#{$prefix}-inverse {
-        background-color: $container-background-inverse;
-        color           : $container-color-inverse;
-    }
-}
-
-/*
-* Dark
-*/
-
-.#{$prefix}-dark {
+@mixin container {
     .#{$prefix}-container {
-        &.#{$prefix}-default {
-            background-color: $container-background-default-dark;
-            color           : $container-color-default-dark;
+        @include component-padding(same);
+        //width : 100%;
+
+        &.#{$prefix}-no-padding {
+            padding: 0;
         }
 
-        &.#{$prefix}-inverse {
-            background-color: $container-background-inverse-dark;
-            color           : $container-color-inverse-dark;
+        &.#{$prefix}-space {
+            padding: $container-padding-large;
+        }
+
+        &.#{$prefix}-lean {
+            @include component-padding(smallSame);
+        }
+
+        &.#{$prefix}-center {
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+        }
+
+        &.#{$prefix}-default {
+            background-color: $container-background-default;
+            color           : $container-color-default;
         }
 
         &.#{$prefix}-accent {
-            background-color: $container-background-accent-dark;
+            background-color: $container-background-accent;
         }
 
         &.#{$prefix}-secondary {
-            background-color: $container-background-secondary-dark;
+            background-color: $container-background-secondary;
+        }
+
+        &.#{$prefix}-inverse {
+            background-color: $container-background-inverse;
+            color           : $container-color-inverse;
         }
     }
 }
 
-/*
+@mixin container-dark {
+
+    /*
+        * Dark
+        */
+    .#{$prefix}-dark {
+        .#{$prefix}-container {
+            &.#{$prefix}-default {
+                background-color: $container-background-default-dark;
+                color           : $container-color-default-dark;
+            }
+
+            &.#{$prefix}-inverse {
+                background-color: $container-background-inverse-dark;
+                color           : $container-color-inverse-dark;
+            }
+
+            &.#{$prefix}-accent {
+                background-color: $container-background-accent-dark;
+            }
+
+            &.#{$prefix}-secondary {
+                background-color: $container-background-secondary-dark;
+            }
+        }
+    }
+}
+
+@mixin container-print {
+    /*
 * Print
 */
 
-.#{$prefix}-print {
-    .#{$prefix}-container {
-        background-color: $component-print-background;
-        color           : $component-print-color;
+    .#{$prefix}-print {
+        .#{$prefix}-container {
+            background-color: $component-print-background;
+            color           : $component-print-color;
+        }
     }
+}
+
+@mixin definitions {
+    @include container();
+    @include container-dark();
+    @include container-print();
 }

@@ -1,7 +1,12 @@
 // Text styling
+
+@use '../variables'as *;
+@use '../mixins'as *;
+
+
 $text-large      : $font-large;
 $text-small      : $font-small;
-$text-xlarge     :$font-xlarge;
+$text-xlarge     : $font-xlarge;
 $text-line-height: $line-height;
 $text-line-large : $line-height-large;
 $text-line-small : $line-height-small;
@@ -15,159 +20,179 @@ $blockquote-background-dark   : $component-background-shade-dark;
 $blockquote-border-color      : $component-background-shade-active;
 $blockquote-border-color-dark : $component-background-shade-dark-active;
 
-p,
-a,
-span {
-    line-height: $text-line-height;
-}
 
-.#{$prefix}-text-accent {
-    @include color(primary)
-}
+@mixin text {
 
-.#{$prefix}-text-secondary {
-    @include color(secondary)
-}
+    p,
+    a,
+    span {
+        line-height: $text-line-height;
+    }
 
-.#{$prefix}-text-success {
-    @include color(success)
-}
-
-.#{$prefix}-text-warning {
-    @include color(warning)
-}
-
-.#{$prefix}-text-error {
-    @include color(error)
-}
-
-.#{$prefix}-text-muted {
-    color: $text-color-muted;
-}
-
-// Weight
-
-.#{$prefix}-text-bold {
-    font-weight: $text-weight-bold;
-}
-
-.#{$prefix}-text-thin {
-    font-weight: $text-weight-thin;
-}
-
-// Size
-
-.#{$prefix}-text-large {
-    font-size: $text-large;
-}
-
-.#{$prefix}-text-small {
-    font-size: $text-small;
-}
-
-// Decoration
-
-.#{$prefix}-text-underline {
-    text-decoration: underline;
-}
-
-.#{$prefix}-text-line {
-    text-decoration: line-through;
-}
-
-.#{$prefix}-text-italic {
-    font-style: italic;
-}
-
-// Transform
-
-.#{$prefix}-text-upper {
-    text-transform: uppercase;
-}
-
-.#{$prefix}-text-lower {
-    text-transform: lowercase;
-}
-
-.#{$prefix}-text-capital {
-    text-transform: capitalize;
-}
-
-// Editor 
-
-.#{$prefix}-text-left {
-    text-align: left;
-}
-
-.#{$prefix}-text-right {
-    text-align: right;
-}
-
-.#{$prefix}-text-center {
-    text-align: center;
-}
-
-.#{$prefix}-text-justify {
-    text-align: justify;
-}
-
-// Wrapping
-
-.#{$prefix}-text-truncate {
-    text-overflow: ellipsis;
-}
-
-.#{$prefix}-text-nowrap {
-    text-overflow: clip;
-}
-
-// Editing
-.#{$prefix}-blockquote {
-    @include component-padding(same);
-    border-left     : 4px solid $blockquote-border-color;
-    background-color: $blockquote-background-default;
-    font-style      : italic;
-    margin          : 0px;
-}
-
-.#{$prefix}-article-title {
-    font-size  : $text-xlarge;
-    font-weight: $text-weight-thin;
-    line-height: $text-line-xlarge;
-}
-
-.#{$prefix}-article-description {
-    font-size  : $text-large;
-    line-height: $line-height-large;
-}
-
-/**
-* Dark
-*/
-
-.#{$prefix}-dark {
     .#{$prefix}-text-muted {
-        color: $text-color-muted-dark;
-    }
-
-    .#{$prefix}-blockquote {
-        border-color    : $blockquote-border-color-dark;
-        background-color: $blockquote-background-default;
+        color: $text-color-muted;
     }
 }
 
-
-/**
-* Print
-*/
-
-.#{$prefix}-print {
-    [class*="#{$prefix}-text-"] {
-        color: $component-print-color;
+@mixin text-theme {
+    .#{$prefix}-text-accent {
+        @include color('accent')
     }
 
+    .#{$prefix}-text-secondary {
+        @include color('secondary')
+    }
+}
+
+@mixin text-signals {
+    .#{$prefix}-text-success {
+        @include color('success')
+    }
+
+    .#{$prefix}-text-warning {
+        @include color('warning')
+    }
+
+    .#{$prefix}-text-error {
+        @include color('error')
+    }
+}
+
+@mixin text-weights {
+    .#{$prefix}-text-bold {
+        font-weight: $text-weight-bold;
+    }
+
+    .#{$prefix}-text-thin {
+        font-weight: $text-weight-thin;
+    }
+}
+
+@mixin text-sizes {
+    .#{$prefix}-text-large {
+        font-size: $text-large;
+    }
+
+    .#{$prefix}-text-small {
+        font-size: $text-small;
+    }
+}
+
+@mixin text-decorations {
+    .#{$prefix}-text-underline {
+        text-decoration: underline;
+    }
+
+    .#{$prefix}-text-line {
+        text-decoration: line-through;
+    }
+
+    .#{$prefix}-text-italic {
+        font-style: italic;
+    }
+}
+
+@mixin text-transform {
+    .#{$prefix}-text-upper {
+        text-transform: uppercase;
+    }
+
+    .#{$prefix}-text-lower {
+        text-transform: lowercase;
+    }
+
+    .#{$prefix}-text-capital {
+        text-transform: capitalize;
+    }
+}
+
+@mixin text-align {
+    .#{$prefix}-text-left {
+        text-align: left;
+    }
+
+    .#{$prefix}-text-right {
+        text-align: right;
+    }
+
+    .#{$prefix}-text-center {
+        text-align: center;
+    }
+
+    .#{$prefix}-text-justify {
+        text-align: justify;
+    }
+}
+
+@mixin text-wrap {
+    .#{$prefix}-text-truncate {
+        text-overflow: ellipsis;
+    }
+
+    .#{$prefix}-text-nowrap {
+        text-overflow: clip;
+    }
+}
+
+@mixin blockquote {
     .#{$prefix}-blockquote {
-        border-color    : $component-print-color;
-        background-color: $component-print-background;
+        @include component-padding(same);
+        border-left     : 4px solid $blockquote-border-color;
+        background-color: $blockquote-background-default;
+        font-style      : italic;
+        margin          : 0px;
     }
+}
+
+@mixin article {
+    .#{$prefix}-article-title {
+        font-size  : $text-xlarge;
+        font-weight: $text-weight-thin;
+        line-height: $text-line-xlarge;
+    }
+
+    .#{$prefix}-article-description {
+        font-size  : $text-large;
+        line-height: $line-height-large;
+    }
+}
+
+@mixin text-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-text-muted {
+            color: $text-color-muted-dark;
+        }
+
+        .#{$prefix}-blockquote {
+            border-color    : $blockquote-border-color-dark;
+            background-color: $blockquote-background-default;
+        }
+    }
+}
+
+@mixin text-print {
+    .#{$prefix}-print {
+        [class*="#{$prefix}-text-"] {
+            color: $component-print-color;
+        }
+
+        .#{$prefix}-blockquote {
+            border-color    : $component-print-color;
+            background-color: $component-print-background;
+        }
+    }
+}
+
+@mixin definitions {
+    @include text;
+    @include text-align;
+    @include text-decorations;
+    @include text-signals;
+    @include text-theme;
+    @include text-sizes;
+    @include text-align();
+    @include text-weights();
+    @include text-transform();
+    @include text-dark;
+    @include text-print;
 }

@@ -1,69 +1,73 @@
-.#{$prefix}-flex {
-    display        : flex !important;
-    flex-wrap      : wrap;
-    justify-content: start;
-    align-items    : flex-start;
-    // Justify
+@use "variables.scss"as *;
 
-    &.#{$prefix}-center {
-        justify-content: center;
-    }
+@mixin definitions {
+    .#{$prefix}-flex {
+        display        : flex !important;
+        flex-wrap      : wrap;
+        justify-content: start;
+        align-items    : flex-start;
+        // Justify
 
-    &.#{$prefix}-right {
-        justify-content: flex-end;
-    }
+        &.#{$prefix}-center {
+            justify-content: center;
+        }
 
-    &.#{$prefix}-evenly {
-        justify-content: space-evenly;
-    }
+        &.#{$prefix}-right {
+            justify-content: flex-end;
+        }
 
-    &.#{$prefix}-between {
-        justify-content: space-between;
-    }
+        &.#{$prefix}-evenly {
+            justify-content: space-evenly;
+        }
 
-    // ALign
+        &.#{$prefix}-between {
+            justify-content: space-between;
+        }
 
-    &.#{$prefix}-middle {
-        align-items: center;
-    }
+        // ALign
 
-    &.#{$prefix}-end {
-        align-items: flex-end;
-    }
+        &.#{$prefix}-middle {
+            align-items: center;
+        }
 
-    &.#{$prefix}-stretch {
-        align-items: stretch;
-    }
+        &.#{$prefix}-end {
+            align-items: flex-end;
+        }
 
-    // Wrap
+        &.#{$prefix}-stretch {
+            align-items: stretch;
+        }
 
-    &.#{$prefix}-nowrap {
-        flex-wrap: nowrap;
-    }
+        // Wrap
 
-    &.#{$prefix}-wrap-rev {
-        flex-wrap: wrap-reverse;
-    }
+        &.#{$prefix}-nowrap {
+            flex-wrap: nowrap;
+        }
 
-    // Items
+        &.#{$prefix}-wrap-rev {
+            flex-wrap: wrap-reverse;
+        }
 
-    .#{$prefix}-grow {
-        flex-grow: 1;
-    }
+        // Items
 
-    .#{$prefix}-shrink {
-        flex-shrink: 1;
-    }
+        .#{$prefix}-grow {
+            flex-grow: 1;
+        }
 
-    @for $i from 1 through 10 {
-        .#{$prefix}-order-#{$i} {
-            order: $i;
+        .#{$prefix}-shrink {
+            flex-shrink: 1;
+        }
+
+        @for $i from 1 through 10 {
+            .#{$prefix}-order-#{$i} {
+                order: $i;
+            }
         }
     }
-}
 
-.#{$prefix}-flex-center {
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
+    .#{$prefix}-flex-center {
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+    }
 }

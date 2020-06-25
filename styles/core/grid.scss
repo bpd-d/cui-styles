@@ -1,10 +1,11 @@
 /*
 * Grids definitions
-* Two options: #{$prefix}-grid, #{$prefix}-grid-flex
+* Two options:
 * GRID - build on grid system
 * FLEX GRID - build on flex
 */
 
+@use '../variables'as *;
 // VARIABLES
 $min-width : 150px;
 
@@ -53,12 +54,12 @@ $flex-grid-space-padding: 8px;
 
 @mixin create-child-width--small() {
 
-    &.#{$prefix}-child-width-1-1,
-    &.#{$prefix}-child-width-1-2,
-    &.#{$prefix}-child-width-1-3,
-    &.#{$prefix}-child-width-1-4,
-    &.#{$prefix}-child-width-1-5,
-    &.#{$prefix}-child-width-1-6 {
+    .#{$prefix}-child-width-1-1,
+    .#{$prefix}-child-width-1-2,
+    .#{$prefix}-child-width-1-3,
+    .#{$prefix}-child-width-1-4,
+    .#{$prefix}-child-width-1-5,
+    .#{$prefix}-child-width-1-6 {
         &>* {
             width: 100%;
         }
@@ -145,160 +146,105 @@ $flex-grid-space-padding: 8px;
 //     grid-column: auto / span 6;
 // }
 
-/*
-* Flex grid main definition and child widths
-*/
-.#{$prefix}-flex-grid {
-    display   : flex;
-    flex-wrap : wrap;
-    box-sizing: border-box;
-    list-style: none;
-
-    &>* {
-        display   : block;
+@mixin grid {
+    .#{$prefix}-flex-grid {
+        display   : flex;
+        flex-wrap : wrap;
         box-sizing: border-box;
-        padding   : $flex-grid-padding;
-        width     : 100%;
+        list-style: none;
 
-    }
-
-    .#{$prefix}-width-auto {
-        flex: auto;
-    }
-
-    .#{$prefix}-width-grow {
-        flex: 1 0 auto;
-    }
-
-
-    &.#{$prefix}-flex-grid-space {
         &>* {
-            padding: $flex-grid-space-padding;
+            display   : block;
+            box-sizing: border-box;
+            padding   : $flex-grid-padding;
+            width     : 100%;
+
         }
-    }
 
-    &.#{$prefix}-flex-grid-collapse {
-        &>* {
-            padding: 0;
+        .#{$prefix}-width-auto {
+            flex: auto;
         }
-    }
 
-    &.#{$prefix}-flex-grid-center {
-        align-items: center;
-    }
+        .#{$prefix}-width-grow {
+            flex: 1 0 auto;
+        }
 
-    &.#{$prefix}-flex-grid-base {
-        align-items: baseline;
-    }
 
-    &.#{$prefix}-flex-grid-match {
-        align-items: stretch;
-
-        &[#{$prefix}-item-height] {
-            &>*>* {
-                height: attr(#{$prefix}-item-height) !important;
+        &.#{$prefix}-flex-grid-space {
+            &>* {
+                padding: $flex-grid-space-padding;
             }
         }
 
-        &>*>* {
-            height: 300px !important;
+        &.#{$prefix}-flex-grid-collapse {
+            &>* {
+                padding: 0;
+            }
+        }
+
+        &.#{$prefix}-flex-grid-center {
+            align-items: center;
+        }
+
+        &.#{$prefix}-flex-grid-base {
+            align-items: baseline;
+        }
+
+        &.#{$prefix}-flex-grid-match {
+            align-items: stretch;
+
+            &[#{$prefix}-item-height] {
+                &>*>* {
+                    height: attr(#{$prefix}-item-height) !important;
+                }
+            }
+
+            &>*>* {
+                height: 300px !important;
+            }
+        }
+
+        @include create-child-width;
+    }
+}
+
+@mixin grid-media {
+    @media (max-width: $breakpoint-s) {
+        @include create-child-width--small()
+    }
+
+    // View small
+    @media (min-width: $breakpoint-s) {
+        .#{$prefix}-flex-grid {
+            @include create-child-width(--s)
         }
     }
 
-    @include create-child-width;
-}
+    // View medium
+    @media (min-width: $breakpoint-m) {
 
-@media (max-width: $breakpoint-s) {
-    @include create-child-width--small()
-}
+        .#{$prefix}-flex-grid {
+            @include create-child-width(--m)
+        }
+    }
 
-// View small
-@media (min-width: $breakpoint-s) {
 
-    // .#{$prefix}-grid-default {
-    //     grid-template-columns: 1fr;
-    // }
+    // View large
+    @media (min-width: $breakpoint-l) {
 
-    // .item-span-2,
-    // .item-span-3,
-    // .item-span-4,
-    // .item-span-5,
-    // .item-span-6 {
-    //     grid-column: auto / span 1 !important;
-    // }
+        .#{$prefix}-flex-grid {
+            @include create-child-width(--l)
+        }
+    }
 
-    .#{$prefix}-flex-grid {
-        @include create-child-width(--s)
+    @media (min-width: $breakpoint-xl) {
+        .#{$prefix}-flex-grid {
+            @include create-child-width(--xl)
+        }
     }
 }
 
-// View medium
-@media (min-width: $breakpoint-m) {
-
-    // .#{$prefix}-grid-default,
-    // .#{$prefix}-grid-3,
-    // .#{$prefix}-grid-4 {
-    //     grid-template-columns: repeat(2, minmax($min-width, 1fr));
-    // }
-
-    // .item-span-3,
-    // .item-span-4,
-    // .item-span-5,
-    // .item-span-6 {
-    //     grid-column: auto / span 2;
-    // }
-
-    // .item-span-2--m {
-    //     grid-column: auto / span 2;
-    // }
-
-    // .item-span-1--m {
-    //     grid-column: auto / span 1;
-    // }
-
-    .#{$prefix}-flex-grid {
-        @include create-child-width(--m)
-    }
-}
-
-
-// View large
-@media (min-width: $breakpoint-l) {
-
-    // .#{$prefix}-grid-default,
-    // .#{$prefix}-grid-4 {
-    //     grid-template-columns: repeat(4, minmax($min-width, 1fr));
-    // }
-
-    // .item-span-4,
-    // .item-span-5,
-    // .item-span-6 {
-    //     grid-column: auto / span 4;
-    // }
-
-    // .item-span-3 {
-    //     grid-column: auto / span 2;
-    // }
-
-    // .item-span-3--l {
-    //     grid-column: auto / span 3;
-    // }
-
-    // .item-span-2--l {
-    //     grid-column: auto / span 2;
-    // }
-
-    // .item-span-1--l {
-    //     grid-column: auto / span 1;
-    // }
-
-    .#{$prefix}-flex-grid {
-        @include create-child-width(--l)
-    }
-}
-
-@media (min-width: $breakpoint-xl) {
-    .#{$prefix}-flex-grid {
-        @include create-child-width(--xl)
-    }
+@mixin definitions {
+    @include grid();
+    @include grid-media();
 }

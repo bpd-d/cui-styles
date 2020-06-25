@@ -4,6 +4,10 @@ Library can be compiled manually and used on it's own as CSS based components li
 The best experiance can be received when combined with cUI javascript libraries.
 
 # CHANGELOG:
+## [0.0.6] 2020-06-25
+* [Fixed] Various fixes around framework - increased usage of global CSS variables
+* [Changed] Framework refactoring - introduced flexibility in terms of custom framework build
+
 ## [0.0.5] 2020-06-24
 * [Added] CSS build is now exported to Git repository and to npm
 

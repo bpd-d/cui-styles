@@ -136,7 +136,7 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
 
 @mixin blockquote {
     .#{$prefix}-blockquote {
-        @include component-padding(same);
+        @include component-padding(normal, true);
         border-left     : 4px solid $blockquote-border-color;
         background-color: $blockquote-background-default;
         font-style      : italic;
@@ -193,6 +193,8 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     @include text-align();
     @include text-weights();
     @include text-transform();
+    @include blockquote;
+    @include article();
     @include text-dark;
     @include text-print;
 }

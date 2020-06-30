@@ -7,6 +7,9 @@ $navbar-color-default-dark     : $component-color-default-dark;
 
 $navbar-item-padding: $padding-global;
 
+$navbar-text-normal: $text-weight-normal;
+$nabar-text-bold   : $text-weight-bold;
+
 @mixin navbar {
     .#{$prefix}-navbar {
         display         : flex;
@@ -84,11 +87,10 @@ $navbar-item-padding: $padding-global;
 
     .#{$prefix}-navbar-item {
         color      : $navbar-color-default;
-        font-weight: 400;
+        font-weight: $navbar-text-normal;
 
         &.#{$prefix}-active {
-            color      : var(--color-light-darken);
-            font-weight: 700;
+            font-weight: $navbar-text-bold;
         }
     }
 

@@ -222,6 +222,12 @@ $table-background-inverse-dark: $component-background-shade-dark;
                 }
             }
 
+            &.#{$prefix}-header-inverse {
+                th {
+                    background-color: $component-print-background;
+                }
+            }
+
             &.#{$prefix}-column-divider {
                 tr {
                     th {

@@ -31,7 +31,7 @@ $hint-border-color-success      : $component-background-success;
 
 
         &.#{$prefix}-body {
-            @include component-padding(same);
+            @include component-padding(normal, true);
         }
 
         .#{$prefix}-hint-title {
@@ -51,10 +51,6 @@ $hint-border-color-success      : $component-background-success;
             font-style     : italic;
             @include component-padding-complex(footer);
         }
-
-
-
-
     }
 }
 
@@ -94,7 +90,7 @@ $hint-border-color-success      : $component-background-success;
 @mixin hint-dark {
     .#{$prefix}-dark {
         .#{$prefix}-hint {
-            &:not(.#{$prefix}-accent):not(.#{$prefix}-accent):not(.#{$prefix}-secondary):not(.#{$prefix}-error):not(.#{$prefix}-success) {
+            @include not-colors {
                 border-color    : $hint-border-color-default-dark;
                 background-color: $hint-background-default-dark;
             }

@@ -1,9 +1,10 @@
 @use 'variables'as *;
 
-$default-animation-time: $animation-duration-default;
-$short-animation-time  : $animation-duration-short;
+$default-animation-time : $animation-duration-default;
+$short-animation-time   : $animation-duration-short;
+$default-animation-long : calc(#{$animation-duration-long}*5);
 
-@mixin definitions {
+@mixin animations {
 
     .#{$prefix}-animation-pause {
         animation-play-state: paused;
@@ -255,4 +256,104 @@ $short-animation-time  : $animation-duration-short;
             transform: translateX(100%);
         }
     }
+}
+
+@mixin animation-repeat {
+    .#{$prefix}-animation-pulse {
+        animation                : infiniteAnimPulse $default-animation-long linear;
+        animation-iteration-count: infinite;
+        //transform: scale(1);
+    }
+
+    .#{$prefix}-animation-blink {
+        animation                : infiniteAnimBlink $default-animation-long linear;
+        animation-iteration-count: infinite;
+        //transform: scale(1);
+    }
+
+    .#{$prefix}-animation-shake {
+        animation                : infiniteAnimShake $default-animation-long linear;
+        animation-iteration-count: infinite;
+        //transform: scale(1);
+    }
+
+    @keyframes infiniteAnimPulse {
+        0% {
+            transform: scale(1);
+        }
+
+        30% {
+            transform: scale(1.1);
+        }
+
+        40% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes infiniteAnimBlink {
+        0% {
+            opacity: 1;
+        }
+
+        10% {
+            opacity: 0.3;
+        }
+
+        40% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes infiniteAnimShake {
+        0% {
+            transform: translateX(0%);
+        }
+
+        20% {
+            transform: translateX(10%);
+        }
+
+        30% {
+            transform: translateX(-10%);
+        }
+
+        40% {
+            transform: translateX(5%);
+        }
+
+        50% {
+            transform: translateX(-5%);
+        }
+
+        60% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(0%);
+        }
+    }
+}
+
+@mixin animations-no-transitions {
+    body.#{$prefix}-no-transitions {
+        [class*="#{$prefix}-animation"] {
+            animation-play-state: paused;
+        }
+    }
+}
+
+@mixin definitions {
+    @include animations();
+    @include animation-repeat();
+    @include animations-no-transitions();
 }

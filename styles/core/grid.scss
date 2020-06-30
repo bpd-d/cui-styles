@@ -9,8 +9,8 @@
 // VARIABLES
 $min-width : 150px;
 
-$flex-grid-padding      : 4px;
-$flex-grid-space-padding: 8px;
+$flex-grid-padding      : $component-margin;
+$flex-grid-space-padding: calc(#{$component-margin}*2);
 
 // MIXINS
 @mixin create-child-width($size:"") {
@@ -183,6 +183,10 @@ $flex-grid-space-padding: 8px;
         }
 
         &.#{$prefix}-flex-grid-center {
+            justify-content: center;
+        }
+
+        &.#{$prefix}-flex-grid-middle {
             align-items: center;
         }
 
@@ -200,7 +204,7 @@ $flex-grid-space-padding: 8px;
             }
 
             &>*>* {
-                height: 300px !important;
+                height: 100%;
             }
         }
 

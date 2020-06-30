@@ -22,6 +22,18 @@ $sides: "top",
 "left",
 "right";
 
+@mixin remove-padding($size: "") {
+    .#{$prefix}-padding-remove#{$size} {
+        padding: 0px !important;
+    }
+
+    @each $side in $sides {
+        .#{$prefix}-padding-remove-#{$side}#{$size} {
+            padding-#{$side}: 0px !important;
+        }
+    }
+}
+
 @mixin margin($size) {
     /**
     * Normal
@@ -99,35 +111,35 @@ $sides: "top",
 
 @mixin padding($size, $sides...) {
     .#{$prefix}-padding--#{$size} {
-        padding: 1rem;
+        padding: $item-padding;
     }
 
     @each $side in $sides {
         .#{$prefix}-padding-#{$side}--#{$size} {
-            padding-#{$side}: 1rem;
+            padding-#{$side}: $item-padding;
         }
     }
 }
 
 @mixin definitions {
     .#{$prefix}-margin {
-        margin: 1rem;
+        margin: $item-margin;
     }
 
     .#{$prefix}-margin-top {
-        margin-top: 1rem !important;
+        margin-top: $item-margin !important;
     }
 
     .#{$prefix}-margin-bottom {
-        margin-bottom: 1rem !important;
+        margin-bottom: $item-margin !important;
     }
 
     .#{$prefix}-margin-left {
-        margin-left: 1rem !important;
+        margin-left: $item-margin !important;
     }
 
     .#{$prefix}-margin-right {
-        margin-right: 1rem !important;
+        margin-right: $item-margin !important;
     }
 
     .#{$prefix}-margin-auto {
@@ -254,23 +266,28 @@ $sides: "top",
         padding-left: $item-padding-large;
     }
 
+    @include remove-padding();
+
     /**
 * Media Queries
 */
     // View small
     @media (max-width: $breakpoint-s) {
         @include margin(s);
+        @include remove-padding(--s);
     }
 
     // View medium
     @media (max-width: $breakpoint-m) {
         @include margin(m);
+        @include remove-padding(--m);
     }
 
 
     // View large
     @media (max-width: $breakpoint-l) {
         @include margin(l);
+        @include remove-padding(--l);
     }
 
     .#{$prefix}-overflow-hidden {
@@ -309,6 +326,7 @@ $sides: "top",
     .#{$prefix}-inline-block {
         display: inline-block;
     }
+
 
     .#{$prefix}-clearfix {
         &:after {

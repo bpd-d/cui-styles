@@ -1,10 +1,14 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$breadcrumb-color                : $component-color-default;
-$breadcrumb-color-dark           : $component-color-default-dark;
-$breadcrumb-background-hover     : var(--color-light-lighten);
-$breadcrumb-background-hover-dark: var(--color-dark-darken);
+$breadcrumb-color                 : $component-color-default;
+$breadcrumb-color-dark            : $component-color-default-dark;
+$breadcrumb-background-hover      : $component-background-shade;
+$breadcrumb-background-hover-dark : $component-background-shade-dark;
+$breadcrumb-background-active     : $component-background-shade-active;
+$breadcrumb-background-active-dark: $component-background-shade-dark-active;
+$breadcrumb-border-focus          : $component-color-active;
+$breadcrumb-border-focus-dark     : $component-color-active-dark;
 
 @mixin breadcrumb {
     ul.#{$prefix}-breadcrumb {
@@ -18,7 +22,7 @@ $breadcrumb-background-hover-dark: var(--color-dark-darken);
 
 
             a {
-                border         : 0px solid transparent;
+                border         : 1px solid transparent;
                 border-radius  : $border-radius-default;
                 text-decoration: none;
                 color          : $breadcrumb-color;
@@ -26,6 +30,14 @@ $breadcrumb-background-hover-dark: var(--color-dark-darken);
 
                 &:hover {
                     background-color: $breadcrumb-background-hover;
+                }
+
+                &:active {
+                    background-color: $breadcrumb-background-active;
+                }
+
+                &:focus {
+                    outline: $outline-default;
                 }
             }
 
@@ -48,7 +60,7 @@ $breadcrumb-background-hover-dark: var(--color-dark-darken);
     }
 }
 
-@mixin breadcrum-dark {
+@mixin breadcrumb-dark {
     .#{$prefix}-dark {
         ul.#{$prefix}-breadcrumb {
             li {
@@ -58,6 +70,39 @@ $breadcrumb-background-hover-dark: var(--color-dark-darken);
                     &:hover {
                         background-color: $breadcrumb-background-hover-dark;
                     }
+
+                    &:active {
+                        background-color: $breadcrumb-background-active-dark;
+                    }
+
+                    &:focus {
+                        outline: $outline-default;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin breadcrumb-print {
+    .#{$prefix}-print {
+        ul.#{$prefix}-breadcrumb {
+
+            li {
+                a {
+                    color: $component-print-color;
+
+                    &:hover {
+                        background-color: none;
+                    }
+
+                    &:active {
+                        background-color: none;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
                 }
             }
         }
@@ -66,5 +111,6 @@ $breadcrumb-background-hover-dark: var(--color-dark-darken);
 
 @mixin definitions {
     @include breadcrumb();
-    @include breadcrum-dark();
+    @include breadcrumb-dark();
+    @include breadcrumb-print();
 }

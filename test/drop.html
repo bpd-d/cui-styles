@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cUI - Drop</title>
+    <link rel="stylesheet" href="../dist/cui-styles.css" />
+</head>
+<style>
+    .app-main-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 70px calc(100vh - 106px) 36px;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .app-navbar {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .app-content {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-content-fill {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-side-bar {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-footer {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+</style>
+
+<body class="">
+    <div id="main-content" class="main-content content-hidden">
+        <!-- Main grid -->
+        <div class="app-main-grid">
+            <div class="app-navbar">
+                <div class="cui-navbar cui-sticky">
+                    <ul class="cui-navbar-left">
+                        <li><a class="cui-navbar-title cui-icon app-title-icon" href="index.html">Test</a></li>
+                    </ul>
+                    <ul class="cui-navbar-right">
+                        <li><a class="cui-navbar-item" href="./index.html">Home</a></li>
+                        <li><a class="cui-navbar-item" href="#" id="toggle-dark-mode">Dark Mode</a></li>
+                        <li><a class="cui-navbar-item" href="#" id="toggle-print-mode">Print Mode</a></li>
+                        <li class="cui-drop-trigger">
+                            <a class="cui-navbar-item" href="#" id="drop-navbar-open">Drop</a>
+                            <div class="cui-drop cui-padding cui-dropdown" id="drop-navbar">
+                                Default
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="app-content cui-overflow-y-auto cui-margin-top cui-section cui-flex-center">
+                <div class="">
+                    <div>
+                        <div class="cui-inline-block cui-drop-trigger">
+                            <button class="cui-button cui-default" id="drop-default-open">Drop</button>
+                            <div class="cui-drop cui-padding cui-dropdown" id="drop-default">
+                                Default
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="cui-inline cui-drop-trigger">
+                            <button class="cui-button cui-default cui-margin-top" id="drop-top-left-open">Drop Top
+                                Left</button>
+                            <div class="cui-drop cui-dropdown cui-padding cui-drop-top-left" id="drop-top-left">
+                                Top Left
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="cui-inline cui-drop-trigger">
+                            <button class="cui-button cui-default cui-margin-top" id="drop-top-right-open">Drop
+                                Top Right</button>
+                            <div class="cui-drop cui-dropdown cui-padding cui-drop-top-right" id="drop-top-right">
+                                Top Right
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="cui-inline cui-drop-trigger">
+                            <button class="cui-button cui-default cui-margin-top" id="drop-top-center-open">Drop Top
+                                Center</button>
+                            <div class="cui-drop cui-dropdown cui-padding cui-drop-top-center" id="drop-top-center">
+                                Top Center
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cui-inline-block cui-drop-trigger">
+                            <button class="cui-button cui-default cui-margin-top" id="drop-bottom-left-open">Drop Bottom
+                                Left</button>
+                            <div class="cui-drop cui-dropdown cui-padding cui-drop-bottom-left" id="drop-bottom-left">
+                                Bottom Left
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="cui-inline-block cui-drop-trigger">
+                            <button class="cui-button cui-default cui-margin-top" id="drop-bottom-right-open">Drop
+                                Bottom Right</button>
+                            <div class="cui-drop cui-dropdown cui-padding cui-drop-bottom-right" id="drop-bottom-right">
+                                Bottom right
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="cui-inline-block cui-drop-trigger">
+                            <button class="cui-button cui-default cui-margin-top" id="drop-bottom-center-open">Drop
+                                Bottom Center</button>
+                            <div class="cui-drop cui-dropdown cui-padding cui-drop-bottom-center"
+                                id="drop-bottom-center">
+                                Bottom Center
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="app-side-bar cui-margin-top">
+
+            </div>
+
+        </div>
+        <script src="index.js"></script>
+        <script src="drop.js"></script>
+</body>
+
+</html>

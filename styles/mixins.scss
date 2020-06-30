@@ -41,25 +41,33 @@ $item-background-default: $component-background-default;
     font-weight: $text-weight-thin;
 }
 
-@mixin component-padding($size: normal) {
-    @if $size==normal {
-        padding: $item-padding-small $item-padding;
+@mixin component-padding($size: normal, $same: false) {
+    @if $same==false {
+        @if $size==normal {
+            padding: $item-padding-small $item-padding;
+        }
+
+        @else if $size==large {
+            padding: $item-padding $item-padding-large;
+        }
+
+        @else if $size==small {
+            padding: 0.3rem $item-padding-small;
+        }
     }
 
-    @else if $size==large {
-        padding: $item-padding $item-padding-large;
-    }
+    @else {
+        @if $size==normal {
+            padding: $item-padding;
+        }
 
-    @else if $size==same {
-        padding: $item-padding;
-    }
+        @else if $size==large {
+            padding: $item-padding-large;
+        }
 
-    @else if $size==small {
-        padding: 0.3rem $item-padding-small;
-    }
-
-    @else if $size==sameSmall {
-        padding: $item-padding-small;
+        @else if $size==small {
+            padding: $item-padding-small;
+        }
     }
 }
 
@@ -90,6 +98,19 @@ $item-background-default: $component-background-default;
     }
 
     @error "Color #{$color} does not exist in map";
+}
+
+
+@mixin not-colors {
+    &:not(.#{$prefix}-success):not(.#{$prefix}-warning):not(.#{$prefix}-error):not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
+        @content;
+    }
+}
+
+@mixin not-theme {
+    &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
+        @content;
+    }
 }
 
 // @mixin size-media() {

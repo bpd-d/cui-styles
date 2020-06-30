@@ -39,7 +39,7 @@ $dialog-animation-time-short   : $animation-duration-short;
             //transition      : width 300ms linear;
 
             .#{$prefix}-dialog-header {
-                @include component-padding(same);
+                @include component-padding(normal, same);
                 border-bottom  : 1px solid $dialog-border-color;
                 display        : flex;
                 flex-wrap      : nowrap;
@@ -53,14 +53,14 @@ $dialog-animation-time-short   : $animation-duration-short;
 
             .#{$prefix}-dialog-body {
                 // padding   : 0.5em 1em;
-                @include component-padding(same);
+                @include component-padding(normal, same);
                 max-height: 400px;
                 overflow-y: auto;
             }
 
             .#{$prefix}-dialog-footer {
                 border-top: 1px solid $dialog-border-color;
-                @include component-padding(same);
+                @include component-padding(normal, same);
             }
         }
 

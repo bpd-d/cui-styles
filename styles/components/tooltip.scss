@@ -11,8 +11,9 @@ $tooltip-border-color-dark :$color-border-dark;
 
 $tooltip-max-width      : 250px;
 $tooltip-border-radius  : $border-radius-default;
-$tooltip-font-size      : 0.8rem;
+$tooltip-font-size      : $font-small;
 $tooltip-animation-time : $animation-duration-short;
+$tooltip-margin         : $component-margin;
 
 @mixin tooltip {
     .#{$prefix}-tooltip {
@@ -36,32 +37,30 @@ $tooltip-animation-time : $animation-duration-short;
             width           : 100px;
             max-width       : 200px;
             transform-origin: top left;
-            transition-delay: $tooltip-animation-time;
-            transition      : transform $tooltip-animation-time ease-in;
-            @include component-padding(sameSmall);
+
+            @include component-padding(small, true);
             z-index: 1160;
+
         }
 
         &:hover {
             &:before {
-                transform: scale(1) translateX(-50%) translateY(-36px);
+                transform: scale(1) translateX(-50%) translateY(calc(-36px - #{$tooltip-margin}));
             }
         }
-
-
-
-
-
     }
 }
 
 @mixin tooltip-positions {
     .#{$prefix}-tooltip {
-        &:before {
-            &:not(.#{$prefix}-tooltip-bottom-center):not(.#{$prefix}-tooltip-bottom-right):not(.#{$prefix}-tooltip-bottom-left) {
-                top: 0;
+        &:not(.#{$prefix}-tooltip-bottom-center):not(.#{$prefix}-tooltip-bottom-right):not(.#{$prefix}-tooltip-bottom-left):not(.#{$prefix}-tooltip-top-left):not(.#{$prefix}-tooltip-top-center):not(.#{$prefix}-tooltip-top-right) {
+            &:before {
+                top : 0;
+                left: 50%;
             }
         }
+
+
 
         &.#{$prefix}-tooltip-top-center {
             &:before {
@@ -73,7 +72,7 @@ $tooltip-animation-time : $animation-duration-short;
 
             &:hover {
                 &:before {
-                    transform: scale(1) translateX(-50%) translateY(-36px);
+                    transform: scale(1) translateX(-50%) translateY(calc(-36px - #{$tooltip-margin}));
                 }
             }
         }
@@ -88,7 +87,7 @@ $tooltip-animation-time : $animation-duration-short;
 
             &:hover {
                 &:before {
-                    transform: scale(1) translateX(-100%) translateY(-36px);
+                    transform: scale(1) translateX(calc(-100% - #{$tooltip-margin})) translateY(calc(-36px - #{$tooltip-margin}));
                 }
             }
         }
@@ -103,7 +102,7 @@ $tooltip-animation-time : $animation-duration-short;
 
             &:hover {
                 &:before {
-                    transform: scale(1) translateX(100%) translateY(-36px);
+                    transform: scale(1) translateX(calc(100% + #{$tooltip-margin})) translateY(calc(-36px - #{$tooltip-margin}));
                 }
             }
         }
@@ -119,7 +118,7 @@ $tooltip-animation-time : $animation-duration-short;
 
             &:hover {
                 &:before {
-                    transform: scale(1) translateX(-100%) translateY(36px);
+                    transform: scale(1) translateX(calc(-100% - #{$tooltip-margin})) translateY(calc(36px + #{$tooltip-margin}));
                 }
             }
         }
@@ -134,7 +133,7 @@ $tooltip-animation-time : $animation-duration-short;
 
             &:hover {
                 &:before {
-                    transform: scale(1) translateX(100%) translateY(36px);
+                    transform: scale(1) translateX(calc(100% + #{$tooltip-margin})) translateY(calc(36px + #{$tooltip-margin}));
                 }
             }
         }
@@ -149,7 +148,7 @@ $tooltip-animation-time : $animation-duration-short;
 
             &:hover {
                 &:before {
-                    transform: scale(1) translateX(-50%) translateY(36px);
+                    transform: scale(1) translateX(-50%) translateY(calc(36px + #{$tooltip-margin}));
                 }
             }
         }
@@ -230,6 +229,17 @@ $tooltip-animation-time : $animation-duration-short;
     }
 }
 
+@mixin tooltip-no-transitions {
+    body:not(.#{$prefix}-no-transitions) {
+        .#{$prefix}-tooltip {
+            &:before {
+                transition-delay: $tooltip-animation-time;
+                transition      : transform $tooltip-animation-time ease-in;
+            }
+        }
+    }
+}
+
 @mixin tooltip-animation {
     .#{$prefix}-animation-tooltip-in {
         animation: tooltipIn $tooltip-animation-time ease-in forwards;
@@ -260,6 +270,7 @@ $tooltip-animation-time : $animation-duration-short;
 
 @mixin definitions {
     @include tooltip();
+    @include tooltip-no-transitions();
     @include tooltip-positions();
     @include tooltip-options();
     @include tooltip-dark();

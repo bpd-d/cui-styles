@@ -1,21 +1,49 @@
 @use '../variables'as *;
 
-$link-color-default  : $component-color-default;
-$link-color-muted    : $component-color-muted;
-$link-color-accent   : $component-background-accent;
-$link-color-secondary: $component-background-secondary;
-$link-color-error    : $component-background-error;
-$link-color-warning  : $component-background-warning;
-$link-color-success  : $component-background-success;
+$link-color-muted      : $component-color-muted;
+$link-color-muted-dark : $component-color-muted-dark;
+$link-color-accent     : $component-background-accent-muted;
+$link-color-secondary  : $component-background-secondary-muted;
+$link-color-error      : $component-background-error-muted;
+$link-color-warning    : $component-background-warning-muted;
+$link-color-success    : $component-background-success-muted;
+$link-transition-time  : $animation-duration-short;
 
 @mixin link {
     .#{$prefix}-link {
         text-decoration: none;
-        color          : $link-color-default;
+        color          : $link-color-muted;
+        position       : relative;
+
+        &:before {
+            content         : "";
+            position        : absolute;
+            width           : 100%;
+            height          : 1px;
+            background-color: $link-color-muted;
+            bottom          : 0px;
+            left            : 50%;
+            transform       : translateX(-50%) scale(0, 1);
+            bottom          : -1px;
+
+        }
 
         &:hover {
-            text-decoration      : underline;
-            text-decoration-color: var(--color-light-lighten);
+            &:before {
+                transform: translateX(-50%) scale(1, 1);
+            }
+        }
+    }
+}
+
+@mixin link-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-link {
+            color: $link-color-muted-dark;
+
+            &:before {
+                background-color: $link-color-muted-dark;
+            }
         }
     }
 }
@@ -33,10 +61,19 @@ $link-color-success  : $component-background-success;
         &:visited {
             &.#{$prefix}-accent {
                 color: $link-color-accent;
+
+                &:before {
+                    background-color: $link-color-accent;
+                }
+
             }
 
             &.#{$prefix}-secondary {
                 color: $link-color-secondary;
+
+                &:before {
+                    background-color: $link-color-secondary;
+                }
             }
         }
     }
@@ -46,14 +83,26 @@ $link-color-success  : $component-background-success;
     .#{$prefix}-link {
         &.#{$prefix}-error {
             color: $link-color-error;
+
+            &:before {
+                background-color: $link-color-error;
+            }
         }
 
         &.#{$prefix}-warning {
             color: $link-color-warning;
+
+            &:before {
+                background-color: $link-color-warning;
+            }
         }
 
         &.#{$prefix}-success {
             color: $link-color-success;
+
+            &:before {
+                background-color: $link-color-success;
+            }
         }
 
         &:visited {
@@ -80,9 +129,22 @@ $link-color-success  : $component-background-success;
     }
 }
 
+@mixin link-no-transition {
+    body:not(.#{$prefix}-no-transitions) {
+        .#{$prefix}-link {
+            &:before {
+                transition: transform $link-transition-time ease-in;
+            }
+
+        }
+    }
+}
+
 @mixin definitions {
     @include link();
+    @include link-dark();
     @include link-theme();
     @include link-signals();
     @include link-print();
+    @include link-no-transition();
 }

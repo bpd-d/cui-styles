@@ -8,6 +8,7 @@ $list-item-color           : $component-color-default;
 $list-item-color-dark      : $component-color-default-dark;
 $list-item-active-color    : $component-background-accent;
 $list-transition-time      : $animation-duration-short;
+$list-item-font-weight-bold: $text-weight-bold;
 
 @mixin list {
     ul.#{$prefix}-list {
@@ -70,18 +71,19 @@ $list-transition-time      : $animation-duration-short;
                 cursor: pointer;
 
                 &.#{$prefix}-active {
-                    position: relative;
+                    position   : relative;
+                    font-weight: $list-item-font-weight-bold;
 
                     &:before {
-                        content         : "";
-                        position        : absolute;
-                        width           : 2px;
-                        background-color: $list-item-active-color;
-                        height          : 100%;
-                        left            : 0;
-                        top             : 50%;
-                        transform       : translateY(-50%) scale(1, 0.6);
-                        transition      : transform $list-transition-time ease-out;
+                        content           : "";
+                        position          : absolute;
+                        width             : 2px;
+                        background-color  : $list-item-active-color;
+                        height            : 100%;
+                        left              : 0;
+                        top               : 50%;
+                        transform         : translateY(-50%) scale(1, 0.6);
+                        //transition      : transform $list-transition-time ease-out;
                     }
 
                     &:hover {
@@ -142,8 +144,23 @@ $list-transition-time      : $animation-duration-short;
     }
 }
 
+@mixin list-no-transitions {
+    body:not(.#{$prefix}-no-transitions) {
+        .#{$prefix}-list {
+            &.#{$prefix}-interactive {
+                &.#{$prefix}-active {
+                    &:before {
+                        transition: transform $list-transition-time ease-out;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @mixin definitions {
     @include list();
+    @include list-no-transitions();
     @include list-dark();
     @include list-print();
 }

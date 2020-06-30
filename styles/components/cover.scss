@@ -26,8 +26,6 @@ $cover-transition-duration: $animation-duration-long;
 
 
         &.#{$prefix}-active {
-            transition: transform $cover-transition-duration ease-in-out,
-                opacity $cover-transition-duration ease-out;
             opacity  : 1;
             transform: scale(1, 1);
         }
@@ -42,6 +40,18 @@ $cover-transition-duration: $animation-duration-long;
         }
     }
 
+}
+
+
+@mixin cover-no-transitions {
+    body:not(.#{$prefix}-no-transitions) {
+        .#{$prefix}-cover {
+            &.#{$prefix}-active {
+                transition: transform $cover-transition-duration ease-in-out,
+                    opacity $cover-transition-duration ease-out;
+            }
+        }
+    }
 }
 
 @mixin cover-dark {
@@ -64,6 +74,7 @@ $cover-transition-duration: $animation-duration-long;
 
 @mixin definitions {
     @include cover();
+    @include cover-no-transitions();
     @include cover-dark();
     @include cover-print();
 }

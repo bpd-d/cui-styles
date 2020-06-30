@@ -26,15 +26,19 @@ $card-border-color-dark       : $color-border-dark;
         border          : 1px solid transparent;
         border-radius   : $border-radius-default;
 
-        &.#{$prefix}-card-expand {
-            width: 100%;
+        >*:only-child {
+            @include component-padding(normal, same);
         }
+
+        // &.#{$prefix}-card-expand {
+        //     width: 100%;
+        // }
 
         &.#{$prefix}-side {
             display    : flex;
             flex-wrap  : wrap;
             box-sizing : border-box;
-            align-items: baseline;
+            align-items: stretch;
 
             .#{$prefix}-content {
                 height: 100%;
@@ -47,16 +51,16 @@ $card-border-color-dark       : $color-border-dark;
             }
         }
 
-        &.#{$prefix}-body {
-            @include component-padding(same);
-        }
+        // &.#{$prefix}-body {
+        //     @include component-padding(normal, true);
+        // }
 
         &.#{$prefix}-large {
 
             .#{$prefix}-card-header,
             .#{$prefix}-card-body,
             .#{$prefix}-card-footer {
-                @include component-padding(large);
+                @include component-padding(large, same);
             }
 
         }
@@ -68,16 +72,19 @@ $card-border-color-dark       : $color-border-dark;
         .#{$prefix}-card-header {
             padding      : 1rem; //1rem 0.5rem 1rem;
             border-bottom: 1px solid $card-separator-color;
+            @include component-padding(normal, same);
         }
 
         .#{$prefix}-card-body {
             padding  : 1rem; //1rem 0.5rem 1rem;
             max-width: 100%;
+            @include component-padding(normal, same);
         }
 
         .#{$prefix}-card-footer {
             padding   : 1rem; // 1rem 1rem 1rem;
             border-top: 1px solid $card-separator-color;
+            @include component-padding(normal, same);
         }
 
         &.#{$prefix}-default {

@@ -34,9 +34,9 @@ $banner-color-secondary: $component-background-secondary;
         border-radius   : $banner-border-radius;
         box-shadow      : $shadow;
         margin          : 0 $margin-global;
-        @include component-padding(same);
+        @include component-padding(normal, true);
 
-        &.#{$prefix}-open {
+        &.#{$prefix}-active {
             display: flex;
         }
 
@@ -84,9 +84,11 @@ $banner-color-secondary: $component-background-secondary;
 @mixin banner-dark {
     .#{$prefix}-dark {
         div.#{$prefix}-banner {
-            border          : 1px solid $banner-border-color-dark;
-            background-color: $banner-background-default-dark;
-            color           : $banner-color-default-dark;
+            @include not-colors {
+                border          : 1px solid $banner-border-color-dark;
+                background-color: $banner-background-default-dark;
+                color           : $banner-color-default-dark;
+            }
         }
     }
 }

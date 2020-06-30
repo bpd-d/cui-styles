@@ -3,7 +3,7 @@
 
 $overlay-color-light: $color-backdrop-light;
 $overlay-color-dark : $color-backdrop-dark;
-$blur-intensity     : 2;
+$blur-intensity     : 6;
 
 @mixin overlay {
     .#{$prefix}-overlay-light {

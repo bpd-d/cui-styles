@@ -1,4 +1,25 @@
 @use "variables.scss"as *;
+@use "mixins.scss"as *;
+
+$background-color-shade      : $component-background-shade;
+$background-color-shade-dark : $component-background-shade-dark;
+
+$themes: "accent",
+"secondary",
+"error",
+"warning",
+"success";
+
+@mixin enumerate-backgrounds($suffix: "") {
+    @each $accent in $themes {
+        $color-name : "#{$accent}-shade#{$suffix}";
+
+        .#{$prefix}-background-#{$accent} {
+            background-color: get-theme-color("#{$color-name}");
+        }
+    }
+}
+
 
 @mixin background {
     .#{$prefix}-background {
@@ -26,6 +47,36 @@
     }
 }
 
+@mixin background-colors {
+    @include enumerate-backgrounds();
+
+    .#{$prefix}-background-shade {
+        background-color: $background-color-shade;
+    }
+
+}
+
+@mixin background-colors-dark {
+    .#{$prefix}-dark {
+        @include enumerate-backgrounds("-dark");
+
+        .#{$prefix}-background-shade {
+            background-color: $background-color-shade-dark;
+        }
+    }
+}
+
+@mixin background-print {
+    .#{$prefix}-print {
+        [class*="#{$prefix}-background"] {
+            background-color: $component-print-background;
+        }
+    }
+}
+
 @mixin definitions {
     @include background();
+    @include background-colors();
+    @include background-colors-dark();
+    @include background-print();
 }

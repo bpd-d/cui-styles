@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cUI - Tabs</title>
+    <link rel="stylesheet" href="../dist/cui-styles.css" />
+</head>
+<style>
+    .app-main-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 70px calc(100vh - 106px) 36px;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .app-navbar {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .app-content {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-content-fill {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-side-bar {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-footer {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+</style>
+
+<body class="">
+    <div id="main-content" class="main-content content-hidden">
+        <!-- Main grid -->
+        <div class="app-main-grid">
+            <div class="app-navbar">
+                <div class="cui-navbar cui-sticky">
+                    <ul class="cui-navbar-left">
+                        <li><a class="cui-navbar-title cui-icon app-title-icon" href="index.html">Test</a></li>
+                    </ul>
+                    <ul class="cui-navbar-right">
+                        <li><a class="cui-navbar-item" href="./index.html">Home</a></li>
+                        <li><a class="cui-navbar-item" href="#" id="toggle-dark-mode">Dark Mode</a></li>
+                        <li><a class="cui-navbar-item" href="#" id="toggle-print-mode">Print Mode</a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="app-content cui-overflow-y-auto cui-margin-top">
+                <div>
+                    <button class="cui-button">Button</button>
+                    <a href="#" class="cui-button">Button L</a>
+                </div>
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-default">Default</button>
+                    <a href="#" class="cui-button cui-default">Default L</a>
+                </div>
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-default cui-large">large</button>
+                    <a href="#" class="cui-button cui-default cui-large">large L</a>
+                </div>
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-default cui-small">Small</button>
+                    <a href="#" class="cui-button cui-default cui-small">Small L</a>
+                </div>
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-shade ">Shade</button>
+                    <a href="#" class="cui-button cui-shade">Shade L</a>
+                </div>
+
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-rounded cui-default">Rounded</button>
+                    <a href="#" class="cui-button cui-rounded cui-default">Rounded L</a>
+                </div>
+
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-fill cui-default">Fill</button>
+                    <a href="#" class="cui-button cui-fill cui-default">Fill L</a>
+                </div>
+
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-accent">Accent</button>
+                    <a href="#" class="cui-button cui-accent">Accent L</a>
+                </div>
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-secondary">secondary</button>
+                    <a href="#" class="cui-button cui-secondary">secondary L</a>
+                </div>
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-error">error</button>
+                    <a href="#" class="cui-button cui-error">error L</a>
+                </div>
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-warning">warning</button>
+                    <a href="#" class="cui-button cui-warning">warning L</a>
+                </div>
+                <div class="cui-margin-top">
+                    <button class="cui-button cui-success">success</button>
+                    <a href="#" class="cui-button cui-success">success L</a>
+                </div>
+
+                <div class="cui-container cui-accent cui-margin-top">
+                    <div>
+                        <button class="cui-button">Button</button>
+                        <a href="#" class="cui-button">Button L</a>
+                    </div>
+                    <div class="cui-margin-top">
+                        <button class="cui-button cui-default">Default</button>
+                        <a href="#" class="cui-button cui-default">Default L</a>
+                    </div>
+                    <div class="cui-margin-top">
+                        <button class="cui-button cui-default cui-large">large</button>
+                        <a href="#" class="cui-button cui-default cui-large">large L</a>
+                    </div>
+                    <div class="cui-margin-top">
+                        <button class="cui-button cui-default cui-small">Small</button>
+                        <a href="#" class="cui-button cui-default cui-small">Small L</a>
+                    </div>
+                    <div class="cui-margin-top">
+                        <button class="cui-button cui-shade ">Shade</button>
+                        <a href="#" class="cui-button cui-shade">Shade L</a>
+                    </div>
+
+                    <div class="cui-margin-top">
+                        <button class="cui-button cui-rounded cui-default">Rounded</button>
+                        <a href="#" class="cui-button cui-rounded cui-default">Rounded L</a>
+                    </div>
+                    <div class="cui-margin-top">
+                        <button class="cui-button cui-accent">Accent</button>
+                        <a href="#" class="cui-button cui-accent">Accent L</a>
+                    </div>
+                    <div class="cui-margin-top">
+                        <button class="cui-button cui-secondary">secondary</button>
+                        <a href="#" class="cui-button cui-secondary">secondary L</a>
+                    </div>
+                    <div class="cui-margin-top">
+                        <button class="cui-button cui-error">error</button>
+                        <a href="#" class="cui-button cui-error">error L</a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-side-bar cui-margin-top">
+
+            </div>
+
+        </div>
+        <script src="index.js"></script>
+</body>
+
+</html>

@@ -113,7 +113,6 @@ $component-color-active-dark : var(--#{$prefix}-color-dark-active);
 $component-color-inverse     : var(--#{$prefix}-color-dark-base);
 $component-color-inverse-dark: var(--#{$prefix}-color-light-base);
 
-
 $button-border-color     : var(--#{$prefix}-color-light-muted);
 $button-border-color-dark: var(--#{$prefix}-color-dark-muted);
 
@@ -157,6 +156,8 @@ $component-print-color        : black !important;
 $component-print-shadow       : none !important;
 $component-print-border       : 1px solid $component-color-muted !important;
 $component-print-border-color : $component-color-muted !important;
+
+$component-margin: var(--#{$prefix}-component-space);
 
 // --color-primary                   : #1565c0;
 //    --color-primary-darken            : #0B3564;

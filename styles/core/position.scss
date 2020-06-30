@@ -9,7 +9,6 @@
         }
 
         .#{$prefix}-position-top {
-
             top: 0px;
         }
 
@@ -19,7 +18,7 @@
 
         .#{$prefix}-position-middle {
             top      : 50%;
-            transform: translateY(-50%)
+            transform: translateY(-50%);
         }
 
         .#{$prefix}-position-left {

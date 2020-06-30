@@ -637,6 +637,43 @@ $input-outline        : $outline-default;
     }
 }
 
+@mixin radio-custom-theme {
+    div.#{$prefix}-radio-custom {
+
+        &.#{$prefix}-accent {
+            input[type="radio"] {
+                +.#{$prefix}-content {
+                    &:hover {
+                        border-color: $input-color-accent-hover;
+                    }
+                }
+
+                &:checked {
+                    +.#{$prefix}-content {
+                        border-color: $input-color-accent-active;
+                    }
+                }
+            }
+        }
+
+        &.#{$prefix}-secondary {
+            input[type="radio"] {
+                +.#{$prefix}-content {
+                    &:hover {
+                        border-color: $input-color-secondary-hover;
+                    }
+                }
+
+                &:checked {
+                    +.#{$prefix}-content {
+                        border-color: $input-color-secondary-active;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 @mixin checkbox {
     input[type="checkbox"] {
@@ -1110,19 +1147,22 @@ $input-outline        : $outline-default;
 
 @mixin radio-custom-dark {
     .#{$prefix}-dark {
-        div#{$prefix}-radio-custom {
-            input[type="radio"] {
-                +.#{$prefix}-content {
-                    border: 1px solid $input-border-color-inactive-dark;
+        div.#{$prefix}-radio-custom {
 
-                    &:hover {
-                        border-color: $input-border-color-active-dark;
-                    }
-                }
-
-                &:checked {
+            &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
+                input[type="radio"] {
                     +.#{$prefix}-content {
-                        border-color: $input-border-color-active-dark;
+                        border: 1px solid $input-border-color-inactive-dark;
+
+                        &:hover {
+                            border-color: $input-border-color-active-dark;
+                        }
+                    }
+
+                    &:checked {
+                        +.#{$prefix}-content {
+                            border-color: $input-border-color-active-dark;
+                        }
                     }
                 }
             }
@@ -1367,6 +1407,7 @@ $input-outline        : $outline-default;
     @include radio-theme();
     @include radio-dark();
     @include radio-custom();
+    @include radio-custom-theme();
     @include radio-custom-dark();
     @include checkbox();
     @include checkbox-theme();

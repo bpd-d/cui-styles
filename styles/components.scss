@@ -26,6 +26,7 @@
 @use 'components/hint';
 @use 'components/special';
 @use 'components/cover';
+@use 'components/shadows';
 
 @mixin definitions {
     @include navbar.definitions;
@@ -56,4 +57,5 @@
     @include hint.definitions;
     @include special.definitions;
     @include cover.definitions;
+    @include shadows.definitions;
 }

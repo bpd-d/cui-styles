@@ -21,10 +21,6 @@ $section-color-default-dark :$component-color-default-dark;
 $section-color-inverse      :$component-color-inverse;
 $section-color-inverse-dark :$component-color-inverse-dark;
 
-$section-background-accent        : $component-background-accent-shade;
-$section-background-secondary     : $component-background-secondary-shade;
-$section-background-accent-dark   : $component-background-accent-shade-dark;
-$section-background-secondary-dark: $component-background-secondary-shade-dark;
 
 @mixin section {
     .#{$prefix}-section {
@@ -32,24 +28,12 @@ $section-background-secondary-dark: $component-background-secondary-shade-dark;
         margin : 0;
         padding: $section-padding-normal;
 
-        &.#{$prefix}-accent {
-            background-color: $section-background-accent;
-        }
-
-        &.#{$prefix}-secondary {
-            background-color: $section-background-secondary;
-        }
-
         &.#{$prefix}-inverse {
             background-color: $section-background-inverse;
             color           : $section-color-inverse;
         }
 
-        &.#{$prefix}-shade {
-            background-color: $section-shade-background-color;
-        }
-
-        &.#{$prefix}-large {
+        &.#{$prefix}-space {
             padding: $section-padding-large;
         }
     }
@@ -61,18 +45,6 @@ $section-background-secondary-dark: $component-background-secondary-shade-dark;
             &.#{$prefix}-inverse {
                 background-color: $section-background-inverse-dark;
                 color           : $section-color-inverse-dark;
-            }
-
-            &.#{$prefix}-accent {
-                background-color: $section-background-accent-dark;
-            }
-
-            &.#{$prefix}-secondary {
-                background-color: $section-background-secondary-dark;
-            }
-
-            &.#{$prefix}-shade {
-                background-color: $section-shade-background-color-dark;
             }
         }
     }

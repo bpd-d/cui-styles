@@ -11,14 +11,14 @@ $prefix: 'cui' !default;
     // Light
     --#{$prefix}-color-light-app-background: #ffffff;
     --#{$prefix}-color-light-background    : #fff;
-    --#{$prefix}-color-light-border        : #f3f3f3;
+    --#{$prefix}-color-light-border        : #00000020;
     --#{$prefix}-color-light-base          : #333;
     --#{$prefix}-color-light-active        : #222;
     --#{$prefix}-color-light-muted         : #aaa;
     //Dark
     --#{$prefix}-color-dark-app-background : #222;
     --#{$prefix}-color-dark-background     : #262626;
-    --#{$prefix}-color-dark-border         : #303030;
+    --#{$prefix}-color-dark-border         : #ffffff20;
     --#{$prefix}-color-dark-base           : #fff;
     --#{$prefix}-color-dark-active         : #777;
     --#{$prefix}-color-dark-muted          : #ccc;
@@ -65,4 +65,8 @@ $prefix: 'cui' !default;
 
     // Outline
     --#{$prefix}-outline: 1px solid transparent;
+
+    // Space
+
+    --#{$prefix}-component-space: 4px;
 }

@@ -13,6 +13,27 @@ $progress-value-color-secondary : $component-background-secondary;
 $progress-value-color-success   : $component-background-success;
 $progress-value-color-warning   : $component-background-warning;
 $progress-value-color-error     : $component-background-error;
+$progress-transition-time       : $animation-duration-long;
+
+
+@mixin progress-no-transitions {
+    body:not(.#{$prefix}-no-transitions) {
+        .#{$prefix}-progress {
+            &::-webkit-progress-value {
+                transition: width $progress-transition-time ease;
+            }
+
+            &::-moz-progress-bar {
+                transition: width $progress-transition-time ease;
+
+            }
+
+            &::-ms-fill {
+                transition: width $progress-transition-time ease;
+            }
+        }
+    }
+}
 
 @mixin progress {
     progress.#{$prefix}-progress {
@@ -45,29 +66,21 @@ $progress-value-color-error     : $component-background-error;
 
         &::-webkit-progress-value {
             background-color: $progress-value-color;
-            transition      : width 0.6s ease;
         }
 
         &::-moz-progress-bar {
             background-color: $progress-value-color;
-            transition      : width 0.6s ease;
 
         }
 
         &::-ms-fill {
             background-color: $progress-value-color;
-            transition      : width 0.6s ease;
-            /* 1 */
             border          : 0;
         }
 
         &.#{$prefix}-small {
             height: $progress-small-height;
         }
-
-
-
-
     }
 }
 

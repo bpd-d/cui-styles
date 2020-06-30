@@ -1,7 +1,7 @@
 @use '../variables'as *;
 
-$transition-toggle-time : $animation-duration-default;
-$transition-toggle-delay: $animation-duration-default;
+$transition-toggle-time : $animation-duration-short;
+$transition-toggle-delay: $animation-duration-short;
 
 
 @mixin definitions {
@@ -48,19 +48,19 @@ $transition-toggle-delay: $animation-duration-default;
             transform: translateX(100%);
         }
 
-        .#{$prefix}-transition-slide-top-s {
+        .#{$prefix}-transition-slide-top--s {
             transform: translateY(-30%);
         }
 
-        .#{$prefix}-transition-slide-bottom-s {
+        .#{$prefix}-transition-slide-bottom--s {
             transform: translateY(30%);
         }
 
-        .#{$prefix}-transition-slide-left-s {
+        .#{$prefix}-transition-slide-left--s {
             transform: translateX(-30%);
         }
 
-        .#{$prefix}-transition-slide-right-s {
+        .#{$prefix}-transition-slide-right--s {
             transform: translateX(30%);
         }
 

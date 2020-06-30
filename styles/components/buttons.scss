@@ -66,7 +66,11 @@ $button-outline                       : $outline-default;
             @include component-padding(large);
         }
 
-        &.#{$prefix}-full {
+        &.#{$prefix}-small {
+            @include component-padding(small);
+        }
+
+        &.#{$prefix}-fill {
             display: block;
             width  : 100%;
         }
@@ -119,36 +123,38 @@ $button-outline                       : $outline-default;
     .#{$prefix}-error,
     .#{$prefix}-warning,
     .#{$prefix}-success {
-        .#{$prefix}-button {
-            color: $button-color-default-dark;
+        &:not(.#{$prefix}-section):not(.#{$prefix}-hint) {
+            .#{$prefix}-button {
+                color: $button-color-default-dark;
 
-            &.#{$prefix}-default {
-                color       : $button-color-default-dark;
-                border-color: $button-border-color-dark;
-            }
-
-            &.#{$prefix}-shade {
-                background-color: $button-background-shade-dark;
-                color           : $button-color-default-dark;
-                border-color    : $button-background-shade-dark;
-            }
-
-            &:hover {
                 &.#{$prefix}-default {
                     color       : $button-color-default-dark;
-                    border-color: $button-border-color-hover-dark;
-                }
-            }
-
-            &:active {
-                &.#{$prefix}-default {
-                    color           : $button-color-default-dark;
-                    border-color    : $button-border-color-active-dark;
-                    background-color: $button-background-default-active-dark;
+                    border-color: $button-border-color-dark;
                 }
 
                 &.#{$prefix}-shade {
-                    background-color: $button-background-shade-dark-active;
+                    background-color: $button-background-shade-dark;
+                    color           : $button-color-default-dark;
+                    border-color    : $button-background-shade-dark;
+                }
+
+                &:hover {
+                    &.#{$prefix}-default {
+                        color       : $button-color-default-dark;
+                        border-color: $button-border-color-hover-dark;
+                    }
+                }
+
+                &:active {
+                    &.#{$prefix}-default {
+                        color           : $button-color-default-dark;
+                        border-color    : $button-border-color-active-dark;
+                        background-color: $button-background-default-active-dark;
+                    }
+
+                    &.#{$prefix}-shade {
+                        background-color: $button-background-shade-dark-active;
+                    }
                 }
             }
         }
@@ -156,9 +162,6 @@ $button-outline                       : $outline-default;
 }
 
 @mixin button-signals {
-
-
-
     .#{$prefix}-button {
         &.#{$prefix}-accent {
             background-color: $button-background-accent;

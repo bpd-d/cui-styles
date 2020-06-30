@@ -1,9 +1,13 @@
 {
   "name": "cui-styles",
   "library": "cui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "CSS styles for cUI framework",
   "main": "index.js",
+  "files": [
+    "/dist/*.css",
+    "/styles"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --config webpack.development.js",
     "build": "webpack --config webpack.production.js"

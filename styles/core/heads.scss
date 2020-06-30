@@ -21,16 +21,12 @@ $head-font-normal     : $font-normal;
 
     .#{$prefix}-h3 {
         font-size  : $head-font-large;
-        font-weight: 400;
+        font-weight: $head-text-weight-bold;
     }
 
     .#{$prefix}-h4 {
         font-size  : $head-font-normal;
         font-weight: $head-text-weight-bold;
-    }
-
-    .#{$prefix}-heading {
-        font-weight: $head-text-weight-thin;
     }
 }
 

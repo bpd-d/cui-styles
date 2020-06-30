@@ -1,0 +1,61 @@
+@use '../variables'as *;
+
+$transition-time-normal: $animation-duration-default;
+
+@mixin box-shadow {
+    .#{$prefix}-box-shadow {
+        box-shadow: $shadow;
+    }
+
+    .#{$prefix}-box-shadow-m {
+        box-shadow: $shadow2;
+    }
+
+    .#{$prefix}-box-shadow-l {
+        box-shadow: $shadow3;
+    }
+
+    .#{$prefix}-box-shadow-xl {
+        box-shadow: $shadow4;
+    }
+}
+
+@mixin box-shadow-hover {
+    .#{$prefix}-box-shadow-hover {
+        &:hover {
+            box-shadow: $shadow;
+        }
+    }
+
+    .#{$prefix}-box-shadow-hover-m {
+        &:hover {
+            box-shadow: $shadow2;
+        }
+    }
+
+    .#{$prefix}-box-shadow-hover-l {
+        &:hover {
+            box-shadow: $shadow3;
+        }
+    }
+
+    .#{$prefix}-box-shadow-hover-xl {
+        &:hover {
+            box-shadow: $shadow4;
+        }
+    }
+}
+
+@mixin box-shadow-no-transition {
+    body:not(.#{$prefix}-no-transitions) {
+        [class*="#{$prefix}-box-shadow-hover"] {
+            transition: box-shadow $transition-time-normal ease-in;
+        }
+    }
+}
+
+@mixin definitions {
+    @include box-shadow();
+    @include box-shadow-hover();
+    @include box-shadow-no-transition();
+}

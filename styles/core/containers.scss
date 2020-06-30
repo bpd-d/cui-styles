@@ -5,10 +5,10 @@ $container-background-default       : $component-background-default;
 $container-background-default-dark  : $component-background-default-dark;
 $container-background-inverse       : $component-background-inverse;
 $container-background-inverse-dark  : $component-background-inverse-dark;
-$container-background-accent        : $component-background-accent-shade;
-$container-background-accent-dark   : $component-background-accent-shade-dark;
-$container-background-secondary     : $component-background-secondary-shade;
-$container-background-secondary-dark: $component-background-secondary-shade-dark;
+$container-background-accent        : $component-background-accent;
+$container-background-accent-dark   : $component-background-accent;
+$container-background-secondary     : $component-background-secondary;
+$container-background-secondary-dark: $component-background-secondary;
 
 $container-color-default      :$component-color-default;
 $container-color-default-dark :$component-color-default-dark;
@@ -22,8 +22,7 @@ $container-padding-normal: $padding-global;
 
 @mixin container {
     .#{$prefix}-container {
-        @include component-padding(same);
-        //width : 100%;
+        @include component-padding();
 
         &.#{$prefix}-no-padding {
             padding: 0;
@@ -34,7 +33,7 @@ $container-padding-normal: $padding-global;
         }
 
         &.#{$prefix}-lean {
-            @include component-padding(smallSame);
+            @include component-padding(small, true);
         }
 
         &.#{$prefix}-center {
@@ -43,17 +42,19 @@ $container-padding-normal: $padding-global;
             align-items    : center;
         }
 
-        &.#{$prefix}-default {
-            background-color: $container-background-default;
-            color           : $container-color-default;
-        }
+        // &.#{$prefix}-default {
+        //     background-color: $container-background-default;
+        //     color           : $container-color-default;
+        // }
 
         &.#{$prefix}-accent {
             background-color: $container-background-accent;
+            color           : $container-color-inverse;
         }
 
         &.#{$prefix}-secondary {
             background-color: $container-background-secondary;
+            color           : $container-color-inverse;
         }
 
         &.#{$prefix}-inverse {

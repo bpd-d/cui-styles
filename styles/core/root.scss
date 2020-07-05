@@ -64,7 +64,15 @@ $prefix: 'cui' !default;
     --#{$prefix}-color-shade-light-lighter: #ffffff30;
 
     // Outline
-    --#{$prefix}-outline: 1px solid transparent;
+    --#{$prefix}-outline: 1px dotted #999;
+
+    // Border radius
+    --#{$prefix}-border-radius: 6px;
+
+    --#{$prefix}-padding: 1rem;
+    --#{$prefix}-margin : 1rem;
+
+    --#{$prefix}-scrollbar-width: 12px;
 
     // Space
 

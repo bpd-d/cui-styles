@@ -15,6 +15,7 @@ $tooltip-font-size      : $font-small;
 $tooltip-animation-time : $animation-duration-short;
 $tooltip-margin         : $component-margin;
 
+
 @mixin tooltip {
     .#{$prefix}-tooltip {
         position: relative;
@@ -43,7 +44,8 @@ $tooltip-margin         : $component-margin;
 
         }
 
-        &:hover {
+        &:hover,
+        &:focus-within {
             &:before {
                 transform: scale(1) translateX(-50%) translateY(calc(-36px - #{$tooltip-margin}));
             }
@@ -60,8 +62,6 @@ $tooltip-margin         : $component-margin;
             }
         }
 
-
-
         &.#{$prefix}-tooltip-top-center {
             &:before {
                 transform-origin: top left;
@@ -70,7 +70,8 @@ $tooltip-margin         : $component-margin;
                 transform       : scale(0) translateX(-50%) translateY(0px);
             }
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 &:before {
                     transform: scale(1) translateX(-50%) translateY(calc(-36px - #{$tooltip-margin}));
                 }
@@ -85,7 +86,8 @@ $tooltip-margin         : $component-margin;
                 transform       : scale(0) translateX(-100%) translateY(0px);
             }
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 &:before {
                     transform: scale(1) translateX(calc(-100% - #{$tooltip-margin})) translateY(calc(-36px - #{$tooltip-margin}));
                 }
@@ -100,7 +102,8 @@ $tooltip-margin         : $component-margin;
                 transform       : scale(0) translateX(100%) translateY(0px);
             }
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 &:before {
                     transform: scale(1) translateX(calc(100% + #{$tooltip-margin})) translateY(calc(-36px - #{$tooltip-margin}));
                 }
@@ -116,7 +119,8 @@ $tooltip-margin         : $component-margin;
                 transform       : scale(0) translateX(-100%) translateY(0px);
             }
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 &:before {
                     transform: scale(1) translateX(calc(-100% - #{$tooltip-margin})) translateY(calc(36px + #{$tooltip-margin}));
                 }
@@ -131,7 +135,8 @@ $tooltip-margin         : $component-margin;
                 transform       : scale(0) translateX(100%) translateY(0px);
             }
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 &:before {
                     transform: scale(1) translateX(calc(100% + #{$tooltip-margin})) translateY(calc(36px + #{$tooltip-margin}));
                 }
@@ -146,7 +151,8 @@ $tooltip-margin         : $component-margin;
                 transform       : scale(0) translateX(-50%) translateY(0px);
             }
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 &:before {
                     transform: scale(1) translateX(-50%) translateY(calc(36px + #{$tooltip-margin}));
                 }

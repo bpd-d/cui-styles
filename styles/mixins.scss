@@ -113,6 +113,72 @@ $item-background-default: $component-background-default;
     }
 }
 
+@mixin mode-dark {
+    .#{$prefix}-dark {
+        @content;
+    }
+}
+
+
+@mixin mode-print {
+    .#{$prefix}-print {
+        @content;
+    }
+}
+
+@mixin mode-not-no-transitions {
+    body:not(.#{$prefix}-no-transitions) {
+        @content;
+    }
+}
+
+@mixin mode-not-no-scrollbar-customization {
+    body:not(.#{$prefix}-no-scrollbar-customization) {
+        @content;
+    }
+}
+
+@mixin media-screen-max-small {
+    @media (max-width: $breakpoint-s) {
+        @content;
+    }
+}
+
+@mixin media-screen-min-small {
+    @media (min-width: $breakpoint-s) {
+        @content;
+    }
+}
+
+@mixin media-screen-min-medium {
+    @media (min-width: $breakpoint-m) {
+        @content;
+    }
+}
+
+
+@mixin media-screen-min-large {
+    @media (min-width: $breakpoint-l) {
+        @content;
+    }
+}
+
+@mixin media-screen-min-xlarge {
+    @media (min-width: $breakpoint-xl) {
+        @content;
+    }
+}
+
+@mixin link-decoration($color) {
+    color          : $color;
+    text-decoration: none;
+
+    &:visited,
+    &:focus {
+        color: $color;
+    }
+}
+
 // @mixin size-media() {
 
 //     // View small

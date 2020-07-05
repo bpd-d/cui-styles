@@ -5,6 +5,7 @@
 *
 */
 @use '../variables'as *;
+@use '../mixins'as *;
 
 // Variables
 $item-padding-large : $padding-global-large;
@@ -121,7 +122,7 @@ $sides: "top",
     }
 }
 
-@mixin definitions {
+@mixin margins {
     .#{$prefix}-margin {
         margin: $item-margin;
     }
@@ -145,7 +146,9 @@ $sides: "top",
     .#{$prefix}-margin-auto {
         margin: 0 auto;
     }
+}
 
+@mixin margins-small {
     /**
     * Small
     */
@@ -169,6 +172,9 @@ $sides: "top",
     .#{$prefix}-margin-small-right {
         margin-right: $item-margin-small !important;
     }
+}
+
+@mixin margins-large {
 
     /**
 * Large
@@ -193,12 +199,10 @@ $sides: "top",
     .#{$prefix}-margin-large-right {
         margin-right: $item-margin-large !important;
     }
-
-    /**
-* Padding
-*/
+}
 
 
+@mixin paddings {
     .#{$prefix}-padding {
         padding: $item-padding;
     }
@@ -218,11 +222,9 @@ $sides: "top",
     .#{$prefix}-padding-right {
         padding-left: $item-padding;
     }
+}
 
-    /**
-* Padding small
-*/
-
+@mixin paddings-small {
     .#{$prefix}-padding-small {
         padding: $item-padding-small;
     }
@@ -242,10 +244,9 @@ $sides: "top",
     .#{$prefix}-padding-small-right {
         padding-left: $item-padding-small;
     }
+}
 
-    /**
-* Large
-*/
+@mixin paddings-large {
     .#{$prefix}-padding-large {
         padding: $item-padding-large;
     }
@@ -265,31 +266,40 @@ $sides: "top",
     .#{$prefix}-padding-large-right {
         padding-left: $item-padding-large;
     }
+}
 
-    @include remove-padding();
 
-    /**
+/**
 * Media Queries
 */
-    // View small
-    @media (max-width: $breakpoint-s) {
+@mixin media {
+    @include media-screen-min-small {
         @include margin(s);
+        @include padding(s);
         @include remove-padding(--s);
     }
 
-    // View medium
-    @media (max-width: $breakpoint-m) {
+    @include media-screen-min-medium {
         @include margin(m);
+        @include padding(m);
         @include remove-padding(--m);
     }
 
-
-    // View large
-    @media (max-width: $breakpoint-l) {
+    @include media-screen-min-large {
         @include margin(l);
+        @include padding(l);
         @include remove-padding(--l);
     }
 
+    @include media-screen-min-xlarge {
+        @include margin(xl);
+        @include padding(xl);
+        @include remove-padding(--xl);
+    }
+}
+
+
+@mixin overflow {
     .#{$prefix}-overflow-hidden {
         overflow: hidden;
     }
@@ -317,6 +327,9 @@ $sides: "top",
     .#{$prefix}-overflow-y-hidden {
         overflow-y: hidden;
     }
+}
+
+@mixin display {
 
     // Display 
     .#{$prefix}-inline {
@@ -327,7 +340,13 @@ $sides: "top",
         display: inline-block;
     }
 
+    .#{$prefix}-block {
+        display: block;
+    }
+}
 
+
+@mixin clearfix {
     .#{$prefix}-clearfix {
         &:after {
             content    : ".";
@@ -338,4 +357,18 @@ $sides: "top",
             height     : 0;
         }
     }
+}
+
+@mixin definitions {
+    @include margins();
+    @include margins-small();
+    @include margins-large();
+    @include paddings();
+    @include paddings-small();
+    @include paddings-large();
+    @include clearfix();
+    @include display();
+    @include media();
+    @include overflow();
+    @include remove-padding();
 }

@@ -23,9 +23,7 @@ body {
     @include body.main-body;
 }
 
-img {
-    max-width : 100%;
-    height    : auto;
+* {
     box-sizing: border-box;
 }
 

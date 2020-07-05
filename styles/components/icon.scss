@@ -145,7 +145,7 @@ $icon-color-success  : $component-background-success;
 @mixin icon-button {
     .#{$prefix}-icon-button {
         cursor: pointer;
-        @include component-padding(sameSmall);
+        @include component-padding(small, true);
         background-color: transparent;
         border          : 1px solid transparent;
         border-radius   : 100px;
@@ -162,6 +162,8 @@ $icon-color-success  : $component-background-success;
         }
 
         &:hover {
+            outline: none !important;
+
             &.#{$prefix}-default {
                 border-color: $icon-border-color-hover;
             }
@@ -172,6 +174,8 @@ $icon-color-success  : $component-background-success;
         }
 
         &:active {
+            outline: none !important;
+
             &.#{$prefix}-default {
                 border-color: $icon-border-color-active;
             }
@@ -179,10 +183,6 @@ $icon-color-success  : $component-background-success;
             &.#{$prefix}-inverse {
                 border-color: $icon-border-color-active-dark;
             }
-        }
-
-        &:focus {
-            outline: $outline-default;
         }
     }
 }
@@ -199,7 +199,7 @@ $icon-color-success  : $component-background-success;
             display   : inline-block;
 
             &>* {
-                @include component-padding(sameSmall);
+                @include component-padding(small, true);
             }
         }
     }

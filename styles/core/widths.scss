@@ -1,4 +1,5 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 @mixin widths($size:"") {
     @for $i from 1 through 6 {
@@ -71,27 +72,23 @@
 
     @include widths();
 
-    @media (max-width: $breakpoint-s) {
+    @include media-screen-max-small {
         @include widths_small();
     }
 
-    // View small
-    @media (min-width: $breakpoint-s) {
+    @include media-screen-min-small {
         @include widths(--s);
     }
 
-    // View medium
-    @media (min-width: $breakpoint-m) {
+    @include media-screen-min-medium {
         @include widths(--m);
     }
 
-    // View medium
-    @media (min-width: $breakpoint-l) {
+    @include media-screen-min-large {
         @include widths(--l);
     }
 
-    // View medium
-    @media (min-width: $breakpoint-xl) {
+    @include media-screen-min-xlarge {
         @include widths(--xl);
     }
 }

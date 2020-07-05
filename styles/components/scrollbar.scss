@@ -1,0 +1,97 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$scrollbar-background             : $component-background-shade;
+$scrollbar-track-background       : $component-background-shade-active;
+$scrollbar-track-background-active: $component-color-muted;
+
+
+$scrollbar-background-dark             : $component-background-shade-dark;
+$scrollbar-track-background-dark       : $component-background-shade-dark-active;
+$scrollbar-track-background-active-dark: $component-color-muted-dark;
+
+$scrollbar-radius: $border-radius-default;
+
+@mixin scrollbar {
+    @include mode-not-no-scrollbar-customization {
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: $scrollbar-width;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background   : $scrollbar-background;
+            border-radius: $scrollbar-radius;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            border-radius: $scrollbar-radius;
+            background   : $scrollbar-track-background;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: $scrollbar-track-background-active;
+        }
+    }
+
+}
+
+@mixin scrollbar-dark {
+    body:not(.#{$prefix}-no-scrollbar-customization).#{$prefix}-dark {
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: $scrollbar-width;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: $scrollbar-background-dark;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: $scrollbar-track-background-dark;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: $scrollbar-track-background-active-dark;
+        }
+    }
+}
+
+@mixin scrollbar-print {
+    @include mode-print() {
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: $scrollbar-width;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: none;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: none;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: none;
+        }
+    }
+}
+
+@mixin definitions {
+    @include scrollbar();
+    @include scrollbar-dark();
+    @include scrollbar-print();
+}

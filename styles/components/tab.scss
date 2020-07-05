@@ -1,18 +1,20 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$tab-color-base   : $component-color-default;
-$tab-color-primary: $component-background-accent;
+$tab-color-indicator      : $component-color-muted;
+$tab-color-indicator-dark : $component-color-muted-dark;
+$tab-color-primary        : $component-background-accent;
 
-$tab-item-color-hover      : $component-background-shade;
-$tab-item-color-active     : $component-background-shade-active;
-$tab-item-color-dark-hover : $component-background-shade-dark;
-$tab-item-color-dark-active: $component-background-shade-dark-active;
+$tab-color     : $component-color-default;
+$tab-color-dark: $component-color-default-dark;
 
-$tab-border-bottom: 1px solid $button-border-color;
-$tab-border-aside : 1px solid $button-border-color;
+$tab-border-color      : $color-border-light;
+$tab-border-color-dark : $color-border-dark;
 
-$tab-border-color-dark: $button-border-color-dark;
+$tab-border-bottom: 1px solid $tab-border-color;
+$tab-border-aside : 1px solid $tab-border-color;
+
+$tab-border-color-dark: $tab-border-color-dark;
 
 $tab-transition-time: $animation-duration-short;
 
@@ -28,28 +30,22 @@ $tab-transition-time: $animation-duration-short;
         padding      : 0px;
         border-bottom: $tab-border-bottom;
 
-
         li {
             display   : inline-block;
             box-sizing: border-box;
-            @include component-padding;
 
-            &:hover {
-                background-color: $tab-item-color-hover;
-            }
-
-            &:active {
-                background-color: $tab-item-color-active;
-            }
-
-            &.#{$prefix}-active {
+            a {
                 position: relative;
+                display : block;
+                @include component-padding;
+                @include link-decoration($tab-color);
+                appearance: none;
 
                 &:before {
                     position        : absolute;
                     content         : "";
                     height          : 2px;
-                    background-color: $tab-color-primary;
+                    background-color: transparent;
                     width           : 100%;
                     left            : 50%;
                     transform       : translateX(-50%) scale(0.8, 1);
@@ -59,7 +55,32 @@ $tab-transition-time: $animation-duration-short;
 
                 &:hover {
                     &:before {
+                        background-color: $tab-color-indicator;
+                    }
+
+                    outline: none !important;
+                }
+
+                &:active {
+                    &:before {
                         transform: translateX(-50%) scale(1, 1);
+                    }
+
+                    outline: none !important;
+                }
+            }
+
+            &.#{$prefix}-active {
+                a {
+                    &:before {
+                        background-color: $tab-color-primary;
+                    }
+
+                    &:hover {
+                        &:before {
+                            background-color: $tab-color-primary;
+                            transform       : translateX(-50%) scale(1, 1);
+                        }
                     }
                 }
             }
@@ -72,16 +93,19 @@ $tab-transition-time: $animation-duration-short;
             li {
                 display: list-item;
 
-                &.#{$prefix}-active {
+                a {
                     position: relative;
+                    display : block;
+                    //@include component-padding;
+                    // @include link-decoration($tab-color);
 
                     &:before {
                         content         : "";
                         position        : absolute;
                         width           : 2px;
-                        background-color: $tab-color-primary;
+                        background-color: transparent;
                         height          : 100%;
-                        left            : 0;
+                        left            : calc(100% -1px);
                         top             : 50%;
                         transform       : translateY(-50%) scale(1, 0.8);
                         transition      : transform $tab-transition-time ease-out;
@@ -89,9 +113,89 @@ $tab-transition-time: $animation-duration-short;
 
                     &:hover {
                         &:before {
+                            background-color: $tab-color-indicator;
+                        }
+                    }
+
+                    &:active {
+                        &:before {
                             transform: translateY(-50%) scale(1, 1);
                         }
                     }
+                }
+
+
+                &.#{$prefix}-active {
+                    a {
+                        &:before {
+                            background-color: $tab-color-primary;
+                        }
+
+                        &:hover {
+                            &:before {
+                                background-color: $tab-color-primary;
+                                transform       : translateY(-50%) scale(1, 1);
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        &.#{$prefix}-tab-side-reverse {
+            border-left  : $tab-border-aside;
+            border-bottom: none;
+
+            li {
+                display: list-item;
+
+                a {
+                    position: relative;
+                    display : block;
+                    // @include component-padding;
+                    // @include link-decoration($tab-color);
+
+                    &:before {
+                        content         : "";
+                        position        : absolute;
+                        width           : 2px;
+                        background-color: transparent;
+                        height          : 100%;
+                        left            : -1px;
+                        top             : 50%;
+                        transform       : translateY(-50%) scale(1, 0.8);
+                        transition      : transform $tab-transition-time ease-out;
+                    }
+
+                    &:hover {
+                        &:before {
+                            background-color: $tab-color-indicator;
+                        }
+                    }
+
+                    &:active {
+                        &:before {
+
+                            transform: translateY(-50%) scale(1, 1);
+                        }
+                    }
+                }
+
+
+                &.#{$prefix}-active {
+                    a {
+                        &:before {
+                            background-color: $tab-color-primary;
+                        }
+
+                        &:hover {
+                            &:before {
+                                transform: translateY(-50%) scale(1, 1);
+                            }
+                        }
+                    }
+
                 }
             }
         }
@@ -105,17 +209,18 @@ $tab-transition-time: $animation-duration-short;
             border-color: $tab-border-color-dark;
 
             li {
-                &:hover {
-                    background-color: $tab-item-color-dark-hover;
+                a {
+                    color: $tab-color-dark;
+
+                    &:hover {
+                        &:not(&.#{$prefix}-active) {
+                            &:before {
+                                background-color: $tab-color-indicator-dark;
+                            }
+                        }
+                    }
                 }
 
-                &:active {
-                    background-color: $tab-item-color-dark-active;
-                }
-            }
-
-            &.#{$prefix}-tab-side {
-                border-color: $tab-border-color-dark;
             }
         }
     }

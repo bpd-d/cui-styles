@@ -1,14 +1,16 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$list-item-hover-background: $component-background-shade-active;
-$list-item-even-background : $component-background-shade;
-$list-item-bullet-size     : 8px;
-$list-item-color           : $component-color-default;
-$list-item-color-dark      : $component-color-default-dark;
-$list-item-active-color    : $component-background-accent;
-$list-transition-time      : $animation-duration-short;
-$list-item-font-weight-bold: $text-weight-bold;
+$list-item-hover-background      : $component-background-shade-active;
+$list-item-hover-background-dark : $component-background-shade-dark-active;
+$list-item-even-background       : $component-background-shade;
+$list-item-even-background-dark  : $component-background-shade-dark;
+$list-item-bullet-size           : 8px;
+$list-item-color                 : $component-color-default;
+$list-item-color-dark            : $component-color-default-dark;
+$list-item-active-color          : $component-background-accent;
+$list-transition-time            : $animation-duration-short;
+$list-item-font-weight-bold      : $text-weight-bold;
 
 @mixin list {
     ul.#{$prefix}-list {
@@ -24,7 +26,7 @@ $list-item-font-weight-bold: $text-weight-bold;
 
         &.#{$prefix}-inline {
             li {
-                display: inline;
+                display: inline-block;
             }
         }
 
@@ -68,29 +70,43 @@ $list-item-font-weight-bold: $text-weight-bold;
 
         &.#{$prefix}-interactive {
             li {
-                cursor: pointer;
+                padding: 0px;
+
+                a {
+                    display: block;
+                    @include component-padding;
+                    @include link-decoration($list-item-color);
+
+                    &:hover,
+                    &:active {
+                        outline: none !important;
+                    }
+                }
 
                 &.#{$prefix}-active {
-                    position   : relative;
-                    font-weight: $list-item-font-weight-bold;
+                    a {
+                        position   : relative;
+                        font-weight: $list-item-font-weight-bold;
 
-                    &:before {
-                        content           : "";
-                        position          : absolute;
-                        width             : 2px;
-                        background-color  : $list-item-active-color;
-                        height            : 100%;
-                        left              : 0;
-                        top               : 50%;
-                        transform         : translateY(-50%) scale(1, 0.6);
-                        //transition      : transform $list-transition-time ease-out;
-                    }
-
-                    &:hover {
                         &:before {
-                            transform: translateY(-50%) scale(1, 1);
+                            content           : "";
+                            position          : absolute;
+                            width             : 2px;
+                            background-color  : $list-item-active-color;
+                            height            : 100%;
+                            left              : 0;
+                            top               : 50%;
+                            transform         : translateY(-50%) scale(1, 0.6);
+                            //transition      : transform $list-transition-time ease-out;
+                        }
+
+                        &:hover {
+                            &:before {
+                                transform: translateY(-50%) scale(1, 1);
+                            }
                         }
                     }
+
                 }
             }
         }
@@ -109,6 +125,29 @@ $list-item-font-weight-bold: $text-weight-bold;
                 li {
                     &:before {
                         border-color: $list-item-color-dark;
+                    }
+                }
+            }
+
+            &.#{$prefix}-hover {
+                li {
+                    &:hover {
+                        background-color: $list-item-hover-background-dark;
+                    }
+                }
+            }
+
+
+            &.#{$prefix}-stripped {
+                li:nth-child(even) {
+                    background-color: $list-item-even-background-dark;
+                }
+            }
+
+            &.#{$prefix}-interactive {
+                li {
+                    a {
+                        color: $list-item-color-dark;
                     }
                 }
             }
@@ -131,13 +170,22 @@ $list-item-font-weight-bold: $text-weight-bold;
                 }
             }
 
+            &.#{$prefix}-stripped {
+                li {
+                    background-color: $component-print-background;
+                }
+            }
+
             &.#{$prefix}-interactive {
                 li {
                     &.#{$prefix}-active {
-                        &:before {
-                            background-color: $component-print-color;
+                        a {
+                            &:before {
+                                background-color: $component-print-color;
+                            }
                         }
                     }
+
                 }
             }
         }
@@ -148,9 +196,11 @@ $list-item-font-weight-bold: $text-weight-bold;
     body:not(.#{$prefix}-no-transitions) {
         .#{$prefix}-list {
             &.#{$prefix}-interactive {
-                &.#{$prefix}-active {
-                    &:before {
-                        transition: transform $list-transition-time ease-out;
+                .#{$prefix}-active {
+                    a {
+                        &:before {
+                            transition: transform $list-transition-time ease-out;
+                        }
                     }
                 }
             }

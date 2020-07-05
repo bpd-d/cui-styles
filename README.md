@@ -24,7 +24,7 @@ More info can be found in the [Documentation]
 ## Responsiveness
 Responsivenes in the library is mostly achieved by common usage of media-queries. Framework uses **four breakpoints** to provide styling for all possible screen size. Responsiveness is partially achieved by calculating using a ratio on the size depended values
 
-## Dark theme
+## Dark theme      
 Library comes with built-in dark mode. Switch to this mode can be done by setting '*-dark' class in documents body. More details about this feature can be found in [Documentation]
 
 ## Custom prefix

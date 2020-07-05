@@ -93,6 +93,7 @@ $button-outline                       : $outline-default;
         }
 
         &:hover {
+            outline: none !important;
 
             &.#{$prefix}-default {
                 border-color: $button-border-color-hover;
@@ -100,20 +101,21 @@ $button-outline                       : $outline-default;
         }
 
         &:active {
+            outline: none !important;
 
             &.#{$prefix}-shade {
                 background-color: $button-background-shade-active;
             }
 
             &.#{$prefix}-default {
-                border-color    : $button-border-color-active;
-                background-color: $button-background-default-active;
+                border-color       : $button-border-color-active;
+                // background-color: $button-background-default-active;
             }
         }
 
-        &:focus {
-            outline: $button-outline;
-        }
+        // &:focus {
+        //     outline: $button-outline;
+        // }
 
     }
 
@@ -270,9 +272,9 @@ $button-outline                       : $outline-default;
 
             &:active {
                 &.#{$prefix}-default {
-                    color           : $button-color-default-dark;
-                    border-color    : $button-border-color-active-dark;
-                    background-color: $button-background-default-active-dark;
+                    color             : $button-color-default-dark;
+                    border-color      : $button-border-color-active-dark;
+                    //background-color: $button-background-default-active-dark;
                 }
 
                 &.#{$prefix}-shade {

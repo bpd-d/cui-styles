@@ -14,8 +14,8 @@ $card-color-default-dark      : $component-color-default-dark;
 $card-separator-color         : $color-border-light;
 $card-separator-color-dark    : $color-border-dark;
 $card-separator-color-accent  : $color-border-dark;
-$card-border-color            : $color-border-light;
-$card-border-color-dark       : $color-border-dark;
+$card-border-color            : transparent; //$color-border-light;
+$card-border-color-dark       : transparent; //$color-border-dark;
 
 
 @mixin card {

@@ -7,26 +7,33 @@ $head-font-larger     : $font-larger;
 $head-font-xlarge     : $font-xlarge;
 $head-font-normal     : $font-normal;
 
+$head-margin      : $margin-global;
+$head-margin-large: $margin-global-large;
+$head-margin-small: $margin-global-small;
 
 @mixin headings {
     .#{$prefix}-h1 {
         font-size  : $head-font-xlarge;
         font-weight: $head-text-weight-thin;
+        margin     : $head-margin-large 0px;
     }
 
     .#{$prefix}-h2 {
         font-size  : $head-font-larger;
         font-weight: $head-text-weight-thin;
+        margin     : $head-margin-large 0px;
     }
 
     .#{$prefix}-h3 {
         font-size  : $head-font-large;
         font-weight: $head-text-weight-bold;
+        margin     : $head-margin 0px;
     }
 
     .#{$prefix}-h4 {
         font-size  : $head-font-normal;
         font-weight: $head-text-weight-bold;
+        margin     : $head-margin-small 0px;
     }
 }
 

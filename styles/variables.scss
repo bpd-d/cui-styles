@@ -32,18 +32,18 @@ $breakpoint-m : 960px;
 $breakpoint-l : 1200px;
 $breakpoint-xl: 1600px;
 
-$padding-global      : 1rem;
-$padding-global-large: 2rem;
-$padding-global-small: 0.5rem;
+$padding-global       : var(--#{$prefix}-padding);
+$padding-global-large : calc(#{$padding-global} * 2);
+$padding-global-small : calc(#{$padding-global} * 0.5);
 
-$margin-global      : 1rem;
-$margin-global-large: 2rem;
-$margin-global-small: 0.5rem;
+$margin-global      : var(--#{$prefix}-margin);
+$margin-global-large: calc(#{$margin-global} * 2);
+$margin-global-small: calc(#{$margin-global} * 0.5);
 
 $notification-width  : 350px;
 $notification-margin : 20px;
 
-$border-radius-default: 6px;
+$border-radius-default: var(--#{$prefix}-border-radius);
 $border-radius-round  : 100px;
 
 // Sizes
@@ -53,9 +53,9 @@ $size-large : 450px;
 $size-xlarge: 600px;
 
 // Text weight
-$text-weight-normal: 500;
+$text-weight-normal: 400;
 $text-weight-thin  : 300;
-$text-weight-bold  : 700;
+$text-weight-bold  : 800;
 
 // shadows
 
@@ -82,7 +82,7 @@ $default-line-height: 20px;
 
 //$transition-time  : 150ms;
 
-$outline-default: var(--outline);
+$outline-default: var(--#{$prefix}-outline);
 
 $color-backdrop-light: rgba(255, 255, 255, 0.3);
 $color-backdrop-dark : rgba(22, 22, 22, 0.3);
@@ -158,6 +158,8 @@ $component-print-border       : 1px solid $component-color-muted !important;
 $component-print-border-color : $component-color-muted !important;
 
 $component-margin: var(--#{$prefix}-component-space);
+
+$scrollbar-width: var(--#{$prefix}-scrollbar-width);
 
 // --color-primary                   : #1565c0;
 //    --color-primary-darken            : #0B3564;

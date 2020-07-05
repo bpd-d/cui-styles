@@ -8,7 +8,7 @@ $navbar-color-default-dark     : $component-color-default-dark;
 $navbar-item-padding: $padding-global;
 
 $navbar-text-normal: $text-weight-normal;
-$nabar-text-bold   : $text-weight-bold;
+$navbar-text-bold  : $text-weight-bold;
 
 @mixin navbar {
     .#{$prefix}-navbar {
@@ -40,10 +40,16 @@ $nabar-text-bold   : $text-weight-bold;
                 box-sizing     : border-box;
                 align-items    : center;
                 justify-content: center;
-                padding        : $navbar-item-padding;
+                padding        : 1px;
 
                 a {
                     text-decoration: none;
+                    padding        : $navbar-item-padding;
+
+                    &:hover,
+                    &:active {
+                        outline: none !important;
+                    }
                 }
             }
         }

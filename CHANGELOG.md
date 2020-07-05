@@ -1,5 +1,16 @@
 # cUI Styles CHANGELOG:
-## [0.0.7] 
+## [0.0.8] 2020-07-05
+* [Fixed] Paddings in icons
+* [Changed] Header have new top-and bottom margins
+* [Changed] Tab indicators
+* [Changed] Tooltip will show also on focus
+* [Added] New CSS variables added to global scope
+* [Added] New component - separator
+* [Added] New drop option - drop hover
+* [Added] New position - float
+* [Added] Scrollbar customization
+
+## [0.0.7] 2020-06-30 
 * [Fixed] Tooltip default view not properly displayed
 * [Fixed] Hints not properly displayed in dark mode
 * [Fixed] Cover not behaving properly on overflow - added cover container

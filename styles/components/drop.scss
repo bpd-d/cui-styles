@@ -122,22 +122,29 @@ $drop-transition-time          : $animation-duration-short;
         min-width : 200px;
         color     : $drop-color-default;
         box-sizing: border-box;
+        z-index   : 10;
 
         li {
-            margin    : 0;
-            padding   : 0;
-            box-sizing: border-box;
-            display   : block;
-            overflow  : hidden;
+            margin       : 0;
+            padding      : 0;
+            box-sizing   : border-box;
+            display      : block;
+            // overflow  : hidden;
 
             a {
                 @include component-padding;
-                text-decoration: none;
-                color          : inherit;
-                display        : block;
+                text-decoration : none;
+                color           : inherit;
+                display         : block;
+                background-color: transparent;
 
                 &:hover {
                     background-color: $drop-nav-hover-background;
+                    outline         : none !important;
+                }
+
+                &:active {
+                    outline: none !important;
                 }
             }
 
@@ -191,9 +198,58 @@ $drop-transition-time          : $animation-duration-short;
 
 @mixin drop-no-transition {
     body:not(.#{$prefix}-no-transitions) {
+        .#{$prefix}-drop-trigger {
+
+            &:hover,
+            &:focus-within {
+                .#{$prefix}-drop-hover {
+                    transition: transform $drop-transition-time ease-in;
+                }
+            }
+        }
+
         .#{$prefix}-drop {
             &.#{$prefix}-active {
                 transition: transform $drop-transition-time ease-in;
+            }
+        }
+    }
+}
+
+@mixin drop-hover {
+    .#{$prefix}-drop-trigger {
+
+        &:hover,
+        &:focus-within {
+            .#{$prefix}-drop-hover {
+                transform : scale(1) translateX(-50%) translateY(calc(100% + #{$drop-translate-y}));
+
+                &.#{$prefix}-drop-top-center {
+                    transform: scale(1) translateX(-50%) translateY(calc(-100% - #{$drop-translate-y}));
+                }
+
+                &.#{$prefix}-drop-top-left {
+                    transform: scale(1) translateX(0%) translateY(calc(-100% - #{$drop-translate-y}));
+
+                }
+
+                &.#{$prefix}-drop-top-right {
+                    transform: scale(1) translateX(-100%) translateY(calc(-100% - #{$drop-translate-y}));
+                }
+
+                &.#{$prefix}-drop-bottom-left {
+                    transform: scale(1) translateX(0%) translateY(calc(100% + #{$drop-translate-y}));
+
+                }
+
+                &.#{$prefix}-drop-bottom-right {
+                    transform: scale(1) translateX(-100%) translateY(calc(100% + #{$drop-translate-y}));
+
+                }
+
+                &.#{$prefix}-drop-bottom-center {
+                    transform: scale(1) translateX(-50%) translateY(calc(100% + #{$drop-translate-y}));
+                }
             }
         }
     }
@@ -207,4 +263,5 @@ $drop-transition-time          : $animation-duration-short;
     @include dropdown-print();
     @include drop-nav();
     @include drop-nav-dark();
+    @include drop-hover();
 }

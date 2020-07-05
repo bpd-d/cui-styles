@@ -11,6 +11,8 @@ $text-line-height: $line-height;
 $text-line-large : $line-height-large;
 $text-line-small : $line-height-small;
 $text-line-xlarge: $line-height-xlarge;
+$font-weight     : $text-weight-normal;
+
 
 $text-color-muted     : $component-color-muted;
 $text-color-muted-dark: $component-color-muted-dark;
@@ -27,6 +29,7 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     a,
     span {
         line-height: $text-line-height;
+        font-weight: $font-weight;
     }
 
     .#{$prefix}-text-muted {
@@ -154,6 +157,7 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     .#{$prefix}-article-description {
         font-size  : $text-large;
         line-height: $line-height-large;
+        font-weight: $font-weight;
     }
 }
 

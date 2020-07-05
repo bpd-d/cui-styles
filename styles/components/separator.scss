@@ -1,0 +1,120 @@
+/**
+* Sepratator
+*/
+@use '../variables'as *;
+@use '../mixins'as *;
+
+// Variables
+$separator-padding   : $padding-global;
+$separator-color     : $color-border-light;
+$separator-color-dark: $color-border-dark;
+$separator-width     : 400px;
+$separator-height    : 2px;
+
+// Mixins
+@mixin separator() {
+    .#{$prefix}-separator {
+        display : block;
+        position: relative;
+        padding : $separator-padding;
+
+        &:empty {
+            &:before {
+                content         : "";
+                width           : $separator-width;
+                height          : 2px;
+                background-color: $separator-color;
+            }
+        }
+
+        &:empty::before,
+        >*:only-child {
+            position : absolute;
+            top      : 50%;
+            left     : 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        >*:only-child {
+            display: inline-block;
+            @include component-padding;
+
+
+            &:before,
+            &:after {
+                content         : "";
+                position        : absolute;
+                top             : 50%;
+                width           : calc((#{$separator-width} - 100%) * 0.5);
+                height          : 2px;
+                background-color: $separator-color;
+            }
+
+            &:before {
+                left     : 0px;
+                transform: translate(-100%, -50%);
+            }
+
+            &:after {
+                right    : 0px;
+                transform: translate(100%, -50%);
+            }
+        }
+    }
+}
+
+@mixin separator-dark {
+    @include mode-dark {
+        .#{$prefix}-separator {
+            &:empty {
+                &:before {
+                    background-color: $separator-color-dark;
+                }
+            }
+
+            >*:only-child {
+
+                &:before,
+                &:after {
+                    background-color: $separator-color-dark;
+                }
+
+            }
+        }
+    }
+}
+
+@mixin separator-colors {
+
+    .#{$prefix}-container.#{$prefix}-inverse,
+    .#{$prefix}-container.#{$prefix}-accent,
+    .#{$prefix}-container.#{$prefix}-secondary,
+    .#{$prefix}-card.#{$prefix}-inverse,
+    .#{$prefix}-card.#{$prefix}-accent,
+    .#{$prefix}-card.#{$prefix}-secondary {
+        .#{$prefix}-separator {
+            &:empty {
+                &:before {
+                    background-color: $separator-color-dark;
+                }
+            }
+
+            >*:only-child {
+
+                &:before,
+                &:after {
+                    background-color: $separator-color-dark;
+                }
+
+            }
+        }
+    }
+}
+
+
+// Exports
+@mixin definitions {
+    @include separator();
+    @include separator-dark();
+    @include separator-colors();
+}

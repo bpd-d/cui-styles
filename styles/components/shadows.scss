@@ -46,6 +46,12 @@ $transition-time-normal: $animation-duration-default;
     }
 }
 
+@mixin box-shadow-remove {
+    .#{$prefix}-box-shadow-remove {
+        box-shadow: none;
+    }
+}
+
 @mixin box-shadow-no-transition {
     body:not(.#{$prefix}-no-transitions) {
         [class*="#{$prefix}-box-shadow-hover"] {
@@ -57,5 +63,6 @@ $transition-time-normal: $animation-duration-default;
 @mixin definitions {
     @include box-shadow();
     @include box-shadow-hover();
+    @include box-shadow-remove();
     @include box-shadow-no-transition();
 }

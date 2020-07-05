@@ -1,7 +1,8 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$input-font-size-default: 1rem;
+$input-font-size-default: $font-normal;
+$input-font-size-small  : $font-small;
 $input-line-height      : $default-line-height;
 $input-background-color : var(--input-background-color);
 
@@ -49,9 +50,9 @@ $input-color-secondary-active: $component-background-secondary-active;
 $input-animation-time: $animation-duration-default;
 
 $input-border-radius  : $border-radius-default;
-$input-padding-default: 0.5rem;
+$input-padding-default: $padding-global-small;
 $input-outline        : $outline-default;
-
+$input-margin-small   : $margin-global-small;
 
 
 
@@ -88,12 +89,12 @@ $input-outline        : $outline-default;
         }
 
         &:hover {
-            border: 1px solid $input-border-color-active;
+            outline: none !important;
+            border : 1px solid $input-border-color-active;
         }
 
         &:focus {
-            border : 1px solid $input-border-color-active;
-            outline: $input-outline;
+            border: 1px solid $input-border-color-active;
 
             &::placeholder {
                 color: $input-placeholder-color-active;
@@ -200,7 +201,11 @@ $input-outline        : $outline-default;
             z-index      : -1;
         }
 
-        &:hover,
+        &:hover {
+            outline     : none !important;
+            border-color: $input-border-color-active;
+        }
+
         &:focus {
             &:before {
                 border-color: $input-border-color-active;
@@ -249,6 +254,7 @@ $input-outline        : $outline-default;
             }
 
             &:hover {
+
                 &:before {
                     border-color: $input-color-accent-hover;
                 }
@@ -374,14 +380,15 @@ $input-outline        : $outline-default;
         }
 
         &:hover {
-            border: 1px solid $input-border-color-active;
+            outline: none !important;
+            border : 1px solid $input-border-color-active;
         }
 
+        &:active,
         &:focus {
-            outline: $input-outline;
+            outline     : none !important;
+            border-color: $input-border-color-active;
         }
-
-
     }
 
     select::-ms-expand {
@@ -436,7 +443,7 @@ $input-outline        : $outline-default;
         }
 
         &:focus {
-            outline     : $input-outline;
+            outline     : none !important;
             border-color: $input-border-color-active;
         }
 
@@ -488,7 +495,7 @@ $input-outline        : $outline-default;
         .#{$prefix}-form-description {
             order    : 1;
             color    : $input-description-color;
-            font-size: 0.8em;
+            font-size: $input-font-size-small;
 
             &:before {
                 content: "("
@@ -502,18 +509,19 @@ $input-outline        : $outline-default;
         input,
         select {
             order     : 2;
-            margin-top: 1em;
+            margin-top: $input-margin-small;
             display   : block;
         }
 
         &.#{$prefix}-inline {
-            .#{$prefix}-input-label {
+            .#{$prefix}-form-label {
                 display: inline-block;
             }
 
             input,
             select {
-                display: inline-block;
+                margin-top: 0px;
+                display   : inline-block;
             }
         }
     }
@@ -535,7 +543,14 @@ $input-outline        : $outline-default;
             @include input-transition;
 
             &:hover {
+                outline     : none !important;
                 border-color: $input-border-color-active;
+                @include input-transition(hover)
+            }
+
+            &:active,
+            &:focus {
+                outline: none !important;
                 @include input-transition(hover)
             }
 
@@ -543,11 +558,6 @@ $input-outline        : $outline-default;
                 border-color    : $input-border-color-active;
                 background-color: $input-border-color-active;
                 background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle r='3' cy='7' cx='7' id='path842' style='fill:%23ffffff;stroke:none;fill-opacity:1' /%3E%3C/svg%3E%0A");
-                ;
-            }
-
-            &:focus {
-                outline: $input-outline;
             }
 
             &:disabled {
@@ -599,7 +609,8 @@ $input-outline        : $outline-default;
 
 @mixin radio-custom {
     div.#{$prefix}-radio-custom {
-        display: inline-block;
+        display   : inline-block;
+        box-sizing: border-box;
 
         input[type="radio"] {
             opacity   : 0;
@@ -612,25 +623,49 @@ $input-outline        : $outline-default;
                 display : inline-block;
                 overflow: hidden;
                 cursor  : pointer;
+                position: relative;
                 @include component-padding;
-                border       : 1px solid $input-border-color-inactive;
-                border-radius: $border-radius-default;
+
+
+                &:before {
+                    content      : "";
+                    position     : absolute;
+                    top          : 0;
+                    left         : 0;
+                    width        : calc(100%-2px);
+                    height       : calc(100%-2px);
+                    border       : 1px solid $input-border-color-inactive;
+                    border-radius: $border-radius-default;
+                }
 
                 &:hover {
-                    border-color: $input-border-color-active;
+                    &:before {
+                        border-color: $input-border-color-active;
+                    }
+
                 }
 
             }
 
             &:checked {
                 +.#{$prefix}-content {
-                    border-color: $input-border-color-active;
+                    &:before {
+                        width       : calc(100% -4px);
+                        height      : calc(100% -4px);
+                        border-width: 2px;
+                        border-color: $input-border-color-active;
+                    }
+
                 }
             }
 
             &:focus {
                 +.#{$prefix}-content {
-                    outline: $input-outline;
+                    &:before {
+                        width       : calc(100% -6px);
+                        height      : calc(100% -6px);
+                        border-width: 3px;
+                    }
                 }
             }
         }
@@ -701,7 +736,8 @@ $input-outline        : $outline-default;
             }
 
             &:focus {
-                outline: $input-outline;
+                outline: none !important;
+                @include input-transition(hover);
             }
 
             &:disabled {
@@ -868,7 +904,9 @@ $input-outline        : $outline-default;
 
             &:focus {
                 +.#{$prefix}-content {
-                    outline: $input-outline;
+                    &:after {
+                        border-width: 2px;
+                    }
                 }
             }
         }
@@ -892,7 +930,8 @@ $input-outline        : $outline-default;
             width           : 100%;
             box-sizing      : border-box;
 
-            &:hover {
+            &:hover,
+            &:focus {
                 opacity: 1;
 
                 &::-webkit-slider-thumb {
@@ -1119,28 +1158,6 @@ $input-outline        : $outline-default;
                     }
                 }
             }
-
-            // &.#{$prefix}-accent {
-            //     &:hover {
-            //         border-color: $input-color-accent;
-            //     }
-
-            //     &:checked {
-            //         border-color    : $input-color-accent;
-            //         background-color: $input-color-accent;
-            //     }
-            // }
-
-            // &.#{$prefix}-secondary {
-            //     &:hover {
-            //         border-color: $input-color-secondary;
-            //     }
-
-            //     &:checked {
-            //         border-color    : $input-color-secondary;
-            //         background-color: $input-color-secondary;
-            //     }
-            // }
         }
     }
 }
@@ -1152,16 +1169,22 @@ $input-outline        : $outline-default;
             &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
                 input[type="radio"] {
                     +.#{$prefix}-content {
-                        border: 1px solid $input-border-color-inactive-dark;
+                        &:before {
+                            border: 1px solid $input-border-color-inactive-dark;
+                        }
 
                         &:hover {
-                            border-color: $input-border-color-active-dark;
+                            &:before {
+                                border-color: $input-border-color-active-dark;
+                            }
                         }
                     }
 
                     &:checked {
                         +.#{$prefix}-content {
-                            border-color: $input-border-color-active-dark;
+                            &:before {
+                                border: 2px solid $input-border-color-active-dark;
+                            }
                         }
                     }
                 }

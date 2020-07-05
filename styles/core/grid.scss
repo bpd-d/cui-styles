@@ -6,6 +6,7 @@
 */
 
 @use '../variables'as *;
+@use '../mixins'as m;
 // VARIABLES
 $min-width : 150px;
 
@@ -213,37 +214,31 @@ $flex-grid-space-padding: calc(#{$component-margin}*2);
 }
 
 @mixin grid-media {
-    @media (max-width: $breakpoint-s) {
+    @include m.media-screen-max-small {
         @include create-child-width--small()
     }
 
-    // View small
-    @media (min-width: $breakpoint-s) {
+    @include m.media-screen-min-small {
         .#{$prefix}-flex-grid {
-            @include create-child-width(--s)
+            @include create-child-width(--s);
         }
     }
 
-    // View medium
-    @media (min-width: $breakpoint-m) {
-
+    @include m.media-screen-min-medium {
         .#{$prefix}-flex-grid {
-            @include create-child-width(--m)
+            @include create-child-width(--m);
         }
     }
 
-
-    // View large
-    @media (min-width: $breakpoint-l) {
-
+    @include m.media-screen-min-large {
         .#{$prefix}-flex-grid {
-            @include create-child-width(--l)
+            @include create-child-width(--l);
         }
     }
 
-    @media (min-width: $breakpoint-xl) {
+    @include m.media-screen-min-xlarge {
         .#{$prefix}-flex-grid {
-            @include create-child-width(--xl)
+            @include create-child-width(--xl);
         }
     }
 }

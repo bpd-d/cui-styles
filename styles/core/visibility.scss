@@ -2,6 +2,7 @@
 //$prefix : 'cui' !default;
 
 @use '../variables'as *;
+@use '../mixins'as *;
 
 @mixin visibility($size) {
     .#{$prefix}-hidden--#{$size} {
@@ -60,26 +61,20 @@
     @include visibility_normal(xl);
 
     // Media
-
-    // View medium
-    @media (min-width: $breakpoint-s) {
+    @include media-screen-min-small {
         @include visibility(s);
     }
 
-    // View medium
-    @media (min-width: $breakpoint-m) {
+    @include media-screen-min-medium {
         @include visibility(m);
     }
 
-    // View large
-    @media (min-width: $breakpoint-l) {
+    @include media-screen-min-large {
         @include visibility(l);
-
     }
 
-    @media (min-width: $breakpoint-xl) {
+    @include media-screen-min-xlarge {
         @include visibility(xl);
-
     }
 
     @media(orientation: landscape) {

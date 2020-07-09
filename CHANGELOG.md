@@ -1,5 +1,5 @@
 # cUI Styles CHANGELOG:
-## [0.0.9]
+## [0.0.9] 2020-07-09
 * [Fix] Dependency issues
 * [Changed] Behavior of interactive components when they are focused
 * [Added] Navbar space options

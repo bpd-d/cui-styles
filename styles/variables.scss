@@ -11,6 +11,21 @@ sans-serif,
 "Segoe UI Emoji",
 "Segoe UI Symbol";
 
+$font-family-mono: Consolas,
+"Andale Mono WT",
+"Andale Mono",
+"Lucida Console",
+"Lucida Sans Typewriter",
+"DejaVu Sans Mono",
+"Bitstream Vera Sans Mono",
+"Liberation Mono",
+"Nimbus Mono L",
+Monaco,
+"Courier New",
+Courier,
+monospace;
+
+$font-xsmall : 0.6rem;
 $font-small  : 0.8rem;
 $font-normal : 1rem;
 $font-large  : 1.2rem;
@@ -95,6 +110,8 @@ $app-background-dark: var(--#{$prefix}-color-dark-app-background);
 $app-color          : var(--#{$prefix}-color-light-base);
 $app-color-dark     : var(--#{$prefix}-color-dark-base);
 
+
+
 $component-background-default           : var(--#{$prefix}-color-light-background);
 $component-background-default-dark      : var(--#{$prefix}-color-dark-background);
 $component-background-inverse           : var(--#{$prefix}-color-dark-background);
@@ -157,9 +174,13 @@ $component-print-shadow       : none !important;
 $component-print-border       : 1px solid $component-color-muted !important;
 $component-print-border-color : $component-color-muted !important;
 
-$component-margin: var(--#{$prefix}-component-space);
+$selection-color           : $component-color-default;
+$selection-background      : $component-background-shade-active;
+$selection-color-dark      : $component-color-default-dark;
+$selection-background-dark : $component-background-shade-dark-active;
 
-$scrollbar-width: var(--#{$prefix}-scrollbar-width);
+$component-margin : var(--#{$prefix}-component-space);
+$scrollbar-width  : var(--#{$prefix}-scrollbar-width);
 
 // --color-primary                   : #1565c0;
 //    --color-primary-darken            : #0B3564;

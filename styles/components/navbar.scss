@@ -5,10 +5,13 @@ $navbar-background-default-dark: $component-background-default-dark;
 $navbar-color-default          : $component-color-default;
 $navbar-color-default-dark     : $component-color-default-dark;
 
-$navbar-item-padding: $padding-global;
+$navbar-item-padding      : $padding-global;
+$navbar-item-padding-small: $padding-global-small;
 
 $navbar-text-normal: $text-weight-normal;
 $navbar-text-bold  : $text-weight-bold;
+$navbar-margin     : $margin-global;
+
 
 @mixin navbar {
     .#{$prefix}-navbar {
@@ -27,6 +30,18 @@ $navbar-text-bold  : $text-weight-bold;
             box-shadow      : none;
         }
 
+        &.#{$prefix}-space {
+            ul {
+                padding: $navbar-item-padding-small;
+            }
+        }
+
+        &.#{$prefix}-large {
+            ul {
+                padding: $navbar-item-padding;
+            }
+        }
+
         ul {
             display   : inline-block;
             list-style: none;
@@ -43,8 +58,12 @@ $navbar-text-bold  : $text-weight-bold;
                 padding        : 1px;
 
                 a {
+                    &:not(.#{$prefix}-icon-button):not(.#{$prefix}-button) {
+                        padding: $navbar-item-padding;
+                    }
+
                     text-decoration: none;
-                    padding        : $navbar-item-padding;
+
 
                     &:hover,
                     &:active {
@@ -61,6 +80,7 @@ $navbar-text-bold  : $text-weight-bold;
             order       : 1;
             height      : 100%;
             min-width   : calc(100% / 3);
+            margin-left : $navbar-margin;
         }
 
         .#{$prefix}-navbar-middle {
@@ -79,6 +99,7 @@ $navbar-text-bold  : $text-weight-bold;
             order          : 3;
             min-width      : calc(100% / 3);
             box-sizing     : border-box;
+            margin-right   : $navbar-margin;
 
         }
 

@@ -1,0 +1,163 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$code-color             : $component-color-default;
+$code-syntax-color      : $component-color-muted;
+$code-color-dark        : $component-color-default-dark;
+$code-syntax-color-dark : $component-color-muted-dark;
+
+$code-tag-color     : get-theme-color('accent');
+$code-variable-color: get-theme-color('secondary');
+$code-unit-color    : get-theme-color('warning');
+$code-attr-color    : get-theme-color('error');
+$code-value-color   : get-theme-color('success');
+
+$code-background-color     : $component-background-shade;
+$code-background-color-dark: $component-background-shade-dark;
+
+$code-radius     : $border-radius-default;
+$font-size       : $font-normal;
+$code-line-height: $line-height;
+
+$code-syntax-padding: $padding-global;
+$code-indent-base   : 1rem;
+
+
+@mixin code {
+
+    pre,
+    div {
+        &.#{$prefix}-code {
+            background-color: $code-background-color;
+            @include component-padding(normal, true);
+            border-radius: $code-radius;
+            font-size    : $font-size;
+            font-family  : $font-family-mono;
+            color        : $code-color;
+            overflow-x   : auto;
+            tab-size     : 4;
+            counter-reset: line;
+
+            &[data-lang] {
+                &:before {
+                    content       : attr(data-lang);
+                    display       : block;
+                    color         : $code-syntax-color;
+                    line-height   : $code-line-height;
+                    box-sizing    : border-box;
+                    padding-bottom: $code-syntax-padding;
+                }
+            }
+
+            &.#{$prefix}-format {
+                line-height: 0;
+
+                &.#{$prefix}-line-counter {
+                    &>span {
+                        &:before {
+                            counter-increment: line;
+                            content          : counter(line);
+                            display          : inline-block;
+                            color            : $code-syntax-color;
+                            padding-right    : $code-syntax-padding;
+                            order            : 0;
+                        }
+                    }
+                }
+
+                &>span {
+                    display: block;
+
+                    &>* {
+                        display: inline-block;
+                    }
+
+                    .#{$prefix}-tag {
+                        color: $code-tag-color;
+                    }
+
+                    .#{$prefix}-value {
+                        color: $code-value-color;
+                    }
+
+                    .#{$prefix}-attribute {
+                        color: $code-attr-color;
+                    }
+
+                    .#{$prefix}-unit {
+                        color: $code-unit-color;
+                    }
+
+                    .#{$prefix}-var {
+                        color: $code-variable-color;
+                    }
+
+                    @for $index from 1 to 10 {
+                        .#{$prefix}-indent-#{$index} {
+                            margin-left: calc(#{$code-indent-base} *#{$index});
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin code-dark {
+    @include mode-dark {
+
+        pre,
+        div {
+            &.#{$prefix}-code {
+                color           : $code-color-dark;
+                background-color: $code-background-color-dark;
+
+                &:before {
+                    color: $code-syntax-color-dark;
+                }
+
+                &>span {
+                    color: $code-color-dark;
+                }
+            }
+        }
+    }
+}
+
+@mixin code-print {
+    @include mode-print {
+
+        pre,
+        div {
+            &.#{$prefix}-code {
+                color: $component-print-color;
+
+                &[data-lang] {
+                    &:before {
+                        color: $component-print-color;
+                    }
+                }
+
+                &.#{$prefix}-format {
+                    &.#{$prefix}-line-counter {
+                        &>span {
+                            &:before {
+                                color: $component-print-color;
+                            }
+                        }
+                    }
+
+                    &>span {
+                        $color: $component-print-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin definitions {
+    @include code();
+    @include code-dark();
+    @include code-print();
+}

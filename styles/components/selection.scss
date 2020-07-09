@@ -1,0 +1,47 @@
+@use '../variables'as *;
+@use '../mixins.scss'as *;
+
+@mixin selection {
+    * {
+        ::selection {
+            color           : $selection-color;
+            background-color: $selection-background;
+        }
+    }
+
+    .#{$prefix}-inverse,
+    .#{$prefix}-accent,
+    .#{$prefix}-secondary,
+    .#{$prefix}-error,
+    .#{$prefix}-warning,
+    .#{$prefix}-success {
+        ::selection {
+            color           : $selection-color-dark;
+            background-color: $selection-background-dark;
+        }
+    }
+}
+
+@mixin selection-dark {
+    @include mode-dark {
+        * {
+            ::selection {
+                color           : $selection-color-dark;
+                background-color: $selection-background-dark;
+            }
+        }
+
+        .#{$prefix}-inverse {
+            ::selection {
+                color           : $selection-color;
+                background-color: $selection-background;
+            }
+        }
+    }
+
+}
+
+@mixin definitions {
+    @include selection();
+    @include selection-dark();
+}

@@ -29,6 +29,8 @@
 @use 'components/shadows';
 @use 'components/separator';
 @use 'components/scrollbar';
+@use 'components/code';
+@use 'components/selection';
 
 @mixin definitions {
     @include navbar.definitions;
@@ -62,4 +64,6 @@
     @include shadows.definitions;
     @include separator.definitions;
     @include scrollbar.definitions;
+    @include code.definitions;
+    @include selection.definitions;
 }

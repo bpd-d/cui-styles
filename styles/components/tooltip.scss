@@ -38,6 +38,7 @@ $tooltip-margin         : $component-margin;
             width           : 100px;
             max-width       : 200px;
             transform-origin: top left;
+            outline         : none !important;
 
             @include component-padding(small, true);
             z-index: 1160;

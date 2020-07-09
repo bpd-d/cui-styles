@@ -1,4 +1,10 @@
 # cUI Styles CHANGELOG:
+## [0.0.9]
+* [Fix] Dependency issues
+* [Changed] Behavior of interactive components when they are focused
+* [Added] Navbar space options
+* [Added] Code and selection styling options
+
 ## [0.0.8] 2020-07-05
 * [Fixed] Paddings in icons
 * [Changed] Header have new top-and bottom margins

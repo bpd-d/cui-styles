@@ -1,5 +1,5 @@
-@use "variables.scss"as *;
-@use "mixins.scss"as *;
+@use "../variables.scss"as *;
+@use "../mixins.scss"as *;
 
 $background-color-shade      : $component-background-shade;
 $background-color-shade-dark : $component-background-shade-dark;

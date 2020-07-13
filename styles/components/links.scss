@@ -33,6 +33,18 @@ $link-transition-time  : $animation-duration-short;
                 transform: translateX(-50%) scale(1, 1);
             }
         }
+
+        &:focus {
+            outline: none;
+
+            //font-weight: $text-weight-semi-bold;
+            &:not(:hover) {
+                &:before {
+                    transform: translateX(-80%) scale(0.4, 1);
+                }
+            }
+
+        }
     }
 }
 

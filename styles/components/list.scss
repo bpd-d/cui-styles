@@ -73,30 +73,45 @@ $list-item-font-weight-bold      : $text-weight-bold;
                 padding: 0px;
 
                 a {
-                    display: block;
+                    position: relative;
+                    display : block;
                     @include component-padding;
                     @include link-decoration($list-item-color);
+
+                    &:before {
+                        content           : "";
+                        position          : absolute;
+                        width             : 2px;
+                        background-color  : transparent;
+                        height            : 100%;
+                        left              : 0;
+                        top               : 50%;
+                        transform         : translateY(-50%) scale(1, 0.6);
+                        //transition      : transform $list-transition-time ease-out;
+                    }
 
                     &:hover,
                     &:active {
                         outline: none !important;
                     }
+
+                    &:focus {
+                        font-weight: $text-weight-semi-bold;
+                        box-shadow : none !important;
+
+                        &:before {
+                            background-color: $list-item-color;
+                        }
+                    }
                 }
 
                 &.#{$prefix}-active {
                     a {
-                        position   : relative;
+
                         font-weight: $list-item-font-weight-bold;
 
                         &:before {
-                            content           : "";
-                            position          : absolute;
-                            width             : 2px;
                             background-color  : $list-item-active-color;
-                            height            : 100%;
-                            left              : 0;
-                            top               : 50%;
-                            transform         : translateY(-50%) scale(1, 0.6);
                             //transition      : transform $list-transition-time ease-out;
                         }
 
@@ -106,7 +121,6 @@ $list-item-font-weight-bold      : $text-weight-bold;
                             }
                         }
                     }
-
                 }
             }
         }
@@ -148,6 +162,18 @@ $list-item-font-weight-bold      : $text-weight-bold;
                 li {
                     a {
                         color: $list-item-color-dark;
+                    }
+
+                    &:not(.#{$prefix}-active) {
+                        a {
+                            &:focus {
+                                &:before {
+                                    background-color: $list-item-color-dark;
+                                }
+                            }
+                        }
+
+
                     }
                 }
             }

@@ -1,7 +1,7 @@
 $prefix : 'cui' !default;
 
 @use 'variables'with($prefix: $prefix);
-@use "core/root"with($prefix: $prefix);
+@use "root"with($prefix     : $prefix);
 @use 'core/head';
 @use 'core/body';
 @use 'dark';

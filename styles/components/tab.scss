@@ -68,6 +68,11 @@ $tab-transition-time: $animation-duration-short;
 
                     outline: none !important;
                 }
+
+                &:focus {
+                    outline    : none !important;
+                    font-weight: $text-weight-semi-bold;
+                }
             }
 
             &.#{$prefix}-active {
@@ -121,6 +126,11 @@ $tab-transition-time: $animation-duration-short;
                         &:before {
                             transform: translateY(-50%) scale(1, 1);
                         }
+                    }
+
+                    &:focus {
+                        outline    : none !important;
+                        font-weight: $text-weight-semi-bold;
                     }
                 }
 

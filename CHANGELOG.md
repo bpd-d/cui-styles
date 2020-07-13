@@ -1,4 +1,9 @@
 # cUI Styles CHANGELOG:
+## [0.1.0] 2020-07-13
+* [Fix] Navbar item incorreclty displayed on --s
+* [Fix] Dialog width on small devices
+* [Added] Initial implementation of focus across all cUI elements
+
 ## [0.0.9] 2020-07-09
 * [Fix] Dependency issues
 * [Changed] Behavior of interactive components when they are focused

@@ -30,7 +30,7 @@ $dialog-animation-time-short   : $animation-duration-short;
 
         .#{$prefix}-dialog-container {
             opacity           : 0;
-            width             : 500px;
+            width             : $size-medium;
             background-color  : $dialog-background-default;
             color             : $dialog-color-default;
             box-shadow        : $shadow3;
@@ -96,6 +96,18 @@ $dialog-animation-time-short   : $animation-duration-short;
 
     body[#{$prefix}-dialog-show='noscroll'] {
         overflow: hidden;
+    }
+
+    @include media-screen-min-small {
+        .#{$prefix}-dialog-container {
+            width: $size-large !important;
+        }
+    }
+
+    @include media-screen-min-xlarge {
+        .#{$prefix}-dialog-container {
+            width: $size-xlarge !important;
+        }
     }
 
 }

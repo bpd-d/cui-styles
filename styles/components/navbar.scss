@@ -5,6 +5,9 @@ $navbar-background-default-dark: $component-background-default-dark;
 $navbar-color-default          : $component-color-default;
 $navbar-color-default-dark     : $component-color-default-dark;
 
+$navbar-color-muted      : $component-color-muted;
+$navbar-color-muted-dark : $component-color-muted-dark;
+
 $navbar-item-padding      : $padding-global;
 $navbar-item-padding-small: $padding-global-small;
 
@@ -43,7 +46,7 @@ $navbar-margin     : $margin-global;
         }
 
         ul {
-            display   : inline-block;
+            display   : inline-flex;
             list-style: none;
             margin    : 0px;
             padding   : 0px;
@@ -57,16 +60,21 @@ $navbar-margin     : $margin-global;
                 justify-content: center;
                 padding        : 1px;
 
+                span {
+                    padding: $navbar-item-padding;
+                }
+
                 a {
+
                     &:not(.#{$prefix}-icon-button):not(.#{$prefix}-button) {
                         padding: $navbar-item-padding;
                     }
 
                     text-decoration: none;
 
-
                     &:hover,
-                    &:active {
+                    &:active,
+                    &:focus {
                         outline: none !important;
                     }
                 }
@@ -108,16 +116,44 @@ $navbar-margin     : $margin-global;
             font-weight    : 700;
             text-decoration: none;
             font-size      : 1.2rem;
-
         }
     }
 
     .#{$prefix}-navbar-item {
         color      : $navbar-color-default;
         font-weight: $navbar-text-normal;
+        position   : relative;
+
+        &:before {
+            content         : "";
+            height          : 1px;
+            position        : absolute;
+            bottom          : 0px;
+            left            : 50%;
+            transform       : translate(-50%, -2px);
+            width           : 40%;
+            background-color: transparent;
+        }
+
+        &:focus {
+            outline: none !important;
+
+            &:before {
+                background-color: $navbar-color-muted;
+            }
+
+        }
 
         &.#{$prefix}-active {
             font-weight: $navbar-text-bold;
+
+            // &:focus {
+            //     outline: none !important;
+
+            //     &:before {
+            //         background-color: green($color: #000000);
+            //     }
+            // }
         }
     }
 
@@ -162,8 +198,9 @@ $navbar-margin     : $margin-global;
         .#{$prefix}-navbar-left,
         .#{$prefix}-navbar-right {
             // justify-self   : center;
-            justify-content: center !important;
-            width          : 100%;
+            //justify-content: center !important;
+            width : 100%;
+            margin: 0px !important;
         }
     }
 
@@ -173,8 +210,9 @@ $navbar-margin     : $margin-global;
         .#{$prefix}-navbar-left,
         .#{$prefix}-navbar-right {
             //  justify-self   : center;
-            justify-content: center !important;
-            width          : 100%;
+            //justify-content: center !important;
+            width : 100%;
+            margin: 0px !important;
         }
     }
 }

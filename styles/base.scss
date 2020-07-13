@@ -7,6 +7,7 @@
 @use 'core/transition';
 @use 'core/slide';
 @use 'core/sticky';
+@use 'core/focus';
 
 @mixin definitions {
     @include flex.definitions;
@@ -18,4 +19,5 @@
     @include transition.definitions;
     @include slide.definitions;
     @include sticky.definitions;
+    @include focus.definitions;
 }

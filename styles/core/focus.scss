@@ -1,0 +1,59 @@
+@use "../variables.scss"as *;
+@use "../mixins.scss"as *;
+
+$opts: 'accent',
+'secondary',
+'error',
+'warning',
+'success';
+
+@mixin not-element {
+    &:not(.#{$prefix}-link):not(.#{$prefix}-navbar-item):not(.#{$prefix}-tab):not(.#{$prefix}-tab-side):not(.#{$prefix}-list) {
+        @content;
+    }
+}
+
+@mixin focus {
+
+    * {
+        @include not-element() {
+            @include not-colors {
+                &:focus {
+                    outline   : none !important;
+                    box-shadow: 0 0 0 1px $component-color-muted;
+                }
+            }
+
+            @each $opt in $opts {
+                &.#{$prefix}-#{$opt} {
+                    &:focus {
+                        outline   : none !important;
+                        box-shadow: 0 0 0 1px get-theme-color('#{$opt}-active');
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
+@mixin focus-dark {
+    @include mode-dark {
+        * {
+            @include not-element() {
+                @include not-colors {
+                    &:focus {
+                        outline   : none;
+                        box-shadow: 0 0 0 1px $component-color-muted-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin definitions {
+    @include focus();
+    @include focus-dark();
+}

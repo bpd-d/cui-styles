@@ -44,15 +44,15 @@
 // Definitions
 @mixin definitions {
     .#{$prefix}-hidden {
-        display: none;
+        display: none !important;
     }
 
     .#{$prefix}-invisible {
-        visibility: hidden;
+        visibility: hidden !important;
     }
 
     .#{$prefix}-visible {
-        visibility: visible;
+        visibility: visible !important;
     }
 
     @include visibility_normal(s);

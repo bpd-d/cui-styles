@@ -73,6 +73,10 @@ $card-border-color-dark       : transparent; //$color-border-dark;
             padding      : 1rem; //1rem 0.5rem 1rem;
             border-bottom: 1px solid $card-separator-color;
             @include component-padding(normal, same);
+
+            &.#{$prefix}-no-separator {
+                border-bottom: none;
+            }
         }
 
         .#{$prefix}-card-body {
@@ -85,6 +89,10 @@ $card-border-color-dark       : transparent; //$color-border-dark;
             padding   : 1rem; // 1rem 1rem 1rem;
             border-top: 1px solid $card-separator-color;
             @include component-padding(normal, same);
+
+            &.#{$prefix}-no-separator {
+                border-top: none;
+            }
         }
 
         &.#{$prefix}-default {

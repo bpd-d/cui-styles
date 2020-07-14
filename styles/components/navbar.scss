@@ -15,6 +15,7 @@ $navbar-text-normal: $text-weight-normal;
 $navbar-text-bold  : $text-weight-bold;
 $navbar-margin     : $margin-global;
 
+$navbar-transition-time : $animation-duration-short;
 
 @mixin navbar {
     .#{$prefix}-navbar {
@@ -126,34 +127,41 @@ $navbar-margin     : $margin-global;
 
         &:before {
             content         : "";
-            height          : 1px;
+            height          : 2px;
             position        : absolute;
             bottom          : 0px;
             left            : 50%;
-            transform       : translate(-50%, -2px);
-            width           : 40%;
-            background-color: transparent;
+            transform       : translate(-50%, 2px) scale(0, 1);
+            width           : 100%;
+            background-color: $navbar-color-muted;
+        }
+
+        &:hover {
+            &:before {
+                transform: translate(-50%, 2px) scale(0.2, 1);
+            }
         }
 
         &:focus {
             outline: none !important;
 
             &:before {
-                background-color: $navbar-color-muted;
+                transform: translate(-50%, 2px) scale(0.1, 1);
             }
-
         }
 
         &.#{$prefix}-active {
-            font-weight: $navbar-text-bold;
+            &:before {
+                background-color: $navbar-color-default;
+                transform       : translate(-50%, 2px) scale(0.8, 1);
+            }
 
-            // &:focus {
-            //     outline: none !important;
-
-            //     &:before {
-            //         background-color: green($color: #000000);
-            //     }
-            // }
+            &:hover,
+            &:focus {
+                &:before {
+                    transform: translate(-50%, 2px) scale(1, 1);
+                }
+            }
         }
     }
 
@@ -171,6 +179,16 @@ $navbar-margin     : $margin-global;
 
         .#{$prefix}-navbar-item {
             color: $navbar-color-default-dark;
+
+            &:before {
+                background-color: $navbar-color-muted-dark;
+            }
+
+            &.#{$prefix}-active {
+                &:before {
+                    background-color: $navbar-color-default-dark;
+                }
+            }
         }
     }
 }
@@ -217,9 +235,21 @@ $navbar-margin     : $margin-global;
     }
 }
 
+@mixin navbar-no-transition {
+    body:not(.#{$prefix}-no-transitions) {
+        .#{$prefix}-navbar-item {
+            &:before {
+                transition: transform $navbar-transition-time ease-in;
+            }
+
+        }
+    }
+}
+
 @mixin definitions {
     @include navbar();
     @include navbar-dark();
     @include navbar-print();
     @include navbar-media();
+    @include navbar-no-transition();
 }

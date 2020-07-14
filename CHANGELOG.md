@@ -1,4 +1,8 @@
 # cUI Styles CHANGELOG:
+## [0.1.1] 2020-07-13
+* [Added] Support for active state in list > a 
+* [Changed] Navbar items states styling
+ 
 ## [0.1.0] 2020-07-13
 * [Fix] Navbar item incorreclty displayed on --s
 * [Fix] Dialog width on small devices

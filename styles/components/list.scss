@@ -103,6 +103,21 @@ $list-item-font-weight-bold      : $text-weight-bold;
                             background-color: $list-item-color;
                         }
                     }
+
+                    &.#{$prefix}-active {
+                        font-weight: $list-item-font-weight-bold;
+
+                        &:before {
+                            background-color  : $list-item-active-color;
+                            //transition      : transform $list-transition-time ease-out;
+                        }
+
+                        &:hover {
+                            &:before {
+                                transform: translateY(-50%) scale(1, 1);
+                            }
+                        }
+                    }
                 }
 
                 &.#{$prefix}-active {

@@ -1,4 +1,5 @@
 @use "../variables.scss"as *;
+@use "../mixins.scss"as *;
 
 @mixin order($size: "") {
     @for $i from 1 through 10 {

@@ -19,16 +19,13 @@
 }
 
 @mixin visibility_normal($size) {
-    .#{$prefix}-hidden--#{$size} {
-        display: initial !important;
-    }
 
     .#{$prefix}-invisible--#{$size} {
         visibility: visible !important;
     }
 
     .#{$prefix}-visible--#{$size} {
-        visibility: invisible !important;
+        visibility: hidden !important;
     }
 }
 

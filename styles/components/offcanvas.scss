@@ -115,7 +115,7 @@ $offcanvas-animation-time-short    : $animation-duration-short;
         }
 
         70% {
-            transform: translateX(-5%);
+            transform: translateX(20%);
         }
 
         100% {
@@ -129,7 +129,7 @@ $offcanvas-animation-time-short    : $animation-duration-short;
         }
 
         70% {
-            transform: translateX(5%);
+            transform: translateX(-20%);
         }
 
         100% {

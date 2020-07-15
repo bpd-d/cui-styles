@@ -1,4 +1,8 @@
 # cUI Styles CHANGELOG:
+## [0.1.2] 2020-07-15
+* [Changed] Ordre 1-10 are available for all flex based components
+* [Chnaged] Adjustments in tab and list components states
+
 ## [0.1.1] 2020-07-13
 * [Added] Support for active state in list > a 
 * [Changed] Navbar items states styling

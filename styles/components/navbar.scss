@@ -2,8 +2,12 @@
 
 $navbar-background-default     : $component-background-default;
 $navbar-background-default-dark: $component-background-default-dark;
-$navbar-color-default          : $component-color-default;
-$navbar-color-default-dark     : $component-color-default-dark;
+
+$navbar-color-default      : $component-color-default;
+$navbar-color-default-dark : $component-color-default-dark;
+
+$navbar-color-default-active      : $component-color-active;
+$navbar-color-default-active-dark : $component-color-active-dark;
 
 $navbar-color-muted      : $component-color-muted;
 $navbar-color-muted-dark : $component-color-muted-dark;
@@ -127,7 +131,7 @@ $navbar-transition-time : $animation-duration-short;
 
         &:before {
             content         : "";
-            height          : 2px;
+            height          : 1px;
             position        : absolute;
             bottom          : 0px;
             left            : 50%;
@@ -151,9 +155,11 @@ $navbar-transition-time : $animation-duration-short;
         }
 
         &.#{$prefix}-active {
+            color: $navbar-color-default-active;
+
             &:before {
                 background-color: $navbar-color-default;
-                transform       : translate(-50%, 2px) scale(0.8, 1);
+                transform       : translate(-50%, 2px) scale(0.6, 1);
             }
 
             &:hover,
@@ -185,6 +191,8 @@ $navbar-transition-time : $animation-duration-short;
             }
 
             &.#{$prefix}-active {
+                color: $navbar-color-default-active-dark;
+
                 &:before {
                     background-color: $navbar-color-default-dark;
                 }

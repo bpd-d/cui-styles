@@ -122,12 +122,10 @@ $list-item-font-weight-bold      : $text-weight-bold;
 
                 &.#{$prefix}-active {
                     a {
-
                         font-weight: $list-item-font-weight-bold;
 
                         &:before {
-                            background-color  : $list-item-active-color;
-                            //transition      : transform $list-transition-time ease-out;
+                            background-color: $list-item-active-color;
                         }
 
                         &:hover {
@@ -187,8 +185,6 @@ $list-item-font-weight-bold      : $text-weight-bold;
                                 }
                             }
                         }
-
-
                     }
                 }
             }
@@ -242,6 +238,12 @@ $list-item-font-weight-bold      : $text-weight-bold;
                         &:before {
                             transition: transform $list-transition-time ease-out;
                         }
+                    }
+                }
+
+                a.#{$prefix}-active {
+                    &:before {
+                        transition: transform $list-transition-time ease-out;
                     }
                 }
             }

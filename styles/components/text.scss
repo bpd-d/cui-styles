@@ -109,31 +109,55 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     }
 }
 
-@mixin text-align {
-    .#{$prefix}-text-left {
+@mixin text-align($size: "") {
+    .#{$prefix}-text-left#{$size} {
         text-align: left;
     }
 
-    .#{$prefix}-text-right {
+    .#{$prefix}-text-right#{$size} {
         text-align: right;
     }
 
-    .#{$prefix}-text-center {
+    .#{$prefix}-text-center#{$size} {
         text-align: center;
     }
 
-    .#{$prefix}-text-justify {
+    .#{$prefix}-text-justify#{$size} {
         text-align: justify;
     }
 }
 
-@mixin text-wrap {
-    .#{$prefix}-text-truncate {
+
+
+@mixin text-wrap($size: "") {
+    .#{$prefix}-text-truncate#{$size} {
         text-overflow: ellipsis;
     }
 
-    .#{$prefix}-text-nowrap {
+    .#{$prefix}-text-nowrap#{$size} {
         text-overflow: clip;
+    }
+}
+
+@mixin text-media {
+    @include media-screen-min-small {
+        @include text-align(--s);
+        @include text-wrap(--s);
+    }
+
+    @include media-screen-min-medium {
+        @include text-align(--m);
+        @include text-wrap(--m);
+    }
+
+    @include media-screen-min-large {
+        @include text-align(--l);
+        @include text-wrap(--l);
+    }
+
+    @include media-screen-min-xlarge {
+        @include text-align(--xl);
+        @include text-wrap(--xl);
     }
 }
 
@@ -201,4 +225,5 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     @include article();
     @include text-dark;
     @include text-print;
+    @include text-media();
 }

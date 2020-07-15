@@ -1,5 +1,14 @@
 @use "../variables.scss"as *;
 
+@mixin order($size: "") {
+    @for $i from 1 through 10 {
+        .#{$prefix}-order-#{$i}#{$size} {
+            order: $i;
+        }
+    }
+}
+
+
 @mixin definitions {
     .#{$prefix}-flex {
         display        : flex !important;
@@ -58,11 +67,24 @@
             flex-shrink: 1;
         }
 
-        @for $i from 1 through 10 {
-            .#{$prefix}-order-#{$i} {
-                order: $i;
-            }
-        }
+    }
+
+    @include order();
+
+    @include media-screen-min-small {
+        @include order(--s);
+    }
+
+    @include media-screen-min-medium {
+        @include order(--m);
+    }
+
+    @include media-screen-min-large {
+        @include order(--l);
+    }
+
+    @include media-screen-min-xlarge {
+        @include order(--xl);
     }
 
     .#{$prefix}-flex-center {

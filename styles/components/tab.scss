@@ -45,33 +45,30 @@ $tab-transition-time: $animation-duration-short;
                     position        : absolute;
                     content         : "";
                     height          : 2px;
-                    background-color: transparent;
+                    background-color: $tab-color-indicator;
                     width           : 100%;
                     left            : 50%;
-                    transform       : translateX(-50%) scale(0.8, 1);
+                    transform       : translateX(-50%) scale(0, 1);
                     bottom          : -1px;
                     transition      : transform $tab-transition-time ease-out;
                 }
 
                 &:hover {
                     &:before {
-                        background-color: $tab-color-indicator;
+                        transform: translateX(-50%) scale(0.6, 1);
                     }
 
                     outline: none !important;
                 }
 
-                &:active {
-                    &:before {
-                        transform: translateX(-50%) scale(1, 1);
-                    }
-
-                    outline: none !important;
-                }
-
+                &:active,
                 &:focus {
-                    outline    : none !important;
-                    font-weight: $text-weight-semi-bold;
+                    &:before {
+                        transform: translateX(-50%) scale(0.8, 1);
+                    }
+
+                    outline   : none !important;
+                    box-shadow: none !important;
                 }
             }
 
@@ -79,13 +76,21 @@ $tab-transition-time: $animation-duration-short;
                 a {
                     &:before {
                         background-color: $tab-color-primary;
+                        transform       : translateX(-50%) scale(0.6, 1);
                     }
 
                     &:hover {
                         &:before {
-                            background-color: $tab-color-primary;
-                            transform       : translateX(-50%) scale(1, 1);
+                            transform: translateX(-50%) scale(0.8, 1);
                         }
+                    }
+
+                    &:focus,
+                    &:active {
+                        &:before {
+                            transform: translateX(-50%) scale(1, 1);
+                        }
+
                     }
                 }
             }
@@ -101,36 +106,33 @@ $tab-transition-time: $animation-duration-short;
                 a {
                     position: relative;
                     display : block;
-                    //@include component-padding;
-                    // @include link-decoration($tab-color);
 
                     &:before {
                         content         : "";
                         position        : absolute;
                         width           : 2px;
-                        background-color: transparent;
+                        background-color: $tab-color-indicator;
                         height          : 100%;
                         left            : calc(100% -1px);
                         top             : 50%;
-                        transform       : translateY(-50%) scale(1, 0.8);
+                        transform       : translateY(-50%) scale(1, 0);
                         transition      : transform $tab-transition-time ease-out;
                     }
 
                     &:hover {
                         &:before {
-                            background-color: $tab-color-indicator;
+                            transform: translateY(-50%) scale(1, 0.6);
                         }
                     }
 
-                    &:active {
-                        &:before {
-                            transform: translateY(-50%) scale(1, 1);
-                        }
-                    }
-
+                    &:active,
                     &:focus {
-                        outline    : none !important;
-                        font-weight: $text-weight-semi-bold;
+                        &:before {
+                            transform: translateY(-50%) scale(0.8, 1);
+                        }
+
+                        outline   : none !important;
+                        box-shadow: none !important;
                     }
                 }
 
@@ -139,12 +141,20 @@ $tab-transition-time: $animation-duration-short;
                     a {
                         &:before {
                             background-color: $tab-color-primary;
+                            transform       : translateY(-50%) scale(1, 0.6);
                         }
 
                         &:hover {
                             &:before {
                                 background-color: $tab-color-primary;
-                                transform       : translateY(-50%) scale(1, 1);
+                                transform       : translateY(-50%) scale(0.8, 1);
+                            }
+                        }
+
+                        &:focus,
+                        &:active {
+                            &:before {
+                                transform: translateY(-50%) scale(1, 1);
                             }
                         }
                     }
@@ -170,25 +180,28 @@ $tab-transition-time: $animation-duration-short;
                         content         : "";
                         position        : absolute;
                         width           : 2px;
-                        background-color: transparent;
+                        background-color: $tab-color-indicator;
                         height          : 100%;
                         left            : -1px;
                         top             : 50%;
-                        transform       : translateY(-50%) scale(1, 0.8);
+                        transform       : translateY(-50%) scale(1, 0);
                         transition      : transform $tab-transition-time ease-out;
                     }
 
                     &:hover {
                         &:before {
-                            background-color: $tab-color-indicator;
+                            transform: translateY(-50%) scale(1, 0.6);
                         }
                     }
 
-                    &:active {
+                    &:active,
+                    &:focus {
                         &:before {
-
-                            transform: translateY(-50%) scale(1, 1);
+                            transform: translateY(-50%) scale(0.8, 1);
                         }
+
+                        outline   : none !important;
+                        box-shadow: none !important;
                     }
                 }
 
@@ -197,15 +210,22 @@ $tab-transition-time: $animation-duration-short;
                     a {
                         &:before {
                             background-color: $tab-color-primary;
+                            transform       : translateY(-50%) scale(1, 0.6);
                         }
 
                         &:hover {
+                            &:before {
+                                transform: translateY(-50%) scale(0.8, 1);
+                            }
+                        }
+
+                        &:focus,
+                        &:active {
                             &:before {
                                 transform: translateY(-50%) scale(1, 1);
                             }
                         }
                     }
-
                 }
             }
         }

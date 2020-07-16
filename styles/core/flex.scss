@@ -9,6 +9,45 @@
     }
 }
 
+@mixin common($size: "") {
+    .#{$prefix}-flex {
+        &.#{$prefix}-center#{$size} {
+            justify-content: center;
+        }
+
+        &.#{$prefix}-evenly#{$size} {
+            justify-content: space-evenly;
+        }
+
+        &.#{$prefix}-between#{$size} {
+            justify-content: space-between;
+        }
+
+        // ALign
+
+        &.#{$prefix}-middle#{$size} {
+            align-items: center;
+        }
+
+        &.#{$prefix}-end#{$size} {
+            align-items: flex-end;
+        }
+
+        &.#{$prefix}-stretch#{$size} {
+            align-items: stretch;
+        }
+
+        // Items
+
+        .#{$prefix}-grow#{$size} {
+            flex-grow: 1;
+        }
+
+        .#{$prefix}-shrink#{$size} {
+            flex-shrink: 1;
+        }
+    }
+}
 
 @mixin definitions {
     .#{$prefix}-flex {
@@ -74,18 +113,22 @@
 
     @include media-screen-min-small {
         @include order(--s);
+        @include common(--s);
     }
 
     @include media-screen-min-medium {
         @include order(--m);
+        @include common(--m);
     }
 
     @include media-screen-min-large {
         @include order(--l);
+        @include common(--l);
     }
 
     @include media-screen-min-xlarge {
         @include order(--xl);
+        @include common(--xl);
     }
 
     .#{$prefix}-flex-center {

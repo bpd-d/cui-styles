@@ -9,6 +9,7 @@ $offcanvas-backdrop                : $color-backdrop-light;
 $offcanvas-backdrop-dark           : $color-backdrop-dark;
 $offcanvas-animation-time          : $animation-duration-long;
 $offcanvas-animation-time-short    : $animation-duration-short;
+$offcanvas-size                    : $size-medium;
 
 
 @mixin offcanvas {
@@ -28,7 +29,7 @@ $offcanvas-animation-time-short    : $animation-duration-short;
             position        : absolute;
             top             : 0px;
             bottom          : auto;
-            width           : 375px;
+            width           : $offcanvas-size;
             height          : 100vh;
             background-color: $offacanvas-background-default;
             color           : $offacanvas-color-default;
@@ -114,10 +115,6 @@ $offcanvas-animation-time-short    : $animation-duration-short;
             transform: translateX(100%);
         }
 
-        70% {
-            transform: translateX(20%);
-        }
-
         100% {
             transform: translateX(0%);
         }
@@ -126,10 +123,6 @@ $offcanvas-animation-time-short    : $animation-duration-short;
     @keyframes offCanvasSlideLeftIn {
         0% {
             transform: translateX(-100%);
-        }
-
-        70% {
-            transform: translateX(-20%);
         }
 
         100% {

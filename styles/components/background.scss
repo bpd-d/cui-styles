@@ -4,6 +4,9 @@
 $background-color-shade      : $component-background-shade;
 $background-color-shade-dark : $component-background-shade-dark;
 
+$background-color-default     : $component-background-default;
+$background-color-default-dark: $component-background-default-dark;
+
 $themes: "accent",
 "secondary",
 "error",
@@ -54,6 +57,10 @@ $themes: "accent",
         background-color: $background-color-shade;
     }
 
+    .#{$prefix}-background-default {
+        background-color: $background-color-default;
+    }
+
 }
 
 @mixin background-colors-dark {
@@ -62,6 +69,10 @@ $themes: "accent",
 
         .#{$prefix}-background-shade {
             background-color: $background-color-shade-dark;
+        }
+
+        .#{$prefix}-background-default {
+            background-color: $background-color-default-dark;
         }
     }
 }

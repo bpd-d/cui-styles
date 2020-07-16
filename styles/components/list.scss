@@ -1,16 +1,19 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$list-item-hover-background      : $component-background-shade-active;
-$list-item-hover-background-dark : $component-background-shade-dark-active;
-$list-item-even-background       : $component-background-shade;
-$list-item-even-background-dark  : $component-background-shade-dark;
-$list-item-bullet-size           : 8px;
-$list-item-color                 : $component-color-default;
-$list-item-color-dark            : $component-color-default-dark;
-$list-item-active-color          : $component-background-accent;
-$list-transition-time            : $animation-duration-short;
-$list-item-font-weight-bold      : $text-weight-bold;
+$list-item-hover-background       : $component-background-shade-active;
+$list-item-hover-background-dark  : $component-background-shade-dark-active;
+$list-item-even-background        : $component-background-shade;
+$list-item-even-background-dark   : $component-background-shade-dark;
+$list-item-bullet-size            : 8px;
+$list-item-color                  : $component-color-default;
+$list-item-color-dark             : $component-color-default-dark;
+$list-item-active-color-accent    : $component-background-accent;
+$list-item-active-color-secondary : $component-background-secondary;
+$list-item-inactive-color         : $component-color-muted;
+$list-item-inactive-color-dark    : $component-color-muted-dark;
+$list-transition-time             : $animation-duration-short;
+$list-item-font-weight-bold       : $text-weight-bold;
 
 @mixin list {
     ul.#{$prefix}-list {
@@ -82,6 +85,7 @@ $list-item-font-weight-bold      : $text-weight-bold;
                         content           : "";
                         position          : absolute;
                         width             : 2px;
+                        border-radius     : 4px;
                         background-color  : transparent;
                         height            : 100%;
                         left              : 0;
@@ -100,7 +104,7 @@ $list-item-font-weight-bold      : $text-weight-bold;
                         box-shadow : none !important;
 
                         &:before {
-                            background-color: $list-item-color;
+                            background-color: $list-item-inactive-color;
                         }
                     }
 
@@ -108,7 +112,7 @@ $list-item-font-weight-bold      : $text-weight-bold;
                         font-weight: $list-item-font-weight-bold;
 
                         &:before {
-                            background-color  : $list-item-active-color;
+                            background-color  : $list-item-color;
                             //transition      : transform $list-transition-time ease-out;
                         }
 
@@ -125,7 +129,7 @@ $list-item-font-weight-bold      : $text-weight-bold;
                         font-weight: $list-item-font-weight-bold;
 
                         &:before {
-                            background-color: $list-item-active-color;
+                            background-color: $list-item-color;
                         }
 
                         &:hover {
@@ -135,6 +139,44 @@ $list-item-font-weight-bold      : $text-weight-bold;
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@mixin list-accent {
+    ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
+
+        li.#{$prefix}-active {
+            a {
+                &:before {
+                    background-color: $list-item-active-color-accent;
+                }
+            }
+        }
+
+        li>a.#{$prefix}-active {
+            &:before {
+                background-color: $list-item-active-color-accent;
+            }
+        }
+    }
+}
+
+@mixin list-secondary {
+    ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
+
+        li.#{$prefix}-active {
+            a {
+                &:before {
+                    background-color: $list-item-active-color-secondary !important;
+                }
+            }
+        }
+
+        li>a.#{$prefix}-active {
+            &:before {
+                background-color: $list-item-active-color-secondary !important;
             }
         }
     }
@@ -175,14 +217,24 @@ $list-item-font-weight-bold      : $text-weight-bold;
                 li {
                     a {
                         color: $list-item-color-dark;
+
+                        &:focus {
+                            &:before {
+                                background-color: $list-item-inactive-color-dark;
+                            }
+                        }
+
+                        &.#{$prefix}-active {
+                            &:before {
+                                background-color: $list-item-color-dark;
+                            }
+                        }
                     }
 
-                    &:not(.#{$prefix}-active) {
+                    &.#{$prefix}-active {
                         a {
-                            &:focus {
-                                &:before {
-                                    background-color: $list-item-color-dark;
-                                }
+                            &:before {
+                                background-color: $list-item-color-dark;
                             }
                         }
                     }
@@ -255,5 +307,7 @@ $list-item-font-weight-bold      : $text-weight-bold;
     @include list();
     @include list-no-transitions();
     @include list-dark();
+    @include list-accent();
+    @include list-secondary();
     @include list-print();
 }

@@ -1,6 +1,13 @@
 # cUI Styles CHANGELOG:
+## [0.1.3] 2020-07-16
+* [Changed] Tabs, lists and navbar now have color themes - default indicator is of the same color as text
+* [Added] Background default class for cases where transparent components need background (like default buttons)
+* [Added] Media options for flex component
+* [Added] New heights options and corresponding media queries
+* [Added] Color themes for strokes in svg paths
+
 ## [0.1.2] 2020-07-15
-* [Changed] Ordre 1-10 are available for all flex based components
+* [Changed] Order 1-10 are available for all flex based components
 * [Chnaged] Adjustments in tab and list components states
 
 ## [0.1.1] 2020-07-13

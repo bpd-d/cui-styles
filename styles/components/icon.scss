@@ -142,6 +142,30 @@ $icon-color-success  : $component-background-success;
     }
 }
 
+@mixin stroke-colors {
+    path {
+        &.#{$prefix}-accent {
+            stroke: $icon-color-accent;
+        }
+
+        &.#{$prefix}-secondary {
+            stroke: $icon-color-secondary;
+        }
+
+        &.#{$prefix}-success {
+            stroke: $icon-color-success;
+        }
+
+        &.#{$prefix}-warning {
+            stroke: $icon-color-warning;
+        }
+
+        &.#{$prefix}-error {
+            stroke: $icon-color-error;
+        }
+    }
+}
+
 @mixin icon-button {
     .#{$prefix}-icon-button {
         cursor: pointer;
@@ -298,4 +322,5 @@ $icon-color-success  : $component-background-success;
     @include icon-nav();
     @include icon-dark();
     @include icon-print();
+    @include stroke-colors();
 }

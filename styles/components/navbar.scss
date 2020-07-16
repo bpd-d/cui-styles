@@ -6,6 +6,10 @@ $navbar-background-default-dark: $component-background-default-dark;
 $navbar-color-default      : $component-color-default;
 $navbar-color-default-dark : $component-color-default-dark;
 
+$navbar-indicator-color-accent   : $component-background-accent;
+$navbar-indicator-color-secondary: $component-background-secondary;
+
+
 $navbar-color-default-active      : $component-color-active;
 $navbar-color-default-active-dark : $component-color-active-dark;
 
@@ -131,9 +135,10 @@ $navbar-transition-time : $animation-duration-short;
 
         &:before {
             content         : "";
-            height          : 1px;
+            height          : 2px;
+            border-radius   : 10px;
             position        : absolute;
-            bottom          : 0px;
+            bottom          : 2px;
             left            : 50%;
             transform       : translate(-50%, 2px) scale(0, 1);
             width           : 100%;
@@ -166,6 +171,33 @@ $navbar-transition-time : $animation-duration-short;
             &:focus {
                 &:before {
                     transform: translate(-50%, 2px) scale(1, 1);
+                }
+            }
+        }
+    }
+
+}
+
+@mixin navbar-accent {
+    .#{$prefix}-navbar.#{$prefix}-accent {
+        .#{$prefix}-navbar-item {
+            &.#{$prefix}-active {
+                &:before {
+                    background-color: $navbar-indicator-color-accent !important;
+                }
+            }
+        }
+    }
+
+}
+
+
+@mixin navbar-secondary {
+    .#{$prefix}-navbar.#{$prefix}-secondary {
+        .#{$prefix}-navbar-item {
+            &.#{$prefix}-active {
+                &:before {
+                    background-color: $navbar-indicator-color-secondary !important;
                 }
             }
         }
@@ -256,6 +288,8 @@ $navbar-transition-time : $animation-duration-short;
 
 @mixin definitions {
     @include navbar();
+    @include navbar-accent();
+    @include navbar-secondary();
     @include navbar-dark();
     @include navbar-print();
     @include navbar-media();

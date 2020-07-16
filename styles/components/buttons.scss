@@ -121,6 +121,7 @@ $button-outline                       : $outline-default;
     .#{$prefix}-error,
     .#{$prefix}-warning,
     .#{$prefix}-success {
+
         &:not(.#{$prefix}-section):not(.#{$prefix}-hint) {
             .#{$prefix}-button {
                 color: $button-color-default-dark;

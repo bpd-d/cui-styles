@@ -3,10 +3,12 @@
 
 $tab-color-indicator      : $component-color-muted;
 $tab-color-indicator-dark : $component-color-muted-dark;
-$tab-color-primary        : $component-background-accent;
 
 $tab-color     : $component-color-default;
 $tab-color-dark: $component-color-default-dark;
+
+$tab-color-accent    : $component-background-accent;
+$tab-color-secondary : $component-background-secondary;
 
 $tab-border-color      : $color-border-light;
 $tab-border-color-dark : $color-border-dark;
@@ -50,6 +52,7 @@ $tab-transition-time: $animation-duration-short;
                     left            : 50%;
                     transform       : translateX(-50%) scale(0, 1);
                     bottom          : -1px;
+                    border-radius   : 4px;
                     transition      : transform $tab-transition-time ease-out;
                 }
 
@@ -75,7 +78,7 @@ $tab-transition-time: $animation-duration-short;
             &.#{$prefix}-active {
                 a {
                     &:before {
-                        background-color: $tab-color-primary;
+                        background-color: $tab-color;
                         transform       : translateX(-50%) scale(0.6, 1);
                     }
 
@@ -108,15 +111,16 @@ $tab-transition-time: $animation-duration-short;
                     display : block;
 
                     &:before {
-                        content         : "";
-                        position        : absolute;
-                        width           : 2px;
-                        background-color: $tab-color-indicator;
-                        height          : 100%;
-                        left            : calc(100% -1px);
-                        top             : 50%;
-                        transform       : translateY(-50%) scale(1, 0);
-                        transition      : transform $tab-transition-time ease-out;
+                        content            : "";
+                        position           : absolute;
+                        width              : 2px;
+                        // background-color: $tab-color;
+                        height             : 100%;
+                        left               : calc(100% -1px);
+                        top                : 50%;
+                        border-radius      : 4px;
+                        transform          : translateY(-50%) scale(1, 0);
+                        transition         : transform $tab-transition-time ease-out;
                     }
 
                     &:hover {
@@ -140,14 +144,14 @@ $tab-transition-time: $animation-duration-short;
                 &.#{$prefix}-active {
                     a {
                         &:before {
-                            background-color: $tab-color-primary;
-                            transform       : translateY(-50%) scale(1, 0.6);
+                            //  background-color: $tab-color-primary;
+                            transform: translateY(-50%) scale(1, 0.6);
                         }
 
                         &:hover {
                             &:before {
-                                background-color: $tab-color-primary;
-                                transform       : translateY(-50%) scale(0.8, 1);
+                                //       background-color: $tab-color-primary;
+                                transform: translateY(-50%) scale(0.8, 1);
                             }
                         }
 
@@ -177,15 +181,16 @@ $tab-transition-time: $animation-duration-short;
                     // @include link-decoration($tab-color);
 
                     &:before {
-                        content         : "";
-                        position        : absolute;
-                        width           : 2px;
-                        background-color: $tab-color-indicator;
-                        height          : 100%;
-                        left            : -1px;
-                        top             : 50%;
-                        transform       : translateY(-50%) scale(1, 0);
-                        transition      : transform $tab-transition-time ease-out;
+                        content             : "";
+                        position            : absolute;
+                        width               : 2px;
+                        //  background-color: $tab-color-indicator;
+                        height              : 100%;
+                        left                : -1px;
+                        top                 : 50%;
+                        border-radius       : 4px;
+                        transform           : translateY(-50%) scale(1, 0);
+                        transition          : transform $tab-transition-time ease-out;
                     }
 
                     &:hover {
@@ -209,8 +214,8 @@ $tab-transition-time: $animation-duration-short;
                 &.#{$prefix}-active {
                     a {
                         &:before {
-                            background-color: $tab-color-primary;
-                            transform       : translateY(-50%) scale(1, 0.6);
+                            //      background-color: $tab-color-primary;
+                            transform: translateY(-50%) scale(1, 0.6);
                         }
 
                         &:hover {
@@ -230,7 +235,36 @@ $tab-transition-time: $animation-duration-short;
             }
         }
     }
+}
 
+@mixin tab-accent {
+    ul.#{$prefix}-tab {
+        &.#{$prefix}-accent {
+            li.#{$prefix}-active {
+                a {
+                    &:before {
+                        background-color: $tab-color-accent !important;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@mixin tab-secondary {
+    ul.#{$prefix}-tab {
+        &.#{$prefix}-secondary {
+            li.#{$prefix}-active {
+                a {
+                    &:before {
+                        background-color: $tab-color-secondary !important;
+                    }
+                }
+            }
+
+        }
+    }
 }
 
 @mixin tab-dark {
@@ -242,11 +276,15 @@ $tab-transition-time: $animation-duration-short;
                 a {
                     color: $tab-color-dark;
 
-                    &:hover {
-                        &:not(&.#{$prefix}-active) {
-                            &:before {
-                                background-color: $tab-color-indicator-dark;
-                            }
+                    &:before {
+                        background-color: $tab-color-indicator-dark;
+                    }
+                }
+
+                &.#{$prefix}-active {
+                    a {
+                        &:before {
+                            background-color: $tab-color-dark;
                         }
                     }
                 }
@@ -262,17 +300,19 @@ $tab-transition-time: $animation-duration-short;
             border-color: $component-print-border;
 
             li {
-                &:hover {
-                    background-color: $component-print-background;
-                }
+                a {
+                    &:hover {
+                        background-color: $component-print-background;
+                    }
 
-                &:active {
-                    background-color: $component-print-background;
-                }
+                    &:active {
+                        background-color: $component-print-background;
+                    }
 
-                &.#{$prefix}-active {
-                    &:before {
-                        background-color: $component-print-color;
+                    &.#{$prefix}-active {
+                        &:before {
+                            background-color: $component-print-color;
+                        }
                     }
                 }
             }
@@ -283,9 +323,12 @@ $tab-transition-time: $animation-duration-short;
 
                 li {
                     &.#{$prefix}-active {
-                        &:before {
-                            background-color: $component-print-color;
+                        a {
+                            &:before {
+                                background-color: $component-print-color;
+                            }
                         }
+
                     }
                 }
             }
@@ -295,6 +338,8 @@ $tab-transition-time: $animation-duration-short;
 
 @mixin definitions {
     @include tab();
+    @include tab-accent();
+    @include tab-secondary();
     @include tab-dark();
     @include tab-print();
 }

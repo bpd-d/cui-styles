@@ -47,6 +47,11 @@ $breakpoint-m : 960px;
 $breakpoint-l : 1200px;
 $breakpoint-xl: 1600px;
 
+$breakpoint-max-s : 639px;
+$breakpoint-max-m : 959px;
+$breakpoint-max-l : 1199px;
+$breakpoint-max-xl: 1599px;
+
 $padding-global       : var(--#{$prefix}-padding);
 $padding-global-large : calc(#{$padding-global} * 2);
 $padding-global-small : calc(#{$padding-global} * 0.5);

@@ -23,6 +23,14 @@
             justify-content: space-between;
         }
 
+        &.#{$prefix}-right#{$size} {
+            justify-content: flex-end;
+        }
+
+        &.#{$prefix}-left#{$size} {
+            justify-content: flex-start;
+        }
+
         // ALign
 
         &.#{$prefix}-middle#{$size} {
@@ -63,6 +71,10 @@
 
         &.#{$prefix}-right {
             justify-content: flex-end;
+        }
+
+        &.#{$prefix}-left {
+            justify-content: flex-start;
         }
 
         &.#{$prefix}-evenly {

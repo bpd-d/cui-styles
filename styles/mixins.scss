@@ -139,7 +139,25 @@ $item-background-default: $component-background-default;
 }
 
 @mixin media-screen-max-small {
-    @media (max-width: $breakpoint-s) {
+    @media (max-width: $breakpoint-max-s) {
+        @content;
+    }
+}
+
+@mixin media-screen-max-medium {
+    @media (max-width: $breakpoint-max-m) {
+        @content;
+    }
+}
+
+@mixin media-screen-max-large {
+    @media (max-width: $breakpoint-max-l) {
+        @content;
+    }
+}
+
+@mixin media-screen-max-xlarge {
+    @media (max-width: $breakpoint-max-xl) {
         @content;
     }
 }

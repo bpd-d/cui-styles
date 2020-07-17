@@ -1,4 +1,7 @@
 # cUI Styles CHANGELOG:
+## [0.1.4] 2020-07-17
+* [Fixed] Adjustements in visiblity components
+
 ## [0.1.3] 2020-07-16
 * [Changed] Tabs, lists and navbar now have color themes - default indicator is of the same color as text
 * [Added] Background default class for cases where transparent components need background (like default buttons)

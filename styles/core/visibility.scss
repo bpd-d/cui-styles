@@ -5,27 +5,14 @@
 @use '../mixins'as *;
 
 @mixin visibility($size) {
-    .#{$prefix}-hidden--#{$size} {
+    .#{$prefix}-visible#{$size} {
         display: none !important;
-    }
-
-    .#{$prefix}-invisible--#{$size} {
-        visibility: hidden !important;
-    }
-
-    .#{$prefix}-visible--#{$size} {
-        visibility: visible !important;
     }
 }
 
-@mixin visibility_normal($size) {
-
-    .#{$prefix}-invisible--#{$size} {
-        visibility: visible !important;
-    }
-
-    .#{$prefix}-visible--#{$size} {
-        visibility: hidden !important;
+@mixin hide($size) {
+    .#{$prefix}-hidden#{$size} {
+        display: none !important;
     }
 }
 
@@ -44,34 +31,43 @@
         display: none !important;
     }
 
-    .#{$prefix}-invisible {
-        visibility: hidden !important;
-    }
-
     .#{$prefix}-visible {
         visibility: visible !important;
     }
 
-    @include visibility_normal(s);
-    @include visibility_normal(m);
-    @include visibility_normal(l);
-    @include visibility_normal(xl);
+    // Media
+    @include media-screen-max-small {
+        @include visibility(--s);
+    }
+
+    @include media-screen-max-medium {
+        @include visibility(--m);
+    }
+
+    @include media-screen-max-large {
+        @include visibility(--l);
+    }
+
+    @include media-screen-max-xlarge {
+        @include visibility(--xl);
+    }
+
 
     // Media
     @include media-screen-min-small {
-        @include visibility(s);
+        @include hide(--s);
     }
 
     @include media-screen-min-medium {
-        @include visibility(m);
+        @include hide(--m);
     }
 
     @include media-screen-min-large {
-        @include visibility(l);
+        @include hide(--l);
     }
 
     @include media-screen-min-xlarge {
-        @include visibility(xl);
+        @include hide(--xl);
     }
 
     @media(orientation: landscape) {

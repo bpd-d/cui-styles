@@ -5,97 +5,81 @@ $accordion-animation-time    : $animation-duration-default;
 $accordion-color-default     : $component-color-default;
 $accordion-color-default-dark: $component-color-default-dark;
 
+$accordion-indicator-duration: $animation-duration-short;
+$accordion-content-duration  : $animation-duration-short;
+$accordion-font-size         : $font-normal;
+
 @mixin accordion {
-    ul.#{$prefix}-accordion {
+    .#{$prefix}-accordion {
         display   : block;
         list-style: none;
         margin    : 0;
         padding   : 0;
 
-        li {
-            di#{$prefix}-accordion-title {
+        >* {
+            .#{$prefix}-accordion-title {
                 display        : flex;
-                font-size      : 1rem;
+                font-size      : $accordion-font-size;
                 text-decoration: none;
                 align-items    : center;
                 cursor         : pointer;
                 user-select    : none;
+                position       : relative;
+
+                color: $accordion-color-default;
+
+                &:before {
+                    content              : "";
+                    position             : absolute;
+                    top                  : 50%;
+                    right                : 0rem;
+                    background-repeat    : no-repeat;
+                    background-position  : 50% 50%;
+                    width                : 20px;
+                    height               : 20px;
+                    transform            : translate(-50%, -50%) rotate(0deg);
+                    //background-image   : url("%3Csvg+xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%5C%22+viewBox%3D%5C%220+0+20+20%5C%22+width%3D%5C%2220%5C%22+height%3D%5C%2220%5C%22%3E%3Cpath+style%3D%27fill%3Anone%3Bstroke%3A%2523999%3Bstroke-width%3A1px%3Bstroke-linecap%3Around%3Bstroke-linejoin%3Around%3Bstroke-opacity%3A1%27+d%3D%5C%22M+5.0000475%2C7.4490018+10.000024%2C12.551028+15%2C7.4490018%5C%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+                    background-image     : $accordion-icon;
+                    transition           : transform $accordion-indicator-duration ease;
+                }
 
                 @include component-padding;
 
-                * {
-                    pointer-events: none;
-                }
-
-                svg {
-                    animation      : rotateBack $accordion-animation-time ease-out;
-                    margin-left    : auto;
-                    fill           : none;
-                    stroke-opacity : 1;
-                    stroke-width   : 1px;
-                    stroke-linecap : round;
-                    stroke-linejoin: miter;
-                    stroke         : $accordion-color-default;
-                }
             }
 
-            di#{$prefix}-accordion-content {
-                display: none;
-                padding: 1em;
+            .#{$prefix}-accordion-content {
+                padding   : 1em;
+                opacity   : 0;
+                transition: opacity $accordion-content-duration ease;
+            }
 
-                &.#{$prefix}-animation-progress {
-                    display: block;
+            &:not(.#{$prefix}-active) {
+                .#{$prefix}-accordion-content {
+                    @include hidden();
                 }
             }
 
             &.#{$prefix}-active {
                 .#{$prefix}-accordion-title {
-                    svg {
-                        animation: rotateLeft $accordion-animation-time ease-out;
-                        transform: rotate(-90deg);
+                    &:before {
+                        transform: translate(-50%, -50%) rotate(90deg);
                     }
                 }
 
                 .#{$prefix}-accordion-content {
-                    display: block;
+                    opacity: 1;
                 }
             }
-        }
-    }
-
-    /*
-    * Animation
-    */
-
-    @keyframes rotateLeft {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(-90deg);
-        }
-    }
-
-    @keyframes rotateBack {
-        0% {
-            transform: rotate(-90deg);
-        }
-
-        100% {
-            transform: rotate(0deg);
         }
     }
 }
 
 @mixin accordion-dark {
     .#{$prefix}-dark {
-        ul.#{$prefix}-accordion {
-            li {
-                di#{$prefix}-accordion-title {
-                    svg {
-                        stroke: $accordion-color-default-dark;
-                    }
+        .#{$prefix}-accordion {
+            >* {
+                .#{$prefix}-accordion-title {
+                    color: $accordion-color-default-dark;
                 }
             }
         }
@@ -104,13 +88,29 @@ $accordion-color-default-dark: $component-color-default-dark;
 
 @mixin accordion-print {
     .#{$prefix}-print {
-        ul.#{$prefix}-accordion {
-            li {
-                di#{$prefix}-accordion-title {
-                    svg {
-                        stroke: $component-print-color;
-                    }
+        .#{$prefix}-accordion {
+            >* {
+                .#{$prefix}-accordion-title {
+                    color: $accordion-color-default;
                 }
+            }
+        }
+    }
+}
+
+@mixin accordion-not-no-transitions {
+    @include mode-not-no-transitions {}
+
+    .#{$prefix}-accordion {
+        >* {
+            .#{$prefix}-accordion-title {
+                &:before {
+                    transition: transform $accordion-indicator-duration ease;
+                }
+            }
+
+            .#{$prefix}-accordion-content {
+                transition: opacity $accordion-content-duration ease;
             }
         }
     }
@@ -120,4 +120,5 @@ $accordion-color-default-dark: $component-color-default-dark;
     @include accordion;
     @include accordion-print;
     @include accordion-dark;
+    @include accordion-not-no-transitions();
 }

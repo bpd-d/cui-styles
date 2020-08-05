@@ -14,38 +14,39 @@ $opts: 'accent',
 }
 
 @mixin focus {
-
-    * {
-        @include not-element() {
-            @include not-colors {
-                &:focus {
-                    outline   : none !important;
-                    box-shadow: 0 0 0 1px $component-color-muted;
-                }
-            }
-
-            @each $opt in $opts {
-                &.#{$prefix}-#{$opt} {
+    body.#{$prefix}-focus {
+        * {
+            @include not-element() {
+                @include not-colors {
                     &:focus {
                         outline   : none !important;
-                        box-shadow: 0 0 0 1px get-theme-color('#{$opt}-active');
+                        box-shadow: 0 0 0 1px $component-color-muted;
+                    }
+                }
+
+                @each $opt in $opts {
+                    &.#{$prefix}-#{$opt} {
+                        &:focus {
+                            outline   : none !important;
+                            box-shadow: 0 0 0 1px get-theme-color('#{$opt}-active');
+                        }
                     }
                 }
             }
         }
-
-
     }
 }
 
 @mixin focus-dark {
     @include mode-dark {
-        * {
-            @include not-element() {
-                @include not-colors {
-                    &:focus {
-                        outline   : none;
-                        box-shadow: 0 0 0 1px $component-color-muted-dark;
+        body.#{$prefix}-focus {
+            * {
+                @include not-element() {
+                    @include not-colors {
+                        &:focus {
+                            outline   : none;
+                            box-shadow: 0 0 0 1px $component-color-muted-dark;
+                        }
                     }
                 }
             }

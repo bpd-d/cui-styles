@@ -94,7 +94,7 @@ $dialog-animation-time-short   : $animation-duration-short;
         }
     }
 
-    body[#{$prefix}-dialog-show='noscroll'] {
+    body.#{$prefix}-dialog-open {
         overflow: hidden;
     }
 

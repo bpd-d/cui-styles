@@ -1,4 +1,10 @@
 # cUI Styles CHANGELOG:
+# [0.1.6] WIP
+
+# [0.1.5] 2020-08-05
+* [fixed] Adjustments in offcanvas
+* [fixed] Adjustments in accordion
+
 ## [0.1.4] 2020-07-17
 * [Fixed] Adjustements in visiblity components
 

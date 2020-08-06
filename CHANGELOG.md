@@ -1,6 +1,6 @@
 # cUI Styles CHANGELOG:
 # [0.1.6] WIP
-
+* [Fixed] Scrollbars on dialog and offcanvas open
 # [0.1.5] 2020-08-05
 * [fixed] Adjustments in offcanvas
 * [fixed] Adjustments in accordion

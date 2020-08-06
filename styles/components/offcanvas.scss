@@ -50,6 +50,7 @@ $offcanvas-size                    : $size-medium;
 
     body.#{$prefix}-off-canvas-open {
         overflow: hidden;
+        position: fixed;
     }
 }
 

@@ -96,6 +96,7 @@ $dialog-animation-time-short   : $animation-duration-short;
 
     body.#{$prefix}-dialog-open {
         overflow: hidden;
+        position: fixed;
     }
 
     @include media-screen-min-small {

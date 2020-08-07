@@ -514,6 +514,7 @@ $input-margin-small   : $margin-global-small;
         }
 
         &.#{$prefix}-inline {
+
             .#{$prefix}-form-label {
                 display: inline-block;
             }

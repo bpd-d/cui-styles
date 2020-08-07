@@ -41,7 +41,7 @@ $sides: "top",
     */
 
     .#{$prefix}-margin--#{$size} {
-        margin: $item-margin;
+        margin: $item-margin !important;
     }
 
     .#{$prefix}-margin-top--#{$size} {
@@ -65,7 +65,7 @@ $sides: "top",
     */
 
     .#{$prefix}-margin-small--#{$size} {
-        margin: $item-margin-small;
+        margin: $item-margin-small !important;
     }
 
     .#{$prefix}-margin-small-top--#{$size} {
@@ -89,7 +89,7 @@ $sides: "top",
     */
 
     .#{$prefix}-margin-large--#{$size} {
-        margin: $item-margin-large;
+        margin: $item-margin-large !important;
     }
 
     .#{$prefix}-margin-large-top--#{$size} {
@@ -112,19 +112,19 @@ $sides: "top",
 
 @mixin padding($size, $sides...) {
     .#{$prefix}-padding--#{$size} {
-        padding: $item-padding;
+        padding: $item-padding !important;
     }
 
     @each $side in $sides {
         .#{$prefix}-padding-#{$side}--#{$size} {
-            padding-#{$side}: $item-padding;
+            padding-#{$side}: $item-padding !important;
         }
     }
 }
 
 @mixin margins {
     .#{$prefix}-margin {
-        margin: $item-margin;
+        margin: $item-margin !important;
     }
 
     .#{$prefix}-margin-top {
@@ -144,7 +144,7 @@ $sides: "top",
     }
 
     .#{$prefix}-margin-auto {
-        margin: 0 auto;
+        margin: 0 auto !important;
     }
 }
 
@@ -154,7 +154,7 @@ $sides: "top",
     */
 
     .#{$prefix}-margin-small {
-        margin: $item-margin-small;
+        margin: $item-margin-small !important;
     }
 
     .#{$prefix}-margin-small-top {
@@ -181,7 +181,7 @@ $sides: "top",
 */
 
     .#{$prefix}-margin-large {
-        margin: $item-margin-large;
+        margin: $item-margin-large !important;
     }
 
     .#{$prefix}-margin-large-top {
@@ -204,67 +204,67 @@ $sides: "top",
 
 @mixin paddings {
     .#{$prefix}-padding {
-        padding: $item-padding;
+        padding: $item-padding !important;
     }
 
     .#{$prefix}-padding-top {
-        padding-top: $item-padding;
+        padding-top: $item-padding !important;
     }
 
     .#{$prefix}-padding-bottom {
-        padding-bottom: $item-padding;
+        padding-bottom: $item-padding !important;
     }
 
     .#{$prefix}-padding-left {
-        padding-left: $item-padding;
+        padding-left: $item-padding !important;
     }
 
     .#{$prefix}-padding-right {
-        padding-left: $item-padding;
+        padding-left: $item-padding !important;
     }
 }
 
 @mixin paddings-small {
     .#{$prefix}-padding-small {
-        padding: $item-padding-small;
+        padding: $item-padding-small !important;
     }
 
     .#{$prefix}-padding-small-top {
-        padding-top: $item-padding-small;
+        padding-top: $item-padding-small !important;
     }
 
     .#{$prefix}-padding-small-bottom {
-        padding-bottom: $item-padding-small;
+        padding-bottom: $item-padding-small !important;
     }
 
     .#{$prefix}-padding-small-left {
-        padding-left: $item-padding-small;
+        padding-left: $item-padding-small !important;
     }
 
     .#{$prefix}-padding-small-right {
-        padding-left: $item-padding-small;
+        padding-left: $item-padding-small !important;
     }
 }
 
 @mixin paddings-large {
     .#{$prefix}-padding-large {
-        padding: $item-padding-large;
+        padding: $item-padding-large !important;
     }
 
     .#{$prefix}-padding-large-top {
-        padding-top: $item-padding-large;
+        padding-top: $item-padding-large !important;
     }
 
     .#{$prefix}-padding-large-bottom {
-        padding-bottom: $item-padding-large;
+        padding-bottom: $item-padding-large !important;
     }
 
     .#{$prefix}-padding-large-left {
-        padding-left: $item-padding-large;
+        padding-left: $item-padding-large !important;
     }
 
     .#{$prefix}-padding-large-right {
-        padding-left: $item-padding-large;
+        padding-left: $item-padding-large !important;
     }
 }
 

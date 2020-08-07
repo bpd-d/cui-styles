@@ -25,7 +25,6 @@ $section-color-inverse-dark :$component-color-inverse-dark;
 @mixin section {
     .#{$prefix}-section {
         display: block;
-        margin : 0;
         padding: $section-padding-normal;
 
         &.#{$prefix}-inverse {

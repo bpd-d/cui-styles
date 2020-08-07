@@ -1,6 +1,14 @@
 # cUI Styles CHANGELOG:
-# [0.1.6] WIP
+# [0.1.8] WIP
+# [0.1.7] 2020-08-07
+* [Changed] Navbar indicator sizes
+* [Changed] Added !important to paddings
+* [Fixed] Removed redundant attributes from card component
+* [Fixed] Force font-weight in heading children
+
+# [0.1.6] 2020-08-06
 * [Fixed] Scrollbars on dialog and offcanvas open
+
 # [0.1.5] 2020-08-05
 * [fixed] Adjustments in offcanvas
 * [fixed] Adjustments in accordion

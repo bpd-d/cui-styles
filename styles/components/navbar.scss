@@ -164,13 +164,13 @@ $navbar-transition-time : $animation-duration-short;
 
             &:before {
                 background-color: $navbar-color-default;
-                transform       : translate(-50%, 2px) scale(0.6, 1);
+                transform       : translate(-50%, 2px) scale(0.4, 1);
             }
 
             &:hover,
             &:focus {
                 &:before {
-                    transform: translate(-50%, 2px) scale(1, 1);
+                    transform: translate(-50%, 2px) scale(0.8, 1);
                 }
             }
         }

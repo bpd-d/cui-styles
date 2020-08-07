@@ -70,7 +70,6 @@ $card-border-color-dark       : transparent; //$color-border-dark;
         }
 
         .#{$prefix}-card-header {
-            padding      : 1rem; //1rem 0.5rem 1rem;
             border-bottom: 1px solid $card-separator-color;
             @include component-padding(normal, same);
 
@@ -80,13 +79,11 @@ $card-border-color-dark       : transparent; //$color-border-dark;
         }
 
         .#{$prefix}-card-body {
-            padding  : 1rem; //1rem 0.5rem 1rem;
             max-width: 100%;
             @include component-padding(normal, same);
         }
 
         .#{$prefix}-card-footer {
-            padding   : 1rem; // 1rem 1rem 1rem;
             border-top: 1px solid $card-separator-color;
             @include component-padding(normal, same);
 

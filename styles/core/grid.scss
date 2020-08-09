@@ -15,6 +15,13 @@ $flex-grid-space-padding: calc(#{$component-margin}*2);
 
 // MIXINS
 @mixin create-child-width($size:"") {
+    &.#{$prefix}-child-width-auto#{$size} {
+        &>* {
+            width: auto;
+            flex : 1 1 auto;
+        }
+    }
+
     &.#{$prefix}-child-width-1-1#{$size} {
         &>* {
             width: 100%;

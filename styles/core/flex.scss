@@ -12,47 +12,51 @@
 @mixin common($size: "") {
     .#{$prefix}-flex {
         &.#{$prefix}-center#{$size} {
-            justify-content: center;
+            justify-content: center !important;
         }
 
         &.#{$prefix}-evenly#{$size} {
-            justify-content: space-evenly;
+            justify-content: space-evenly !important;
         }
 
         &.#{$prefix}-between#{$size} {
-            justify-content: space-between;
+            justify-content: space-between !important;
         }
 
         &.#{$prefix}-right#{$size} {
-            justify-content: flex-end;
+            justify-content: flex-end !important;
         }
 
         &.#{$prefix}-left#{$size} {
-            justify-content: flex-start;
+            justify-content: flex-start !important;
         }
 
         // ALign
 
         &.#{$prefix}-middle#{$size} {
-            align-items: center;
+            align-items: center !important;
         }
 
         &.#{$prefix}-end#{$size} {
-            align-items: flex-end;
+            align-items: flex-end !important;
         }
 
         &.#{$prefix}-stretch#{$size} {
-            align-items: stretch;
+            align-items: stretch !important;
         }
 
         // Items
 
-        .#{$prefix}-grow#{$size} {
-            flex-grow: 1;
+        .#{$prefix}-flex-grow#{$size} {
+            flex: 1 1 auto !important;
         }
 
-        .#{$prefix}-shrink#{$size} {
-            flex-shrink: 1;
+        .#{$prefix}-flex-shrink#{$size} {
+            flex: 0 0 auto !important;
+        }
+
+        .#{$prefix}-flex-auto#{$size} {
+            flex: 1 1 auto !important;
         }
     }
 }
@@ -111,12 +115,12 @@
 
         // Items
 
-        .#{$prefix}-grow {
-            flex-grow: 1;
+        .#{$prefix}-flex-grow {
+            flex: 1 1 auto;
         }
 
-        .#{$prefix}-shrink {
-            flex-shrink: 1;
+        .#{$prefix}-flex-shrink {
+            flex: 0 1 auto;
         }
 
     }

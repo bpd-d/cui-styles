@@ -21,7 +21,7 @@ $tooltip-margin         : $component-margin;
         position: relative;
         cursor  : help;
 
-        &:before {
+        &:after {
             content         : attr(data-tooltip);
             display         : flex;
             justify-content : center;
@@ -47,7 +47,7 @@ $tooltip-margin         : $component-margin;
 
         &:hover,
         &:focus-within {
-            &:before {
+            &:after {
                 transform: scale(1) translateX(-50%) translateY(calc(-36px - #{$tooltip-margin}));
             }
         }
@@ -57,14 +57,14 @@ $tooltip-margin         : $component-margin;
 @mixin tooltip-positions {
     .#{$prefix}-tooltip {
         &:not(.#{$prefix}-tooltip-bottom-center):not(.#{$prefix}-tooltip-bottom-right):not(.#{$prefix}-tooltip-bottom-left):not(.#{$prefix}-tooltip-top-left):not(.#{$prefix}-tooltip-top-center):not(.#{$prefix}-tooltip-top-right) {
-            &:before {
+            &:after {
                 top : 0;
                 left: 50%;
             }
         }
 
         &.#{$prefix}-tooltip-top-center {
-            &:before {
+            &:after {
                 transform-origin: top left;
                 top             : 0;
                 left            : 50%;
@@ -73,14 +73,14 @@ $tooltip-margin         : $component-margin;
 
             &:hover,
             &:focus-within {
-                &:before {
+                &:after {
                     transform: scale(1) translateX(-50%) translateY(calc(-36px - #{$tooltip-margin}));
                 }
             }
         }
 
         &.#{$prefix}-tooltip-top-left {
-            &:before {
+            &:after {
                 transform-origin: top left;
                 top             : 0;
                 left            : 0;
@@ -89,14 +89,14 @@ $tooltip-margin         : $component-margin;
 
             &:hover,
             &:focus-within {
-                &:before {
+                &:after {
                     transform: scale(1) translateX(calc(-100% - #{$tooltip-margin})) translateY(calc(-36px - #{$tooltip-margin}));
                 }
             }
         }
 
         &.#{$prefix}-tooltip-top-right {
-            &:before {
+            &:after {
                 transform-origin: top right;
                 top             : 0;
                 right           : 0;
@@ -105,14 +105,14 @@ $tooltip-margin         : $component-margin;
 
             &:hover,
             &:focus-within {
-                &:before {
+                &:after {
                     transform: scale(1) translateX(calc(100% + #{$tooltip-margin})) translateY(calc(-36px - #{$tooltip-margin}));
                 }
             }
         }
 
         &.#{$prefix}-tooltip-bottom-left {
-            &:before {
+            &:after {
                 // top         : 100%;
                 transform-origin: bottom left;
                 bottom          : 0;
@@ -122,14 +122,14 @@ $tooltip-margin         : $component-margin;
 
             &:hover,
             &:focus-within {
-                &:before {
+                &:after {
                     transform: scale(1) translateX(calc(-100% - #{$tooltip-margin})) translateY(calc(36px + #{$tooltip-margin}));
                 }
             }
         }
 
         &.#{$prefix}-tooltip-bottom-right {
-            &:before {
+            &:after {
                 transform-origin: bottom right;
                 bottom          : 0;
                 right           : 0;
@@ -138,14 +138,14 @@ $tooltip-margin         : $component-margin;
 
             &:hover,
             &:focus-within {
-                &:before {
+                &:after {
                     transform: scale(1) translateX(calc(100% + #{$tooltip-margin})) translateY(calc(36px + #{$tooltip-margin}));
                 }
             }
         }
 
         &.#{$prefix}-tooltip-bottom-center {
-            &:before {
+            &:after {
                 transform-origin: bottom left;
                 bottom          : 0;
                 left            : 50%;
@@ -154,7 +154,7 @@ $tooltip-margin         : $component-margin;
 
             &:hover,
             &:focus-within {
-                &:before {
+                &:after {
                     transform: scale(1) translateX(-50%) translateY(calc(36px + #{$tooltip-margin}));
                 }
             }
@@ -165,13 +165,13 @@ $tooltip-margin         : $component-margin;
 @mixin tooltip-options {
     .#{$prefix}-tooltip {
         &.#{$prefix}-wide {
-            &:before {
+            &:after {
                 width: 350px;
             }
         }
 
         &.#{$prefix}-fit {
-            &:before {
+            &:after {
                 max-width: 400px;
             }
         }
@@ -207,7 +207,7 @@ $tooltip-margin         : $component-margin;
         }
 
         .#{$prefix}-tooltip {
-            &:before {
+            &:after {
                 background-color: $tooltip-background-color-dark;
                 border          : 1px solid $tooltip-border-color-dark;
                 color           : $tooltip-text-color-dark;
@@ -226,7 +226,7 @@ $tooltip-margin         : $component-margin;
         }
 
         .#{$prefix}-tooltip {
-            &:before {
+            &:after {
                 background-color: $component-print-background;
                 border          : $component-print-border;
                 color           : $component-print-color;
@@ -239,7 +239,7 @@ $tooltip-margin         : $component-margin;
 @mixin tooltip-no-transitions {
     body:not(.#{$prefix}-no-transitions) {
         .#{$prefix}-tooltip {
-            &:before {
+            &:after {
                 transition-delay: $tooltip-animation-time;
                 transition      : transform $tooltip-animation-time ease-in;
             }

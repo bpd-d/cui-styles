@@ -516,13 +516,35 @@ $input-margin-small   : $margin-global-small;
         &.#{$prefix}-inline {
 
             .#{$prefix}-form-label {
-                display: inline-block;
+                display     : inline-block;
+                margin-right: $input-margin-small;
             }
 
             input,
             select {
                 margin-top: 0px;
                 display   : inline-block;
+            }
+        }
+
+        &.#{$prefix}-flex {
+            display        : flex;
+            justify-content: space-between;
+            align-items    : center;
+            flex-wrap      : nowrap;
+
+            >div,
+            .#{$prefix}-form-label {
+                display     : inline-block;
+                margin-right: $input-margin-small;
+                order       : 1;
+            }
+
+            input,
+            select {
+                margin-top: 0px;
+                display   : inline-block;
+                order     : 2;
             }
         }
     }

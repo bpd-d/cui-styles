@@ -3,18 +3,17 @@
 $navbar-background-default     : $component-background-default;
 $navbar-background-default-dark: $component-background-default-dark;
 
-$navbar-color-default      : $component-color-default;
-$navbar-color-default-dark : $component-color-default-dark;
+$navbar-color-default      : $component-color-muted;
+$navbar-color-default-dark : $component-color-muted-dark;
 
 $navbar-indicator-color-accent   : $component-background-accent;
 $navbar-indicator-color-secondary: $component-background-secondary;
 
-
 $navbar-color-default-active      : $component-color-active;
 $navbar-color-default-active-dark : $component-color-active-dark;
 
-$navbar-color-muted      : $component-color-muted;
-$navbar-color-muted-dark : $component-color-muted-dark;
+// $navbar-color-muted      : $component-color-muted;
+// $navbar-color-muted-dark : $component-color-muted-dark;
 
 $navbar-item-padding      : $padding-global;
 $navbar-item-padding-small: $padding-global-small;
@@ -142,7 +141,7 @@ $navbar-transition-time : $animation-duration-short;
             left            : 50%;
             transform       : translate(-50%, 2px) scale(0, 1);
             width           : 100%;
-            background-color: $navbar-color-muted;
+            background-color: $navbar-color-default;
         }
 
         &:hover {
@@ -163,14 +162,14 @@ $navbar-transition-time : $animation-duration-short;
             color: $navbar-color-default-active;
 
             &:before {
-                background-color: $navbar-color-default;
+                background-color: $navbar-color-default-active;
                 transform       : translate(-50%, 2px) scale(0.4, 1);
             }
 
             &:hover,
             &:focus {
                 &:before {
-                    transform: translate(-50%, 2px) scale(0.8, 1);
+                    transform: translate(-50%, 2px) scale(0.6, 1);
                 }
             }
         }
@@ -182,6 +181,8 @@ $navbar-transition-time : $animation-duration-short;
     .#{$prefix}-navbar.#{$prefix}-accent {
         .#{$prefix}-navbar-item {
             &.#{$prefix}-active {
+                color: $navbar-indicator-color-accent !important;
+
                 &:before {
                     background-color: $navbar-indicator-color-accent !important;
                 }
@@ -195,7 +196,11 @@ $navbar-transition-time : $animation-duration-short;
 @mixin navbar-secondary {
     .#{$prefix}-navbar.#{$prefix}-secondary {
         .#{$prefix}-navbar-item {
+
+
             &.#{$prefix}-active {
+                color: $navbar-indicator-color-secondary !important;
+
                 &:before {
                     background-color: $navbar-indicator-color-secondary !important;
                 }
@@ -219,7 +224,7 @@ $navbar-transition-time : $animation-duration-short;
             color: $navbar-color-default-dark;
 
             &:before {
-                background-color: $navbar-color-muted-dark;
+                background-color: $navbar-color-default-dark;
             }
 
             &.#{$prefix}-active {

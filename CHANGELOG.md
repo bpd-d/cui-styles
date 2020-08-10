@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.10] WIP
+# [0.1.10] 2020-08-10
+* [Changed] Focus on buttons
+
 # [0.1.9] 2020-08-09
 * [Fixed] Display tooltip on element that have ::before already
 * [Changed] Navbar underline size on active elements

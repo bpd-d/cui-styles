@@ -75,11 +75,10 @@ $button-outline                       : $outline-default;
             width  : 100%;
         }
 
-
-
         &.#{$prefix}-default {
-            color       : $button-color-default;
-            border-color: $button-border-color;
+            color           : $button-color-default;
+            background-color: transparent;
+            border-color    : $button-border-color;
         }
 
         &.#{$prefix}-shade {
@@ -92,16 +91,22 @@ $button-outline                       : $outline-default;
             border-radius: $border-radius-round;
         }
 
-        &:hover {
+        &:hover,
+        &:focus:not(:hover) {
+            background-color   : $button-background-shade;
+            // color           : $button-color-default;
+
             outline: none !important;
 
             &.#{$prefix}-default {
-                border-color: $button-border-color-hover;
+                border-color    : $button-border-color-hover;
+                background-color: transparent;
             }
         }
 
         &:active {
-            outline: none !important;
+            background-color: $button-background-shade-active;
+            outline         : none !important;
 
             &.#{$prefix}-shade {
                 background-color: $button-background-shade-active;
@@ -109,8 +114,13 @@ $button-outline                       : $outline-default;
 
             &.#{$prefix}-default {
                 border-color       : $button-border-color-active;
+                background-color   : transparent;
                 // background-color: $button-background-default-active;
             }
+        }
+
+        &:focus {
+            outline: none !important;
         }
 
     }
@@ -126,9 +136,11 @@ $button-outline                       : $outline-default;
             .#{$prefix}-button {
                 color: $button-color-default-dark;
 
+
                 &.#{$prefix}-default {
-                    color       : $button-color-default-dark;
-                    border-color: $button-border-color-dark;
+                    color           : $button-color-default-dark;
+                    background-color: transparent;
+                    border-color    : $button-border-color-dark;
                 }
 
                 &.#{$prefix}-shade {
@@ -137,14 +149,20 @@ $button-outline                       : $outline-default;
                     border-color    : $button-background-shade-dark;
                 }
 
-                &:hover {
+                &:hover,
+                &:focus:not(:hover) {
+                    background-color: $button-background-shade-dark;
+
                     &.#{$prefix}-default {
-                        color       : $button-color-default-dark;
-                        border-color: $button-border-color-hover-dark;
+                        color           : $button-color-default-dark;
+                        border-color    : $button-border-color-hover-dark;
+                        background-color: transparent;
                     }
                 }
 
                 &:active {
+                    background-color: $button-background-shade-dark-active;
+
                     &.#{$prefix}-default {
                         color           : $button-color-default-dark;
                         border-color    : $button-border-color-active-dark;
@@ -163,79 +181,90 @@ $button-outline                       : $outline-default;
 @mixin button-signals {
     .#{$prefix}-button {
         &.#{$prefix}-accent {
-            background-color: $button-background-accent;
+            background-color: $button-background-accent !important;
             color           : $button-color-inverse;
             border-color    : $button-background-accent;
 
         }
 
         &.#{$prefix}-secondary {
-            background-color: $button-background-secondary;
+            background-color: $button-background-secondary !important;
             color           : $button-color-inverse;
             border-color    : $button-background-secondary;
         }
 
         &.#{$prefix}-success {
-            background-color: $button-background-success;
+            background-color: $button-background-success !important;
             color           : $button-color-inverse;
         }
 
         &.#{$prefix}-error {
-            background-color: $button-background-error;
+            background-color: $button-background-error !important;
             color           : $button-color-inverse;
             border-color    : $button-background-error;
         }
 
         &.#{$prefix}-warning {
-            background-color: $button-background-warning;
+            background-color: $button-background-warning !important;
             color           : $button-color-inverse;
             border-color    : $button-background-warning;
         }
 
-        &:hover {
+        &:hover,
+        &:focus:not(:hover) {
             &.#{$prefix}-accent {
-                background-color: $button-background-accent-hover;
+                background-color: $button-background-accent-hover !important;
+                border-color    : $button-background-accent-hover;
             }
 
             &.#{$prefix}-secondary {
-                background-color: $button-background-secondary-hover;
+                background-color: $button-background-secondary-hover !important;
+                border-color    : $button-background-secondary-hover;
             }
 
             &.#{$prefix}-success {
-                background-color: $button-background-success-hover;
+                background-color: $button-background-success-hover !important;
+                border-color    : $button-background-success-hover;
             }
 
             &.#{$prefix}-error {
-                background-color: $button-background-error-hover;
+                background-color: $button-background-error-hover !important;
+                border-color    : $button-background-error-hover;
             }
 
             &.#{$prefix}-warning {
-                background-color: $button-background-warning-hover;
+                background-color: $button-background-warning-hover !important;
+                border-color    : $button-background-warning-hover;
             }
         }
 
         &:active {
 
             &.#{$prefix}-accent {
-                background-color: $button-background-accent-active;
+                background-color: $button-background-accent-active !important;
+                border-color    : $button-background-accent-active;
             }
 
             &.#{$prefix}-secondary {
-                background-color: $button-background-secondary-active;
+                background-color: $button-background-secondary-active !important;
+                border-color    : $button-background-secondary-active;
             }
 
             &.#{$prefix}-error {
-                background-color: $button-background-error-active;
+                background-color: $button-background-error-active !important;
+                border-color    : $button-background-error-active;
 
             }
 
             &.#{$prefix}-warning {
-                background-color: $button-background-warning-active;
+                background-color: $button-background-warning-active !important;
+                border-color    : $button-background-warning-active;
 
             }
 
             &.#{$prefix}-success {
-                background-color: $button-background-success-active;
+                background-color: $button-background-success-active !important;
+                border-color    : $button-background-success-active;
 
             }
         }
@@ -250,8 +279,9 @@ $button-outline                       : $outline-default;
             color: $button-color-default-dark;
 
             &.#{$prefix}-default {
-                color       : $button-color-default-dark;
-                border-color: $button-border-color-dark;
+                color           : $button-color-default-dark;
+                background-color: transparent;
+                border-color    : $button-border-color-dark;
             }
 
             &.#{$prefix}-shade {
@@ -260,18 +290,30 @@ $button-outline                       : $outline-default;
                 border-color    : $button-background-shade-dark;
             }
 
-            &:hover {
+            &:hover,
+            &:focus:not(:hover) {
+                background-color: $button-background-shade-dark;
+
                 &.#{$prefix}-default {
+                    color           : $button-color-default-dark;
+                    background-color: transparent;
+                    border-color    : $button-border-color-hover-dark;
+                }
+
+                &.#{$prefix}-shade {
+
                     color       : $button-color-default-dark;
-                    border-color: $button-border-color-hover-dark;
+                    border-color: $button-background-shade-dark;
                 }
             }
 
             &:active {
+
+                background-color: $button-background-shade-dark-active;
+
                 &.#{$prefix}-default {
-                    color             : $button-color-default-dark;
-                    border-color      : $button-border-color-active-dark;
-                    //background-color: $button-background-default-active-dark;
+                    color       : $button-color-default-dark;
+                    border-color: $button-border-color-active-dark;
                 }
 
                 &.#{$prefix}-shade {
@@ -293,7 +335,8 @@ $button-outline                       : $outline-default;
                     border-color    : $button-background-shade;
                 }
 
-                &:hover {
+                &:hover,
+                &:focus:not(:hover) {
                     &.#{$prefix}-default {
                         color       : $button-color-default;
                         border-color: $button-border-color-hover;

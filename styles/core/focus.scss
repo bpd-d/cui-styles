@@ -19,16 +19,19 @@ $opts: 'accent',
             @include not-element() {
                 @include not-colors {
                     &:focus {
-                        outline   : none !important;
-                        box-shadow: 0 0 0 1px $component-color-muted;
+                        outline         : 1px dotted #999 !important;
+                        outline-offset  : 1px;
+                        //box-shadow    : 0 0 0 1px $component-color-muted;
                     }
                 }
 
                 @each $opt in $opts {
                     &.#{$prefix}-#{$opt} {
                         &:focus {
-                            outline   : none !important;
-                            box-shadow: 0 0 0 1px get-theme-color('#{$opt}-active');
+                            outline          : 1px dotted #999 !important;
+                            outline-offset   : 1px;
+                            // outline       : none !important;
+                            // box-shadow    : 0 0 0 1px get-theme-color('#{$opt}-active');
                         }
                     }
                 }

@@ -140,14 +140,14 @@ $button-border-color     : var(--#{$prefix}-color-light-muted);
 $button-border-color-dark: var(--#{$prefix}-color-dark-muted);
 
 $component-background-accent            : var(--#{$prefix}-color-primary);
-$component-background-accent-hover      : var(--#{$prefix}-color-primary);
+$component-background-accent-hover      : var(--#{$prefix}-color-primary-muted);
 $component-background-accent-active     : var(--#{$prefix}-color-primary-active);
 $component-background-accent-muted      : var(--#{$prefix}-color-primary-muted);
 $component-background-accent-shade      : var(--#{$prefix}-color-primary-shade);
 $component-background-accent-shade-dark : var(--#{$prefix}-color-primary-shade-dark);
 
 $component-background-secondary            : var(--#{$prefix}-color-secondary);
-$component-background-secondary-hover      : var(--#{$prefix}-color-secondary);
+$component-background-secondary-hover      : var(--#{$prefix}-color-secondary-muted);
 $component-background-secondary-active     : var(--#{$prefix}-color-secondary-active);
 $component-background-secondary-muted      : var(--#{$prefix}-color-secondary-muted);
 $component-background-secondary-shade      : var(--#{$prefix}-color-secondary-shade);
@@ -161,14 +161,14 @@ $component-background-error-shade      : var(--#{$prefix}-color-error-shade);
 $component-background-error-shade-dark : var(--#{$prefix}-color-error-shade-dark);
 
 $component-background-warning            : var(--#{$prefix}-color-warning);
-$component-background-warning-hover      : var(--#{$prefix}-color-warning);
+$component-background-warning-hover      : var(--#{$prefix}-color-warning-muted);
 $component-background-warning-active     : var(--#{$prefix}-color-warning-active);
 $component-background-warning-muted      : var(--#{$prefix}-color-warning-muted);
 $component-background-warning-shade      : var(--#{$prefix}-color-warning-shade);
 $component-background-warning-shade-dark : var(--#{$prefix}-color-warning-shade-dark);
 
 $component-background-success            : var(--#{$prefix}-color-success);
-$component-background-success-hover      : var(--#{$prefix}-color-success);
+$component-background-success-hover      : var(--#{$prefix}-color-success-muted);
 $component-background-success-active     : var(--#{$prefix}-color-success-active);
 $component-background-success-muted      : var(--#{$prefix}-color-success-muted);
 $component-background-success-shade      : var(--#{$prefix}-color-success-shade);

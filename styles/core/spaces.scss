@@ -35,6 +35,18 @@ $sides: "top",
     }
 }
 
+@mixin remove-margin($size: "") {
+    .#{$prefix}-padding-remove#{$size} {
+        margin: 0px !important;
+    }
+
+    @each $side in $sides {
+        .#{$prefix}-margin-remove-#{$side}#{$size} {
+            margin-#{$side}: 0px !important;
+        }
+    }
+}
+
 @mixin margin($size) {
     /**
     * Normal
@@ -277,24 +289,28 @@ $sides: "top",
         @include margin(s);
         @include padding(s);
         @include remove-padding(--s);
+        @include remove-margin(--s);
     }
 
     @include media-screen-min-medium {
         @include margin(m);
         @include padding(m);
         @include remove-padding(--m);
+        @include remove-margin(--m);
     }
 
     @include media-screen-min-large {
         @include margin(l);
         @include padding(l);
         @include remove-padding(--l);
+        @include remove-margin(--l);
     }
 
     @include media-screen-min-xlarge {
         @include margin(xl);
         @include padding(xl);
         @include remove-padding(--xl);
+        @include remove-margin(--xl);
     }
 }
 
@@ -371,4 +387,5 @@ $sides: "top",
     @include media();
     @include overflow();
     @include remove-padding();
+    @include remove-margin();
 }

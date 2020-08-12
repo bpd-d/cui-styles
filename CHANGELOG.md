@@ -1,4 +1,11 @@
 # cUI Styles CHANGELOG:
+# [0.1.12] WIP
+# [0.1.11] 2020-08-12
+* [Fixed] Colors in navbar
+* [Fixed] Component backgrounds have now !important flag
+* [Chnaged] Scrollbar customization applies only to screen sizes larger than medium
+* [Added] {}-margin-remove to media queries
+
 # [0.1.10] 2020-08-10
 * [Changed] Focus on buttons
 

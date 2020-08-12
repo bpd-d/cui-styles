@@ -13,79 +13,87 @@ $scrollbar-track-background-active-dark: $component-color-muted-dark;
 $scrollbar-radius: 0px;
 
 @mixin scrollbar {
-    @include mode-not-no-scrollbar-customization {
 
-        /* width */
-        ::-webkit-scrollbar {
-            width: $scrollbar-width;
-        }
+    @include media-screen-min-medium {
+        @include mode-not-no-scrollbar-customization {
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background   : $scrollbar-background;
-            border-radius: $scrollbar-radius;
-        }
+            /* width */
+            ::-webkit-scrollbar {
+                width: $scrollbar-width;
+            }
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            border-radius: $scrollbar-radius;
-            background   : $scrollbar-track-background;
-        }
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background   : $scrollbar-background;
+                border-radius: $scrollbar-radius;
+            }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: $scrollbar-track-background-active;
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                border-radius: $scrollbar-radius;
+                background   : $scrollbar-track-background;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: $scrollbar-track-background-active;
+            }
         }
     }
 
 }
 
 @mixin scrollbar-dark {
-    body:not(.#{$prefix}-no-scrollbar-customization).#{$prefix}-dark {
+    @include media-screen-min-medium {
+        body:not(.#{$prefix}-no-scrollbar-customization).#{$prefix}-dark {
 
-        /* width */
-        ::-webkit-scrollbar {
-            width: $scrollbar-width;
-        }
+            /* width */
+            ::-webkit-scrollbar {
+                width: $scrollbar-width;
+            }
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: $scrollbar-background-dark;
-        }
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: $scrollbar-background-dark;
+            }
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: $scrollbar-track-background-dark;
-        }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: $scrollbar-track-background-dark;
+            }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: $scrollbar-track-background-active-dark;
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: $scrollbar-track-background-active-dark;
+            }
         }
     }
 }
 
 @mixin scrollbar-print {
-    @include mode-print() {
 
-        /* width */
-        ::-webkit-scrollbar {
-            width: $scrollbar-width;
-        }
+    @include media-screen-min-medium {
+        @include mode-print() {
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: none;
-        }
+            /* width */
+            ::-webkit-scrollbar {
+                width: $scrollbar-width;
+            }
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: none;
-        }
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: none;
+            }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: none;
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: none;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: none;
+            }
         }
     }
 }

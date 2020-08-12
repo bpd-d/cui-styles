@@ -18,7 +18,7 @@ $themes: "accent",
         $color-name : "#{$accent}-shade#{$suffix}";
 
         .#{$prefix}-background-#{$accent} {
-            background-color: get-theme-color("#{$color-name}");
+            background-color: get-theme-color("#{$color-name}") !important;
         }
     }
 }
@@ -54,11 +54,11 @@ $themes: "accent",
     @include enumerate-backgrounds();
 
     .#{$prefix}-background-shade {
-        background-color: $background-color-shade;
+        background-color: $background-color-shade !important;
     }
 
     .#{$prefix}-background-default {
-        background-color: $background-color-default;
+        background-color: $background-color-default !important;
     }
 
 }
@@ -68,11 +68,11 @@ $themes: "accent",
         @include enumerate-backgrounds("-dark");
 
         .#{$prefix}-background-shade {
-            background-color: $background-color-shade-dark;
+            background-color: $background-color-shade-dark !important;
         }
 
         .#{$prefix}-background-default {
-            background-color: $background-color-default-dark;
+            background-color: $background-color-default-dark !important;
         }
     }
 }

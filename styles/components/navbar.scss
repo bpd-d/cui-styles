@@ -3,8 +3,8 @@
 $navbar-background-default     : $component-background-default;
 $navbar-background-default-dark: $component-background-default-dark;
 
-$navbar-color-default      : $component-color-muted;
-$navbar-color-default-dark : $component-color-muted-dark;
+$navbar-color-default      : $component-color-default;
+$navbar-color-default-dark : $component-color-default-dark;
 
 $navbar-indicator-color-accent   : $component-background-accent;
 $navbar-indicator-color-secondary: $component-background-secondary;
@@ -35,6 +35,7 @@ $navbar-transition-time : $animation-duration-short;
         box-sizing      : border-box;
         padding         : 0px;
         z-index         : 1100;
+        color           : $component-color-default;
 
         &.#{$prefix}-transparent {
             background-color: transparent;
@@ -95,7 +96,6 @@ $navbar-transition-time : $animation-duration-short;
             box-sizing  : border-box;
             order       : 1;
             height      : 100%;
-            min-width   : calc(100% / 3);
             margin-left : $navbar-margin;
         }
 
@@ -113,7 +113,6 @@ $navbar-transition-time : $animation-duration-short;
             display        : flex;
             justify-content: flex-end;
             order          : 3;
-            min-width      : calc(100% / 3);
             box-sizing     : border-box;
             margin-right   : $navbar-margin;
 
@@ -211,7 +210,10 @@ $navbar-transition-time : $animation-duration-short;
 }
 
 @mixin navbar-dark {
+
     .#{$prefix}-dark {
+        color: $component-color-default-dark;
+
         .#{$prefix}-navbar {
             background-color: $navbar-background-default-dark;
 
@@ -228,7 +230,7 @@ $navbar-transition-time : $animation-duration-short;
             }
 
             &.#{$prefix}-active {
-                color: $navbar-color-default-active-dark;
+                color: $component-color-default-dark;
 
                 &:before {
                     background-color: $navbar-color-default-dark;
@@ -261,18 +263,6 @@ $navbar-transition-time : $animation-duration-short;
         .#{$prefix}-navbar-left,
         .#{$prefix}-navbar-right {
             // justify-self   : center;
-            //justify-content: center !important;
-            width : 100%;
-            margin: 0px !important;
-        }
-    }
-
-    // View medium
-    @media (min-width: $breakpoint-s) and (max-width: $breakpoint-m) {
-
-        .#{$prefix}-navbar-left,
-        .#{$prefix}-navbar-right {
-            //  justify-self   : center;
             //justify-content: center !important;
             width : 100%;
             margin: 0px !important;

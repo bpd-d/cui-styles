@@ -32,6 +32,18 @@
             }
         }
     }
+
+    .#{$prefix}-width-auto#{$size} {
+        width: auto !important;
+    }
+
+    .#{$prefix}-width-grow#{$size} {
+        flex: 1 0 auto !important;
+    }
+
+    .#{$prefix}-width-shrink#{$size} {
+        flex: 0 1 auto !important;
+    }
 }
 
 @mixin widths_small() {
@@ -59,7 +71,7 @@
     }
 
     .#{$prefix}-width-auto {
-        flex: auto;
+        width: auto;
     }
 
     .#{$prefix}-width-grow {

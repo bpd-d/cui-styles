@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.12] WIP
+# [0.1.13] WIP
+# [0.1.12] 2020-08-12
+* [Fixed] Build fixes
 # [0.1.11] 2020-08-12
 * [Fixed] Colors in navbar
 * [Fixed] Component backgrounds have now !important flag

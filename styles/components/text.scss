@@ -181,7 +181,7 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     .#{$prefix}-article-description {
         font-size  : $text-large;
         line-height: $line-height-large;
-        font-weight: $font-weight-thin;
+        font-weight: $text-weight-thin;
     }
 }
 

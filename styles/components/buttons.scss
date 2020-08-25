@@ -37,6 +37,8 @@ $button-border-color-dark             : $component-color-muted-dark;
 $button-border-color-hover-dark       : $component-color-default-dark;
 $button-border-color-active-dark      : $component-color-default-dark;
 $button-outline                       : $outline-default;
+$button-line-height                   : $line-height;
+$button-font-size                     : $font-normal;
 
 
 @mixin button {
@@ -49,8 +51,8 @@ $button-outline                       : $outline-default;
         border          : 1px solid transparent;
         border-radius   : $border-radius-default;
         color           : $button-color-default;
-        font-size       : 1rem;
-        line-height     : 20px;
+        font-size       : $button-font-size;
+        line-height     : $button-line-height;
         text-align      : center;
         vertical-align  : middle;
         text-decoration : none;

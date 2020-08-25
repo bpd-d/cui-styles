@@ -27,27 +27,13 @@ $section-color-inverse-dark :$component-color-inverse-dark;
         display: block;
         padding: $section-padding-normal;
 
-        &.#{$prefix}-inverse {
-            background-color: $section-background-inverse;
-            color           : $section-color-inverse;
-        }
-
         &.#{$prefix}-space {
             padding: $section-padding-large;
         }
     }
 }
 
-@mixin section-dark {
-    .#{$prefix}-dark {
-        .#{$prefix}-section {
-            &.#{$prefix}-inverse {
-                background-color: $section-background-inverse-dark;
-                color           : $section-color-inverse-dark;
-            }
-        }
-    }
-}
+
 
 @mixin section-print {
     .#{$prefix}-print {
@@ -60,6 +46,6 @@ $section-color-inverse-dark :$component-color-inverse-dark;
 
 @mixin definitions {
     @include section();
-    @include section-dark();
+    //  @include section-dark();
     @include section-print();
 }

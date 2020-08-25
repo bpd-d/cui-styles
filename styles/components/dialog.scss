@@ -40,27 +40,30 @@ $dialog-animation-time-short   : $animation-duration-short;
 
             .#{$prefix}-dialog-header {
                 @include component-padding(normal, same);
-                border-bottom  : 1px solid $dialog-border-color;
+                //@include component-padding-complex(header, large);
+                // border-bottom  : 1px solid $dialog-border-color;
                 display        : flex;
                 flex-wrap      : nowrap;
                 justify-content: space-between;
                 align-items    : center;
 
                 .#{$prefix}-dialog-title {
-                    font-size: 1.4rem;
+                    @include component-header;
                 }
             }
 
             .#{$prefix}-dialog-body {
                 // padding   : 0.5em 1em;
                 @include component-padding(normal, same);
+                // @include component-padding-complex(body, large);
                 max-height: 400px;
                 overflow-y: auto;
             }
 
             .#{$prefix}-dialog-footer {
-                border-top: 1px solid $dialog-border-color;
+                //  border-top: 1px solid $dialog-border-color;
                 @include component-padding(normal, same);
+                // @include component-padding-complex(footer, large);
             }
         }
 

@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.13] WIP
+# [0.1.14] WIP
+# [0.1.13] 2020-08-25
+* [Changed] Default font sizes
+* [Changed] Card and dialog visual appearance
+* [Changed] Header h1 font size
 # [0.1.12] 2020-08-12
 * [Fixed] Build fixes
 # [0.1.11] 2020-08-12

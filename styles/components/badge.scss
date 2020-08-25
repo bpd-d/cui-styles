@@ -38,6 +38,8 @@ $badge-color-dark   : $component-color-default-dark;
             box-sizing      : border-box;
             box-shadow      : $shadow;
             vertical-align  : middle;
+            min-height      : $badge-text-line;
+            min-width       : $badge-text-line;
 
             &.#{$prefix}-accent {
                 background-color: $badge-background-accent;

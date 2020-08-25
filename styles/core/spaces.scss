@@ -127,6 +127,14 @@ $sides: "top",
         padding: $item-padding !important;
     }
 
+    .#{$prefix}-padding-vertical--#{$size} {
+        padding: $item-padding 0 !important;
+    }
+
+    .#{$prefix}-padding-horizontal--#{$size} {
+        padding: 0 $item-padding !important;
+    }
+
     @each $side in $sides {
         .#{$prefix}-padding-#{$side}--#{$size} {
             padding-#{$side}: $item-padding !important;
@@ -234,6 +242,14 @@ $sides: "top",
     .#{$prefix}-padding-right {
         padding-left: $item-padding !important;
     }
+
+    .#{$prefix}-padding-vertical {
+        padding: $item-padding 0 !important;
+    }
+
+    .#{$prefix}-padding-horizontal {
+        padding: 0 $item-padding !important;
+    }
 }
 
 @mixin paddings-small {
@@ -280,6 +296,15 @@ $sides: "top",
     }
 }
 
+/**
+* To be used when marigns on first and last element dont work
+*/
+
+@mixin wrapper {
+    .#{$prefix}-content-wrapper {
+        border: 1px solid transparent;
+    }
+}
 
 /**
 * Media Queries
@@ -388,4 +413,5 @@ $sides: "top",
     @include overflow();
     @include remove-padding();
     @include remove-margin();
+    @include wrapper();
 }

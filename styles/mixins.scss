@@ -37,8 +37,8 @@ $item-background-default: $component-background-default;
 }
 
 @mixin component-header {
-    font-size  : $font-larger;
-    font-weight: $text-weight-thin;
+    font-size  : $font-large;
+    font-weight: $text-weight-semi-bold;
 }
 
 @mixin component-padding($size: normal, $same: false) {
@@ -71,18 +71,37 @@ $item-background-default: $component-background-default;
     }
 }
 
-@mixin component-padding-complex($part: body) {
-    @if $part==header {
-        padding: $padding-global $padding-global $padding-global-small $padding-global;
+@mixin component-padding-complex($part: body, $size: normal) {
+
+    @if $size==normal {
+        @if $part==header {
+            padding: $padding-global $padding-global $padding-global-small $padding-global;
+        }
+
+        @else if $part==body {
+            padding: $padding-global-small $padding-global $padding-global-small $padding-global;
+        }
+
+        @else if $part==footer {
+            padding: $padding-global-small $padding-global $padding-global $padding-global;
+        }
     }
 
-    @else if $part==body {
-        padding: $padding-global-small $padding-global $padding-global-small $padding-global;
+    @else if $size==large {
+        @if $part==header {
+            padding: $padding-global-large $padding-global-large $padding-global $padding-global-large;
+        }
+
+        @else if $part==body {
+            padding: $padding-global $padding-global-large $padding-global $padding-global-large;
+        }
+
+        @else if $part==footer {
+            padding: $padding-global $padding-global-large $padding-global-large $padding-global-large;
+        }
     }
 
-    @else if $part==footer {
-        padding: $padding-global-small $padding-global $padding-global $padding-global;
-    }
+
 
 }
 

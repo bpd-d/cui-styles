@@ -24,7 +24,7 @@ $card-border-color-dark       : transparent; //$color-border-dark;
         box-sizing      : border-box;
         background-color: transparent;
         border          : 1px solid transparent;
-        border-radius   : $border-radius-default;
+
 
         >*:only-child {
             @include component-padding(normal, same);
@@ -51,16 +51,18 @@ $card-border-color-dark       : transparent; //$color-border-dark;
             }
         }
 
-        // &.#{$prefix}-body {
-        //     @include component-padding(normal, true);
-        // }
-
         &.#{$prefix}-large {
 
-            .#{$prefix}-card-header,
-            .#{$prefix}-card-body,
+            .#{$prefix}-card-header {
+                @include component-padding-complex(header, large)
+            }
+
+            .#{$prefix}-card-body {
+                @include component-padding-complex(body, large)
+            }
+
             .#{$prefix}-card-footer {
-                @include component-padding(large, same);
+                @include component-padding-complex(footer, large)
             }
 
         }
@@ -70,22 +72,17 @@ $card-border-color-dark       : transparent; //$color-border-dark;
         }
 
         .#{$prefix}-card-header {
-            border-bottom: 1px solid $card-separator-color;
-            @include component-padding(normal, same);
-
-            &.#{$prefix}-no-separator {
-                border-bottom: none;
-            }
+            // @include component-padding-complex(header);
+            @include component-padding(normal, ame);
         }
 
         .#{$prefix}-card-body {
             max-width: 100%;
-            @include component-padding(normal, same);
+            @include component-padding-complex(body);
         }
 
         .#{$prefix}-card-footer {
-            border-top: 1px solid $card-separator-color;
-            @include component-padding(normal, same);
+            @include component-padding-complex(footer);
 
             &.#{$prefix}-no-separator {
                 border-top: none;
@@ -93,6 +90,7 @@ $card-border-color-dark       : transparent; //$color-border-dark;
         }
 
         &.#{$prefix}-default {
+            border-radius   : $border-radius-default;
             background-color: $card-background-default;
             box-shadow      : $shadow;
             color           : $card-color-default;
@@ -101,6 +99,7 @@ $card-border-color-dark       : transparent; //$color-border-dark;
         }
 
         &.#{$prefix}-inverse {
+            border-radius   : $border-radius-default;
             background-color: $card-background-inverse;
             box-shadow      : $shadow;
             color           : $card-color-inverse;
@@ -116,11 +115,13 @@ $card-border-color-dark       : transparent; //$color-border-dark;
 @mixin card-theme {
     .#{$prefix}-card {
         &.#{$prefix}-accent {
+            border-radius   : $border-radius-default;
             background-color: $card-background-accent;
             box-shadow      : $shadow;
         }
 
         &.#{$prefix}-secondary {
+            border-radius   : $border-radius-default;
             background-color: $card-background-secondary;
             box-shadow      : $shadow;
         }

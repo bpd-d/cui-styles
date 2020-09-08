@@ -24,6 +24,8 @@ $container-padding-normal: $padding-global;
     .#{$prefix}-container {
         @include component-padding();
 
+        
+
         &.#{$prefix}-no-padding {
             padding: 0;
         }
@@ -41,11 +43,6 @@ $container-padding-normal: $padding-global;
             justify-content: center;
             align-items    : center;
         }
-
-        // &.#{$prefix}-default {
-        //     background-color: $container-background-default;
-        //     color           : $container-color-default;
-        // }
 
         &.#{$prefix}-accent {
             background-color: $container-background-accent;

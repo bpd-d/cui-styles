@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.14] WIP
+# [0.1.15] WIP
+# [0.1.14] 2020-09-08
+* [Changed] Icon nav has been shrinked by default. To space out use **cui-space** on **cui-icon-nav**
+* [Added] text-dark to bring light shade of text on darker backgorunds
+* [EXPERIMENT] Remove margin top from headers which are first child in the container
 # [0.1.13] 2020-08-25
 * [Changed] Default font sizes
 * [Changed] Card and dialog visual appearance

@@ -221,9 +221,13 @@ $icon-color-success  : $component-background-success;
         li {
             box-sizing: border-box;
             display   : inline-block;
+        }
 
-            &>* {
-                @include component-padding(small, true);
+        &.#{$prefix}-space {
+            li {
+                &>* {
+                    @include component-padding(small, true);
+                }
             }
         }
     }

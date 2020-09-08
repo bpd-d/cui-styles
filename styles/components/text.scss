@@ -14,9 +14,9 @@ $text-line-xlarge: $line-height-xlarge;
 $font-weight     : $text-weight-normal;
 
 
-$text-color-muted     : $component-color-muted;
-$text-color-muted-dark: $component-color-muted-dark;
-
+$text-color-muted             : $component-color-muted;
+$text-color-muted-dark        : $component-color-muted-dark;
+$text-color-dark              : $component-color-default-dark;
 $blockquote-background-default: $component-background-shade;
 $blockquote-background-dark   : $component-background-shade-dark;
 $blockquote-border-color      : $component-background-shade-active;
@@ -34,6 +34,15 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
 
     .#{$prefix}-text-muted {
         color: $text-color-muted;
+    }
+
+    .#{$prefix}-text-dark {
+        color: $text-color-dark;
+    }
+
+    p:first-child {
+        margin-top : 0px;
+        padding-top: 0px;
     }
 }
 

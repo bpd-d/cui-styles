@@ -16,25 +16,53 @@ $head-margin-small: $margin-global-small;
         font-size  : $head-font-xlarge;
         font-weight: $head-text-weight-thin !important;
         margin     : $head-margin-large 0px;
+
+        &:not(:only-child) {
+            &:first-child {
+                margin-top: 0px;
+            }
+        }
     }
 
     .#{$prefix}-h2 {
         font-size  : $head-font-larger;
         font-weight: $head-text-weight-thin !important;
         margin     : $head-margin-large 0px;
+
+        &:not(:only-child) {
+            &:first-child {
+                margin-top: 0px;
+            }
+        }
+
     }
 
     .#{$prefix}-h3 {
         font-size  : $head-font-large;
         font-weight: $head-text-weight-bold !important;
         margin     : $head-margin 0px;
+
+        &:not(:only-child) {
+            &:first-child {
+                margin-top: 0px;
+            }
+        }
     }
 
     .#{$prefix}-h4 {
         font-size  : $head-font-normal;
         font-weight: $head-text-weight-bold !important;
         margin     : $head-margin-small 0px;
+
+        &:not(:only-child) {
+            &:first-child {
+                margin-top: 0px;
+            }
+        }
     }
+
+
+
 }
 
 @mixin title {

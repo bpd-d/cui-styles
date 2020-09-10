@@ -1,5 +1,8 @@
 # cUI Styles CHANGELOG:
-# [0.1.15] WIP
+# [0.1.16] WIP
+# [0.1.15] 2020-09-10
+* [Fixed] Reverted back changes related to icons in icon nav. List option has been fixed.
+* [Changed] Tooltip size will be more flexible
 # [0.1.14] 2020-09-08
 * [Changed] Icon nav has been shrinked by default. To space out use **cui-space** on **cui-icon-nav**
 * [Added] text-dark to bring light shade of text on darker backgorunds

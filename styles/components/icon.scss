@@ -26,6 +26,11 @@ $icon-color-success  : $component-background-success;
 
 @mixin icon {
 
+    a.#{$prefix}-icon,
+    a.#{$prefix}-svg {
+        cursor: pointer;
+    }
+
     span.#{$prefix}-svg,
     span.#{$prefix}-icon {
         border    : 1px solid transparent;
@@ -163,6 +168,10 @@ $icon-color-success  : $component-background-success;
         &.#{$prefix}-error {
             stroke: $icon-color-error;
         }
+
+        &.#{$prefix}-icon-dark {
+            stroke: $icon-color-default-dark;
+        }
     }
 }
 
@@ -218,18 +227,12 @@ $icon-color-success  : $component-background-success;
         margin    : 0px;
         display   : flex;
 
-        li {
+        &>li {
             box-sizing: border-box;
             display   : inline-block;
+            @include component-padding(small, true);
         }
 
-        &.#{$prefix}-space {
-            li {
-                &>* {
-                    @include component-padding(small, true);
-                }
-            }
-        }
     }
 }
 

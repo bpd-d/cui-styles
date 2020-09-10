@@ -21,26 +21,26 @@ $list-item-font-weight-bold       : $text-weight-bold;
         margin    : 0;
         padding   : 0;
 
-        li {
+        &>li {
             display: block;
             @include component-padding;
             color: $list-item-color;
         }
 
         &.#{$prefix}-inline {
-            li {
+            &>li {
                 display: inline-block;
             }
         }
 
         &.#{$prefix}-small {
-            li {
+            &>li {
                 @include component-padding(small);
             }
         }
 
         &.#{$prefix}-hover {
-            li {
+            &>li {
                 &:hover {
                     background-color: $list-item-hover-background;
                 }
@@ -48,13 +48,13 @@ $list-item-font-weight-bold       : $text-weight-bold;
         }
 
         &.#{$prefix}-stripped {
-            li:nth-child(even) {
+            &>li:nth-child(even) {
                 background-color: $list-item-even-background;
             }
         }
 
         &.#{$prefix}-bullet {
-            li {
+            &>li {
                 padding-left: 2rem;
                 position    : relative;
 
@@ -72,7 +72,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
         }
 
         &.#{$prefix}-interactive {
-            li {
+            &>li {
                 padding: 0px;
 
                 a {
@@ -147,7 +147,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
 @mixin list-accent {
     ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
 
-        li.#{$prefix}-active {
+        &>li.#{$prefix}-active {
             a {
                 &:before {
                     background-color: $list-item-active-color-accent;
@@ -155,7 +155,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
             }
         }
 
-        li>a.#{$prefix}-active {
+        &>li>a.#{$prefix}-active {
             &:before {
                 background-color: $list-item-active-color-accent;
             }
@@ -166,7 +166,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
 @mixin list-secondary {
     ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
 
-        li.#{$prefix}-active {
+        &>li.#{$prefix}-active {
             a {
                 &:before {
                     background-color: $list-item-active-color-secondary !important;
@@ -174,7 +174,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
             }
         }
 
-        li>a.#{$prefix}-active {
+        &>li>a.#{$prefix}-active {
             &:before {
                 background-color: $list-item-active-color-secondary !important;
             }
@@ -186,12 +186,12 @@ $list-item-font-weight-bold       : $text-weight-bold;
 @mixin list-dark {
     .#{$prefix}-dark {
         ul.#{$prefix}-list {
-            li {
+            &>li {
                 color: $list-item-color-dark;
             }
 
             &.#{$prefix}-bullet {
-                li {
+                &>li {
                     &:before {
                         border-color: $list-item-color-dark;
                     }
@@ -199,7 +199,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
             }
 
             &.#{$prefix}-hover {
-                li {
+                &>li {
                     &:hover {
                         background-color: $list-item-hover-background-dark;
                     }
@@ -208,13 +208,13 @@ $list-item-font-weight-bold       : $text-weight-bold;
 
 
             &.#{$prefix}-stripped {
-                li:nth-child(even) {
+                &>li:nth-child(even) {
                     background-color: $list-item-even-background-dark;
                 }
             }
 
             &.#{$prefix}-interactive {
-                li {
+                &>li {
                     a {
                         color: $list-item-color-dark;
 
@@ -247,12 +247,12 @@ $list-item-font-weight-bold       : $text-weight-bold;
 @mixin list-print {
     .#{$prefix}-print {
         ul.#{$prefix}-list {
-            li {
+            &>li {
                 color: $component-print-color;
             }
 
             &.#{$prefix}-bullet {
-                li {
+                &>li {
                     &:before {
                         border-color: $component-print-color;
                     }
@@ -260,13 +260,13 @@ $list-item-font-weight-bold       : $text-weight-bold;
             }
 
             &.#{$prefix}-stripped {
-                li {
+                &>li {
                     background-color: $component-print-background;
                 }
             }
 
             &.#{$prefix}-interactive {
-                li {
+                &>li {
                     &.#{$prefix}-active {
                         a {
                             &:before {

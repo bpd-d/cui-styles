@@ -427,8 +427,8 @@ $input-margin-small   : $margin-global-small;
 
 @mixin textarea {
     textarea.#{$prefix}-textarea {
-        font-size: $input-font-size-default;
-        @include component-padding(same);
+        font-size       : $input-font-size-default;
+        padding         : $input-padding-default;
         width           : 100%;
         height          : 100%;
         box-sizing      : border-box;
@@ -507,7 +507,8 @@ $input-margin-small   : $margin-global-small;
         }
 
         input,
-        select {
+        select,
+        textarea {
             order     : 2;
             margin-top: $input-margin-small;
             display   : block;
@@ -541,7 +542,8 @@ $input-margin-small   : $margin-global-small;
             }
 
             input,
-            select {
+            select,
+            textarea {
                 margin-top: 0px;
                 display   : inline-block;
                 order     : 2;

@@ -31,6 +31,7 @@
 @use 'components/scrollbar';
 @use 'components/code';
 @use 'components/selection';
+@use 'components/float';
 
 @mixin definitions {
     @include navbar.definitions;
@@ -66,4 +67,5 @@
     @include scrollbar.definitions;
     @include code.definitions;
     @include selection.definitions;
+    @include float.definitions;
 }

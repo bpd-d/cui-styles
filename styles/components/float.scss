@@ -1,0 +1,197 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$float-border-color             : $color-border-light;
+$float-border-color-dark        : $color-border-dark;
+$float-background-default       : $component-background-default;
+$float-background-print         : $component-print-background;
+$float-background-default-dark  : $component-background-default-dark;
+$float-color-default            : $component-color-default;
+$float-color-print              : $component-print-color;
+$float-color-default-dark       : $component-color-default-dark;
+$float-animation-time           : $animation-duration-long;
+$float-animation-time-short     : $animation-duration-short;
+$float-indicator-background     : $component-background-default;
+$float-indicator-background-dark: $component-background-default-dark;
+
+
+$float-size: 24px;
+
+@mixin float {
+    .#{$prefix}-float {
+        position  : fixed;
+        top       : 1rem;
+        left      : 1rem;
+        z-index   : 1100;
+        display   : block;
+        min-width : 50px;
+        min-height: 50px;
+
+        &:not(.animation-progress):not(.#{$prefix}-active) {
+            display: none;
+        }
+
+        .#{$prefix}-float-move,
+        .#{$prefix}-float-resize {
+            position        : absolute;
+            width           : $float-size;
+            height          : $float-size;
+            box-shadow      : $shadow;
+            background-color: $float-indicator-background;
+            transition      : transform $float-animation-time-short linear;
+            border-radius   : 50%;
+            transform       : scale(1);
+
+            &:hover,
+            &:focus {
+                transform       : scale(1.2);
+                box-shadow      : $shadow2;
+                background-image: none;
+            }
+        }
+
+
+
+        .#{$prefix}-float-container {
+            opacity         : 0;
+            background-color: $float-background-default;
+            color           : $float-color-default;
+            box-shadow      : $shadow3;
+            border          : 1px solid $float-border-color;
+            border-radius   : $border-radius-default;
+            display         : block;
+            position        : relative;
+            height          : 100%;
+            width           : 100%;
+
+            .#{$prefix}-float-move {
+                top                : -4px;
+                left               : -4px;
+                cursor             : move;
+                background-image   : url("data:image/svg+xml;utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2212%22%20width%3D%2212%22%3E%3Cpath%20d%3D%22M7%201h4v4m-4%206h4V7M1%207v4h4M1%205V1h4M1%2011L11%201M1%201l10%2010%22%20fill%3D%22none%22%20stroke%3D%22%23999%22%2F%3E%3C%2Fsvg%3E");
+                background-repeat  : no-repeat;
+                background-position: 50% 50%;
+
+            }
+
+            .#{$prefix}-float-resize {
+                right              : -4px;
+                bottom             : -4px;
+                cursor             : se-resize;
+                background-image   : url("data:image/svg+xml;utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2212%22%20width%3D%2212%22%3E%3Cpath%20d%3D%22M1%207V1h6m4%204v6H5M1%201l10%2010%22%20fill%3D%22none%22%20stroke%3D%22%23999%22%2F%3E%3C%2Fsvg%3E");
+                background-repeat  : no-repeat;
+                background-position: 50% 50%;
+            }
+
+            .#{$prefix}-float-content {
+                height  : 100%;
+                width   : 100%;
+                overflow: hidden;
+            }
+
+
+        }
+
+        &.#{$prefix}-active {
+            .#{$prefix}-float-container {
+                opacity: 1;
+            }
+        }
+
+
+    }
+
+}
+
+@mixin float-dark {
+    .#{$prefix}-dark {
+        .#{$prefix}-float {
+            .#{$prefix}-float-container {
+                background-color: $float-background-default-dark;
+                color           : $float-color-default-dark;
+                border          : 1px solid $float-border-color-dark;
+
+                .#{$prefix}-float-move,
+                .#{$prefix}-float-resize {
+                    background-color: $float-background-default-dark;
+                }
+            }
+        }
+    }
+}
+
+@mixin dialog-print {
+    .#{$prefix}-print {
+        .#{$prefix}-float {
+            .#{$prefix}-float-container {
+                background-color: $float-background-print;
+                color           : $float-color-print;
+                border          : 1px solid $float-background-print;
+                box-shadow      : none;
+
+                .#{$prefix}-float-move,
+                .#{$prefix}-float-resize {
+                    background-color: $float-background-print;
+                }
+            }
+        }
+    }
+}
+
+@mixin float-animations {
+    .#{$prefix}-float-default-in {
+
+        .#{$prefix}-float-container {
+            animation: animFloatIn $float-animation-time ease-in forwards;
+        }
+    }
+
+    .#{$prefix}-float-default-out {
+
+        .#{$prefix}-float-container {
+            animation: animFloatOut $float-animation-time ease-in forwards;
+        }
+    }
+
+
+    @keyframes animFloatIn {
+        0% {
+            opacity  : 0;
+            transform: scale(0, 0);
+        }
+
+        35% {
+            opacity    : 0.5;
+            //transform: scale(0.5, 0.5);
+        }
+
+        70% {
+            opacity  : 1;
+            transform: scale(1.1, 1.1);
+        }
+
+        100% {
+            opacity  : 1;
+            transform: scale(1, 1);
+        }
+    }
+
+    @keyframes animFloatOut {
+        0% {
+            opacity  : 1;
+            transform: scale(1, 1);
+        }
+
+        100% {
+            opacity  : 0;
+            transform: scale(0, 0);
+        }
+    }
+}
+
+@mixin definitions {
+    @include float;
+    @include float-dark;
+    @include float-animations;
+
+}

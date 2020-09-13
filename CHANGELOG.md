@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.16] WIP
+# [0.1.17] WIP
+# [0.1.16] 2020-09-13
+* [Added] New component - Float
 # [0.1.15] 2020-09-10
 * [Fixed] Reverted back changes related to icons in icon nav. List option has been fixed.
 * [Changed] Tooltip size will be more flexible

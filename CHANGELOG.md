@@ -1,5 +1,11 @@
 # cUI Styles CHANGELOG:
-# [0.1.17] WIP
+# [0.1.18] WIP
+# [0.1.17] 2020-09-20
+* [Fixed] - Select icon position on element resize
+* [Fixed] - Fixed icon scaling
+* [Changed] - dialog background in light theme
+* [Added] - text truncate options
+
 # [0.1.16] 2020-09-13
 * [Added] New component - Float
 # [0.1.15] 2020-09-10

@@ -222,12 +222,12 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
 
 @mixin definitions {
     @include text;
-    @include text-align;
     @include text-decorations;
     @include text-signals;
     @include text-theme;
     @include text-sizes;
     @include text-align();
+    @include text-wrap();
     @include text-weights();
     @include text-transform();
     @include blockquote;

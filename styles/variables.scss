@@ -105,8 +105,8 @@ $default-line-height: 20px;
 
 $outline-default: var(--#{$prefix}-outline);
 
-$color-backdrop-light: rgba(255, 255, 255, 0.3);
-$color-backdrop-dark : rgba(22, 22, 22, 0.3);
+$color-backdrop-light: rgba(22, 22, 22, 0.6);
+$color-backdrop-dark : rgba(22, 22, 22, 0.6);
 
 $color-border-light: var(--#{$prefix}-color-light-border);
 $color-border-dark : var(--#{$prefix}-color-dark-border);

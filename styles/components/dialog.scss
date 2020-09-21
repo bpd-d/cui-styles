@@ -11,6 +11,7 @@ $dialog-color-default          : $component-color-default;
 $dialog-color-default-dark     : $component-color-default-dark;
 $dialog-animation-time         : $animation-duration-long;
 $dialog-animation-time-short   : $animation-duration-short;
+$dialog-margin-large           : $margin-global-large;
 
 @mixin dialog {
     .#{$prefix}-dialog {
@@ -21,7 +22,7 @@ $dialog-animation-time-short   : $animation-duration-short;
         width           : 100vw;
         display         : flex;
         justify-content : center;
-        align-items     : center;
+        align-items     : flex-start;
         background-color: $dialog-backdrop-color;
 
         &:not(.animation-progress):not(.#{$prefix}-active) {
@@ -29,19 +30,17 @@ $dialog-animation-time-short   : $animation-duration-short;
         }
 
         .#{$prefix}-dialog-container {
-            opacity           : 0;
-            width             : $size-medium;
-            background-color  : $dialog-background-default;
-            color             : $dialog-color-default;
-            box-shadow        : $shadow3;
-            border            : 1px solid $dialog-border-color;
-            border-radius     : $border-radius-default;
-            //transition      : width 300ms linear;
+            opacity         : 0;
+            width           : $size-medium;
+            background-color: $dialog-background-default;
+            color           : $dialog-color-default;
+            box-shadow      : $shadow3;
+            border          : 1px solid $dialog-border-color;
+            border-radius   : $border-radius-default;
+            margin-top      : $dialog-margin-large;
 
             .#{$prefix}-dialog-header {
                 @include component-padding(normal, same);
-                //@include component-padding-complex(header, large);
-                // border-bottom  : 1px solid $dialog-border-color;
                 display        : flex;
                 flex-wrap      : nowrap;
                 justify-content: space-between;
@@ -53,17 +52,13 @@ $dialog-animation-time-short   : $animation-duration-short;
             }
 
             .#{$prefix}-dialog-body {
-                // padding   : 0.5em 1em;
                 @include component-padding(normal, same);
-                // @include component-padding-complex(body, large);
-                max-height: 400px;
+                max-height: 50vh;
                 overflow-y: auto;
             }
 
             .#{$prefix}-dialog-footer {
-                //  border-top: 1px solid $dialog-border-color;
                 @include component-padding(normal, same);
-                // @include component-padding-complex(footer, large);
             }
         }
 
@@ -114,6 +109,19 @@ $dialog-animation-time-short   : $animation-duration-short;
         }
     }
 
+    @include media-screen-height-max-small {
+        .#{$prefix}-dialog {
+            min-height: 100vh;
+            overflow-y: auto;
+
+            .#{$prefix}-dialog-container {
+                margin-bottom: $dialog-margin-large;
+
+            }
+
+        }
+    }
+
 }
 
 @mixin dialog-dark {
@@ -122,17 +130,8 @@ $dialog-animation-time-short   : $animation-duration-short;
             background-color: $dialog-backdrop-color-dark;
 
             .#{$prefix}-dialog-container {
-                background-color  : $dialog-background-default-dark;
-                color             : $dialog-color-default-dark;
-                //border          : 1px solid $dialog-border-color-dark;
-
-                // .#{$prefix}-dialog-header {
-                //     border-bottom: 1px solid $dialog-border-color-dark;
-                // }
-
-                // .#{$prefix}-dialog-footer {
-                //     border-top: 1px solid $dialog-border-color-dark;
-                // }
+                background-color: $dialog-background-default-dark;
+                color           : $dialog-color-default-dark;
             }
         }
     }
@@ -171,7 +170,7 @@ $dialog-animation-time-short   : $animation-duration-short;
     }
 
     .#{$prefix}-dialog-default-out {
-        animation: animFadeOut $dialog-animation-time-short ease-in forwards;
+        animation: animFadeOut $dialog-animation-time ease-in forwards;
 
         .#{$prefix}-dialog-container {
             animation: animDialogOut $dialog-animation-time ease-in forwards;
@@ -182,12 +181,11 @@ $dialog-animation-time-short   : $animation-duration-short;
     @keyframes animDialogIn {
         0% {
             opacity  : 0;
-            transform: scale(0, 0);
+            transform: scale(0, 0) translateY(-70px);
         }
 
         35% {
-            opacity    : 0.5;
-            //transform: scale(0.5, 0.5);
+            opacity: 0.5;
         }
 
         70% {
@@ -197,24 +195,17 @@ $dialog-animation-time-short   : $animation-duration-short;
 
         100% {
             opacity  : 1;
-            transform: scale(1, 1);
+            transform: scale(1, 1) translateY(0%);
         }
     }
 
     @keyframes animDialogOut {
         0% {
-            opacity  : 1;
-            transform: scale(1, 1);
-        }
-
-        30% {
-            opacity  : 0.5;
-            transform: scale(0.3, 0.3);
+            transform: scale(1, 1) translateY(0px);
         }
 
         100% {
-            opacity  : 0;
-            transform: scale(0, 0);
+            transform: scale(0, 0) translateY(-70px);
         }
     }
 }

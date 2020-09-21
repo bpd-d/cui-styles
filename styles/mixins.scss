@@ -230,6 +230,11 @@ $item-background-default: $component-background-default;
     }
 }
 
+@mixin media-screen-height-max-small {
+    @media (max-height: $breakpoint-height-s) {
+        @content;
+    }
+}
 
 @mixin link-decoration($color) {
     color          : $color;

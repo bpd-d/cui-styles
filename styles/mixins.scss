@@ -187,8 +187,20 @@ $item-background-default: $component-background-default;
     }
 }
 
+@mixin media-screen-min-small-landscape {
+    @media (min-width: $breakpoint-s) and (orientation: landscape) {
+        @content;
+    }
+}
+
 @mixin media-screen-min-medium {
     @media (min-width: $breakpoint-m) {
+        @content;
+    }
+}
+
+@mixin media-screen-min-medium-landscape {
+    @media (min-width: $breakpoint-m) and (orientation: landscape) {
         @content;
     }
 }
@@ -200,11 +212,24 @@ $item-background-default: $component-background-default;
     }
 }
 
+@mixin media-screen-min-large-landscape {
+    @media (min-width: $breakpoint-l) and (orientation: landscape) {
+        @content;
+    }
+}
+
 @mixin media-screen-min-xlarge {
     @media (min-width: $breakpoint-xl) {
         @content;
     }
 }
+
+@mixin media-screen-min-xlarge-landscape {
+    @media (min-width: $breakpoint-xl) and (orientation: landscape) {
+        @content;
+    }
+}
+
 
 @mixin link-decoration($color) {
     color          : $color;

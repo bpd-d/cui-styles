@@ -122,17 +122,17 @@ $dialog-animation-time-short   : $animation-duration-short;
             background-color: $dialog-backdrop-color-dark;
 
             .#{$prefix}-dialog-container {
-                background-color: $dialog-background-default-dark;
-                color           : $dialog-color-default-dark;
-                border          : 1px solid $dialog-border-color-dark;
+                background-color  : $dialog-background-default-dark;
+                color             : $dialog-color-default-dark;
+                //border          : 1px solid $dialog-border-color-dark;
 
-                .#{$prefix}-dialog-header {
-                    border-bottom: 1px solid $dialog-border-color-dark;
-                }
+                // .#{$prefix}-dialog-header {
+                //     border-bottom: 1px solid $dialog-border-color-dark;
+                // }
 
-                .#{$prefix}-dialog-footer {
-                    border-top: 1px solid $dialog-border-color-dark;
-                }
+                // .#{$prefix}-dialog-footer {
+                //     border-top: 1px solid $dialog-border-color-dark;
+                // }
             }
         }
     }

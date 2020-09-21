@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.18] WIP
+# [0.1.19] WIP
+# [0.1.18] 2020-09-21
+* [Fixed] Navbar transparent in dark mode
+* [Fixed] Borders in card and dialog in dark mode
+* [Added] New screen size mixins which respct screen orientation
 # [0.1.17] 2020-09-20
 * [Fixed] - Select icon position on element resize
 * [Fixed] - Fixed icon scaling
@@ -26,7 +30,6 @@
 * [Fixed] Component backgrounds have now !important flag
 * [Chnaged] Scrollbar customization applies only to screen sizes larger than medium
 * [Added] {}-margin-remove to media queries
-
 # [0.1.10] 2020-08-10
 * [Changed] Focus on buttons
 

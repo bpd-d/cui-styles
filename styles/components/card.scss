@@ -141,31 +141,16 @@ $card-border-color-dark       : transparent; //$color-border-dark;
 @mixin card-dark {
     .#{$prefix}-dark {
         .#{$prefix}-card {
-            .#{$prefix}-card-header {
-                border-bottom: 1px solid $card-separator-color-dark;
-            }
-
-            .#{$prefix}-card-footer {
-                border-top: 1px solid $card-separator-color-dark;
-            }
-
             &.#{$prefix}-default {
                 background-color: $card-background-default-dark;
                 box-shadow      : $shadow;
                 color           : $card-color-default-dark;
-                border          : 1px solid $card-border-color-dark;
             }
 
             &.#{$prefix}-inverse {
                 background-color: $card-background-inverse-dark;
                 box-shadow      : $shadow;
                 color           : $card-color-inverse-dark;
-                border          : 1px solid $card-border-color;
-
-                .#{$prefix}-card-header,
-                .#{$prefix}-card-footer {
-                    border-color: $card-separator-color;
-                }
             }
         }
     }
@@ -181,15 +166,7 @@ $card-border-color-dark       : transparent; //$color-border-dark;
             &.#{$prefix}-secondary {
                 background-color: $component-print-background;
                 color           : $component-print-color;
-                border          : $component-print-border;
-            }
 
-            .#{$prefix}-card-header {
-                border-bottom: $component-print-border
-            }
-
-            .#{$prefix}-card-footer {
-                border-top: $component-print-border
             }
         }
     }

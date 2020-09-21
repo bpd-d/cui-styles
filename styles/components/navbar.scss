@@ -38,7 +38,7 @@ $navbar-transition-time : $animation-duration-short;
         color           : $component-color-default;
 
         &.#{$prefix}-transparent {
-            background-color: transparent;
+            background-color: transparent !important;
             box-shadow      : none;
         }
 

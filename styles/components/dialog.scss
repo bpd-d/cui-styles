@@ -53,7 +53,6 @@ $dialog-margin-large           : $margin-global-large;
 
             .#{$prefix}-dialog-body {
                 @include component-padding(normal, same);
-                max-height: 50vh;
                 overflow-y: auto;
             }
 

@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.20] WIP
+# [0.1.21] WIP
+# [0.1.20] 2020-09-22
+* [Fixed] Dialog on small screen
 # [0.1.19] 2020-09-21
 * [Changed] Increase dialog responsiveness by changing position and behavior
 # [0.1.18] 2020-09-21

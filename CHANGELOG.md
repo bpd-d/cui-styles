@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.21] WIP
+# [0.1.22] WIP
+# [0.1.21] 2020-09-23
+* [Changed] Input switch 
+* [Changed] Form component
+* [Changed] Dialog animation
 # [0.1.20] 2020-09-22
 * [Fixed] Dialog on small screen
 # [0.1.19] 2020-09-21
@@ -13,7 +17,6 @@
 * [Fixed] - Fixed icon scaling
 * [Changed] - dialog background in light theme
 * [Added] - text truncate options
-
 # [0.1.16] 2020-09-13
 * [Added] New component - Float
 # [0.1.15] 2020-09-10

@@ -169,10 +169,10 @@ $dialog-margin-large           : $margin-global-large;
     }
 
     .#{$prefix}-dialog-default-out {
-        animation: animFadeOut $dialog-animation-time ease-in forwards;
+        animation: animFadeOut $dialog-animation-time-short ease-in forwards;
 
         .#{$prefix}-dialog-container {
-            animation: animDialogOut $dialog-animation-time ease-in forwards;
+            animation: animDialogOut $dialog-animation-time-short ease-in forwards;
         }
     }
 
@@ -204,7 +204,7 @@ $dialog-margin-large           : $margin-global-large;
         }
 
         100% {
-            transform: scale(0, 0) translateY(-70px);
+            transform: scale(0.8, 0.8) translateY(-70px);
         }
     }
 }

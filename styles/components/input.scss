@@ -487,12 +487,12 @@ $input-margin-small   : $margin-global-small;
     div.#{$prefix}-form {
         display: block;
 
-        .#{$prefix}-form-label {
+        >.#{$prefix}-form-label {
             order  : 0;
             display: block;
         }
 
-        .#{$prefix}-form-description {
+        >.#{$prefix}-form-description {
             order    : 1;
             color    : $input-description-color;
             font-size: $input-font-size-small;
@@ -506,47 +506,68 @@ $input-margin-small   : $margin-global-small;
             }
         }
 
-        input,
-        select,
-        textarea {
+        >input,
+        >select,
+        >textarea,
+        >.#{$prefix}-input-switch {
             order     : 2;
             margin-top: $input-margin-small;
             display   : block;
         }
 
         &.#{$prefix}-inline {
-
             .#{$prefix}-form-label {
                 display     : inline-block;
                 margin-right: $input-margin-small;
             }
 
-            input,
-            select {
+            >input,
+            >select {
                 margin-top: 0px;
                 display   : inline-block;
             }
         }
 
         &.#{$prefix}-flex {
-            display        : flex;
-            justify-content: space-between;
-            align-items    : center;
-            flex-wrap      : nowrap;
+            display          : flex;
 
+            flex-wrap        : nowrap;
+
+            >label,
             >div,
-            .#{$prefix}-form-label {
+            >.#{$prefix}-form-label {
                 display     : inline-block;
                 margin-right: $input-margin-small;
                 order       : 1;
             }
 
-            input,
-            select,
-            textarea {
+            >input,
+            >select,
+            >textarea,
+            >.#{$prefix}-input-switch {
                 margin-top: 0px;
                 display   : inline-block;
                 order     : 2;
+            }
+
+
+
+            &.#{$prefix}-reverse {
+
+                >label,
+                >div,
+                >.#{$prefix}-form-label {
+                    margin-left: $input-margin-small;
+                    order      : 2;
+                }
+
+                >input,
+                >select,
+                >textarea {
+                    margin-top: 0px;
+                    display   : inline-block;
+                    order     : 1;
+                }
             }
         }
     }
@@ -818,6 +839,8 @@ $input-margin-small   : $margin-global-small;
 
 @mixin input-switch {
     div.#{$prefix}-input-switch {
+        height: 24px;
+
         input[type="checkbox"] {
             margin   : 0;
             font-size: $input-font-size-default;
@@ -826,10 +849,13 @@ $input-margin-small   : $margin-global-small;
             width    : 0;
 
             +.#{$prefix}-content {
-                padding : 4px 10px 4px 44px;
-                cursor  : pointer;
-                position: relative;
-                display : inline-block;
+                padding    : 4px 10px 4px 44px;
+                cursor     : pointer;
+                position   : relative;
+                display    : inline-block;
+                height     : 24px;
+                line-height: 16px;
+                content    : "";
 
                 &:before {
                     content         : '';
@@ -1139,7 +1165,7 @@ $input-margin-small   : $margin-global-small;
 
 @mixin form-dark {
     .#{$prefix}-dark {
-        div.#{$prefix}-input-form {
+        div.#{$prefix}-form {
             .#{$prefix}-input-description {
                 color: $input-description-color-dark;
 

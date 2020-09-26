@@ -74,6 +74,10 @@ $icon-color-success  : $component-background-success;
             stroke-linejoin: miter;
         }
 
+        &.cui-bold {
+            stroke-width: 2px;
+        }
+
         @include for-color-button {
             svg {
                 path {

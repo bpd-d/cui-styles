@@ -75,7 +75,10 @@ $icon-color-success  : $component-background-success;
         }
 
         &.cui-bold {
-            stroke-width: 2px;
+            svg {
+                stroke-width: 2px;
+            }
+
         }
 
         @include for-color-button {

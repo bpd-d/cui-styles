@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.26] WIP
+# [0.1.26] 2020-09-26
+* [Fixed] Margin horizontal
+* [Beta] Remove width =100% on small
 # [0.1.25] 2020-08-26
 * [Fixed] Margin remove class
 # [0.1.24] 2020-09-26

@@ -168,7 +168,7 @@ $sides: "top",
     }
 
     .#{$prefix}-margin-horizontal {
-        padding: 0 $item-margin !important;
+        margin: 0 $item-margin !important;
     }
 
     .#{$prefix}-margin-auto {

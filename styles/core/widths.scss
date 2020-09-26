@@ -84,9 +84,9 @@
 
     @include widths();
 
-    @include media-screen-max-small {
-        @include widths_small();
-    }
+    // @include media-screen-max-small {
+    //     @include widths_small();
+    // }
 
     @include media-screen-min-small {
         @include widths(--s);

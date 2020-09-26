@@ -1,5 +1,8 @@
 # cUI Styles CHANGELOG:
-# [0.1.22] WIP
+# [0.1.23] WIP
+# [0.1.22] 2020-09-26
+* [Added] Support for class **fill** on path in icons
+* [Added] Option to position dialog on the bottom of the window, also option **auto**
 # [0.1.21] 2020-09-23
 * [Changed] Input switch 
 * [Changed] Form component

@@ -24,6 +24,19 @@ $icon-color-error    : $component-background-error;
 $icon-color-warning  : $component-background-warning;
 $icon-color-success  : $component-background-success;
 
+@mixin for-color-button {
+    &.#{$prefix}-button {
+
+        &.#{$prefix}-accent,
+        &.#{$prefix}-secondary,
+        &.#{$prefix}-error,
+        &.#{$prefix}-warning,
+        &.#{$prefix}-success {
+            @content;
+        }
+    }
+}
+
 @mixin icon {
 
     a.#{$prefix}-icon,
@@ -39,7 +52,6 @@ $icon-color-success  : $component-background-success;
 
     .#{$prefix}-icon,
     .#{$prefix}-icon-button,
-    .#{$prefix}-icon,
     .#{$prefix}-svg {
         display        : inline-flex;
         align-items    : center;
@@ -62,17 +74,10 @@ $icon-color-success  : $component-background-success;
             stroke-linejoin: miter;
         }
 
-        &.#{$prefix}-button {
-
-            &.#{$prefix}-accent,
-            &.#{$prefix}-secondary,
-            &.#{$prefix}-error,
-            &.#{$prefix}-warning,
-            &.#{$prefix}-success {
-                svg {
-                    path {
-                        stroke: $icon-color-inverse;
-                    }
+        @include for-color-button {
+            svg {
+                path {
+                    stroke: $icon-color-inverse;
                 }
             }
         }
@@ -137,12 +142,108 @@ $icon-color-success  : $component-background-success;
     * if there is any element
     */
 
-        &.#{$prefix}-margin {
+        &.#{$prefix}-icon-margin {
             &>svg {
                 margin-right: 4px;
             }
         }
 
+    }
+}
+
+@mixin icon-fill {
+
+    .#{$prefix}-icon,
+    .#{$prefix}-icon-button,
+    .#{$prefix}-svg {
+        &.#{$prefix}-fill {
+            &>svg {
+                path.fill {
+                    fill: $icon-color-default;
+                }
+            }
+
+            &.#{$prefix}-inverse {
+                svg {
+                    path.fill {
+                        fill: $icon-color-inverse;
+                    }
+                }
+            }
+
+            &.#{$prefix}-accent {
+                svg {
+                    path.fill {
+                        fill: $icon-color-accent;
+                    }
+                }
+            }
+
+            &.#{$prefix}-secondary {
+                svg {
+                    path.fill {
+                        fill: $icon-color-secondary;
+                    }
+                }
+            }
+
+            &.#{$prefix}-success {
+                svg {
+                    path.fill {
+                        fill: $icon-color-success;
+                    }
+                }
+            }
+
+            &.#{$prefix}-warning {
+                svg {
+                    path.fill {
+                        fill: $icon-color-warning;
+                    }
+                }
+            }
+
+            &.#{$prefix}-error {
+                svg {
+                    path.fill {
+                        fill: $icon-color-error;
+                    }
+                }
+            }
+
+
+            @include for-color-button {
+                svg {
+                    path.fill {
+                        fill: $icon-color-inverse;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .#{$prefix}-dark {
+        .#{$prefix}-icon {
+            &.#{$prefix}-fill {
+                @include not-colors {
+                    &>svg {
+                        path.fill {
+                            fill: $icon-color-default-dark;
+                        }
+                    }
+                }
+
+
+                &.#{$prefix}-inverse {
+                    svg {
+                        path.fill {
+                            fill: $icon-color-inverse-dark;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -328,5 +429,6 @@ $icon-color-success  : $component-background-success;
     @include icon-nav();
     @include icon-dark();
     @include icon-print();
+    @include icon-fill();
     @include stroke-colors();
 }

@@ -140,10 +140,12 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
 
 @mixin text-wrap($size: "") {
     .#{$prefix}-text-truncate#{$size} {
+        white-space  : nowrap;
         text-overflow: ellipsis;
     }
 
     .#{$prefix}-text-nowrap#{$size} {
+        white-space  : nowrap;
         text-overflow: clip;
     }
 }

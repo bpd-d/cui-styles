@@ -36,7 +36,7 @@ $sides: "top",
 }
 
 @mixin remove-margin($size: "") {
-    .#{$prefix}-padding-remove#{$size} {
+    .#{$prefix}-margin-remove#{$size} {
         margin: 0px !important;
     }
 
@@ -161,6 +161,14 @@ $sides: "top",
 
     .#{$prefix}-margin-right {
         margin-right: $item-margin !important;
+    }
+
+    .#{$prefix}-margin-vertical {
+        margin: $item-margin 0 !important;
+    }
+
+    .#{$prefix}-margin-horizontal {
+        padding: 0 $item-margin !important;
     }
 
     .#{$prefix}-margin-auto {

@@ -37,6 +37,16 @@ $icon-color-success  : $component-background-success;
     }
 }
 
+@mixin get-icon-color-style($name: "") {
+    color: $name;
+
+    svg {
+        path {
+            stroke: $name;
+        }
+    }
+}
+
 @mixin icon {
 
     a.#{$prefix}-icon,
@@ -59,8 +69,8 @@ $icon-color-success  : $component-background-success;
         text-align     : center;
         line-height    : 20px;
         vertical-align : middle;
-
-
+        text-decoration: none;
+        color          : $icon-color-default;
 
         svg {
             box-sizing     : border-box;
@@ -82,67 +92,32 @@ $icon-color-success  : $component-background-success;
         }
 
         @include for-color-button {
-            svg {
-                path {
-                    stroke: $icon-color-inverse;
-                }
-            }
+            @include get-icon-color-style($icon-color-inverse);
         }
 
-        &.#{$prefix}-dark {
-            svg {
-                path {
-                    stroke: $icon-color-inverse;
-                }
-            }
-        }
-
+        &.#{$prefix}-dark,
         &.#{$prefix}-inverse {
-            svg {
-                path {
-                    stroke: $icon-color-inverse;
-                }
-            }
+            @include get-icon-color-style($icon-color-inverse);
         }
 
         &.#{$prefix}-accent {
-            svg {
-                path {
-                    stroke: $icon-color-accent;
-                }
-            }
+            @include get-icon-color-style($icon-color-accent);
         }
 
         &.#{$prefix}-secondary {
-            svg {
-                path {
-                    stroke: $icon-color-secondary;
-                }
-            }
+            @include get-icon-color-style($icon-color-secondary);
         }
 
         &.#{$prefix}-success {
-            svg {
-                path {
-                    stroke: $icon-color-success;
-                }
-            }
+            @include get-icon-color-style($icon-color-success);
         }
 
         &.#{$prefix}-warning {
-            svg {
-                path {
-                    stroke: $icon-color-warning;
-                }
-            }
+            @include get-icon-color-style($icon-color-warning);
         }
 
         &.#{$prefix}-error {
-            svg {
-                path {
-                    stroke: $icon-color-error;
-                }
-            }
+            @include get-icon-color-style($icon-color-error);
         }
 
         /**
@@ -349,16 +324,11 @@ $icon-color-success  : $component-background-success;
         .#{$prefix}-icon-button,
         .#{$prefix}-icon,
         .#{$prefix}-svg {
-            svg {
-                stroke: $icon-color-default-dark;
-            }
+            @include get-icon-color-style($icon-color-default-dark);
+
 
             &.#{$prefix}-inverse {
-                svg {
-                    path {
-                        stroke: $icon-color-inverse-dark;
-                    }
-                }
+                @include get-icon-color-style($icon-color-inverse-dark);
             }
         }
 
@@ -403,20 +373,10 @@ $icon-color-success  : $component-background-success;
         .#{$prefix}-icon-button,
         .#{$prefix}-icon,
         .#{$prefix}-svg {
-            svg {
-                stroke: $component-print-color;
-
-                path {
-                    stroke: $component-print-color;
-                }
-            }
+            @include get-icon-color-style($component-print-color);
 
             &.#{$prefix}-button {
-                svg {
-                    path {
-                        stroke: $component-print-color;
-                    }
-                }
+                @include get-icon-color-style($component-print-color);
             }
         }
 

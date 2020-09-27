@@ -1,4 +1,7 @@
 # cUI Styles CHANGELOG:
+# [0.1.28] WIP
+# [0.1.27] 2020-09-27
+* [Fixed] Display links with icons, change text color on icon accents
 # [0.1.26] 2020-09-26
 * [Fixed] Margin horizontal
 * [Beta] Remove width =100% on small

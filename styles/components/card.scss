@@ -47,7 +47,7 @@ $card-border-color-dark       : transparent; //$color-border-dark;
 
         &.#{$prefix}-hover {
             &:hover {
-                box-shadow: $shadow2;
+                box-shadow: $shadow2 !important;
             }
         }
 

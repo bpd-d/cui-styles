@@ -324,12 +324,14 @@ $icon-color-success  : $component-background-success;
         .#{$prefix}-icon-button,
         .#{$prefix}-icon,
         .#{$prefix}-svg {
-            @include get-icon-color-style($icon-color-default-dark);
+            @include not-colors {
+                @include get-icon-color-style($icon-color-default-dark);
 
-
-            &.#{$prefix}-inverse {
-                @include get-icon-color-style($icon-color-inverse-dark);
+                &.#{$prefix}-inverse {
+                    @include get-icon-color-style($icon-color-inverse-dark);
+                }
             }
+
         }
 
         .#{$prefix}-icon-button {

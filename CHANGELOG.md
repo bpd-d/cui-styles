@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.28] WIP
+# [0.1.29] WIP
+# [0.1.28] 2020-09-28
+* [Chnaged] Text overflow on component header title
+* [Fixed] Card hover shadow in dark elements
+* [Fixed] Input mix when mixed with static width
 # [0.1.27] 2020-09-27
 * [Fixed] Display links with icons, change text color on icon accents
 # [0.1.26] 2020-09-26

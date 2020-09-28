@@ -216,6 +216,7 @@ $input-margin-small   : $margin-global-small;
             border          : none;
             background-color: transparent;
             order           : 0;
+            flex            : 1 1 auto !important;
         }
 
         .#{$prefix}-icon,
@@ -226,6 +227,7 @@ $input-margin-small   : $margin-global-small;
             border-top-left-radius     : 0px;
             border-bottom-right-radius : calc(#{$input-border-radius} - 1px);
             border-top-right-radius    : calc(#{$input-border-radius} - 1px);
+            flex                       : 0 0 auto !important;
 
         }
 
@@ -529,9 +531,9 @@ $input-margin-small   : $margin-global-small;
         }
 
         &.#{$prefix}-flex {
-            display          : flex;
+            display: flex;
 
-            flex-wrap        : nowrap;
+            flex-wrap: nowrap;
 
             >label,
             >div,

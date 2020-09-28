@@ -39,6 +39,7 @@ $item-background-default: $component-background-default;
 @mixin component-header {
     font-size  : $font-large;
     font-weight: $text-weight-semi-bold;
+    @include text-nowrap;
 }
 
 @mixin component-padding($size: normal, $same: false) {
@@ -100,9 +101,12 @@ $item-background-default: $component-background-default;
             padding: $padding-global $padding-global-large $padding-global-large $padding-global-large;
         }
     }
+}
 
-
-
+@mixin text-nowrap {
+    text-overflow: ellipsis;
+    white-space  : nowrap;
+    overflow     : hidden;
 }
 
 @mixin no-appearance {

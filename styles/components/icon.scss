@@ -276,6 +276,14 @@ $icon-color-success  : $component-background-success;
             background-color: $icon-button-background-inverse;
         }
 
+        &.#{$prefix}-accent,
+        &.#{$prefix}-secondary,
+        &.#{$prefix}-success,
+        &.#{$prefix}-warning,
+        &.#{$prefix}-error {
+            @include get-icon-color-style($icon-color-default-dark);
+        }
+
         &:hover {
             outline: none !important;
 

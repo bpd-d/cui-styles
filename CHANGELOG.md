@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.29] WIP
+# [0.1.30] WIP
+# [0.1.29] 2020-10-11
+* [Added] cui-circle option on button
+* [Changed] Icon button now will behave like normal button
+* [Fixed] Display icon in drop nav component
 # [0.1.28] 2020-09-28
 * [Chnaged] Text overflow on component header title
 * [Fixed] Card hover shadow in dark elements

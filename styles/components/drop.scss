@@ -138,6 +138,12 @@ $drop-transition-time          : $animation-duration-short;
                 display         : block;
                 background-color: transparent;
 
+                &.#{$prefix}-icon {
+                    display                         : flex;
+                    justify-content                 : flex-start;
+                    @include component-padding($size: small, $same: true);
+                }
+
                 &:hover {
                     background-color: $drop-nav-hover-background;
                     outline         : none !important;

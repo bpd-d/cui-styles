@@ -198,7 +198,7 @@ $input-margin-small   : $margin-global-small;
             height       : calc(100% - 2px);
             top          : 0px;
             left         : 0px;
-            z-index      : -1;
+            z-index      : 0;
         }
 
         &:hover {
@@ -217,6 +217,7 @@ $input-margin-small   : $margin-global-small;
             background-color: transparent;
             order           : 0;
             flex            : 1 1 auto !important;
+            z-index         : 1;
         }
 
         .#{$prefix}-icon,
@@ -228,6 +229,7 @@ $input-margin-small   : $margin-global-small;
             border-bottom-right-radius : calc(#{$input-border-radius} - 1px);
             border-top-right-radius    : calc(#{$input-border-radius} - 1px);
             flex                       : 0 0 auto !important;
+            z-index                    : 1;
 
         }
 

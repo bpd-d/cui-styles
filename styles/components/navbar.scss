@@ -73,7 +73,7 @@ $navbar-transition-time : $animation-duration-short;
                     padding: $navbar-item-padding;
                 }
 
-                a {
+                &>a {
 
                     &:not(.#{$prefix}-icon-button):not(.#{$prefix}-button) {
                         padding: $navbar-item-padding;

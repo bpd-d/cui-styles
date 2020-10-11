@@ -259,15 +259,16 @@ $item-background-default: $component-background-default;
     overflow: hidden !important;
 }
 
-// @mixin size-media() {
+/**
+* Shorthand for animations that already put some defaults 
+*/
+@mixin animation($name, $duration: $animation-duration-default, $timing: ease-out, $direction: forwards, $delay: 0ms) {
+    @if $name {
+        animation: $name $duration $timing $delay $direction;
+        @content;
+    }
 
-//     // View small
-//     @media (max-width: $cui-breakpoint-s) {}
-
-//     // View medium
-//     @media (max-width: $cui-breakpoint-m) {}
-
-
-//     // View large
-//     @media (max-width: $cui-breakpoint-l) {}
-// }
+    @else {
+        @error "Animation name must be provided";
+    }
+}

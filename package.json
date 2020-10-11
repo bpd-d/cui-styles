@@ -1,11 +1,12 @@
 {
   "name": "cui-styles",
   "library": "cui",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "CSS styles for cUI framework",
   "main": "index.js",
   "files": [
     "/dist/*.css",
+    "/dist/index.js",
     "/styles"
   ],
   "scripts": {

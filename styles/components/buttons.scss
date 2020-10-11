@@ -93,6 +93,10 @@ $button-font-size                     : $font-normal;
             border-radius: $border-radius-round;
         }
 
+        &.#{$prefix}-circle {
+            border-radius: 50%;
+        }
+
         &:hover,
         &:focus:not(:hover) {
             background-color   : $button-background-shade;
@@ -181,7 +185,9 @@ $button-font-size                     : $font-normal;
 }
 
 @mixin button-signals {
-    .#{$prefix}-button {
+
+    .#{$prefix}-button,
+    .#{$prefix}-icon-button {
         &.#{$prefix}-accent {
             background-color: $button-background-accent !important;
             color           : $button-color-inverse;

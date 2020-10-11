@@ -71,12 +71,7 @@ $toast-animation-duration   : $animation-duration-default;
             transform: translateX(-50%) translateY(0%) scale(0, 0);
         }
 
-        30% {
-            opacity  : 1;
-            transform: translateX(-50%) translateY(-24px) scale(0.5, 0.5);
-        }
-
-        70% {
+        80% {
             opacity  : 1;
             transform: translateX(-50%) translateY(-60px) scale(1.1, 1.1);
         }
@@ -92,11 +87,6 @@ $toast-animation-duration   : $animation-duration-default;
         0% {
             opacity  : 1;
             transform: translateX(-50%) translateY($toast-margin-bottom) scale(1, 1);
-        }
-
-        50% {
-            opacity  : 0.5;
-            transform: translateX(-50%) translateY(-24px) scale(0.5, 0.5);
         }
 
         100% {

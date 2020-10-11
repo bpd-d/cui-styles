@@ -136,19 +136,33 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
     }
 
     .#{$prefix}-animation-fade-in {
-        animation: animFadeIn $default-animation-time ease-in;
+        opacity  : 0;
+        animation: animFadeIn $default-animation-time ease-out forwards;
     }
 
     .#{$prefix}-animation-fade-out {
-        animation: animFadeOut $default-animation-time ease-out;
+        opacity  : 1;
+        animation: animFadeOut $default-animation-time ease-out forwards;
     }
 
     .#{$prefix}-animation-slide-in {
-        animation: slideInLeft $default-animation-time ease-in;
+        animation: slideInLeft $default-animation-time ease-in forwards;
     }
 
     .#{$prefix}-animation-slide-out {
-        animation: slideOutRight $default-animation-time ease-out;
+        animation: slideOutRight $default-animation-time ease-out forwards;
+    }
+
+    .#{$prefix}-animation-delay {
+        animation-delay: $default-animation-time;
+    }
+
+    .#{$prefix}-animation-delay-short {
+        animation-delay: $short-animation-time;
+    }
+
+    .#{$prefix}-animation-delay-long {
+        animation-delay: $default-animation-long;
     }
 
     .#{$prefix}-accordion-out {

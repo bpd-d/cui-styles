@@ -272,3 +272,64 @@ $item-background-default: $component-background-default;
         @error "Animation name must be provided";
     }
 }
+
+/*
+* Create highlight on elements
+*/
+@mixin createHighlight($radius: "", $color: $highlight-color-dark, $noTransition: false) {
+    position: relative;
+
+    &:after {
+        content         : "";
+        position        : absolute;
+        width           : calc(110%);
+        height          : calc(110%);
+        top             : 0px;
+        left            : 0px;
+        box-sizing      : border-box;
+        transform-origin: center center;
+        opacity         : 0;
+        transform       : scale(0, 0);
+
+        @if $noTransition==false {
+            transition: transform $animation-duration-short ease-out;
+        }
+
+        border          : 1px solid transparent;
+        background-color: $color;
+
+        @if $radius !="" {
+            border-radius: $radius;
+        }
+
+        z-index : -1;
+    }
+
+    &:hover {
+        &:after {
+            position        : absolute;
+            width           : 100%;
+            height          : 100%;
+            top             : 0px;
+            left            : 0px;
+            transform-origin: center;
+            opacity         : 1;
+            transform       : scale(1, 1);
+
+        }
+    }
+}
+
+@mixin updateHighlight($radius: "", $color: "") {
+    &:after {
+        @if $radius !="" {
+            border-radius: $radius;
+        }
+
+        @if $color !="" {
+            background-color: $color;
+        }
+
+        @content;
+    }
+}

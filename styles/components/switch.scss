@@ -11,12 +11,13 @@
         min-height: 50px;
 
         &>li {
-            display : list-item;
-            position: absolute;
-            top     : 0;
-            left    : 0;
-            bottom  : 0;
-            right   : 0;
+            display   : list-item;
+            position  : absolute;
+            top       : 0;
+            left      : 0;
+            bottom    : 0;
+            right     : 0;
+            overflow-y: auto;
 
             &:not(.animation-progress):not(.#{$prefix}-active) {
                 display: none;

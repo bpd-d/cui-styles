@@ -13,17 +13,15 @@ $tooltip-max-width      : 250px;
 $tooltip-border-radius  : $border-radius-default;
 $tooltip-font-size      : $font-small;
 $tooltip-animation-time : $animation-duration-short;
-$tooltip-margin         : $component-margin;
-
+$tooltip-translate-y    : 4px;
 
 @mixin tooltip {
-    .#{$prefix}-tooltip {
+    .#{$prefix}-tooltip-container {
         position: relative;
         cursor  : help;
         display : inline-block;
 
-        &:after {
-            content         : attr(data-tooltip);
+        .#{$prefix}-tooltip {
             display         : flex;
             justify-content : center;
             align-items     : center;
@@ -48,118 +46,102 @@ $tooltip-margin         : $component-margin;
 
         &:hover,
         &:focus-within {
-            &:after {
-                transform: scale(1) translateX(-50%) translateY(calc(-36px - #{$tooltip-margin}));
+            .#{$prefix}-tooltip {
+                transform: scale(1) translateX(-50%) translateY(calc(-50% - #{$tooltip-translate-y}));
             }
         }
     }
+
+
+
+
 }
 
+
 @mixin tooltip-positions {
-    .#{$prefix}-tooltip {
-        &:not(.#{$prefix}-tooltip-bottom-center):not(.#{$prefix}-tooltip-bottom-right):not(.#{$prefix}-tooltip-bottom-left):not(.#{$prefix}-tooltip-top-left):not(.#{$prefix}-tooltip-top-center):not(.#{$prefix}-tooltip-top-right) {
-            &:after {
+    .#{$prefix}-tooltip-container {
+        .#{$prefix}-tooltip {
+            &:not(.#{$prefix}-tooltip-bottom-center):not(.#{$prefix}-tooltip-bottom-right):not(.#{$prefix}-tooltip-bottom-left):not(.#{$prefix}-tooltip-top-left):not(.#{$prefix}-tooltip-top-center):not(.#{$prefix}-tooltip-top-right) {
                 top : 0;
                 left: 50%;
             }
-        }
 
-        &.#{$prefix}-tooltip-top-center {
-            &:after {
+            &.#{$prefix}-tooltip-top-center {
                 transform-origin: top left;
                 top             : 0;
                 left            : 50%;
                 transform       : scale(0) translateX(-50%) translateY(0px);
             }
 
-            &:hover,
-            &:focus-within {
-                &:after {
-                    transform: scale(1) translateX(-50%) translateY(calc(-36px - #{$tooltip-margin}));
-                }
-            }
-        }
-
-        &.#{$prefix}-tooltip-top-left {
-            &:after {
+            &.#{$prefix}-tooltip-top-left {
                 transform-origin: top left;
                 top             : 0;
                 left            : 0;
                 transform       : scale(0) translateX(-100%) translateY(0px);
+
             }
 
-            &:hover,
-            &:focus-within {
-                &:after {
-                    transform: scale(1) translateX(calc(-100% - #{$tooltip-margin})) translateY(calc(-36px - #{$tooltip-margin}));
-                }
-            }
-        }
-
-        &.#{$prefix}-tooltip-top-right {
-            &:after {
+            &.#{$prefix}-tooltip-top-right {
                 transform-origin: top right;
                 top             : 0;
                 right           : 0;
                 transform       : scale(0) translateX(100%) translateY(0px);
             }
 
-            &:hover,
-            &:focus-within {
-                &:after {
-                    transform: scale(1) translateX(calc(100% + #{$tooltip-margin})) translateY(calc(-36px - #{$tooltip-margin}));
-                }
-            }
-        }
-
-        &.#{$prefix}-tooltip-bottom-left {
-            &:after {
-                // top         : 100%;
+            &.#{$prefix}-tooltip-bottom-left {
                 transform-origin: bottom left;
                 bottom          : 0;
                 left            : 0;
                 transform       : scale(0) translateX(-100%) translateY(0px);
             }
 
-            &:hover,
-            &:focus-within {
-                &:after {
-                    transform: scale(1) translateX(calc(-100% - #{$tooltip-margin})) translateY(calc(36px + #{$tooltip-margin}));
-                }
-            }
-        }
-
-        &.#{$prefix}-tooltip-bottom-right {
-            &:after {
+            &.#{$prefix}-tooltip-bottom-right {
                 transform-origin: bottom right;
                 bottom          : 0;
                 right           : 0;
                 transform       : scale(0) translateX(100%) translateY(0px);
             }
 
-            &:hover,
-            &:focus-within {
-                &:after {
-                    transform: scale(1) translateX(calc(100% + #{$tooltip-margin})) translateY(calc(36px + #{$tooltip-margin}));
-                }
-            }
-        }
-
-        &.#{$prefix}-tooltip-bottom-center {
-            &:after {
+            &.#{$prefix}-tooltip-bottom-center {
                 transform-origin: bottom left;
                 bottom          : 0;
                 left            : 50%;
                 transform       : scale(0) translateX(-50%) translateY(0px);
             }
+        }
 
-            &:hover,
-            &:focus-within {
-                &:after {
-                    transform: scale(1) translateX(-50%) translateY(calc(36px + #{$tooltip-margin}));
+        &:hover,
+        &:focus-within {
+            .#{$prefix}-tooltip {
+
+                &.#{$prefix}-tooltip-top-center {
+                    transform: scale(1) translateX(-50%) translateY(calc(-50% - #{$tooltip-translate-y}));
+                }
+
+                &.#{$prefix}-tooltip-top-left {
+                    transform: scale(1) translateX(calc(-100% - #{$tooltip-translate-y})) translateY(calc(-50% - #{$tooltip-translate-y}));
+
+                }
+
+                &.#{$prefix}-tooltip-top-right {
+                    transform: scale(1) translateX(calc(100% + #{$tooltip-translate-y})) translateY(calc(-50% - #{$tooltip-translate-y}));
+                }
+
+                &.#{$prefix}-tooltip-bottom-left {
+                    transform: scale(1) translateX(calc(-100% - #{$tooltip-translate-y})) translateY(calc(100% + #{$tooltip-translate-y}));
+                }
+
+                &.#{$prefix}-tooltip-bottom-right {
+                    transform: scale(1) translateX(calc(100% + #{$tooltip-translate-y})) translateY(calc(100% + #{$tooltip-translate-y}));
+
+                }
+
+                &.#{$prefix}-tooltip-bottom-center {
+                    transform: scale(1) translateX(-50%) translateY(calc(100% + #{$tooltip-translate-y}));
                 }
             }
         }
+
     }
 }
 
@@ -208,11 +190,9 @@ $tooltip-margin         : $component-margin;
         }
 
         .#{$prefix}-tooltip {
-            &:after {
-                background-color: $tooltip-background-color-dark;
-                border          : 1px solid $tooltip-border-color-dark;
-                color           : $tooltip-text-color-dark;
-            }
+            background-color: $tooltip-background-color-dark;
+            border          : 1px solid $tooltip-border-color-dark;
+            color           : $tooltip-text-color-dark;
         }
     }
 }
@@ -227,12 +207,10 @@ $tooltip-margin         : $component-margin;
         }
 
         .#{$prefix}-tooltip {
-            &:after {
-                background-color: $component-print-background;
-                border          : $component-print-border;
-                color           : $component-print-color;
-                box-shadow      : $component-print-shadow;
-            }
+            background-color: $component-print-background;
+            border          : $component-print-border;
+            color           : $component-print-color;
+            box-shadow      : $component-print-shadow;
         }
     }
 }
@@ -240,10 +218,8 @@ $tooltip-margin         : $component-margin;
 @mixin tooltip-no-transitions {
     body:not(.#{$prefix}-no-transitions) {
         .#{$prefix}-tooltip {
-            &:after {
-                transition-delay: $tooltip-animation-time;
-                transition      : transform $tooltip-animation-time ease-in;
-            }
+            transition-delay: $tooltip-animation-time;
+            transition      : transform $tooltip-animation-time ease-in;
         }
     }
 }

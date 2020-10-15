@@ -1,5 +1,8 @@
 # cUI Styles CHANGELOG:
-# [0.1.31] WIP
+# [0.1.32] WIP
+# [0.1.31] 2020-10-15
+* [Added] Interactive elements highlight: buttons, lists, breadcrumbs, icons, input-mix, accrodion
+* [Changed] Tooltip is now in container
 # [0.1.30] 2020-10-11
 * [Added] Animation delay
 * [Fixed] Toast animation stuttering

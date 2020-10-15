@@ -26,7 +26,8 @@ $accordion-font-size         : $font-normal;
                 user-select    : none;
                 position       : relative;
 
-                color: $accordion-color-default;
+                color                                 : $accordion-color-default;
+                @include createHighlight($noTransition: true);
 
                 &:before {
                     content              : "";
@@ -79,7 +80,8 @@ $accordion-font-size         : $font-normal;
         .#{$prefix}-accordion {
             >* {
                 .#{$prefix}-accordion-title {
-                    color: $accordion-color-default-dark;
+                    @include updateHighlight($color: $highlight-color);
+                    color                          : $accordion-color-default-dark;
                 }
             }
         }

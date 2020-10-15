@@ -17,6 +17,7 @@ $dialog-margin-large           : $margin-global-large;
     .#{$prefix}-dialog {
         position           : fixed;
         top                : 0px;
+        left               : 0px;
         z-index            : 1200;
         // min-height      : 100vh;
         height             : 100vh;

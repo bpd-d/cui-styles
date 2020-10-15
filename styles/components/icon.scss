@@ -48,7 +48,7 @@ $icon-color-success  : $component-background-success;
 }
 
 @mixin icon {
-
+    
     a.#{$prefix}-icon,
     a.#{$prefix}-svg {
         cursor: pointer;
@@ -126,7 +126,7 @@ $icon-color-success  : $component-background-success;
 
         &.#{$prefix}-icon-margin {
             &>svg {
-                margin-right: 4px;
+                margin-right: 8px;
             }
         }
 
@@ -264,6 +264,7 @@ $icon-color-success  : $component-background-success;
         background-color: transparent;
         border          : 1px solid transparent;
         border-radius   : 100px;
+        @include createHighlight(100px, $highlight-color-dark);
 
         &.#{$prefix}-default {
             border-color    : $icon-border-color;

@@ -32,20 +32,28 @@ $themes: "accent",
         background-size    : cover;
         background-clip    : content-box;
 
-        .#{$prefix}-background-border-box {
+        &.#{$prefix}-background-border-box {
             background-clip: border-box;
         }
 
-        .#{$prefix}-background-padding-box {
+        &.#{$prefix}-background-padding-box {
             background-clip: padding-box;
         }
 
-        .#{$prefix}-background-position-start {
+        &.#{$prefix}-background-position-start {
             background-position: left;
         }
 
-        .#{$prefix}-background-position-end {
+        &.#{$prefix}-background-position-end {
             background-position: right;
+        }
+
+        &.#{$prefix}-background-size-cover {
+            background-size: cover;
+        }
+
+        &.#{$prefix}-background-size-contain {
+            background-size: contain;
         }
     }
 }

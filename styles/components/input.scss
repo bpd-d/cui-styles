@@ -186,8 +186,9 @@ $input-margin-small   : $margin-global-small;
 
 @mixin input-mix {
     div.#{$prefix}-input-mix {
-        display : inline-flex;
-        position: relative;
+        display                          : inline-flex;
+        position                         : relative;
+        @include createHighlight($radius : $input-border-radius);
 
         &:before {
             content      : "";
@@ -1127,6 +1128,8 @@ $input-margin-small   : $margin-global-small;
 @mixin input-mix-dark {
     .#{$prefix}-dark {
         div.#{$prefix}-input-mix {
+            @include updateHighlight($color: $highlight-color);
+
             &:not(.#{$prefix}-error):not(.#{$prefix}-success):not(.#{$prefix}-warning):not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
                 &:before {
                     border: 1px solid $input-border-color-inactive-dark;

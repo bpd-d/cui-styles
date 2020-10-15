@@ -182,6 +182,10 @@ $component-print-shadow       : none !important;
 $component-print-border       : 1px solid $component-color-muted !important;
 $component-print-border-color : $component-color-muted !important;
 
+// Used in interactive components to highlight on hover: buttons
+$highlight-color     : rgba(255, 255, 255, 0.1);
+$highlight-color-dark: rgba(20, 20, 20, 0.1);
+
 $selection-color           : $component-color-default;
 $selection-background      : $component-background-shade-active;
 $selection-color-dark      : $component-color-default-dark;

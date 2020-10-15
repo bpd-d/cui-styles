@@ -80,6 +80,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
                     display : block;
                     @include component-padding;
                     @include link-decoration($list-item-color);
+                    @include createHighlight($color: $highlight-color-dark, $noTransition: true);
 
                     &:before {
                         content           : "";
@@ -216,7 +217,8 @@ $list-item-font-weight-bold       : $text-weight-bold;
             &.#{$prefix}-interactive {
                 &>li {
                     a {
-                        color: $list-item-color-dark;
+                        color                          : $list-item-color-dark;
+                        @include updateHighlight($color: $highlight-color);
 
                         &:focus {
                             &:before {

@@ -16,6 +16,7 @@ $drop-transition-time          : $animation-duration-short;
 @mixin drop {
     .#{$prefix}-drop-trigger {
         position: relative;
+        display : inline-block;
     }
 
     .#{$prefix}-drop {

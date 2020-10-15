@@ -60,7 +60,9 @@ $button-font-size                     : $font-normal;
         box-sizing      : border-box;
         font-family     : $font-family;
 
+
         // background-color: var(--color-light-lighten);
+        @include createHighlight($radius: $border-radius-default);
 
         cursor: pointer;
 
@@ -90,11 +92,13 @@ $button-font-size                     : $font-normal;
         }
 
         &.#{$prefix}-rounded {
-            border-radius: $border-radius-round;
+            border-radius                   : $border-radius-round;
+            @include updateHighlight($radius: $border-radius-round);
         }
 
         &.#{$prefix}-circle {
-            border-radius: 50%;
+            border-radius                   : 100px;
+            @include updateHighlight($radius: 100px);
         }
 
         &:hover,
@@ -142,7 +146,6 @@ $button-font-size                     : $font-normal;
             .#{$prefix}-button {
                 color: $button-color-default-dark;
 
-
                 &.#{$prefix}-default {
                     color           : $button-color-default-dark;
                     background-color: transparent;
@@ -189,33 +192,38 @@ $button-font-size                     : $font-normal;
     .#{$prefix}-button,
     .#{$prefix}-icon-button {
         &.#{$prefix}-accent {
-            background-color: $button-background-accent !important;
-            color           : $button-color-inverse;
-            border-color    : $button-background-accent;
+            background-color               : $button-background-accent !important;
+            color                          : $button-color-inverse;
+            border-color                   : $button-background-accent;
+            @include updateHighlight($color: $highlight-color);
 
         }
 
         &.#{$prefix}-secondary {
-            background-color: $button-background-secondary !important;
-            color           : $button-color-inverse;
-            border-color    : $button-background-secondary;
+            background-color               : $button-background-secondary !important;
+            color                          : $button-color-inverse;
+            border-color                   : $button-background-secondary;
+            @include updateHighlight($color: $highlight-color);
         }
 
         &.#{$prefix}-success {
-            background-color: $button-background-success !important;
-            color           : $button-color-inverse;
+            background-color               : $button-background-success !important;
+            color                          : $button-color-inverse;
+            @include updateHighlight($color: $highlight-color);
         }
 
         &.#{$prefix}-error {
-            background-color: $button-background-error !important;
-            color           : $button-color-inverse;
-            border-color    : $button-background-error;
+            background-color               : $button-background-error !important;
+            color                          : $button-color-inverse;
+            border-color                   : $button-background-error;
+            @include updateHighlight($color: $highlight-color);
         }
 
         &.#{$prefix}-warning {
-            background-color: $button-background-warning !important;
-            color           : $button-color-inverse;
-            border-color    : $button-background-warning;
+            background-color               : $button-background-warning !important;
+            color                          : $button-color-inverse;
+            border-color                   : $button-background-warning;
+            @include updateHighlight($color: $highlight-color);
         }
 
         &:hover,
@@ -284,7 +292,8 @@ $button-font-size                     : $font-normal;
 @mixin button-dark {
     .#{$prefix}-dark {
         .#{$prefix}-button {
-            color: $button-color-default-dark;
+            color                          : $button-color-default-dark;
+            @include updateHighlight($color: $highlight-color);
 
             &.#{$prefix}-default {
                 color           : $button-color-default-dark;

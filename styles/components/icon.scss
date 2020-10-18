@@ -48,7 +48,7 @@ $icon-color-success  : $component-background-success;
 }
 
 @mixin icon {
-    
+
     a.#{$prefix}-icon,
     a.#{$prefix}-svg {
         cursor: pointer;
@@ -130,6 +130,22 @@ $icon-color-success  : $component-background-success;
             }
         }
 
+    }
+
+    .#{$prefix}-inverse,
+    .#{$prefix}-accent,
+    .#{$prefix}-secondary,
+    .#{$prefix}-error,
+    .#{$prefix}-warning,
+    .#{$prefix}-success {
+
+        &:not(.#{$prefix}-section):not(.#{$prefix}-hint) {
+
+            .#{$prefix}-icon,
+            .#{$prefix}-icon-button {
+                @include get-icon-color-style($icon-color-inverse);
+            }
+        }
     }
 }
 

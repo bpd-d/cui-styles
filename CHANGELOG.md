@@ -1,5 +1,10 @@
 # cUI Styles CHANGELOG:
-# [0.1.32] WIP
+# [0.1.33] WIP
+# [0.1.32] 2020-10-18
+* [Added] Slider
+* [Changed] Highlight color changed
+* [Fixed] cui-navbar-middle alignment fixes
+* [Fixed] Icon color on accented backgrounds
 # [0.1.31] 2020-10-15
 * [Added] Interactive elements highlight: buttons, lists, breadcrumbs, icons, input-mix, accrodion
 * [Changed] Tooltip is now in container

@@ -144,7 +144,8 @@ $button-font-size                     : $font-normal;
 
         &:not(.#{$prefix}-section):not(.#{$prefix}-hint) {
             .#{$prefix}-button {
-                color: $button-color-default-dark;
+                color                          : $button-color-default-dark;
+                @include updateHighlight($color: $highlight-color);
 
                 &.#{$prefix}-default {
                     color           : $button-color-default-dark;

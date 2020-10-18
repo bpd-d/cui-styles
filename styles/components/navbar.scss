@@ -91,20 +91,21 @@ $navbar-transition-time : $animation-duration-short;
         }
 
         .#{$prefix}-navbar-left {
-            justify-self: left;
-            align-self  : center;
-            box-sizing  : border-box;
-            order       : 1;
-            height      : 100%;
-            margin-left : $navbar-margin;
+            justify-self   : left;
+            align-self     : center;
+            box-sizing     : border-box;
+            justify-content: flex-start;
+            order          : 1;
+            height         : 100%;
+            margin-left    : $navbar-margin;
         }
 
         .#{$prefix}-navbar-middle {
-            justify-self: center;
-            align-self  : center;
-            order       : 2;
-            box-sizing  : border-box;
-
+            justify-self   : center;
+            align-self     : center;
+            justify-content: center;
+            order          : 2;
+            box-sizing     : border-box;
         }
 
         .#{$prefix}-navbar-right {
@@ -261,6 +262,7 @@ $navbar-transition-time : $animation-duration-short;
     @media (max-width: $breakpoint-s) {
 
         .#{$prefix}-navbar-left,
+        .#{$prefix}-navbar-middle,
         .#{$prefix}-navbar-right {
             // justify-self   : center;
             //justify-content: center !important;

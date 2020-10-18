@@ -292,7 +292,8 @@ $item-background-default: $component-background-default;
         transform       : scale(0, 0);
 
         @if $noTransition==false {
-            transition: transform $animation-duration-short ease-out;
+            transition: transform $animation-duration-short ease-out,
+                opacity $animation-duration-short ease-out;
         }
 
         border          : 1px solid transparent;
@@ -302,7 +303,7 @@ $item-background-default: $component-background-default;
             border-radius: $radius;
         }
 
-        z-index : -1;
+        z-index : 0;
     }
 
     &:hover {

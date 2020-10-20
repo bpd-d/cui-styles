@@ -1,5 +1,10 @@
 # cUI Styles CHANGELOG:
-# [0.1.33] WIP
+# [0.1.34] WIP
+# [0.1.33] 2020-10-20
+* [Added] Flex grid match - better cards handling when set as children. Body will stretch.
+* [Fixed] Overlay light background
+* [Fixed] Incorrect offcanvas position
+* [Fixed] Incorrect navbar item placement
 # [0.1.32] 2020-10-18
 * [Added] Slider
 * [Changed] Highlight color changed

@@ -19,6 +19,7 @@ $offcanvas-size                    : $size-medium;
         position  : fixed;
         z-index   : 1150;
         top       : 0px;
+        left      : 0px;
         //opacity : 0;
 
         &:not(.animation-progress):not(.#{$prefix}-active) {
@@ -96,7 +97,7 @@ $offcanvas-size                    : $size-medium;
     .#{$prefix}-offcanvas-default-left-in {
         .#{$prefix}-off-canvas-container {
             background-color: red;
-            animation       : slideInLeft $offcanvas-animation-time ease-out forwards;
+            animation       : offCanvasSlideLeftIn $offcanvas-animation-time ease-out forwards;
         }
     }
 

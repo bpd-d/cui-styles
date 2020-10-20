@@ -91,13 +91,12 @@ $navbar-transition-time : $animation-duration-short;
         }
 
         .#{$prefix}-navbar-left {
-            justify-self   : left;
-            align-self     : center;
-            box-sizing     : border-box;
-            justify-content: flex-start;
-            order          : 1;
-            height         : 100%;
-            margin-left    : $navbar-margin;
+            justify-self: left;
+            align-self  : center;
+            box-sizing  : border-box;
+            order       : 1;
+            height      : 100%;
+            margin-left : $navbar-margin;
         }
 
         .#{$prefix}-navbar-middle {

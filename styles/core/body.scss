@@ -12,4 +12,18 @@
     color           : vars.$app-color;
     width           : 100%;
     height          : 100%;
+
+    &.overscroll-none {
+        overscroll-behavior: none;
+    }
+
+    &.selection-off {
+        user-select: none;
+    }
+
+    &.swiping-on {
+        overscroll-behavior: none;
+        user-select        : none !important;
+        overflow           : hidden;
+    }
 }

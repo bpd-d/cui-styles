@@ -219,6 +219,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
                     a {
                         color                          : $list-item-color-dark;
                         @include updateHighlight($color: $highlight-color);
+                        user-select                    : none;
 
                         &:focus {
                             &:before {

@@ -41,6 +41,7 @@ $badge-color-dark   : $component-color-default-dark;
             min-height      : $badge-text-line;
             min-width       : $badge-text-line;
             z-index         : 5;
+            user-select     : none;
 
             &.#{$prefix}-accent {
                 background-color: $badge-background-accent;

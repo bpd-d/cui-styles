@@ -21,11 +21,13 @@ html {
 
 body {
     @include body.main-body;
+
 }
 
 * {
     box-sizing: border-box;
 }
+
 
 // Commons
 @include commons.definitions;

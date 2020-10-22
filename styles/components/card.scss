@@ -73,12 +73,17 @@ $card-border-color-dark       : transparent; //$color-border-dark;
 
         .#{$prefix}-card-header {
             // @include component-padding-complex(header);
-            @include component-padding(normal, ame);
+            @include component-padding(normal, same);
         }
 
         .#{$prefix}-card-body {
             max-width: 100%;
             @include component-padding-complex(body);
+
+            &:last-child {
+                @include component-padding-complex(footer);
+            }
+
         }
 
         .#{$prefix}-card-footer {

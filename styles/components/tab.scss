@@ -41,7 +41,8 @@ $tab-transition-time: $animation-duration-short;
                 display : block;
                 @include component-padding;
                 @include link-decoration($tab-color);
-                appearance: none;
+                appearance : none;
+                user-select: none;
 
                 &:before {
                     position        : absolute;

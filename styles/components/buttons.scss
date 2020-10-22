@@ -146,6 +146,7 @@ $button-font-size                     : $font-normal;
             .#{$prefix}-button {
                 color                          : $button-color-default-dark;
                 @include updateHighlight($color: $highlight-color);
+                user-select                    : none;
 
                 &.#{$prefix}-default {
                     color           : $button-color-default-dark;

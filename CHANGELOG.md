@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.34] WIP
+# [0.1.35] WIP
+# [0.1.34] 2020-10-22
+* [Added] Customization classes for cui-light swipe behavior
+* [Added] Added user-select: none to buttons, interactive lists and tab
+* [Changed] Card style when there is no footer 
 # [0.1.33] 2020-10-20
 * [Added] Flex grid match - better cards handling when set as children. Body will stretch.
 * [Fixed] Overlay light background

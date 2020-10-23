@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.35] WIP
+# [0.1.36] WIP
+# [0.1.35] 2020-10-23
+* [Added] List interactive reverse
+* [Changed] List transition
+* [Fixed] Dialog animation
 # [0.1.34] 2020-10-22
 * [Added] Customization classes for cui-light swipe behavior
 * [Added] Added user-select: none to buttons, interactive lists and tab

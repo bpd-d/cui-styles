@@ -91,7 +91,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
                         height            : 100%;
                         left              : 0;
                         top               : 50%;
-                        transform         : translateY(-50%) scale(1, 0.6);
+                        transform         : translateY(-50%) scale(1, 0.4);
                         //transition      : transform $list-transition-time ease-out;
                     }
 
@@ -119,7 +119,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
 
                         &:hover {
                             &:before {
-                                transform: translateY(-50%) scale(1, 1);
+                                transform: translateY(-50%) scale(1, 0.6);
                             }
                         }
                     }
@@ -135,8 +135,19 @@ $list-item-font-weight-bold       : $text-weight-bold;
 
                         &:hover {
                             &:before {
-                                transform: translateY(-50%) scale(1, 1);
+                                transform: translateY(-50%) scale(1, 0.6);
                             }
+                        }
+                    }
+                }
+            }
+
+            &.#{$prefix}-reverse {
+                &>li {
+                    a {
+                        &:before {
+                            left : 100%;
+                            right: 0;
                         }
                     }
                 }
@@ -216,7 +227,7 @@ $list-item-font-weight-bold       : $text-weight-bold;
 
             &.#{$prefix}-interactive {
                 &>li {
-                    a {
+                    &>a {
                         color                          : $list-item-color-dark;
                         @include updateHighlight($color: $highlight-color);
                         user-select                    : none;

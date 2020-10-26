@@ -155,6 +155,18 @@ $item-background-default: $component-background-default;
     }
 }
 
+@mixin not-reduced-motion {
+    body:not(.#{$prefix}-reduced-motion) {
+        @content;
+    }
+}
+
+@mixin reduced-motion {
+    body.#{$prefix}-reduced-motion {
+        @content;
+    }
+}
+
 @mixin mode-not-no-scrollbar-customization {
     body:not(.#{$prefix}-no-scrollbar-customization) {
         @content;

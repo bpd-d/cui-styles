@@ -139,17 +139,19 @@ $float-size: 24px;
 }
 
 @mixin float-animations {
-    .#{$prefix}-float-default-in {
+    @include not-reduced-motion {
+        .#{$prefix}-float-default-in {
 
-        .#{$prefix}-float-container {
-            animation: animFloatIn $float-animation-time ease-in forwards;
+            .#{$prefix}-float-container {
+                animation: animFloatIn $float-animation-time ease-in forwards;
+            }
         }
-    }
 
-    .#{$prefix}-float-default-out {
+        .#{$prefix}-float-default-out {
 
-        .#{$prefix}-float-container {
-            animation: animFloatOut $float-animation-time ease-in forwards;
+            .#{$prefix}-float-container {
+                animation: animFloatOut $float-animation-time ease-in forwards;
+            }
         }
     }
 
@@ -161,8 +163,7 @@ $float-size: 24px;
         }
 
         35% {
-            opacity    : 0.5;
-            //transform: scale(0.5, 0.5);
+            opacity: 0.5;
         }
 
         70% {

@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.36] WIP
+# [0.1.37] WIP
+# [0.1.36] 2020-10-26
+* [Changed] Offcanvas animation time
+* [Changed] Set smaller toast font size
+* [Fixed] Spinner animation
 # [0.1.35] 2020-10-23
 * [Added] List interactive reverse
 * [Changed] List transition

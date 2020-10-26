@@ -3,6 +3,7 @@
 *
 */
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $cover-background-default : $component-background-default;
 $cover-background-dark    : $component-background-default-dark;
@@ -44,7 +45,7 @@ $cover-transition-duration: $animation-duration-long;
 
 
 @mixin cover-no-transitions {
-    body:not(.#{$prefix}-no-transitions) {
+    @include not-reduced-motion {
         .#{$prefix}-cover {
             &.#{$prefix}-active {
                 transition: transform $cover-transition-duration ease-in-out,

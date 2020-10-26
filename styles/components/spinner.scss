@@ -7,8 +7,6 @@ $spinner-color-default-dark : $component-color-default-dark;
 
 @mixin spinner {
     .#{$prefix}-spinner {
-        width          : 20px;
-        height         : 20px;
         display        : inline-flex;
         align-items    : center;
         justify-content: center;
@@ -43,9 +41,37 @@ $spinner-color-default-dark : $component-color-default-dark;
         animation-iteration-count: infinite;
     }
 
+    .animation-spinner-circle {
+        stroke-dasharray         : 53;
+        // transform: rotate(90deg);
+        animation                : strokeMove 3s cubic-bezier(0.34, 0.64, 0.47, 1.07);
+        transform-origin         : center;
+        animation-iteration-count: infinite;
+    }
+
+    .animation-spinner-circle_double {
+        path {
+            &:nth-of-type(1) {
+                stroke-dasharray         : 53;
+                animation                : strokeMove 3s cubic-bezier(0.34, 0.64, 0.47, 1.07);
+                transform-origin         : center;
+                animation-iteration-count: infinite;
+            }
+
+            &:nth-of-type(2) {
+                stroke-dasharray         : 41;
+                // transform: rotate(90deg);
+                animation                : strokeMove1 3s cubic-bezier(0.34, 0.64, 0.47, 1.07);
+                transform-origin         : center;
+                animation-iteration-count: infinite;
+            }
+        }
+
+    }
+
     @keyframes strokeMove {
         0% {
-            stroke-dashoffset: 52;
+            stroke-dashoffset: 53;
             transform        : rotate(0);
         }
 
@@ -55,14 +81,14 @@ $spinner-color-default-dark : $component-color-default-dark;
         }
 
         100% {
-            stroke-dashoffset: -52;
+            stroke-dashoffset: -53;
             transform        : rotate(360deg);
         }
     }
 
     @keyframes strokeMove1 {
         0% {
-            stroke-dashoffset: 39;
+            stroke-dashoffset: 41;
             transform        : rotate(180deg);
         }
 
@@ -72,7 +98,7 @@ $spinner-color-default-dark : $component-color-default-dark;
         }
 
         100% {
-            stroke-dashoffset: -39;
+            stroke-dashoffset: -41;
             transform        : rotate(540deg);
         }
     }

@@ -7,6 +7,7 @@ $toast-background-color-dark: $component-background-default-dark;
 $toast-color                : $component-color-default;
 $toast-color-dark           : $component-color-default-dark;
 $toast-animation-duration   : $animation-duration-default;
+$toast-font-size            : $font-small;
 
 
 @mixin toast {
@@ -17,13 +18,15 @@ $toast-animation-duration   : $animation-duration-default;
         left         : 50%;
         transform    : translateX(-50%) translateY($toast-margin-bottom) scale(1, 1);
         max-width    : 300px;
+        font-size    : $toast-font-size;
         color        : $toast-color;
         background   : $toast-background-color;
         box-shadow   : $shadow4;
         border-radius: 50px;
         opacity      : 0;
 
-        @include component-padding(large);
+        @include component-padding(normal);
+        @content;
 
         &:not(.animation-progress):not(.#{$prefix}-active) {
             display: none;
@@ -57,12 +60,14 @@ $toast-animation-duration   : $animation-duration-default;
 }
 
 @mixin toast-animations {
-    .#{$prefix}-toast-animation-in {
-        animation: #{$prefix}AnimToastIn $toast-animation-duration linear forwards;
-    }
+    @include not-reduced-motion {
+        .#{$prefix}-toast-animation-in {
+            animation: #{$prefix}AnimToastIn $toast-animation-duration linear forwards;
+        }
 
-    .#{$prefix}-toast-animation-out {
-        animation: #{$prefix}AnimToastOut $toast-animation-duration ease-in-out forwards;
+        .#{$prefix}-toast-animation-out {
+            animation: #{$prefix}AnimToastOut $toast-animation-duration ease-in-out forwards;
+        }
     }
 
     @keyframes #{$prefix}AnimToastIn {

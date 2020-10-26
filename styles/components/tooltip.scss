@@ -216,7 +216,7 @@ $tooltip-translate-y    : 4px;
 }
 
 @mixin tooltip-no-transitions {
-    body:not(.#{$prefix}-no-transitions) {
+    @include not-reduced-motion {
         .#{$prefix}-tooltip {
             transition-delay: $tooltip-animation-time;
             transition      : transform $tooltip-animation-time ease-in;

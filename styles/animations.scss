@@ -1,4 +1,5 @@
 @use 'variables'as *;
+@use 'mixins'as *;
 
 $default-animation-time : $animation-duration-default;
 $short-animation-time   : $animation-duration-short;
@@ -101,56 +102,58 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
         }
     }
 
-    .#{$prefix}-anim-slide-in {
-        z-index    : 100;
-        will-change: transform;
-        animation  : animSlideIn $default-animation-time ease-in forwards;
-    }
+    @include not-reduced-motion {
+        .#{$prefix}-anim-slide-in {
+            z-index    : 100;
+            will-change: transform;
+            animation  : animSlideIn $default-animation-time ease-in forwards;
+        }
 
-    .#{$prefix}-anim-slide-out {
-        z-index    : 99;
-        will-change: transform;
-        animation  : animSlideOut $default-animation-time ease-in forwards;
-    }
+        .#{$prefix}-anim-slide-out {
+            z-index    : 99;
+            will-change: transform;
+            animation  : animSlideOut $default-animation-time ease-in forwards;
+        }
 
-    .#{$prefix}-anim-fade-in {
-        will-change: opacity;
-        animation  : animFadeIn $default-animation-time ease-in forwards;
-    }
+        .#{$prefix}-anim-fade-in {
+            will-change: opacity;
+            animation  : animFadeIn $default-animation-time ease-in forwards;
+        }
 
-    .#{$prefix}-anim-fade-out {
-        will-change: opacity;
-        animation  : animFadeOut $default-animation-time ease-out forwards;
-    }
+        .#{$prefix}-anim-fade-out {
+            will-change: opacity;
+            animation  : animFadeOut $default-animation-time ease-out forwards;
+        }
 
-    .#{$prefix}-scale-y-in {
-        will-change     : transform;
-        transform-origin: top;
-        animation       : scaleYIn $default-animation-time ease-in forwards;
-    }
+        .#{$prefix}-scale-y-in {
+            will-change     : transform;
+            transform-origin: top;
+            animation       : scaleYIn $default-animation-time ease-in forwards;
+        }
 
-    .#{$prefix}-scale-y-out {
-        will-change     : transform;
-        transform-origin: top;
-        animation       : scaleYOut $default-animation-time ease-out forwards;
-    }
+        .#{$prefix}-scale-y-out {
+            will-change     : transform;
+            transform-origin: top;
+            animation       : scaleYOut $default-animation-time ease-out forwards;
+        }
 
-    .#{$prefix}-animation-fade-in {
-        opacity  : 0;
-        animation: animFadeIn $default-animation-time ease-out forwards;
-    }
+        .#{$prefix}-animation-fade-in {
+            opacity  : 0;
+            animation: animFadeIn $default-animation-time ease-out forwards;
+        }
 
-    .#{$prefix}-animation-fade-out {
-        opacity  : 1;
-        animation: animFadeOut $default-animation-time ease-out forwards;
-    }
+        .#{$prefix}-animation-fade-out {
+            opacity  : 1;
+            animation: animFadeOut $default-animation-time ease-out forwards;
+        }
 
-    .#{$prefix}-animation-slide-in {
-        animation: slideInLeft $default-animation-time ease-in forwards;
-    }
+        .#{$prefix}-animation-slide-in {
+            animation: slideInLeft $default-animation-time ease-in forwards;
+        }
 
-    .#{$prefix}-animation-slide-out {
-        animation: slideOutRight $default-animation-time ease-out forwards;
+        .#{$prefix}-animation-slide-out {
+            animation: slideOutRight $default-animation-time ease-out forwards;
+        }
     }
 
     .#{$prefix}-animation-delay {

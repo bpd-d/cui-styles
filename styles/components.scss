@@ -32,6 +32,7 @@
 @use 'components/code';
 @use 'components/selection';
 @use 'components/float';
+@use 'components/sortable';
 
 @mixin definitions {
     @include navbar.definitions;
@@ -68,4 +69,5 @@
     @include code.definitions;
     @include selection.definitions;
     @include float.definitions;
+    @include sortable.definitions;
 }

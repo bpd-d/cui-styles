@@ -22,13 +22,19 @@ $cover-transition-duration: $animation-duration-long;
         color           : $cover-color-default;
         z-index         : 1250;
         transform-origin: bottom center;
-        opacity         : 0;
-        transform       : scale(0, 0);
 
+        // &.#{$prefix}-active {
+        //     opacity  : 1;
+        //     transform: scale(1, 1);
+        // }
 
-        &.#{$prefix}-active {
-            opacity  : 1;
-            transform: scale(1, 1);
+        @include not-animation-or-active {
+            position: absolute !important;
+            width   : 0 !important;
+            height  : 0 !important;
+            padding : 0 !important;
+            margin  : 0 !important;
+            overflow: hidden !important;
         }
 
         .#{$prefix}-cover-container {
@@ -40,7 +46,6 @@ $cover-transition-duration: $animation-duration-long;
             position  : absolute;
         }
     }
-
 }
 
 
@@ -75,7 +80,7 @@ $cover-transition-duration: $animation-duration-long;
 
 @mixin definitions {
     @include cover();
-    @include cover-no-transitions();
+    // @include cover-no-transitions();
     @include cover-dark();
     @include cover-print();
 }

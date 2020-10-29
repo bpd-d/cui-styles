@@ -1,0 +1,89 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$sortable-shadow-background       : $component-background-shade;
+$sortable-shadow-background-dark  : $component-background-shade-dark;
+$sortable-preview-background      : $component-background-shade-active;
+$sortable-preview-background-dark : $component-background-shade-dark-active;
+
+$sortable-shadow-border-radius: $border-radius-default;
+
+$sortable-margin: $margin-global-small;
+
+@mixin sortable {
+    ul.#{$prefix}-sortable {
+
+        list-style: none;
+        margin    : 0;
+        padding   : 0;
+
+        &>li {
+            margin: 0;
+        }
+    }
+
+    .#{$prefix}-sortable {
+        .#{$prefix}-moving {
+            * {
+                background-color: $sortable-shadow-background;
+            }
+
+        }
+
+        &.#{$prefix}-locked {
+            user-select: none;
+        }
+    }
+
+    .#{$prefix}-sortable-preview {
+        height          : 1rem;
+        width           : 1rem;
+        border-radius   : $sortable-shadow-border-radius;
+        box-shadow      : $shadow3;
+        background-color: $sortable-preview-background;
+        position        : fixed;
+        top             : 0px;
+        left            : 0px;
+        z-index         : 1000;
+        display         : block;
+    }
+
+    .#{$prefix}-sortable-shadow {
+        height          : 1rem;
+        width           : 100%;
+        background-color: $sortable-shadow-background;
+        display         : block;
+        border-radius   : $sortable-shadow-border-radius;
+        margin          : $sortable-margin 0 !important;
+        display         : none;
+
+        &.#{$prefix}-active {
+            display: block;
+        }
+    }
+
+
+    body.#{$prefix}-sortable-active {
+        overflow           : hidden;
+        position           : fixed;
+        overscroll-behavior: none;
+        user-select        : none !important;
+    }
+}
+
+@mixin sortable-dark {
+    @include mode-dark {
+        .#{$prefix}-sortable-shadow {
+            background-color: $sortable-preview-background-dark;
+        }
+
+        .#{$prefix}-sortable-shadow {
+            background-color: $sortable-shadow-background-dark;
+        }
+    }
+}
+
+@mixin definitions {
+    @include sortable();
+    @include sortable-dark();
+}

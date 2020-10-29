@@ -1,5 +1,8 @@
 # cUI Styles CHANGELOG:
-# [0.1.37] WIP
+# [0.1.38] WIP
+# [0.1.37] 2020-10-29
+* [Added] Sortable component
+* [Changed] Cover open without transition, but it is compatible with cUI animations
 # [0.1.36] 2020-10-26
 * [Changed] Offcanvas animation time
 * [Changed] Set smaller toast font size

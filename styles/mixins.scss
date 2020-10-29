@@ -346,3 +346,9 @@ $item-background-default: $component-background-default;
         @content;
     }
 }
+
+@mixin not-animation-or-active {
+    &:not(.animation-progress):not(.#{$prefix}-active) {
+        @content;
+    }
+}

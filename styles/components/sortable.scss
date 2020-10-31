@@ -24,10 +24,7 @@ $sortable-margin: $margin-global-small;
 
     .#{$prefix}-sortable {
         .#{$prefix}-moving {
-            * {
-                background-color: $sortable-shadow-background;
-            }
-
+            display: none;
         }
 
         &.#{$prefix}-locked {
@@ -46,12 +43,14 @@ $sortable-margin: $margin-global-small;
         left            : 0px;
         z-index         : 1000;
         display         : block;
+        user-select     : none;
+        touch-action    : none;
     }
 
     .#{$prefix}-sortable-shadow {
         height          : 1rem;
         width           : 100%;
-        background-color: $sortable-shadow-background;
+        background-color: transparent;
         display         : block;
         border-radius   : $sortable-shadow-border-radius;
         margin          : $sortable-margin 0 !important;

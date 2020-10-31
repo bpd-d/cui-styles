@@ -9,11 +9,12 @@ $float-background-default-dark  : $component-background-default-dark;
 $float-color-default            : $component-color-default;
 $float-color-print              : $component-print-color;
 $float-color-default-dark       : $component-color-default-dark;
-$float-animation-time           : $animation-duration-long;
+$float-animation-time           : $animation-duration-default;
 $float-animation-time-short     : $animation-duration-short;
 $float-indicator-background     : $component-background-default;
 $float-indicator-background-dark: $component-background-default-dark;
-
+$float-resize-background        : $component-background-shade;
+$float-resize-background-dark   : $component-background-shade-dark;
 
 $float-size: 24px;
 
@@ -47,10 +48,10 @@ $float-size: 24px;
                 transform       : scale(1.2);
                 box-shadow      : $shadow2;
                 background-image: none;
+                touch-action    : none;
+                user-select     : none;
             }
         }
-
-
 
         .#{$prefix}-float-container {
             opacity         : 0;
@@ -88,8 +89,6 @@ $float-size: 24px;
                 width   : 100%;
                 overflow: hidden;
             }
-
-
         }
 
         &.#{$prefix}-active {
@@ -97,8 +96,6 @@ $float-size: 24px;
                 opacity: 1;
             }
         }
-
-
     }
 
 }

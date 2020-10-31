@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.38] WIP
+# [0.1.39] WIP
+# [0.1.38] 2020-10-31
+* [Changed] Float animation duration
+* [Changed] Sortable shadow style
+* [Fixed] Added some performance improvements 
 # [0.1.37] 2020-10-29
 * [Added] Sortable component
 * [Changed] Cover open without transition, but it is compatible with cUI animations

@@ -1,8 +1,6 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$sortable-shadow-background       : $component-background-shade;
-$sortable-shadow-background-dark  : $component-background-shade-dark;
 $sortable-preview-background      : $component-background-shade-active;
 $sortable-preview-background-dark : $component-background-shade-dark-active;
 
@@ -18,13 +16,14 @@ $sortable-margin: $margin-global-small;
         padding   : 0;
 
         &>li {
-            margin: 0;
+            padding: 4px 0;
         }
     }
 
     .#{$prefix}-sortable {
         .#{$prefix}-moving {
-            display: none;
+            //display: none;
+            opacity: 0;
         }
 
         &.#{$prefix}-locked {
@@ -39,26 +38,12 @@ $sortable-margin: $margin-global-small;
         box-shadow      : $shadow3;
         background-color: $sortable-preview-background;
         position        : fixed;
-        top             : 0px;
-        left            : 0px;
         z-index         : 1000;
         display         : block;
         user-select     : none;
         touch-action    : none;
-    }
-
-    .#{$prefix}-sortable-shadow {
-        height          : 1rem;
-        width           : 100%;
-        background-color: transparent;
-        display         : block;
-        border-radius   : $sortable-shadow-border-radius;
-        margin          : $sortable-margin 0 !important;
-        display         : none;
-
-        &.#{$prefix}-active {
-            display: block;
-        }
+        opacity         : 1;
+        transition      : opacity 300ms ease-out;
     }
 
 
@@ -72,12 +57,8 @@ $sortable-margin: $margin-global-small;
 
 @mixin sortable-dark {
     @include mode-dark {
-        .#{$prefix}-sortable-shadow {
+        .#{$prefix}-sortable-preview {
             background-color: $sortable-preview-background-dark;
-        }
-
-        .#{$prefix}-sortable-shadow {
-            background-color: $sortable-shadow-background-dark;
         }
     }
 }

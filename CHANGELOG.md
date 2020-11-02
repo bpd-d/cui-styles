@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.39] WIP
+# [0.1.40] WIP
+# [0.1.39] 2020-11-02
+* [Chnaged] Sortable shadow has been removed
 # [0.1.38] 2020-10-31
 * [Changed] Float animation duration
 * [Changed] Sortable shadow style

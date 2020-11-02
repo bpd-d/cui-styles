@@ -25,9 +25,11 @@ Monaco,
 Courier,
 monospace;
 
+$font-base-size: var(--#{$prefix}-font-size);
+
 $font-xsmall : 0.5rem;
 $font-small  : 0.7rem;
-$font-normal : 1rem;
+$font-normal : $font-base-size;
 $font-large  : 1.3rem;
 $font-larger : 1.6rem;
 $font-xlarge : 2.2rem;

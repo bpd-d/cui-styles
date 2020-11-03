@@ -1,5 +1,5 @@
 # cUI Styles CHANGELOG:
-# [0.1.41] WIP
+# [0.1.43] WIP
 # [0.1.40] 2020-11-03
 * [Added] Version info to project files
 # [0.1.39] 2020-11-02

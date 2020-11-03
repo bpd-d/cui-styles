@@ -12,6 +12,9 @@ module.exports = merge(common, {
         minimizer: [new OptimizeCssAssetsPlugin({
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
+        }), new TerserPlugin({
+            sourceMap: true,
+            extractComments: false
         })]
     }
 });

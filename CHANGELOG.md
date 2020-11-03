@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.43] WIP
+# [0.1.44] WIP
+# [0.1.43] 2020-11-03
+* [Changed] Tooltip implementation
 # [0.1.40] 2020-11-03
 * [Added] Version info to project files
 # [0.1.39] 2020-11-02

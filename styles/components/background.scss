@@ -29,7 +29,6 @@ $themes: "accent",
         box-sizing         : border-box;
         background-repeat  : no-repeat;
         background-position: center;
-        background-size    : cover;
         background-clip    : content-box;
 
         &.#{$prefix}-background-border-box {

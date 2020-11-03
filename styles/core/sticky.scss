@@ -1,12 +1,20 @@
 @use "../variables.scss"as *;
 
 @mixin definitions {
-    .#{$prefix}-sticky:not(table) {
-        position: sticky;
-        top     : 0px;
+    .#{$prefix}-sticky-container {
+        position: relative;
+    }
 
-        &.#{$prefix}-hidden {
-            display: none;
+    .#{$prefix}-sticky:not(table) {
+        position  : sticky;
+        top       : 0px;
+        opacity   : 1;
+        transform : translateY(0px);
+        transition: transform 300ms ease-out, opacity 300ms ease-out;
+
+        &.#{$prefix}-not-visible {
+            opacity  : 0;
+            transform: translateY(-100%);
         }
     }
 }

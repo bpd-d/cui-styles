@@ -11,8 +11,6 @@ $drop-nav-dark-hover-background: $component-background-shade-dark;
 $drop-translate-y              : $component-margin;
 $drop-transition-time          : $animation-duration-short;
 
-
-
 @mixin drop {
     .#{$prefix}-drop-trigger {
         position: relative;
@@ -20,85 +18,42 @@ $drop-transition-time          : $animation-duration-short;
     }
 
     .#{$prefix}-drop {
-        position        : absolute;
-        display         : block;
-        z-index         : 1150;
-        transform       : scale(0) translateX(-50%) translateY(100%);
-        transform-origin: bottom left;
-        bottom          : 0px;
-        box-sizing      : border-box;
-        height          : max-content;
-        width           : max-content;
-        left            : 50%;
+        position  : absolute;
+        z-index   : 1150;
+        box-sizing: border-box;
+        height    : max-content;
+        width     : max-content;
+        opacity   : 0;
+        display   : none;
+        transform : scale(1);
 
         &.#{$prefix}-active {
-            transform : scale(1) translateX(-50%) translateY(calc(100% + #{$drop-translate-y}));
+            opacity: 1;
+            display: block;
         }
 
-        &.#{$prefix}-drop-top-center {
+        &.#{$prefix}-drop-position-top-center {
+            transform-origin: bottom center;
+        }
+
+        &.#{$prefix}-drop-position-bottom-center {
+            transform-origin: top center;
+        }
+
+        &.#{$prefix}-drop-position-bottom-left {
             transform-origin: top left;
-            top             : 0px;
-            left            : 50%;
-            transform       : scale(0) translateX(-50%) translateY(-100%);
-
-            &.#{$prefix}-active {
-                transform: scale(1) translateX(-50%) translateY(calc(-100% - #{$drop-translate-y}));
-            }
         }
 
-        &.#{$prefix}-drop-top-left {
-            transform-origin: top left;
-            top             : 0px;
-            left            : 0px;
-            transform       : scale(0) translateX(0%) translateY(-100%);
-
-            &.#{$prefix}-active {
-                transform: scale(1) translateX(0%) translateY(calc(-100% - #{$drop-translate-y}));
-            }
+        &.#{$prefix}-drop-position-bottom-right {
+            transform-origin: top right;
         }
 
-        &.#{$prefix}-drop-top-right {
-            transform-origin: top left;
-            top             : 0px;
-            left            : 100%;
-            transform       : scale(0) translateX(-100%) translateY(-100%);
-
-            &.#{$prefix}-active {
-                transform: scale(1) translateX(-100%) translateY(calc(-100% - #{$drop-translate-y}));
-            }
-        }
-
-        &.#{$prefix}-drop-bottom-left {
+        &.#{$prefix}-drop-position-top-left {
             transform-origin: bottom left;
-            bottom          : 0px;
-            left            : 0px;
-            transform       : scale(0) translateX(0%) translateY(100%);
-
-            &.#{$prefix}-active {
-                transform: scale(1) translateX(0%) translateY(calc(100% + #{$drop-translate-y}));
-            }
         }
 
-        &.#{$prefix}-drop-bottom-right {
-            transform-origin: bottom left;
-            bottom          : 0px;
-            left            : 100%;
-            transform       : scale(0) translateX(-100%) translateY(100%);
-
-            &.#{$prefix}-active {
-                transform: scale(1) translateX(-100%) translateY(calc(100% + #{$drop-translate-y}));
-            }
-        }
-
-        &.#{$prefix}-drop-bottom-center {
-            transform-origin: bottom left;
-            bottom          : 0%;
-            left            : 50%;
-            transform       : scale(0) translateX(-50%) translateY(100%);
-
-            &.#{$prefix}-active {
-                transform: scale(1) translateX(-50%) translateY(calc(100% + #{$drop-translate-y}));
-            }
+        &.#{$prefix}-drop-position-top-right {
+            transform-origin: bottom right;
         }
     }
 }
@@ -126,11 +81,10 @@ $drop-transition-time          : $animation-duration-short;
         z-index   : 10;
 
         li {
-            margin       : 0;
-            padding      : 0;
-            box-sizing   : border-box;
-            display      : block;
-            // overflow  : hidden;
+            margin    : 0;
+            padding   : 0;
+            box-sizing: border-box;
+            display   : block;
 
             a {
                 @include component-padding;
@@ -182,18 +136,16 @@ $drop-transition-time          : $animation-duration-short;
 }
 
 @mixin dropdown-dark {
-    .#{$prefix}-dark {
+    @include mode-dark () {
         .#{$prefix}-dropdown {
             background-color: $drop-background-default-dark;
             color           : $drop-color-default-dark;
         }
-
-
     }
 }
 
 @mixin dropdown-print {
-    .#{$prefix}-print {
+    @include mode-print() {
         .#{$prefix}-dropdown {
             background-color: $component-print-background;
             color           : $component-print-color;
@@ -201,61 +153,35 @@ $drop-transition-time          : $animation-duration-short;
             box-shadow      : $component-print-shadow;
         }
     }
+
 }
 
 @mixin drop-no-transition {
-    body:not(.#{$prefix}-no-transitions) {
-        .#{$prefix}-drop-trigger {
-
-            &:hover,
-            &:focus-within {
-                .#{$prefix}-drop-hover {
-                    transition: transform $drop-transition-time ease-in;
-                }
-            }
-        }
-
+    @include not-reduced-motion {
         .#{$prefix}-drop {
             &.#{$prefix}-active {
-                transition: transform $drop-transition-time ease-in;
+                opacity: 0;
+                display: block;
             }
-        }
-    }
-}
 
-@mixin drop-hover {
-    .#{$prefix}-drop-trigger {
+            &.cui-drop-animation-in {
+                animation: dropIn $drop-transition-time ease-out forwards;
 
-        &:hover,
-        &:focus-within {
-            .#{$prefix}-drop-hover {
-                transform : scale(1) translateX(-50%) translateY(calc(100% + #{$drop-translate-y}));
+                @keyframes dropIn {
+                    0% {
+                        opacity  : 0;
+                        transform: scale(0);
+                    }
 
-                &.#{$prefix}-drop-top-center {
-                    transform: scale(1) translateX(-50%) translateY(calc(-100% - #{$drop-translate-y}));
-                }
+                    70% {
+                        opacity  : 1;
+                        transform: scale(1.1);
+                    }
 
-                &.#{$prefix}-drop-top-left {
-                    transform: scale(1) translateX(0%) translateY(calc(-100% - #{$drop-translate-y}));
-
-                }
-
-                &.#{$prefix}-drop-top-right {
-                    transform: scale(1) translateX(-100%) translateY(calc(-100% - #{$drop-translate-y}));
-                }
-
-                &.#{$prefix}-drop-bottom-left {
-                    transform: scale(1) translateX(0%) translateY(calc(100% + #{$drop-translate-y}));
-
-                }
-
-                &.#{$prefix}-drop-bottom-right {
-                    transform: scale(1) translateX(-100%) translateY(calc(100% + #{$drop-translate-y}));
-
-                }
-
-                &.#{$prefix}-drop-bottom-center {
-                    transform: scale(1) translateX(-50%) translateY(calc(100% + #{$drop-translate-y}));
+                    100% {
+                        opacity  : 1;
+                        transform: scale(1);
+                    }
                 }
             }
         }
@@ -270,5 +196,4 @@ $drop-transition-time          : $animation-duration-short;
     @include dropdown-print();
     @include drop-nav();
     @include drop-nav-dark();
-    @include drop-hover();
 }

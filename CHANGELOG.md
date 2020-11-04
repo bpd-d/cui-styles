@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.45] WIP
+# [0.1.46] WIP
+# [0.1.45] 2020-11-04
+* [Changed] Drop element
 # [0.1.44] 2020-11-03
 * [Changed] Position element styling
 * [Changed] Offset styling, class cui-hidden changed to cui-not-visible

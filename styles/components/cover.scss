@@ -78,9 +78,21 @@ $cover-transition-duration: $animation-duration-long;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include cover();
-    // @include cover-no-transitions();
-    @include cover-dark();
-    @include cover-print();
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include cover-no-transitions();
+    }
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include cover-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include cover-print();
+    }
+
+
+
 }

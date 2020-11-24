@@ -1,4 +1,5 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $transition-time-normal: $animation-duration-default;
 
@@ -60,9 +61,18 @@ $transition-time-normal: $animation-duration-default;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options:()) {
     @include box-shadow();
-    @include box-shadow-hover();
-    @include box-shadow-remove();
-    @include box-shadow-no-transition();
+
+    @if(not-option-disabled($options, 'hover')) {
+        @include box-shadow-hover();
+    }
+
+    @if(not-option-disabled($options, 'remove')) {
+        @include box-shadow-remove();
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include box-shadow-no-transition();
+    }
 }

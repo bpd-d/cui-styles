@@ -1,4 +1,5 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $progress-normal-height         : 1rem;
 $progress-small-height          : 0.5rem;
@@ -221,10 +222,22 @@ $progress-transition-time       : $animation-duration-long;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include progress();
-    @include progress-theme();
-    @include progress-signals();
-    @include progress-dark();
-    @include progress-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include progress-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include progress-print();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include progress-theme();
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include progress-signals();
+    }
 }

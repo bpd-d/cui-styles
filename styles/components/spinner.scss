@@ -1,4 +1,5 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $spinner-color-default      : $component-color-default;
 $spinner-color-inverse      : $component-color-inverse;
@@ -124,8 +125,14 @@ $spinner-color-default-dark : $component-color-default-dark;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include spinner();
-    @include spinner-dark();
-    @include spinner-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include spinner-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include spinner-print();
+    }
 }

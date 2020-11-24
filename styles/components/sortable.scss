@@ -63,7 +63,11 @@ $sortable-margin: $margin-global-small;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options:()) {
     @include sortable();
-    @include sortable-dark();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include sortable-dark();
+    }
+
 }

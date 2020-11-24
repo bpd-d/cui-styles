@@ -113,8 +113,16 @@ $separator-height    : 2px;
 
 
 // Exports
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include separator();
-    @include separator-dark();
-    @include separator-colors();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include separator-dark();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include separator-colors();
+    }
+
+
 }

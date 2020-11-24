@@ -1,4 +1,5 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $special-color-success  : $component-background-success;
 $special-color-fail     : $component-background-error;
@@ -241,10 +242,22 @@ $special-animation-delay: 500ms;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include specials();
-    @include spcecials-print();
-    @include circle-progress();
-    @include circle-double();
-    @include menu();
+
+    @if(not-option-disabled($options, 'print')) {
+        @include spcecials-print();
+    }
+
+    @if(not-option-disabled($options, 'progress')) {
+        @include circle-progress();
+    }
+
+    @if(not-option-disabled($options, 'double')) {
+        @include circle-double();
+    }
+
+    @if(not-option-disabled($options, 'menu')) {
+        @include menu();
+    }
 }

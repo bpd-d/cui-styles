@@ -187,9 +187,14 @@ $float-size: 24px;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include float;
-    @include float-dark;
-    @include float-animations;
 
+    @if(not-option-disabled($options, 'dark')) {
+        @include float-dark;
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include float-animations;
+    }
 }

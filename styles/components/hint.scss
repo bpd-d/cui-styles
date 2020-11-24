@@ -88,7 +88,7 @@ $hint-border-color-success      : $component-background-success;
 }
 
 @mixin hint-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         .#{$prefix}-hint {
             @include not-colors {
                 border-color    : $hint-border-color-default-dark;
@@ -104,7 +104,7 @@ $hint-border-color-success      : $component-background-success;
 }
 
 @mixin hint-theme-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         .#{$prefix}-hint {
             &.#{$prefix}-accent {
                 background-color: $hint-background-accent-dark;
@@ -118,7 +118,7 @@ $hint-border-color-success      : $component-background-success;
 }
 
 @mixin hint-signals-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         .#{$prefix}-hint {
             &.#{$prefix}-warning {
                 background-color: $hint-background-warning-dark;
@@ -136,7 +136,7 @@ $hint-border-color-success      : $component-background-success;
 }
 
 @mixin hint-print {
-    .#{$prefix}-print {
+    @include mode-print {
         .#{$prefix}-hint {
             border          : $component-print-border;
             color           : $component-print-color;
@@ -145,22 +145,30 @@ $hint-border-color-success      : $component-background-success;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include hint();
-    @include hint-theme();
-    @include hint-theme-dark();
-    @include hint-signals();
-    @include hint-signals-dark();
-    @include hint-dark();
-    @include hint-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include hint-dark();
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include hint-theme-dark();
+        }
+
+        @if(not-option-disabled($options, 'signal')) {
+            @include hint-signals-dark();
+        }
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include hint-print();
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include hint-signals();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include hint-theme();
+    }
 }
-
-/**
-* Dark
-*/
-
-
-
-/**
-* Print
-*/

@@ -1,19 +1,21 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$list-item-hover-background       : $component-background-shade-active;
-$list-item-hover-background-dark  : $component-background-shade-dark-active;
-$list-item-even-background        : $component-background-shade;
-$list-item-even-background-dark   : $component-background-shade-dark;
-$list-item-bullet-size            : 8px;
-$list-item-color                  : $component-color-default;
-$list-item-color-dark             : $component-color-default-dark;
-$list-item-active-color-accent    : $component-background-accent;
-$list-item-active-color-secondary : $component-background-secondary;
-$list-item-inactive-color         : $component-color-muted;
-$list-item-inactive-color-dark    : $component-color-muted-dark;
-$list-transition-time             : $animation-duration-short;
-$list-item-font-weight-bold       : $text-weight-bold;
+$list-item-hover-background             : $component-background-shade-active;
+$list-item-hover-background-dark        : $component-background-shade-dark-active;
+$list-item-even-background              : $component-background-shade;
+$list-item-even-background-dark         : $component-background-shade-dark;
+$list-item-bullet-shade-background      : $component-background-shade-active;
+$list-item-bullet-shade-background-dark : $component-background-shade-dark-active;
+$list-item-bullet-size                  : 8px;
+$list-item-color                        : $component-color-default;
+$list-item-color-dark                   : $component-color-default-dark;
+$list-item-active-color-accent          : $component-background-accent;
+$list-item-active-color-secondary       : $component-background-secondary;
+$list-item-inactive-color               : $component-color-muted;
+$list-item-inactive-color-dark          : $component-color-muted-dark;
+$list-transition-time                   : $animation-duration-short;
+$list-item-font-weight-bold             : $text-weight-bold;
 
 @mixin list {
     ul.#{$prefix}-list {
@@ -26,19 +28,31 @@ $list-item-font-weight-bold       : $text-weight-bold;
             @include component-padding;
             color: $list-item-color;
         }
+    }
+}
 
-        &.#{$prefix}-inline {
-            &>li {
-                display: inline-block;
+@mixin list-stripped {
+    ul.#{$prefix}-list {
+        &.#{$prefix}-stripped {
+            &>li:nth-child(even) {
+                background-color: $list-item-even-background;
             }
         }
+    }
+}
 
+@mixin list-small {
+    ul.#{$prefix}-list {
         &.#{$prefix}-small {
             &>li {
                 @include component-padding(small);
             }
         }
+    }
+}
 
+@mixin list-hover {
+    ul.#{$prefix}-list {
         &.#{$prefix}-hover {
             &>li {
                 &:hover {
@@ -46,13 +60,22 @@ $list-item-font-weight-bold       : $text-weight-bold;
                 }
             }
         }
+    }
+}
 
-        &.#{$prefix}-stripped {
-            &>li:nth-child(even) {
-                background-color: $list-item-even-background;
+
+@mixin list-inline {
+    ul.#{$prefix}-list {
+        &.#{$prefix}-inline {
+            &>li {
+                display: inline-block;
             }
         }
+    }
+}
 
+@mixin list-bullet {
+    ul.#{$prefix}-list {
         &.#{$prefix}-bullet {
             &>li {
                 padding-left: 2rem;
@@ -70,7 +93,34 @@ $list-item-font-weight-bold       : $text-weight-bold;
                 }
             }
         }
+    }
+}
 
+@mixin list-bullet-shade {
+    ul.#{$prefix}-list {
+        &.#{$prefix}-bullet-shade {
+            &>li {
+                padding-left: 2rem;
+                position    : relative;
+
+                &:before {
+                    content         : "";
+                    position        : absolute;
+                    border          : 1px solid transparent;
+                    background-color: $list-item-bullet-shade-background;
+                    border-radius   : 50%;
+                    width           : $list-item-bullet-size;
+                    height          : $list-item-bullet-size;
+                    top             : calc(1rem - 2px);
+                    left            : 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+@mixin list-interactive {
+    ul.#{$prefix}-list {
         &.#{$prefix}-interactive {
             &>li {
                 padding: 0px;
@@ -156,26 +206,26 @@ $list-item-font-weight-bold       : $text-weight-bold;
     }
 }
 
-@mixin list-accent {
+@mixin list-interactive-accent {
     ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
 
         &>li.#{$prefix}-active {
             a {
                 &:before {
-                    background-color: $list-item-active-color-accent;
+                    background-color: $list-item-active-color-accent !important;
                 }
             }
         }
 
         &>li>a.#{$prefix}-active {
             &:before {
-                background-color: $list-item-active-color-accent;
+                background-color: $list-item-active-color-accent !important;
             }
         }
     }
 }
 
-@mixin list-secondary {
+@mixin list-interactive-secondary {
     ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
 
         &>li.#{$prefix}-active {
@@ -194,14 +244,19 @@ $list-item-font-weight-bold       : $text-weight-bold;
     }
 }
 
-
 @mixin list-dark {
     .#{$prefix}-dark {
         ul.#{$prefix}-list {
             &>li {
                 color: $list-item-color-dark;
             }
+        }
+    }
+}
 
+@mixin list-dark-bullet {
+    @include mode-dark {
+        ul.#{$prefix}-list {
             &.#{$prefix}-bullet {
                 &>li {
                     &:before {
@@ -209,7 +264,27 @@ $list-item-font-weight-bold       : $text-weight-bold;
                     }
                 }
             }
+        }
+    }
+}
 
+@mixin list-dark-bullet-shade {
+    @include mode-dark {
+        ul.#{$prefix}-list {
+            &.#{$prefix}-bullet-shade {
+                &>li {
+                    &:before {
+                        background-color: $list-item-bullet-shade-background-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin list-dark-hover {
+    @include mode-dark {
+        ul.#{$prefix}-list {
             &.#{$prefix}-hover {
                 &>li {
                     &:hover {
@@ -217,14 +292,13 @@ $list-item-font-weight-bold       : $text-weight-bold;
                     }
                 }
             }
+        }
+    }
+}
 
-
-            &.#{$prefix}-stripped {
-                &>li:nth-child(even) {
-                    background-color: $list-item-even-background-dark;
-                }
-            }
-
+@mixin list-dark-interactive {
+    @include mode-dark {
+        ul.#{$prefix}-list {
             &.#{$prefix}-interactive {
                 &>li {
                     &>a {
@@ -258,13 +332,44 @@ $list-item-font-weight-bold       : $text-weight-bold;
     }
 }
 
+@mixin list-dark-stripped {
+    @include mode-dark {
+        ul.#{$prefix}-list {
+            &.#{$prefix}-stripped {
+                &>li:nth-child(even) {
+                    background-color: $list-item-even-background-dark;
+                }
+            }
+        }
+    }
+}
+
 @mixin list-print {
-    .#{$prefix}-print {
+    @include mode-print {
         ul.#{$prefix}-list {
             &>li {
                 color: $component-print-color;
             }
+        }
+    }
+}
 
+
+@mixin list-print-stripped {
+    @include mode-print {
+        ul.#{$prefix}-list {
+            &.#{$prefix}-stripped {
+                &>li {
+                    background-color: $component-print-background;
+                }
+            }
+        }
+    }
+}
+
+@mixin list-print-bullet {
+    @include mode-print {
+        ul.#{$prefix}-list {
             &.#{$prefix}-bullet {
                 &>li {
                     &:before {
@@ -272,14 +377,32 @@ $list-item-font-weight-bold       : $text-weight-bold;
                     }
                 }
             }
+        }
+    }
+}
 
-            &.#{$prefix}-stripped {
+@mixin list-print-bullet-shade {
+    @include mode-print {
+        ul.#{$prefix}-list {
+            &.#{$prefix}-bullet-shade {
                 &>li {
-                    background-color: $component-print-background;
+                    &:before {
+                        border-color    : $component-print-color;
+                        background-color: transparent;
+                    }
                 }
             }
+        }
+    }
+}
 
-            &.#{$prefix}-interactive {
+@mixin list-interactive-print {
+    @include mode-print {
+        ul.#{$prefix}-list {
+
+            &.#{$prefix}-interactive,
+            &.#{$prefix}-interactive.#{$prefix}-accent,
+            &.#{$prefix}-interactive.#{$prefix}-secondary {
                 &>li {
                     &.#{$prefix}-active {
                         a {
@@ -288,7 +411,12 @@ $list-item-font-weight-bold       : $text-weight-bold;
                             }
                         }
                     }
+                }
 
+                &>li>a.#{$prefix}-active {
+                    &:before {
+                        background-color: $component-print-color;
+                    }
                 }
             }
         }
@@ -317,11 +445,91 @@ $list-item-font-weight-bold       : $text-weight-bold;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include list();
-    @include list-no-transitions();
-    @include list-dark();
-    @include list-accent();
-    @include list-secondary();
-    @include list-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include list-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include list-print();
+    }
+
+    @if(not-option-disabled($options, 'interactive')) {
+        @include list-interactive();
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include list-interactive-accent();
+            @include list-interactive-secondary();
+        }
+
+        @if(not-option-disabled($options, 'animation')) {
+            @include list-no-transitions();
+        }
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include list-dark-interactive();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include list-interactive-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'bullet')) {
+        @include list-bullet();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include list-dark-bullet();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include list-print-bullet();
+        }
+    }
+
+    @if(not-option-disabled($options, 'bullet-shade')) {
+        @include list-bullet-shade();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include list-dark-bullet-shade();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include list-print-bullet-shade();
+        }
+    }
+
+    @if(not-option-disabled($options, 'hover')) {
+        @include list-hover();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include list-dark-hover();
+        }
+    }
+
+    @if(not-option-disabled($options, 'small')) {
+        @include list-small();
+    }
+
+    @if(not-option-disabled($options, 'inline')) {
+        @include list-inline();
+    }
+
+    @if(not-option-disabled($options, 'stripped')) {
+        @include list-stripped();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include list-dark-stripped();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include list-print-stripped();
+        }
+    }
+
+
+
+
 }

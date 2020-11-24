@@ -197,24 +197,32 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
 }
 
 @mixin text-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         .#{$prefix}-text-muted {
             color: $text-color-muted-dark;
         }
+    }
+}
 
+@mixin blockquote-dark {
+    @include mode-dark {
         .#{$prefix}-blockquote {
             border-color    : $blockquote-border-color-dark;
-            background-color: $blockquote-background-default;
+            background-color: $blockquote-background-dark;
         }
     }
 }
 
 @mixin text-print {
-    .#{$prefix}-print {
+    @include mode-print {
         [class*="#{$prefix}-text-"] {
             color: $component-print-color;
         }
+    }
+}
 
+@mixin blockquote-print {
+    @include mode-print {
         .#{$prefix}-blockquote {
             border-color    : $component-print-color;
             background-color: $component-print-background;
@@ -222,19 +230,64 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include text;
-    @include text-decorations;
-    @include text-signals;
-    @include text-theme;
-    @include text-sizes;
-    @include text-align();
-    @include text-wrap();
-    @include text-weights();
-    @include text-transform();
-    @include blockquote;
-    @include article();
-    @include text-dark;
-    @include text-print;
-    @include text-media();
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include text-theme;
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include text-signals;
+    }
+
+    @if(not-option-disabled($options, 'blockquote')) {
+        @include blockquote;
+
+        @if(not-option-disabled($options, 'print')) {
+            @include blockquote-print();
+        }
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include blockquote-dark();
+        }
+    }
+
+    @if(not-option-disabled($options, 'size')) {
+        @include text-sizes;
+    }
+
+    @if(not-option-disabled($options, 'weight')) {
+        @include text-weights();
+    }
+
+    @if(not-option-disabled($options, 'transform')) {
+        @include text-transform();
+    }
+
+    @if(not-option-disabled($options, 'placement')) {
+        @include text-align();
+        @include text-wrap();
+
+        @if(not-option-disabled($options, 'responsive')) {
+            @include text-media();
+        }
+    }
+
+    @if(not-option-disabled($options, 'article')) {
+        @include article()
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include text-print;
+    }
+
+    @if(not-option-disabled($options, 'decoration')) {
+        @include text-decorations;
+    }
+
+    @if(not-option-disabled($options, 'article')) {
+        @include text-dark;
+    }
+
 }

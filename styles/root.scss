@@ -72,7 +72,9 @@ $prefix: 'cui' !default;
     --#{$prefix}-outline: 1px dotted #999;
 
     // Border radius
-    --#{$prefix}-border-radius: 6px;
+    --#{$prefix}-border-radius-small: 2px;
+    --#{$prefix}-border-radius      : 6px;
+    --#{$prefix}-border-radius-large: 10px;
 
     --#{$prefix}-padding: 1rem;
     --#{$prefix}-margin : 1rem;

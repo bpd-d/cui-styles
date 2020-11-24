@@ -30,10 +30,6 @@ $card-border-color-dark       : transparent; //$color-border-dark;
             @include component-padding(normal, same);
         }
 
-        // &.#{$prefix}-card-expand {
-        //     width: 100%;
-        // }
-
         &.#{$prefix}-side {
             display    : flex;
             flex-wrap  : wrap;
@@ -41,7 +37,22 @@ $card-border-color-dark       : transparent; //$color-border-dark;
             align-items: stretch;
 
             .#{$prefix}-content {
-                height: 100%;
+                display       : flex;
+                flex-direction: column;
+
+                .#{$prefix}-card-header,
+                .#{$prefix}-card-footer {
+                    flex: 0 0 auto;
+                }
+
+                .#{$prefix}-card-body {
+                    flex: 1 1 auto;
+                }
+
+                >*:only-child {
+                    flex: 1 1 auto;
+                    @include component-padding(normal, same);
+                }
             }
         }
 
@@ -117,6 +128,67 @@ $card-border-color-dark       : transparent; //$color-border-dark;
     }
 }
 
+@mixin card-side {
+    .#{$prefix}-card {
+        &.#{$prefix}-side {
+            display    : flex;
+            flex-wrap  : wrap;
+            box-sizing : border-box;
+            align-items: stretch;
+
+            .#{$prefix}-content {
+                display       : flex;
+                flex-direction: column;
+
+                .#{$prefix}-card-header,
+                .#{$prefix}-card-footer {
+                    flex: 0 0 auto;
+                }
+
+                .#{$prefix}-card-body {
+                    flex: 1 1 auto;
+                }
+
+                >*:only-child {
+                    flex: 1 1 auto;
+                    @include component-padding(normal, same);
+                }
+            }
+        }
+    }
+}
+
+@mixin card-hover {
+    .#{$prefix}-card {
+
+        &.#{$prefix}-hover {
+            &:hover {
+                box-shadow: $shadow2 !important;
+            }
+        }
+    }
+}
+
+@mixin card-large {
+    .#{$prefix}-card {
+        &.#{$prefix}-large {
+
+            .#{$prefix}-card-header {
+                @include component-padding-complex(header, large)
+            }
+
+            .#{$prefix}-card-body {
+                @include component-padding-complex(body, large)
+            }
+
+            .#{$prefix}-card-footer {
+                @include component-padding-complex(footer, large)
+            }
+
+        }
+    }
+}
+
 @mixin card-theme {
     .#{$prefix}-card {
         &.#{$prefix}-accent {
@@ -144,7 +216,7 @@ $card-border-color-dark       : transparent; //$color-border-dark;
 }
 
 @mixin card-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         .#{$prefix}-card {
             &.#{$prefix}-default {
                 background-color: $card-background-default-dark;
@@ -152,6 +224,14 @@ $card-border-color-dark       : transparent; //$color-border-dark;
                 color           : $card-color-default-dark;
             }
 
+
+        }
+    }
+}
+
+@mixin card-dark-inverse {
+    @include mode-dark {
+        .#{$prefix}-card {
             &.#{$prefix}-inverse {
                 background-color: $card-background-inverse-dark;
                 box-shadow      : $shadow;
@@ -162,11 +242,38 @@ $card-border-color-dark       : transparent; //$color-border-dark;
 }
 
 @mixin card-print {
+    @include mode-print {
+        .#{$prefix}-card {
+            box-shadow: $component-print-shadow;
+
+            &.#{$prefix}-default {
+                background-color: $component-print-background;
+                color           : $component-print-color;
+
+            }
+
+
+        }
+    }
+}
+
+@mixin card-print-inverse {
+    @include mode-print {
+        .#{$prefix}-card {
+            &.#{$prefix}-inverse {
+                background-color: $component-print-background;
+                box-shadow      : $component-print-shadow;
+                color           : $component-print-color;
+            }
+        }
+    }
+}
+
+@mixin card-print-theme {
     .#{$prefix}-print {
         .#{$prefix}-card {
             box-shadow: $component-print-shadow;
 
-            &.#{$prefix}-default,
             &.#{$prefix}-accent,
             &.#{$prefix}-secondary {
                 background-color: $component-print-background;
@@ -177,9 +284,45 @@ $card-border-color-dark       : transparent; //$color-border-dark;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include card();
-    @include card-theme();
-    @include card-dark();
-    @include card-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include card-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include card-print();
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include card-print-theme();
+        }
+    }
+
+    @if(not-option-disabled($options, 'inverse')) {
+        @if(not-option-disabled($options, 'print')) {
+            @include card-print-inverse();
+        }
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include card-dark-inverse();
+        }
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include card-theme();
+    }
+
+    @if(not-option-disabled($options, 'large')) {
+        @include card-large();
+    }
+
+    @if(not-option-disabled($options, 'side')) {
+        @include card-side();
+    }
+
+    @if(not-option-disabled($options, 'hover')) {
+        @include card-hover();
+    }
+
 }

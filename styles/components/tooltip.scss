@@ -101,12 +101,19 @@ $tooltip-animation-time : $animation-duration-short;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options:()) {
     @include tooltip();
-    // @include tooltip-no-transitions();
-    // @include tooltip-positions();
-    // @include tooltip-options();
-    @include tooltip-animation();
-    @include tooltip-dark();
-    @include tooltip-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include tooltip-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include tooltip-print();
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include tooltip-animation();
+    }
+
 }

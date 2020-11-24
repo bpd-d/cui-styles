@@ -22,11 +22,7 @@ $table-background-inverse-dark: $component-background-shade-dark;
         border-collapse: collapse;
         table-layout   : fixed;
 
-        &.#{$prefix}-stripped {
-            tr:nth-child(even) {
-                background-color: $table-stripped-color;
-            }
-        }
+
 
         // Give a row divider
         &.#{$prefix}-divider {
@@ -42,6 +38,34 @@ $table-background-inverse-dark: $component-background-shade-dark;
         }
 
         // Give a column divider
+
+
+        tr {
+            th {
+                font-weight  : 700;
+                padding      : 1em;
+                border-bottom: 1px solid $table-cell-divider-color;
+                text-align   : left;
+
+                &.#{$prefix}-narrow {
+                    width: 50px;
+                }
+
+                &.#{$prefix}-wide {
+                    width: 300px;
+                }
+            }
+
+            td {
+                @include component-padding;
+                text-align: left;
+            }
+        }
+    }
+}
+
+@mixin table-column-divider {
+    table.#{$prefix}-table {
         &.#{$prefix}-column-divider {
             tr {
                 th {
@@ -61,113 +85,12 @@ $table-background-inverse-dark: $component-background-shade-dark;
                 }
             }
         }
-
-        &.#{$prefix}-header-inverse {
-            th {
-                background-color: $table-background-inverse;
-
-                &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
-                    color: $table-color-inverse;
-                }
-            }
-        }
-
-        &.#{$prefix}-header-sticky {
-            th {
-                position: sticky;
-                top     : 0;
-            }
-        }
-
-        tr {
-            th {
-                font-weight  : 700;
-                padding      : 1em;
-                border-bottom: 1px solid $table-cell-divider-color;
-                text-align   : left;
-
-                &.#{$prefix}-center {
-                    text-align: center;
-                }
-
-                &.#{$prefix}-right {
-                    text-align: right;
-                }
-
-                &.#{$prefix}-accent {
-                    color: $table-header-color-accent;
-                }
-
-                &.#{$prefix}-secondary {
-                    color: $table-header-color-secondary;
-                }
-
-                &.#{$prefix}-narrow {
-                    width: 50px;
-                }
-
-                &.#{$prefix}-wide {
-                    width: 300px;
-                }
-
-                &.#{$prefix}-nowrap {
-                    max-width    : 0;
-                    text-overflow: ellipsis;
-                    white-space  : nowrap;
-                    overflow     : hidden;
-                }
-
-            }
-
-            td {
-                @include component-padding;
-                text-align: left;
-
-                &.#{$prefix}-center {
-                    text-align: center;
-                }
-
-                &.#{$prefix}-right {
-                    text-align: right;
-                }
-
-                &.#{$prefix}-accent {
-                    color: $table-header-color-accent;
-                }
-
-                &.#{$prefix}-secondary {
-                    color: $table-header-color-secondary;
-                }
-
-                &.#{$prefix}-nowrap {
-                    max-width    : 0;
-                    text-overflow: ellipsis;
-                    white-space  : nowrap;
-                    overflow     : hidden;
-                }
-            }
-        }
     }
 }
 
-@mixin table-dark {
-
-    .#{$prefix}-dark {
+@mixin table-column-divider-dark {
+    @include mode-dark {
         table.#{$prefix}-table {
-
-            &.#{$prefix}-stripped {
-                tr:nth-child(even) {
-                    background-color: $table-stripped-color-dark;
-                }
-            }
-
-            &.#{$prefix}-divider {
-
-                td {
-                    border-color: $table-cell-divider-color-dark;
-                }
-            }
-
             &.#{$prefix}-column-divider {
                 tr {
                     th {
@@ -179,19 +102,56 @@ $table-background-inverse-dark: $component-background-shade-dark;
                     }
                 }
             }
+        }
+    }
+}
 
-            tr {
-                &.#{$prefix}-divider {
+@mixin table-column-divider-print {
+    @include mode-print {
+        table.#{$prefix}-table {
+            &.#{$prefix}-column-divider {
+                tr {
+                    th {
+                        border-color: $component-print-border-color;
+                    }
+
                     td {
-                        border-color: $table-cell-divider-color-dark;
+                        border-color: $component-print-border-color;
                     }
                 }
+            }
+        }
+    }
+}
 
-                th {
-                    border-color: $table-cell-divider-color-dark;
+@mixin table-header-sticky {
+    table.#{$prefix}-table {
+        &.#{$prefix}-header-sticky {
+            th {
+                position: sticky;
+                top     : 0;
+            }
+        }
+    }
+}
+
+@mixin table-header-inverse {
+    table.#{$prefix}-table {
+        &.#{$prefix}-header-inverse {
+            th {
+                background-color: $table-background-inverse;
+
+                &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
+                    color: $table-color-inverse;
                 }
             }
+        }
+    }
+}
 
+@mixin table-header-inverse-dark {
+    @include mode-dark {
+        table.#{$prefix}-table {
             &.#{$prefix}-header-inverse {
                 th {
                     background-color: $table-background-inverse-dark;
@@ -205,45 +165,190 @@ $table-background-inverse-dark: $component-background-shade-dark;
     }
 }
 
-@mixin table-print {
-    .#{$prefix}-print {
+@mixin table-header-inverse-print {
+    @include mode-print {
         table.#{$prefix}-table {
-
-            &.#{$prefix}-stripped {
-                tr:nth-child(even) {
-                    background-color: $component-print-background;
-                }
-            }
-
-            &.#{$prefix}-divider {
-
-                td {
-                    border-color: $component-print-border-color;
-                }
-            }
-
             &.#{$prefix}-header-inverse {
                 th {
                     background-color: $component-print-background;
                 }
             }
+        }
+    }
+}
 
-            &.#{$prefix}-column-divider {
-                tr {
-                    th {
-                        border-color: $component-print-border-color;
+@mixin table-align {
+    table.#{$prefix}-table {
+        tr {
+            th {
+                &.#{$prefix}-center {
+                    text-align: center;
+                }
+
+                &.#{$prefix}-right {
+                    text-align: right;
+                }
+
+                &.#{$prefix}-nowrap {
+                    max-width    : 0;
+                    text-overflow: ellipsis;
+                    white-space  : nowrap;
+                    overflow     : hidden;
+                }
+            }
+
+            td {
+                &.#{$prefix}-center {
+                    text-align: center;
+                }
+
+                &.#{$prefix}-right {
+                    text-align: right;
+                }
+
+                &.#{$prefix}-nowrap {
+                    max-width    : 0;
+                    text-overflow: ellipsis;
+                    white-space  : nowrap;
+                    overflow     : hidden;
+                }
+            }
+        }
+    }
+}
+
+@mixin table-theme {
+    table.#{$prefix}-table {
+        tr {
+            th {
+                &.#{$prefix}-accent {
+                    color: $table-header-color-accent;
+                }
+
+                &.#{$prefix}-secondary {
+                    color: $table-header-color-secondary;
+                }
+            }
+
+            td {
+                &.#{$prefix}-accent {
+                    color: $table-header-color-accent;
+                }
+
+                &.#{$prefix}-secondary {
+                    color: $table-header-color-secondary;
+                }
+            }
+        }
+    }
+}
+
+@mixin table-theme-print {
+    @include mode-print {
+        table.#{$prefix}-table {
+            tr {
+                th {
+                    &.#{$prefix}-accent {
+                        color: $component-print-color;
                     }
 
-                    td {
-                        border-color: $component-print-border-color;
+                    &.#{$prefix}-secondary {
+                        color: $component-print-color;
+                    }
+                }
+
+                td {
+                    &.#{$prefix}-accent {
+                        color: $component-print-color;
+                    }
+
+                    &.#{$prefix}-secondary {
+                        color: $component-print-color;
                     }
                 }
             }
+        }
+    }
+
+}
+
+@mixin table-stripped {
+    table.#{$prefix}-table {
+        &.#{$prefix}-stripped {
+            tr:nth-child(even) {
+                background-color: $table-stripped-color;
+            }
+        }
+    }
+}
+
+@mixin table-stripped-dark {
+    @include mode-dark {
+        table.#{$prefix}-table {
+            &.#{$prefix}-stripped {
+                tr:nth-child(even) {
+                    background-color: $table-stripped-color-dark;
+                }
+            }
+        }
+    }
+}
+
+@mixin table-stripped-print {
+    @include mode-print {
+        table.#{$prefix}-table {
+            &.#{$prefix}-stripped {
+                tr:nth-child(even) {
+                    background-color: $component-print-background;
+                }
+            }
+        }
+    }
+}
+
+@mixin table-dark {
+    @include mode-dark {
+        table.#{$prefix}-table {
+            &.#{$prefix}-divider {
+                td {
+                    border-color: $table-cell-divider-color-dark;
+                }
+            }
+
 
             tr {
                 &.#{$prefix}-divider {
                     td {
+                        border-color: $table-cell-divider-color-dark;
+                    }
+                }
+
+                th {
+                    border-color: $table-cell-divider-color-dark;
+                }
+            }
+        }
+    }
+}
+
+@mixin table-print {
+    @include mode-print {
+        table.#{$prefix}-table {
+            &.#{$prefix}-divider {
+
+                td {
+                    border-color: $component-print-border-color;
+                    color       : $component-print-color;
+                }
+            }
+
+            tr {
+                color: $component-print-color;
+
+                &.#{$prefix}-divider {
+                    td {
                         border-color: $component-print-border-color;
+                        color       : $component-print-color
                     }
                 }
 
@@ -257,8 +362,66 @@ $table-background-inverse-dark: $component-background-shade-dark;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options:()) {
     @include table();
-    @include table-dark();
-    @include table-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include table-dark()
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include table-print();
+    }
+
+    @if(not-option-disabled($options, 'stripped')) {
+        @include table-stripped();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include table-stripped-dark()
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include table-stripped-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include table-theme();
+
+        @if(not-option-disabled($options, 'print')) {
+            @include table-theme-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'align')) {
+        @include table-align();
+    }
+
+    @if(not-option-disabled($options, 'sticky')) {
+        @include table-header-sticky();
+    }
+
+    @if(not-option-disabled($options, 'inverse')) {
+        @include table-header-inverse();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include table-header-inverse-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include table-header-inverse-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'divider')) {
+        @include table-column-divider();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include table-column-divider-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include table-column-divider-print();
+        }
+    }
 }

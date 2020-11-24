@@ -98,8 +98,16 @@ $scrollbar-radius: 0px;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options:()) {
     @include scrollbar();
-    @include scrollbar-dark();
-    @include scrollbar-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include scrollbar-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include scrollbar-print();
+    }
+
+
 }

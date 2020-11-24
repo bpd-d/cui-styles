@@ -111,8 +111,17 @@ $breadcrumb-border-focus-dark     : $component-color-active-dark;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include breadcrumb();
-    @include breadcrumb-dark();
-    @include breadcrumb-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include breadcrumb-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include breadcrumb-print();
+    }
+
+
+
 }

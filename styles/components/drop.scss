@@ -1,5 +1,11 @@
+@use "sass:map";
 @use '../variables'as *;
 @use '../mixins'as *;
+
+/**
+* Options: animation, dropdown, nav
+*/
+
 
 $drop-background-default      : $component-background-default;
 $drop-background-default-dark : $component-background-default-dark;
@@ -188,12 +194,37 @@ $drop-transition-time          : $animation-duration-short;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include drop();
-    @include drop-no-transition();
-    @include dropdown();
-    @include dropdown-dark();
-    @include dropdown-print();
-    @include drop-nav();
-    @include drop-nav-dark();
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include drop-no-transition();
+    }
+
+    @if(not-option-disabled($options, 'dark')) {
+        @if(not-option-disabled($options, 'dropdown')) {
+            @include dropdown-dark();
+        }
+
+        @if(not-option-disabled($options, 'nav')) {
+            @include drop-nav-dark();
+        }
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @if(not-option-disabled($options, 'dropdown')) {
+            @include dropdown-print();
+        }
+    }
+
+
+    @if(not-option-disabled($options, 'dropdown')) {
+        @include dropdown();
+
+    }
+
+    @if(not-option-disabled($options, 'nav')) {
+        @include drop-nav();
+    }
+
 }

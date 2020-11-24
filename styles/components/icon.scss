@@ -100,25 +100,6 @@ $icon-color-success  : $component-background-success;
             @include get-icon-color-style($icon-color-inverse);
         }
 
-        &.#{$prefix}-accent {
-            @include get-icon-color-style($icon-color-accent);
-        }
-
-        &.#{$prefix}-secondary {
-            @include get-icon-color-style($icon-color-secondary);
-        }
-
-        &.#{$prefix}-success {
-            @include get-icon-color-style($icon-color-success);
-        }
-
-        &.#{$prefix}-warning {
-            @include get-icon-color-style($icon-color-warning);
-        }
-
-        &.#{$prefix}-error {
-            @include get-icon-color-style($icon-color-error);
-        }
 
         /**
     * if there is any element
@@ -132,6 +113,8 @@ $icon-color-success  : $component-background-success;
 
     }
 
+
+    // For colored containers
     .#{$prefix}-inverse,
     .#{$prefix}-accent,
     .#{$prefix}-secondary,
@@ -145,6 +128,40 @@ $icon-color-success  : $component-background-success;
             .#{$prefix}-icon-button {
                 @include get-icon-color-style($icon-color-inverse);
             }
+        }
+    }
+}
+
+@mixin icon-theme {
+
+    .#{$prefix}-icon,
+    //  .#{$prefix}-icon-button,
+    .#{$prefix}-svg {
+        &.#{$prefix}-accent {
+            @include get-icon-color-style($icon-color-accent);
+        }
+
+        &.#{$prefix}-secondary {
+            @include get-icon-color-style($icon-color-secondary);
+        }
+    }
+}
+
+@mixin icon-signal {
+
+    .#{$prefix}-icon,
+    // .#{$prefix}-icon-button,
+    .#{$prefix}-svg {
+        &.#{$prefix}-success {
+            @include get-icon-color-style($icon-color-success);
+        }
+
+        &.#{$prefix}-warning {
+            @include get-icon-color-style($icon-color-warning);
+        }
+
+        &.#{$prefix}-error {
+            @include get-icon-color-style($icon-color-error);
         }
     }
 }
@@ -245,7 +262,7 @@ $icon-color-success  : $component-background-success;
     }
 }
 
-@mixin stroke-colors {
+@mixin stroke-theme {
     path {
         &.#{$prefix}-accent {
             stroke: $icon-color-accent;
@@ -255,6 +272,14 @@ $icon-color-success  : $component-background-success;
             stroke: $icon-color-secondary;
         }
 
+        &.#{$prefix}-icon-dark {
+            stroke: $icon-color-default-dark;
+        }
+    }
+}
+
+@mixin stroke-signals {
+    path {
         &.#{$prefix}-success {
             stroke: $icon-color-success;
         }
@@ -293,13 +318,6 @@ $icon-color-success  : $component-background-success;
             background-color: $icon-button-background-inverse;
         }
 
-        &.#{$prefix}-accent,
-        &.#{$prefix}-secondary,
-        &.#{$prefix}-success,
-        &.#{$prefix}-warning,
-        &.#{$prefix}-error {
-            @include get-icon-color-style($icon-color-default-dark);
-        }
 
         &:hover {
             outline: none !important;
@@ -327,6 +345,33 @@ $icon-color-success  : $component-background-success;
     }
 }
 
+@mixin icon-button-theme {
+    .#{$prefix}-icon-button {
+
+        &.#{$prefix}-accent,
+        &.#{$prefix}-secondary {
+            @include get-icon-color-style($icon-color-default-dark !important);
+        }
+    }
+}
+
+@mixin icon-button-signal {
+    .#{$prefix}-icon-button {
+
+        &.#{$prefix}-success,
+        &.#{$prefix}-warning,
+        &.#{$prefix}-error {
+            @include get-icon-color-style($icon-color-default-dark !important);
+        }
+    }
+}
+
+
+
+@mixin icon-button-print {
+    @include mode-print {}
+}
+
 @mixin icon-nav {
     ul.#{$prefix}-icon-nav {
         list-style: none;
@@ -344,7 +389,7 @@ $icon-color-success  : $component-background-success;
 }
 
 @mixin icon-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
 
         .#{$prefix}-icon-button,
         .#{$prefix}-icon,
@@ -358,7 +403,11 @@ $icon-color-success  : $component-background-success;
             }
 
         }
+    }
+}
 
+@mixin icon-button-dark {
+    @include mode-dark {
         .#{$prefix}-icon-button {
             &.#{$prefix}-default {
                 border-color    : $icon-border-color-dark;
@@ -395,7 +444,7 @@ $icon-color-success  : $component-background-success;
 }
 
 @mixin icon-print {
-    .#{$prefix}-print {
+    @include mode-print {
 
         .#{$prefix}-icon-button,
         .#{$prefix}-icon,
@@ -406,9 +455,15 @@ $icon-color-success  : $component-background-success;
                 @include get-icon-color-style($component-print-color);
             }
         }
+    }
+}
 
+@mixin icon-button-print {
+    @include mode-print {
         .#{$prefix}-icon-button {
-            &.#{$prefix}-default {
+
+            &.#{$prefix}-default,
+            &.#{$prefix}-inverse {
                 border-color    : $component-print-border;
                 background-color: $component-print-background;
             }
@@ -417,12 +472,38 @@ $icon-color-success  : $component-background-success;
 }
 
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include icon();
     @include icon-button();
-    @include icon-nav();
-    @include icon-dark();
-    @include icon-print();
-    @include icon-fill();
-    @include stroke-colors();
+
+    @if(not-option-disabled($options, 'fill')) {
+        @include icon-fill();
+    }
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include icon-dark();
+        @include icon-button-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include icon-print();
+        @include icon-button-print();
+    }
+
+    @if(not-option-disabled($options, 'nav')) {
+        @include icon-nav();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include stroke-theme();
+        @include icon-theme();
+        @include icon-button-theme();
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include stroke-signals();
+        @include icon-signal();
+        @include icon-button-signal();
+    }
+
 }

@@ -49,11 +49,14 @@ $input-color-secondary-active: $component-background-secondary-active;
 
 $input-animation-time: $animation-duration-default;
 
-$input-border-radius  : $border-radius-default;
-$input-padding-default: $padding-global-small;
-$input-outline        : $outline-default;
-$input-margin-small   : $margin-global-small;
+$input-border-radius       : $border-radius-default;
+$input-border-radius-small : $border-radius-small;
+$input-padding-default     : $padding-global-small;
+$input-outline             : $outline-default;
+$input-margin-small        : $margin-global-small;
 
+$input-print-color     : $component-print-color;
+$input-print-background: $component-print-background;
 
 
 @mixin input-transition($state:normal) {
@@ -730,13 +733,17 @@ $input-margin-small   : $margin-global-small;
             input[type="radio"] {
                 +.#{$prefix}-content {
                     &:hover {
-                        border-color: $input-color-accent-hover;
+                        &:before {
+                            border-color: $input-color-accent-hover;
+                        }
                     }
                 }
 
                 &:checked {
                     +.#{$prefix}-content {
-                        border-color: $input-color-accent-active;
+                        &:before {
+                            border-color: $input-color-accent-active;
+                        }
                     }
                 }
             }
@@ -746,13 +753,17 @@ $input-margin-small   : $margin-global-small;
             input[type="radio"] {
                 +.#{$prefix}-content {
                     &:hover {
-                        border-color: $input-color-secondary-hover;
+                        &:before {
+                            border-color: $input-color-secondary-hover;
+                        }
                     }
                 }
 
                 &:checked {
                     +.#{$prefix}-content {
-                        border-color: $input-color-secondary-active;
+                        &:before {
+                            border-color: $input-color-secondary-active;
+                        }
                     }
                 }
             }
@@ -771,7 +782,7 @@ $input-margin-small   : $margin-global-small;
             width          : calc(#{$form-element-size} - 4px);
             height         : calc(#{$form-element-size} - 4px);
             border         : 1px solid $input-border-color-inactive;
-            border-radius  : $border-radius-default;
+            border-radius  : $input-border-radius-small;
             background-size: 14px 14px;
             @include input-transition;
 
@@ -969,9 +980,6 @@ $input-margin-small   : $margin-global-small;
     }
 }
 
-
-
-
 @mixin range {
     input[type="range"] {
         &.#{$prefix}-range {
@@ -1081,7 +1089,7 @@ $input-margin-small   : $margin-global-small;
 }
 
 @mixin input-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         input.#{$prefix}-input {
             color: $input-color-dark;
 
@@ -1106,8 +1114,21 @@ $input-margin-small   : $margin-global-small;
     }
 }
 
+@mixin input-print {
+    @include mode-print {
+        input.#{$prefix}-input {
+            color       : $input-print-color;
+            border-color: $input-print-color;
+
+            &::placeholder {
+                color: $input-print-color;
+            }
+        }
+    }
+}
+
 @mixin select-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         select.#{$prefix}-select {
             color: $input-color-dark;
 
@@ -1125,8 +1146,23 @@ $input-margin-small   : $margin-global-small;
     }
 }
 
+@mixin select-print {
+    @include mode-print {
+        select.#{$prefix}-select {
+            color       : $input-print-color;
+            border-color: $input-print-color;
+
+            option {
+                background-color: $input-print-background;
+                border-color    : $input-print-color;
+                color           : $input-print-color;
+            }
+        }
+    }
+}
+
 @mixin input-mix-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         div.#{$prefix}-input-mix {
             @include updateHighlight($color: $highlight-color);
 
@@ -1150,8 +1186,22 @@ $input-margin-small   : $margin-global-small;
     }
 }
 
+@mixin input-mix-print {
+    @include mode-print {
+        div.#{$prefix}-input-mix {
+            &:before {
+                border-color: $input-print-color;
+            }
+
+            .#{$prefix}-input {
+                border: none !important;
+            }
+        }
+    }
+}
+
 @mixin textarea-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         textarea.#{$prefix}-textarea {
             color: $input-color-dark;
 
@@ -1170,24 +1220,45 @@ $input-margin-small   : $margin-global-small;
     }
 }
 
-@mixin form-dark {
-    .#{$prefix}-dark {
-        div.#{$prefix}-form {
-            .#{$prefix}-input-description {
-                color: $input-description-color-dark;
+@mixin textarea-print {
+    @include mode-print {
+        textarea.#{$prefix}-textarea {
+            color       : $input-print-color;
+            border-color: $input-print-color;
 
+            &::placeholder {
+                color: $input-print-color;
             }
         }
     }
 }
 
+@mixin form-dark {
+    @include mode-dark {
+        div.#{$prefix}-form {
+            .#{$prefix}-input-description {
+                color: $input-description-color-dark;
+            }
+        }
+    }
+}
+
+@mixin form-print {
+    @include mode-print {
+        div.#{$prefix}-form {
+            .#{$prefix}-input-description {
+                color: $input-print-color;
+            }
+        }
+    }
+}
 
 @mixin radio-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         input[type="radio"] {
             &.#{$prefix}-radio {
                 &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
-                    border: 1px solid $input-border-color-inactive-dark;
+                    border-color: $input-border-color-inactive-dark;
 
                     &:hover {
                         border-color: $input-border-color-active-dark;
@@ -1201,12 +1272,9 @@ $input-margin-small   : $margin-global-small;
                     }
 
                     &:disabled {
-                        @include input-transition(disabled);
-                        opacity     : 0.8;
                         border-color: $input-color-disabled-dark;
 
                         &:hover {
-                            @include input-transition(disabled);
                             border-color: $input-color-disabled-dark;
                         }
 
@@ -1220,10 +1288,32 @@ $input-margin-small   : $margin-global-small;
     }
 }
 
-@mixin radio-custom-dark {
-    .#{$prefix}-dark {
-        div.#{$prefix}-radio-custom {
+@mixin radio-print {
+    @include mode-print {
+        input[type="radio"] {
+            &.#{$prefix}-radio {
+                border-color: $input-print-color;
 
+                &:checked {
+                    background-color: $input-print-color;
+                }
+
+                &:disabled {
+                    border-color: $input-print-color;
+
+                    +label {
+                        color: $input-print-color;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+@mixin radio-custom-dark {
+    @include mode-dark {
+        div.#{$prefix}-radio-custom {
             &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
                 input[type="radio"] {
                     +.#{$prefix}-content {
@@ -1251,9 +1341,37 @@ $input-margin-small   : $margin-global-small;
     }
 }
 
+@mixin radio-custom-print {
+    @include mode-print {
+        div.#{$prefix}-radio-custom {
+            input[type="radio"] {
+                +.#{$prefix}-content {
+                    &:before {
+                        border-color: $input-print-color;
+                    }
+
+                    &:hover {
+                        &:before {
+                            border-color: $input-print-color;
+                        }
+                    }
+                }
+
+                &:checked {
+                    +.#{$prefix}-content {
+                        &:before {
+                            border-color: $input-print-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 @mixin checkbox-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         input[type="checkbox"] {
             &.#{$prefix}-checkbox {
                 &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
@@ -1289,40 +1407,35 @@ $input-margin-small   : $margin-global-small;
                         }
                     }
                 }
+            }
+        }
+    }
+}
 
-                // &.#{$prefix}-accent {
-                //     &:hover {
-                //         border-color: $input-color-accent;
-                //     }
+@mixin checkbox-print {
+    @include mode-print {
+        input[type="checkbox"] {
+            &.#{$prefix}-checkbox {
+                border: 1px solid $input-print-color;
 
-                //     &:checked {
-                //         border-color    : $input-color-accent;
-                //         background-color: $input-color-accent;
-                //     }
-                // }
+                &:hover {
+                    border-color: $input-border-color-active-dark;
+                }
 
-                // &.#{$prefix}-secondary {
-                //     &:hover {
-                //         border-color: $input-color-secondary;
-                //     }
-
-                //     &:checked {
-                //         border-color    : $input-color-secondary;
-                //         background-color: $input-color-secondary;
-                //     }
-                // }
+                &:checked {
+                    border-color    : $input-print-color;
+                    background-color: $input-print-color;
+                }
             }
         }
     }
 }
 
 @mixin input-switch-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         div.#{$prefix}-input-switch {
             input[type="checkbox"] {
-
                 +.#{$prefix}-content {
-
                     &:before {
                         background-color: $input-border-color-inactive-dark;
                     }
@@ -1345,31 +1458,6 @@ $input-margin-small   : $margin-global-small;
                                 background-color: $input-border-color-active-dark;
                             }
                         }
-
-
-                        // &.#{$prefix}-accent {
-                        //     &:after {
-                        //         background-color: $input-color-accent;
-                        //         border-color    : $input-color-accent;
-                        //     }
-
-                        //     &:before {
-                        //         background-color: $input-color-accent;
-                        //         opacity         : 0.6;
-                        //     }
-                        // }
-
-                        // &.#{$prefix}-secondary {
-                        //     &:after {
-                        //         background-color: $input-color-secondary;
-                        //         border-color    : $input-color-secondary;
-                        //     }
-
-                        //     &:before {
-                        //         background-color: $input-color-secondary;
-                        //         opacity         : 0.6;
-                        //     }
-                        // }
                     }
                 }
 
@@ -1408,12 +1496,31 @@ $input-margin-small   : $margin-global-small;
     }
 }
 
+@mixin input-switch-print {
+    @include mode-print {
+        div.#{$prefix}-input-switch {
+            input[type="checkbox"] {
+                +.#{$prefix}-content {
+
+                    &:before {
+                        background-color: $input-print-color;
+                    }
+
+                    &:after {
+                        border          : 1px solid $input-print-color;
+                        background-color: $input-print-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
 /**
 * Dark
 */
 @mixin range-dark {
-    .#{$prefix}-dark {
-
+    @include mode-dark {
         input[type="range"] {
             &.#{$prefix}-range {
                 &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
@@ -1444,63 +1551,181 @@ $input-margin-small   : $margin-global-small;
                         background-color: $input-color-disabled-dark;
                     }
                 }
-
-                // &.#{$prefix}-accent {
-                //     background-color: $input-color-accent;
-
-                //     &::-webkit-slider-thumb {
-                //         border: 4px solid $input-color-accent;
-                //     }
-
-                //     &::-moz-range-thumb {
-                //         border: 4px solid $input-color-accent;
-                //     }
-                // }
-
-                // &.#{$prefix}-secondary {
-                //     background-color: $input-color-secondary;
-
-                //     &::-webkit-slider-thumb {
-                //         border: 4px solid $input-color-secondary;
-                //     }
-
-                //     &::-moz-range-thumb {
-                //         border: 4px solid $input-color-secondary;
-                //     }
-                // }
             }
         }
     }
 }
 
-@mixin definitions {
+@mixin range-print {
+    @include mode-print {
+        input[type="range"] {
+            background-color: $input-print-color;
+
+            &::-webkit-slider-thumb {
+                background-color: $input-print-background;
+                border-color    : $input-print-color;
+            }
+
+            &::-moz-range-thumb {
+                background-color: $input-print-background;
+                border-color    : $input-print-color;
+            }
+        }
+    }
+}
+
+@mixin definitions($options: ()) {
     @include input;
-    @include input-theme();
-    @include input-signals;
-    @include input-dark();
-    @include input-mix();
-    @include input-mix-theme();
-    @include input-mix-signals();
-    @include input-mix-dark();
-    @include range();
-    @include range-dark();
-    @include radio();
-    @include radio-theme();
-    @include radio-dark();
-    @include radio-custom();
-    @include radio-custom-theme();
-    @include radio-custom-dark();
-    @include checkbox();
-    @include checkbox-theme();
-    @include checkbox-dark();
-    @include input-switch();
-    @include input-switch-dark();
-    @include textarea();
-    @include textarea-theme();
-    @include textarea-dark();
-    @include form();
-    @include form-dark();
-    @include select();
-    @include select-theme();
-    @include select-dark();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include input-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include input-print();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include input-theme();
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include input-signals;
+    }
+
+    @if(not-option-disabled($options, 'mix')) {
+        @include input-mix();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include input-mix-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include input-mix-print();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include input-mix-theme();
+        }
+
+        @if(not-option-disabled($options, 'signal')) {
+            @include input-mix-signals();
+        }
+    }
+
+    @if(not-option-disabled($options, 'range')) {
+        @include range();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include range-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include range-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'radio')) {
+        @include radio();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include radio-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include radio-print();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include radio-theme();
+        }
+    }
+
+    @if(not-option-disabled($options, 'custom')) {
+        @include radio-custom();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include radio-custom-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include radio-custom-print();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include radio-custom-theme();
+        }
+    }
+
+    @if(not-option-disabled($options, 'checkbox')) {
+        @include checkbox();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include checkbox-dark();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include checkbox-theme();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include checkbox-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'textarea')) {
+        @include textarea();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include textarea-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include textarea-print();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include textarea-theme();
+        }
+    }
+
+    @if(not-option-disabled($options, 'select')) {
+        @include select();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include select-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include select-print();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include select-theme();
+        }
+    }
+
+    @if(not-option-disabled($options, 'switch')) {
+        @include input-switch();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include input-switch-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include input-switch-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'form')) {
+        @include form();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include form-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include form-print();
+        }
+    }
 }

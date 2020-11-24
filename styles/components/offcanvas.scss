@@ -128,9 +128,18 @@ $offcanvas-size                    : $size-medium;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include offcanvas();
-    @include offcanvas-dark();
-    @include offcanvas-print();
-    @include offcanvas-animations();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include offcanvas-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include offcanvas-print();
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include offcanvas-animations();
+    }
 }

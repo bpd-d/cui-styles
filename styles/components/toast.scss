@@ -21,7 +21,7 @@ $toast-font-size            : $font-small;
         font-size    : $toast-font-size;
         color        : $toast-color;
         background   : $toast-background-color;
-        box-shadow   : $shadow4;
+        box-shadow   : $shadow3;
         border-radius: 50px;
         opacity      : 0;
 
@@ -101,9 +101,19 @@ $toast-font-size            : $font-small;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include toast();
-    @include toast-dark();
-    @include toast-print();
-    @include toast-animations();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include toast-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include toast-print();
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include toast-animations();
+    }
+
 }

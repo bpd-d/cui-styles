@@ -41,7 +41,11 @@
 
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include selection();
-    @include selection-dark();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include selection-dark();
+    }
+
 }

@@ -14,7 +14,7 @@ $transition-toggle-delay: $animation-duration-short;
 
         [class*="#{$prefix}-transition"] {
             transition-duration       : $transition-toggle-time;
-            transition-timing-function: ease-in;
+            transition-timing-function: ease-out;
         }
 
         .#{$prefix}-transition-scale {

@@ -67,8 +67,10 @@ $margin-global-small: calc(#{$margin-global} * 0.5);
 $notification-width  : 350px;
 $notification-margin : 20px;
 
+$border-radius-small  : var(--#{$prefix}-border-radius-small);
 $border-radius-default: var(--#{$prefix}-border-radius);
-$border-radius-round  : 100px;
+$border-radius-large  : var(--#{$prefix}-border-radius-large);
+$border-radius-round  : 300px;
 
 // Sizes
 $size-small : 150px;

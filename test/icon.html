@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cUI - Icons</title>
+    <link rel="stylesheet" href="../dist/cui-styles.css" />
+</head>
+<style>
+    .app-main-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 70px calc(100vh - 106px) 36px;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .app-navbar {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .app-content {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-content-fill {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-side-bar {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-footer {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+</style>
+
+<body class="">
+    <div id="main-content" class="main-content content-hidden">
+        <!-- Main grid -->
+        <div class="app-main-grid">
+            <div class="app-navbar">
+                <div class="cui-navbar cui-sticky">
+                    <ul class="cui-navbar-left">
+                        <li><a class="cui-navbar-title cui-icon app-title-icon" href="index.html">Test</a></li>
+                    </ul>
+                    <ul class="cui-navbar-right">
+                        <li><a class="cui-navbar-item" href="./index.html">Home</a></li>
+                        <li><a class="cui-navbar-item" href="#" id="toggle-dark-mode">Dark Mode</a></li>
+                        <li><a class="cui-navbar-item" href="#" id="toggle-print-mode">Print Mode</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="app-content cui-overflow-y-auto cui-section">
+                <h2 class="cui-h2">Icon</h2>
+                <div class="cui-container">
+                    <span class="cui-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path d="M 1.9999999,1.9999999 18,18"></path>
+                            <path d="M 18,1.9999999 1.9999999,18"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon Theme</h2>
+                <div class="cui-container">
+                    <span class="cui-icon cui-accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-secondary cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path d="M 1.9999999,1.9999999 18,18"></path>
+                            <path d="M 18,1.9999999 1.9999999,18"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon signal</h2>
+                <div class="cui-container">
+                    <span class="cui-icon cui-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-error cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path d="M 1.9999999,1.9999999 18,18"></path>
+                            <path d="M 18,1.9999999 1.9999999,18"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-warning cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path d="M 1.9999999,1.9999999 18,18"></path>
+                            <path d="M 18,1.9999999 1.9999999,18"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon fill</h2>
+                <div class="cui-container">
+                    <span class="cui-icon cui-fill">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-fill cui-accent cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-fill cui-secondary cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-fill cui-success cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-fill cui-error cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-fill cui-warning cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon stroke color</h2>
+                <div class="cui-container">
+                    <span class="cui-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437" class="cui-accent"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-margin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437" class="cui-secondary"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-margin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437" class="cui-error"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-margin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437" class="cui-warning"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-margin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437" class="cui-success"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon button</h2>
+                <div class="cui-container">
+                    <span class="cui-icon cui-icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-icon-button cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path d="M 1.9999999,1.9999999 18,18"></path>
+                            <path d="M 18,1.9999999 1.9999999,18"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon button default</h2>
+                <div class="cui-container">
+                    <span class="cui-icon cui-icon-button cui-default">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-icon-button cui-default cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path d="M 1.9999999,1.9999999 18,18"></path>
+                            <path d="M 18,1.9999999 1.9999999,18"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon button inverse</h2>
+                <div class="cui-container">
+                    <span class="cui-icon cui-icon-button cui-inverse">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-icon-button cui-inverse cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path d="M 1.9999999,1.9999999 18,18"></path>
+                            <path d="M 18,1.9999999 1.9999999,18"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon button color</h2>
+                <div class="cui-container">
+                    <span class="cui-icon cui-icon-button cui-accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-icon-button cui-secondary cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-icon-button cui-error cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-icon-button cui-warning cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-icon-button cui-success cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="cui-h2">Icon nav</h2>
+                <div class="cui-container">
+                    <ul class="cui-icon-nav">
+                        <li>
+                            <a href="#" class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li><a href="#" class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </a></li>
+                        <li><a href="#" class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </a></li>
+                    </ul>
+                </div>
+                <h2 class="cui-h2">Icon in button</h2>
+                <div class="cui-container">
+                    <button class="cui-button cui-icon cui-icon-margin">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg> Edit
+                    </button>
+                    <button class="cui-button cui-icon cui-accent cui-icon-margin">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg> Edit
+                    </button>
+                    <button class="cui-button cui-icon cui-secondary cui-icon-margin">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg> Edit
+                    </button>
+                </div>
+                <h2 class="cui-h2">Icon in container</h2>
+                <div class="cui-container cui-accent">
+                    <span class="cui-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg>
+                    </span>
+                    <span class="cui-icon cui-marin-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path d="M 1.9999999,1.9999999 18,18"></path>
+                            <path d="M 18,1.9999999 1.9999999,18"></path>
+                        </svg>
+                    </span>
+                    <button class="cui-button cui-icon cui-secondary cui-icon-margin">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                class="fill"></path>
+                            <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                        </svg> Edit
+                    </button>
+                </div>
+            </div>
+            <div class="app-side-bar cui-margin-top">
+
+            </div>
+
+        </div>
+        <script src="index.js"></script>
+</body>
+
+</html>

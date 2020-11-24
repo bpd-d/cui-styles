@@ -1,4 +1,5 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $link-color-muted      : $component-color-muted;
 $link-color-muted-dark : $component-color-muted-dark;
@@ -152,11 +153,27 @@ $link-transition-time  : $animation-duration-short;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options:()) {
     @include link();
-    @include link-dark();
-    @include link-theme();
-    @include link-signals();
-    @include link-print();
-    @include link-no-transition();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include link-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include link-print();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include link-theme();
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include link-signals();
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include link-no-transition();
+    }
+
 }

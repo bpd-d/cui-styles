@@ -21,6 +21,6 @@ $blur-intensity     : 6;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include overlay();
 }

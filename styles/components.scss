@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
 @use 'components/navbar';
 @use 'components/accordion';
 @use 'components/dialog';
@@ -16,7 +19,7 @@
 @use 'components/drop';
 @use 'components/switch';
 @use 'components/switcher';
-@use 'components/list';
+@use 'components/lists';
 @use 'components/overlay';
 @use 'components/progress';
 @use 'components/background';
@@ -33,41 +36,245 @@
 @use 'components/selection';
 @use 'components/float';
 @use 'components/sortable';
+@use 'components/corner';
 
-@mixin definitions {
-    @include navbar.definitions;
-    @include accordion.definitions;
-    @include dialog.definitions;
-    @include tab.definitions;
-    @include tooltip.definitions;
-    @include buttons.definitions;
-    @include banner.definitions;
-    @include links.definitions;
-    @include text.definitions;
-    @include icon.definitions;
-    @include card.definitions;
-    @include breadcrumb.definitions;
-    @include input.definitions;
-    @include spinner.definitions;
-    @include table.definitions;
-    @include drop.definitions;
-    @include switch.definitions;
-    @include switcher.definitions;
-    @include list.definitions;
-    @include overlay.definitions;
-    @include progress.definitions;
-    @include background.definitions;
-    @include badge.definitions;
-    @include toast.definitions;
-    @include offcanvas.definitions;
-    @include hint.definitions;
-    @include special.definitions;
-    @include cover.definitions;
-    @include shadows.definitions;
-    @include separator.definitions;
-    @include scrollbar.definitions;
-    @include code.definitions;
-    @include selection.definitions;
-    @include float.definitions;
-    @include sortable.definitions;
+
+$components-list: ("navbar",
+    "accordion",
+    "dialog",
+    "tab",
+    "tooltip",
+    "button",
+    "banner",
+    "link",
+    "text",
+    "icon",
+    "card",
+    "breadcrumb",
+    "input",
+    "spinner",
+    "table",
+    "drop",
+    "switch",
+    "switcher",
+    "list",
+    "overlay",
+    "progress",
+    "background",
+    "badge",
+    "toast",
+    "offcanvas",
+    "hint",
+    "special",
+    "cover",
+    "shadow",
+    "separator",
+    "scrollbar",
+    "code",
+    "selection",
+    "float",
+    "sortable",
+    "corner");
+
+@mixin definitions($components:()) {
+    $list: $components;
+
+    @if(length($list)==0) {
+        $list: $components-list;
+    }
+
+    @each $name,
+    $options in $list {
+        @debug "Compile component: #{$name} with options: ";
+        @debug $options;
+
+        $opts: ();
+
+        @if($options !=null) {
+            $opts: $options;
+        }
+
+        @if $name=="navbar" {
+            @include navbar.definitions($opts);
+        }
+
+        @else if $name=="accordion" {
+            @include accordion.definitions($opts);
+        }
+
+        @else if $name=="dialog" {
+            @include dialog.definitions($opts);
+        }
+
+        @else if $name=="tab" {
+            @include tab.definitions($opts);
+        }
+
+        @else if $name=="tooltip" {
+            @include tooltip.definitions($opts);
+        }
+
+        @else if $name=="button" {
+            @include buttons.definitions($opts);
+        }
+
+        @else if $name=="banner" {
+            @include banner.definitions($opts);
+        }
+
+        @else if $name=="link" {
+            @include links.definitions($opts);
+        }
+
+        @else if $name=="text" {
+            @include text.definitions($opts);
+        }
+
+        @else if $name=="icon" {
+            @include icon.definitions($opts);
+        }
+
+        @else if $name=="card" {
+            @include card.definitions($opts);
+        }
+
+        @else if $name=="breadcrumb" {
+            @include breadcrumb.definitions($opts);
+        }
+
+        @else if $name=="input" {
+            @include input.definitions($opts);
+        }
+
+        @else if $name=="spinner" {
+            @include spinner.definitions($opts);
+        }
+
+        @else if $name=="table" {
+            @include table.definitions($opts);
+        }
+
+        @else if $name=="drop" {
+            @include drop.definitions($opts);
+        }
+
+        @else if $name=="switch" {
+            @include switch.definitions($opts);
+        }
+
+        @else if $name=="switcher" {
+            @include switcher.definitions($opts);
+        }
+
+        @else if $name=="list" {
+            @include lists.definitions($opts);
+        }
+
+        @else if $name=="overlay" {
+            @include overlay.definitions($opts);
+        }
+
+        @else if $name=="progress" {
+            @include progress.definitions($opts);
+        }
+
+        @else if $name=="background" {
+            @include background.definitions($opts);
+        }
+
+        @else if $name=="badge" {
+            @include badge.definitions($opts);
+        }
+
+        @else if $name=="toast" {
+            @include toast.definitions($opts);
+        }
+
+        @else if $name=="offcanvas" {
+            @include offcanvas.definitions($opts);
+        }
+
+        @else if $name=="hint" {
+            @include hint.definitions($opts);
+        }
+
+        @else if $name=="special" {
+            @include special.definitions($opts);
+        }
+
+        @else if $name=="cover" {
+            @include cover.definitions($opts);
+        }
+
+        @else if $name=="shadow" {
+            @include shadows.definitions($opts);
+        }
+
+        @else if $name=="separator" {
+            @include separator.definitions($opts);
+        }
+
+        @else if $name=="scrollbar" {
+            @include scrollbar.definitions($opts);
+        }
+
+        @else if $name=="code" {
+            @include code.definitions($opts);
+        }
+
+        @else if $name=="selection" {
+            @include selection.definitions($opts);
+        }
+
+        @else if $name=="float" {
+            @include float.definitions($opts);
+        }
+
+        @else if $name=="sortable" {
+            @include sortable.definitions($opts);
+        }
+
+        @else if $name=="corner" {
+            @include corner.definitions($opts);
+        }
+    }
+
+
 }
+
+//   @include navbar.definitions;
+//   @include accordion.definitions;
+//   @include dialog.definitions;
+//   @include tab.definitions;
+//   @include tooltip.definitions;
+//   @include buttons.definitions;
+//   @include banner.definitions;
+//   @include links.definitions;
+//   @include text.definitions;
+//   @include icon.definitions;
+//   @include card.definitions;
+//   @include breadcrumb.definitions;
+//   @include input.definitions;
+//   @include spinner.definitions;
+//   @include table.definitions;
+//   @include drop.definitions;
+//   @include switch.definitions;
+//   @include switcher.definitions;
+//   @include list.definitions;
+//   @include overlay.definitions;
+//   @include progress.definitions;
+//   @include background.definitions;
+//   @include badge.definitions;
+//   @include toast.definitions;
+//   @include offcanvas.definitions;
+//   @include hint.definitions;
+//   @include special.definitions;
+//   @include cover.definitions;
+//   @include shadows.definitions;
+//   @include separator.definitions;
+//   @include scrollbar.definitions;
+//   @include code.definitions;
+//   @include selection.definitions;
+//   @include float.definitions;
+//   @include sortable.definitions;
+//   @include corner.definitions;

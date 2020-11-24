@@ -109,10 +109,23 @@ $banner-color-secondary: $component-background-secondary;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include banner();
-    @include banner-theme();
-    @include banner-signals();
-    @include banner-dark();
-    @include banner-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include banner-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include banner-print();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include banner-theme();
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include banner-signals();
+    }
+
 }

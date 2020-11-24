@@ -1,4 +1,5 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $navbar-background-default     : $component-background-default;
 $navbar-background-default-dark: $component-background-default-dark;
@@ -42,7 +43,7 @@ $navbar-transition-time : $animation-duration-short;
             box-shadow      : none;
         }
 
-        &.#{$prefix}-space {
+        &.#{$prefix}-small {
             ul {
                 padding: $navbar-item-padding-small;
             }
@@ -206,8 +207,9 @@ $navbar-transition-time : $animation-duration-short;
             }
         }
     }
-
 }
+
+
 
 @mixin navbar-dark {
 
@@ -253,9 +255,36 @@ $navbar-transition-time : $animation-duration-short;
 
         .#{$prefix}-navbar-item {
             color: $component-print-color;
+
+            &.#{$prefix}-active {
+                color: $component-print-color;
+            }
+
+            &:before {
+                background-color: $component-print-color;
+            }
         }
     }
 }
+
+@mixin navbar-theme-print {
+    @include mode-print {
+
+        .#{$prefix}-navbar.#{$prefix}-secondary,
+        .#{$prefix}-navbar.#{$prefix}-accent {
+            .#{$prefix}-navbar-item {
+                &.#{$prefix}-active {
+                    color: $component-print-color;
+
+                    &:before {
+                        background-color: $component-print-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 @mixin navbar-media {
     @media (max-width: $breakpoint-s) {
@@ -282,12 +311,38 @@ $navbar-transition-time : $animation-duration-short;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include navbar();
-    @include navbar-accent();
-    @include navbar-secondary();
-    @include navbar-dark();
-    @include navbar-print();
-    @include navbar-media();
-    @include navbar-no-transition();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include navbar-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include navbar-print();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include navbar-accent();
+        @include navbar-secondary();
+
+        @if(not-option-disabled($options, 'print')) {
+            @include navbar-theme-print();
+        }
+
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include navbar-no-transition();
+    }
+
+    @if(not-option-disabled($options, 'responsive')) {
+        @include navbar-media();
+    }
+
+
+
+
+
+
 }

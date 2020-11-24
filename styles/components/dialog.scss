@@ -81,6 +81,11 @@ $dialog-margin-large           : $margin-global-large;
         position: fixed;
     }
 
+
+
+}
+
+@mixin dialog-responsive {
     @include media-screen-min-small {
         .#{$prefix}-dialog-container {
             width: $size-large !important;
@@ -114,7 +119,6 @@ $dialog-margin-large           : $margin-global-large;
 
         }
     }
-
 }
 
 @mixin dialog-dark {
@@ -205,10 +209,27 @@ $dialog-margin-large           : $margin-global-large;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include dialog;
-    @include dialog-dark;
-    @include dialog-print;
-    @include dialog-animations;
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include dialog-dark;
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include dialog-print;
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include dialog-animations;
+    }
+
+    @if(not-option-disabled($options, 'responsive')) {
+        @include dialog-responsive();
+    }
+
+
+
+
 
 }

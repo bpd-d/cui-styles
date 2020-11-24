@@ -189,7 +189,7 @@ $button-font-size                     : $font-normal;
     }
 }
 
-@mixin button-signals {
+@mixin button-theme {
 
     .#{$prefix}-button,
     .#{$prefix}-icon-button {
@@ -208,6 +208,37 @@ $button-font-size                     : $font-normal;
             @include updateHighlight($color: $highlight-color);
         }
 
+        &:hover,
+        &:focus:not(:hover) {
+            &.#{$prefix}-accent {
+                background-color: $button-background-accent-hover !important;
+                border-color    : $button-background-accent-hover;
+            }
+
+            &.#{$prefix}-secondary {
+                background-color: $button-background-secondary-hover !important;
+                border-color    : $button-background-secondary-hover;
+            }
+        }
+
+        &:active {
+            &.#{$prefix}-accent {
+                background-color: $button-background-accent-active !important;
+                border-color    : $button-background-accent-active;
+            }
+
+            &.#{$prefix}-secondary {
+                background-color: $button-background-secondary-active !important;
+                border-color    : $button-background-secondary-active;
+            }
+        }
+    }
+}
+
+@mixin button-signals {
+
+    .#{$prefix}-button,
+    .#{$prefix}-icon-button {
         &.#{$prefix}-success {
             background-color               : $button-background-success !important;
             color                          : $button-color-inverse;
@@ -230,15 +261,6 @@ $button-font-size                     : $font-normal;
 
         &:hover,
         &:focus:not(:hover) {
-            &.#{$prefix}-accent {
-                background-color: $button-background-accent-hover !important;
-                border-color    : $button-background-accent-hover;
-            }
-
-            &.#{$prefix}-secondary {
-                background-color: $button-background-secondary-hover !important;
-                border-color    : $button-background-secondary-hover;
-            }
 
             &.#{$prefix}-success {
                 background-color: $button-background-success-hover !important;
@@ -257,17 +279,6 @@ $button-font-size                     : $font-normal;
         }
 
         &:active {
-
-            &.#{$prefix}-accent {
-                background-color: $button-background-accent-active !important;
-                border-color    : $button-background-accent-active;
-            }
-
-            &.#{$prefix}-secondary {
-                background-color: $button-background-secondary-active !important;
-                border-color    : $button-background-secondary-active;
-            }
-
             &.#{$prefix}-error {
                 background-color: $button-background-error-active !important;
                 border-color    : $button-background-error-active;
@@ -286,10 +297,10 @@ $button-font-size                     : $font-normal;
 
             }
         }
-
     }
-
 }
+
+
 
 @mixin button-dark {
     .#{$prefix}-dark {
@@ -390,6 +401,84 @@ $button-font-size                     : $font-normal;
     }
 }
 
+@mixin button-print-signal {
+    @include mode-print {
+
+        .#{$prefix}-button,
+        .#{$prefix}-icon-button {
+
+            &.#{$prefix}-success,
+            &.#{$prefix}-warning,
+            &.#{$prefix}-error {
+                border          : $component-print-border;
+                color           : $component-print-color !important;
+                background-color: $component-print-background;
+            }
+
+            &:hover,
+            &:focus:not(:hover) {
+
+                &.#{$prefix}-success,
+                &.#{$prefix}-error,
+                &.#{$prefix}-warning {
+                    border          : $component-print-border;
+                    color           : $component-print-color !important;
+                    background-color: $component-print-background;
+                }
+            }
+
+            &:active {
+
+                &.#{$prefix}-error,
+                &.#{$prefix}-warning,
+                &.#{$prefix}-success {
+                    border          : $component-print-border;
+                    color           : $component-print-color !important;
+                    background-color: $component-print-background
+                }
+            }
+        }
+    }
+}
+
+@mixin button-print-theme {
+    @include mode-print {
+
+        .#{$prefix}-button,
+        .#{$prefix}-icon-button {
+
+            &.#{$prefix}-accent,
+            &.#{$prefix}-secondary {
+                border          : $component-print-border;
+                color           : $component-print-color !important;
+                background-color: $component-print-background;
+
+            }
+
+            &:hover,
+            &:focus:not(:hover) {
+
+                &.#{$prefix}-accent,
+                &.#{$prefix}-secondary {
+                    border          : $component-print-border;
+                    color           : $component-print-color !important;
+                    background-color: $component-print-background;
+                }
+            }
+
+            &:active {
+
+                &.#{$prefix}-accent,
+                &.#{$prefix}-secondary {
+                    border          : $component-print-border;
+                    color           : $component-print-color !important;
+                    background-color: $component-print-background;
+                }
+            }
+        }
+    }
+}
+
 @mixin button-nav {
     .#{$prefix}-button-nav {
         display       : inline-flex;
@@ -416,10 +505,37 @@ $button-font-size                     : $font-normal;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include button();
-    @include button-signals();
-    @include button-dark();
-    @include button-print();
-    @include button-nav();
+
+
+    @if(not-option-disabled($options, 'print')) {
+        @include button-print();
+    }
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include button-dark();
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include button-signals();
+
+        @if(not-option-disabled($options, 'print')) {
+            @include button-print-signal();
+        }
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include button-theme();
+
+        @if(not-option-disabled($options, 'print')) {
+            @include button-print-theme();
+        }
+    }
+
+    @if(not-option-disabled($options, 'nav')) {
+        @include button-nav();
+    }
+
+
 }

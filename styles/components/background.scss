@@ -92,9 +92,24 @@ $themes: "accent",
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include background();
-    @include background-colors();
-    @include background-colors-dark();
-    @include background-print();
+
+    @if(not-option-disabled($options, 'colors')) {
+        @include background-colors();
+    }
+
+    @if(not-option-disabled($options, 'colors')) {
+        @if(not-option-disabled($options, 'dark')) {
+            @include background-colors-dark();
+        }
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include background-print();
+    }
+
+
+
+
 }

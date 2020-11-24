@@ -156,8 +156,16 @@ $code-indent-base   : 1rem;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include code();
-    @include code-dark();
-    @include code-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include code-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include code-print();
+    }
+
+
 }

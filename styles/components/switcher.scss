@@ -1,4 +1,6 @@
+@use "sass:map";
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $indicator-transition-time     : $animation-duration-default;
 $indicator-item-width          : 24px;
@@ -9,11 +11,20 @@ $indicator-item-transform-hover: scale(1.1);
 $indicator-item-font-size      : 14px;
 $indicator-item-color          : $component-color-default;
 $indicator-item-color-dark     : $component-color-default-dark;
-$indicator-round-size          : 18px;
+$indicator-round-size          : 14px;
 $indicator-round-border        : 1px solid $indicator-item-color;
 $indicator-active-border       : 2px solid $indicator-item-color;
 $indicator-round-border-dark   : 1px solid $indicator-item-color-dark;
 $indicator-active-border-dark  : 2px solid $indicator-item-color-dark;
+
+$indicator-shade-color              : $component-background-shade;
+$indicator-shade-color-dark         : $component-background-shade-dark;
+$indicator-shade-color-active       : $component-background-shade-active;
+$indicator-shade-color-active-dark  : $component-background-shade-dark-active;
+$indicator-shade-border             : 1px solid $indicator-shade-color;
+$indicator-shade-active-border      : 2px solid $indicator-shade-color;
+$indicator-shade-border-dark        : 1px solid $indicator-shade-color-dark;
+$indicator-shade-active-border-dark : 2px solid $indicator-shade-color-dark;
 
 @mixin switcher {
     ul.#{$prefix}-switcher-indicator {
@@ -64,19 +75,128 @@ $indicator-active-border-dark  : 2px solid $indicator-item-color-dark;
                 width      : 18px;
                 height     : 18px;
                 line-height: 18px;
-                font-size  : 10px;
+                font-size  : 6px;
 
                 &:before {
-                    width : 14px;
-                    height: 14px;
-                    top   : 1px;
-                    left  : 1px;
+                    width : 10px;
+                    height: 10px;
+                    top   : 4px;
+                    left  : 4px;
                 }
 
                 &.#{$prefix}-active {
                     &:before {
-                        top : 0px;
-                        left: 0px;
+                        top : 3px;
+                        left: 3px;
+                    }
+                }
+            }
+        }
+
+        &.#{$prefix}-shade {
+            li {
+                &:before {
+                    border          : $indicator-shade-border;
+                    background-color: $indicator-shade-color;
+                }
+
+                &.#{$prefix}-active {
+                    &:before {
+                        border          : $indicator-shade-active-border;
+                        background-color: $indicator-shade-color-active;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin switcher-option-small {
+    ul.#{$prefix}-switcher-indicator {
+        &.#{$prefix}-small {
+            li {
+                width      : 18px;
+                height     : 18px;
+                line-height: 18px;
+                font-size  : 6px;
+
+                &:before {
+                    width : 10px;
+                    height: 10px;
+                    top   : 4px;
+                    left  : 4px;
+                }
+
+                &.#{$prefix}-active {
+                    &:before {
+                        top : 3px;
+                        left: 3px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin switcher-option-shade {
+    ul.#{$prefix}-switcher-indicator {
+        &.#{$prefix}-shade {
+            li {
+                &:before {
+                    border          : $indicator-shade-border;
+                    background-color: $indicator-shade-color;
+                }
+
+                &.#{$prefix}-active {
+                    &:before {
+                        border: $indicator-shade-active-border;
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin switcher-option-shade-dark {
+    @include mode-dark {
+        ul.#{$prefix}-switcher-indicator {
+            &.#{$prefix}-shade {
+                li {
+                    &:before {
+                        border          : $indicator-shade-border-dark;
+                        background-color: $indicator-shade-color-dark;
+                    }
+
+                    &.#{$prefix}-active {
+                        &:before {
+                            border          : $indicator-shade-active-border-dark;
+                            background-color: $indicator-shade-color-active-dark;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin switcher-option-shade-print {
+    @include mode-print {
+        ul.#{$prefix}-switcher-indicator {
+            &.#{$prefix}-shade {
+                li {
+                    &:before {
+                        border          : $component-print-border;
+                        background-color: transparent;
+                    }
+
+                    &.#{$prefix}-active {
+                        &:before {
+                            border          : $component-print-border;
+                            background-color: transparent;
+
+                        }
                     }
                 }
             }
@@ -85,11 +205,17 @@ $indicator-active-border-dark  : 2px solid $indicator-item-color-dark;
 }
 
 @mixin switcher-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         ul.#{$prefix}-switcher-indicator {
             li {
                 &:before {
                     border: $indicator-round-border-dark;
+                }
+
+                &.#{$prefix}-active {
+                    &:before {
+                        border: $indicator-active-border-dark;
+                    }
                 }
             }
         }
@@ -98,7 +224,7 @@ $indicator-active-border-dark  : 2px solid $indicator-item-color-dark;
 
 
 @mixin switcher-print {
-    .#{$prefix}-print {
+    @include mode-print {
         ul.#{$prefix}-switcher-indicator {
             li {
                 &:before {
@@ -109,8 +235,30 @@ $indicator-active-border-dark  : 2px solid $indicator-item-color-dark;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options) {
     @include switcher();
-    @include switcher-dark();
-    @include switcher-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include switcher-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include switcher-print();
+    }
+
+    @if(not-option-disabled($options, 'shade')) {
+        @include switcher-option-shade();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include switcher-option-shade-dark();
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include switcher-option-shade-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'small')) {
+        @include switcher-option-small()
+    }
 }

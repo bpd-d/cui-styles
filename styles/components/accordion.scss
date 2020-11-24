@@ -101,26 +101,37 @@ $accordion-font-size         : $font-normal;
 }
 
 @mixin accordion-not-no-transitions {
-    @include mode-not-no-transitions {}
-
-    .#{$prefix}-accordion {
-        >* {
-            .#{$prefix}-accordion-title {
-                &:before {
-                    transition: transform $accordion-indicator-duration ease;
+    @include not-reduced-motion {
+        .#{$prefix}-accordion {
+            >* {
+                .#{$prefix}-accordion-title {
+                    &:before {
+                        transition: transform $accordion-indicator-duration ease;
+                    }
                 }
-            }
 
-            .#{$prefix}-accordion-content {
-                transition: opacity $accordion-content-duration ease;
+                .#{$prefix}-accordion-content {
+                    transition: opacity $accordion-content-duration ease;
+                }
             }
         }
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include accordion;
-    @include accordion-print;
-    @include accordion-dark;
-    @include accordion-not-no-transitions();
+
+    @if(not-option-disabled($options, 'print')) {
+        @include accordion-print;
+    }
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include accordion-dark;
+    }
+
+    @if(not-option-disabled($options, 'animation')) {
+        @include accordion-not-no-transitions();
+    }
+
+
 }

@@ -123,6 +123,17 @@ $item-background-default: $component-background-default;
     @error "Color #{$color} does not exist in map";
 }
 
+@function option-disabled($map, $option) {
+    @if map-has-key($map, $option) {
+        @return map.get($map, $option)==false;
+    }
+
+    @return false;
+}
+
+@function not-option-disabled($map, $option) {
+    @return not option-disabled($map, $option);
+}
 
 @mixin not-colors {
     &:not(.#{$prefix}-success):not(.#{$prefix}-warning):not(.#{$prefix}-error):not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {

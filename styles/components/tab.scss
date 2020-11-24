@@ -99,7 +99,11 @@ $tab-transition-time: $animation-duration-short;
                 }
             }
         }
+    }
+}
 
+@mixin tab-side {
+    ul.#{$prefix}-tab {
         &.#{$prefix}-tab-side {
             border-right : $tab-border-aside;
             border-bottom: none;
@@ -112,16 +116,15 @@ $tab-transition-time: $animation-duration-short;
                     display : block;
 
                     &:before {
-                        content            : "";
-                        position           : absolute;
-                        width              : 2px;
-                        // background-color: $tab-color;
-                        height             : 100%;
-                        left               : calc(100% -1px);
-                        top                : 50%;
-                        border-radius      : 4px;
-                        transform          : translateY(-50%) scale(1, 0);
-                        transition         : transform $tab-transition-time ease-out;
+                        content      : "";
+                        position     : absolute;
+                        width        : 2px;
+                        height       : 100%;
+                        left         : calc(100% -1px);
+                        top          : 50%;
+                        border-radius: 4px;
+                        transform    : translateY(-50%) scale(1, 0);
+                        transition   : transform $tab-transition-time ease-out;
                     }
 
                     &:hover {
@@ -145,13 +148,11 @@ $tab-transition-time: $animation-duration-short;
                 &.#{$prefix}-active {
                     a {
                         &:before {
-                            //  background-color: $tab-color-primary;
                             transform: translateY(-50%) scale(1, 0.6);
                         }
 
                         &:hover {
                             &:before {
-                                //       background-color: $tab-color-primary;
                                 transform: translateY(-50%) scale(0.8, 1);
                             }
                         }
@@ -178,20 +179,17 @@ $tab-transition-time: $animation-duration-short;
                 a {
                     position: relative;
                     display : block;
-                    // @include component-padding;
-                    // @include link-decoration($tab-color);
 
                     &:before {
-                        content             : "";
-                        position            : absolute;
-                        width               : 2px;
-                        //  background-color: $tab-color-indicator;
-                        height              : 100%;
-                        left                : -1px;
-                        top                 : 50%;
-                        border-radius       : 4px;
-                        transform           : translateY(-50%) scale(1, 0);
-                        transition          : transform $tab-transition-time ease-out;
+                        content      : "";
+                        position     : absolute;
+                        width        : 2px;
+                        height       : 100%;
+                        left         : -1px;
+                        top          : 50%;
+                        border-radius: 4px;
+                        transform    : translateY(-50%) scale(1, 0);
+                        transition   : transform $tab-transition-time ease-out;
                     }
 
                     &:hover {
@@ -268,8 +266,10 @@ $tab-transition-time: $animation-duration-short;
     }
 }
 
+
+
 @mixin tab-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         ul.#{$prefix}-tab {
             border-color: $tab-border-color-dark;
 
@@ -295,8 +295,70 @@ $tab-transition-time: $animation-duration-short;
     }
 }
 
+@mixin tab-side-dark {
+    @include mode-dark {
+        ul.#{$prefix}-tab {
+            &.#{$prefix}-tab-side {
+                border-color: $tab-border-color-dark;
+
+                li {
+                    &.#{$prefix}-active {
+                        a {
+                            &:before {
+                                background-color: $tab-color-dark;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin tab-side-print {
+    @include mode-print {
+        ul.#{$prefix}-tab {
+            &.#{$prefix}-tab-side {
+                border-color   : $component-print-border-color;
+                //border-bottom: $component-print-border;
+
+                li {
+                    &.#{$prefix}-active {
+                        a {
+                            &:before {
+                                background-color: $component-print-color;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin tab-theme-print {
+    @include mode-print {
+        ul.#{$prefix}-tab {
+
+            &.#{$prefix}-secondary,
+            &.#{$prefix}-accent {
+                li.#{$prefix}-active {
+                    a {
+                        &:before {
+                            background-color: $component-print-color;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
 @mixin tab-print {
-    .#{$prefix}-print {
+    @include mode-print {
         ul.#{$prefix}-tab {
             border-color: $component-print-border;
 
@@ -318,29 +380,42 @@ $tab-transition-time: $animation-duration-short;
                 }
             }
 
-            &.#{$prefix}-tab-side {
-                border-color   : $component-print-border-color;
-                //border-bottom: $component-print-border;
 
-                li {
-                    &.#{$prefix}-active {
-                        a {
-                            &:before {
-                                background-color: $component-print-color;
-                            }
-                        }
-
-                    }
-                }
-            }
         }
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include tab();
-    @include tab-accent();
-    @include tab-secondary();
-    @include tab-dark();
-    @include tab-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include tab-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include tab-print();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include tab-accent();
+        @include tab-secondary();
+
+        @if(not-option-disabled($options, 'print')) {
+            @include tab-theme-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'side')) {
+        @include tab-side();
+
+        @if(not-option-disabled($options, 'print')) {
+            @include tab-side-print();
+        }
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include tab-side-dark();
+        }
+    }
+
+
 }

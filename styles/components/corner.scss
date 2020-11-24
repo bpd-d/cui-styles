@@ -1,0 +1,60 @@
+@use "sass:map";
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$corner-border-radius-default: $border-radius-default;
+$corner-border-radius-circle : $border-radius-round;
+$corner-border-radius-large  : $border-radius-large;
+
+@mixin corner-helper-sides($name: 'round', $value: $corner-border-radius-default) {
+
+    // Round
+    .#{$prefix}-corner-#{$name}-top-left {
+        border-top-left-radius: $value !important;
+    }
+
+    .#{$prefix}-corner-#{$name}-bottom-left {
+        border-bottom-left-radius: $value !important;
+    }
+
+    .#{$prefix}-corner-#{$name}-top-right {
+        border-top-right-radius: $value !important;
+    }
+
+    .#{$prefix}-corner-#{$name}-bottom-right {
+        border-bottom-right-radius: $value !important;
+    }
+}
+
+@mixin corner {
+    .#{$prefix}-corner-round {
+        border-radius: $corner-border-radius-default !important;
+    }
+
+    .#{$prefix}-corner-circle {
+        border-radius: $corner-border-radius-circle !important;
+    }
+
+    .#{$prefix}-corner-round-large {
+        border-radius: $border-radius-large !important;
+    }
+
+    .#{$prefix}-corner-square {
+        border-radius: 0px !important;
+    }
+}
+
+@mixin corner-sides {
+    @include corner-helper-sides('round', $corner-border-radius-default);
+    @include corner-helper-sides('round-large', $corner-border-radius-large);
+    @include corner-helper-sides('square', 0px);
+}
+
+@mixin definitions($options: ()) {
+    @include corner();
+
+    @if(not-option-disabled($options, 'side')) {
+        @include corner-sides();
+    }
+
+}

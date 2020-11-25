@@ -12,7 +12,7 @@
 
 $base-elements:("flex",
     "heading",
-    "containers",
+    "container",
     "section",
     "grid",
     "position",
@@ -47,7 +47,7 @@ $base-elements:("flex",
             @include heads.definitions($opts);
         }
 
-        @if $name=="containers" {
+        @if $name=="container" {
             @include containers.definitions($opts);
         }
 

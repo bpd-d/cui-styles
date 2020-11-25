@@ -104,12 +104,21 @@ $input-print-background: $component-print-background;
             }
         }
 
+        &:disabled {
+            color : $input-color-disabled;
+            border: 1px dashed $input-color-disabled !important;
+        }
+
         &.#{$prefix}-transparent {
             border-color: transparent;
         }
 
         &.#{$prefix}-large {
-            @include component-padding(same);
+            @include component-padding(normal, true);
+        }
+
+        &.#{$prefix}-small {
+            @include component-padding(small, false);
         }
 
         &.#{$prefix}-round {
@@ -397,6 +406,25 @@ $input-print-background: $component-print-background;
             outline     : none !important;
             border-color: $input-border-color-active;
         }
+
+        &:disabled {
+            color : $input-color-disabled;
+            border: 1px dashed $input-color-disabled !important;
+        }
+
+        &.#{$prefix}-large {
+            @include component-padding(normal, true);
+            padding-right: 24px !important;
+        }
+
+        &.#{$prefix}-small {
+            @include component-padding(small, false);
+            padding-right: 24px !important;
+        }
+
+        &.#{$prefix}-transparent {
+            border-color: transparent;
+        }
     }
 
     select::-ms-expand {
@@ -453,6 +481,10 @@ $input-print-background: $component-print-background;
         &:focus {
             outline     : none !important;
             border-color: $input-border-color-active;
+        }
+
+        &:disabled {
+            border: 1px dashed $input-color-disabled !important;
         }
 
         &.#{$prefix}-transparent {
@@ -666,7 +698,8 @@ $input-print-background: $component-print-background;
         display   : inline-block;
         box-sizing: border-box;
 
-        input[type="radio"] {
+        input[type="radio"],
+        input[type="checkbox"] {
             opacity   : 0;
             position  : fixed;
             width     : 0;
@@ -698,7 +731,6 @@ $input-print-background: $component-print-background;
                     }
 
                 }
-
             }
 
             &:checked {
@@ -713,12 +745,29 @@ $input-print-background: $component-print-background;
                 }
             }
 
-            &:focus {
+            &:focus,
+            &:active {
                 +.#{$prefix}-content {
                     &:before {
-                        width       : calc(100% -6px);
-                        height      : calc(100% -6px);
-                        border-width: 3px;
+                        width       : calc(100% -4px);
+                        height      : calc(100% -4px);
+                        border-width: 2px;
+                        border-color: $input-border-color-active;
+                    }
+                }
+            }
+
+            &:disabled {
+                +.#{$prefix}-content {
+                    color      : $input-color-disabled;
+                    user-select: none;
+
+                    &:before {
+                        width      : calc(100%-2px);
+                        height     : calc(100%-2px);
+                        border     : 1px dashed $input-color-disabled !important;
+                        user-select: none;
+
                     }
                 }
             }
@@ -730,7 +779,9 @@ $input-print-background: $component-print-background;
     div.#{$prefix}-radio-custom {
 
         &.#{$prefix}-accent {
-            input[type="radio"] {
+
+            input[type="radio"],
+            input[type="checkbox"] {
                 +.#{$prefix}-content {
                     &:hover {
                         &:before {
@@ -750,7 +801,9 @@ $input-print-background: $component-print-background;
         }
 
         &.#{$prefix}-secondary {
-            input[type="radio"] {
+
+            input[type="radio"],
+            input[type="checkbox"] {
                 +.#{$prefix}-content {
                     &:hover {
                         &:before {
@@ -1103,6 +1156,11 @@ $input-print-background: $component-print-background;
                 }
             }
 
+            &:disabled {
+                color : $input-color-disabled-dark;
+                border: 1px dashed $input-color-disabled-dark !important;
+            }
+
             &:not(.#{$prefix}-error):not(.#{$prefix}-success):not(.#{$prefix}-warning):not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
                 border: 1px solid $input-border-color-inactive-dark;
 
@@ -1123,6 +1181,11 @@ $input-print-background: $component-print-background;
             &::placeholder {
                 color: $input-print-color;
             }
+
+            &:disabled {
+                color : $input-color-disabled;
+                border: 1px dashed $input-color-disabled !important;
+            }
         }
     }
 }
@@ -1136,6 +1199,10 @@ $input-print-background: $component-print-background;
                 border: 1px solid $input-border-color-inactive-dark;
             }
 
+            &:disabled {
+                color : $input-color-disabled-dark;
+                border: 1px dashed $input-color-disabled-dark !important;
+            }
 
             option {
                 background-color: $input-option-background-color-dark;
@@ -1207,14 +1274,18 @@ $input-print-background: $component-print-background;
 
             &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
                 border: 1px solid $input-border-color-inactive-dark;
+
+                &:focus {
+                    border-color: $input-border-color-active-dark;
+                }
             }
 
             &::placeholder {
                 color: $input-placeholder-color-inactive-dark;
             }
 
-            &:focus {
-                border-color: $input-border-color-active-dark;
+            &:disabled {
+                border: 1px dashed $input-color-disabled-dark !important;
             }
         }
     }
@@ -1315,7 +1386,9 @@ $input-print-background: $component-print-background;
     @include mode-dark {
         div.#{$prefix}-radio-custom {
             &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
-                input[type="radio"] {
+
+                input[type="radio"],
+                input[type="checkbox"] {
                     +.#{$prefix}-content {
                         &:before {
                             border: 1px solid $input-border-color-inactive-dark;
@@ -1335,6 +1408,20 @@ $input-print-background: $component-print-background;
                             }
                         }
                     }
+
+
+                }
+            }
+
+            input[type="radio"] {
+                &:disabled {
+                    +.#{$prefix}-content {
+                        color: $input-color-disabled-dark !important;
+
+                        &:before {
+                            border: 1px dashed $input-color-disabled-dark !important;
+                        }
+                    }
                 }
             }
         }
@@ -1344,7 +1431,9 @@ $input-print-background: $component-print-background;
 @mixin radio-custom-print {
     @include mode-print {
         div.#{$prefix}-radio-custom {
-            input[type="radio"] {
+
+            input[type="radio"],
+            input[type="checkbox"] {
                 +.#{$prefix}-content {
                     &:before {
                         border-color: $input-print-color;

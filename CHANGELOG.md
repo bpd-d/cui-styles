@@ -1,5 +1,8 @@
 # cUI Styles CHANGELOG:
-# [0.1.50] WIP
+# [0.1.51] WIP
+# [0.1.50] 2020-11-25
+* [Added] Disabled state to input elements
+* [Added] New options to input text and select
 # [0.1.49] 2020-11-25
 * [Fixed] Build issues
 # [0.1.48] 2020-11-25

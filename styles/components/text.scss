@@ -286,8 +286,4 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
         @include text-decorations;
     }
 
-    @if(not-option-disabled($options, 'article')) {
-        @include text-dark;
-    }
-
 }

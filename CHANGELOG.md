@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.49] WIP
+# [0.1.50] WIP
+# [0.1.49] 2020-11-25
+* [Fixed] Build issues
 # [0.1.48] 2020-11-25
 * [Fixed] Fixes in wrapper and new build options
 # [0.1.47] 2020-11-25

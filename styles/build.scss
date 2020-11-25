@@ -1,6 +1,6 @@
     $prefix: 'cui' !default;
 
-    @use 'variables'with($prefix: $prefix);
+    @use 'variables';
     @use "root";
     @use 'core/head';
     @use 'core/body';

@@ -5,7 +5,7 @@ $default-animation-time : $animation-duration-default;
 $short-animation-time   : $animation-duration-short;
 $default-animation-long : calc(#{$animation-duration-long}*5);
 
-@mixin animations {
+@mixin animations() {
 
     .#{$prefix}-animation-pause {
         animation-play-state: paused;
@@ -369,8 +369,13 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include animations();
-    @include animation-repeat();
     @include animations-no-transitions();
+
+    @if(not-option-disabled($options, 'repeat')) {
+        @include animation-repeat();
+    }
+
+
 }

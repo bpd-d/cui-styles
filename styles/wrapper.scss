@@ -1,0 +1,42 @@
+    $prefix: 'cui' !default;
+
+    @use 'variables'with($prefix: $prefix);
+    @use "root"with($prefix     : $prefix);
+    @use 'core/head';
+    @use 'core/body';
+    @use 'dark';
+    @use 'components/print';
+    @use 'commons';
+    @use 'base';
+    @use 'components';
+
+    @mixin wrapper($components: ()) {
+
+
+        :root {
+            @include root.variables;
+        }
+
+        html {
+            @include head.html;
+        }
+
+
+        body {
+            @include body.main-body;
+
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        @content;
+
+        // Commons
+        @include commons.definitions($components);
+        @include base.definitions($components);
+        @include components.definitions($components);
+        @include dark.definitions;
+        @include print.definitions;
+    }

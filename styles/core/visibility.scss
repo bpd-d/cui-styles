@@ -16,99 +16,100 @@
     }
 }
 
-// @mixin hidden {
-//     position: absolute !important;
-//     width   : 0 !important;
-//     height  : 0 !important;
-//     padding : 0 !important;
-//     margin  : 0 !important;
-//     overflow: hidden !important;
-// }
-
 // Definitions
-@mixin definitions {
-    .#{$prefix}-hidden {
-        display: none !important;
-    }
+@mixin definitions($options: ()) {
+    @if(not-option-disabled($options, 'hidden')) {
+        .#{$prefix}-hidden {
+            display: none !important;
+        }
 
-    .#{$prefix}-visible {
-        visibility: visible !important;
-    }
+        @if(not-option-disabled($options, 'responsive')) {
+            @include media-screen-min-small {
+                @include hide(--s);
+            }
 
-    // Media
-    @include media-screen-max-small {
-        @include visibility(--s);
-    }
+            @include media-screen-min-medium {
+                @include hide(--m);
+            }
 
-    @include media-screen-max-medium {
-        @include visibility(--m);
-    }
+            @include media-screen-min-large {
+                @include hide(--l);
+            }
 
-    @include media-screen-max-large {
-        @include visibility(--l);
-    }
-
-    @include media-screen-max-xlarge {
-        @include visibility(--xl);
-    }
-
-
-    // Media
-    @include media-screen-min-small {
-        @include hide(--s);
-    }
-
-    @include media-screen-min-medium {
-        @include hide(--m);
-    }
-
-    @include media-screen-min-large {
-        @include hide(--l);
-    }
-
-    @include media-screen-min-xlarge {
-        @include hide(--xl);
-    }
-
-    @media(orientation: landscape) {
-        @include visibility(landscape)
-    }
-
-    /* smartphones, touchscreens */
-    @media (hover: none) and (pointer: coarse) {
-
-        .#{$prefix}-hidden-touch {
-            @include hidden();
+            @include media-screen-min-xlarge {
+                @include hide(--xl);
+            }
         }
     }
 
-    /* mouse, touch pad */
-    @media (hover: hover) and (pointer: fine) {
+    @if(not-option-disabled($options, 'visible')) {
+        .#{$prefix}-visible {
+            visibility: visible !important;
+        }
 
-        .#{$prefix}-hidden-precise {
-            @include hidden();
+        @if(not-option-disabled($options, 'responsive')) {
+            @include media-screen-max-small {
+                @include visibility(--s);
+            }
+
+            @include media-screen-max-medium {
+                @include visibility(--m);
+            }
+
+            @include media-screen-max-large {
+                @include visibility(--l);
+            }
+
+            @include media-screen-max-xlarge {
+                @include visibility(--xl);
+            }
         }
     }
 
-    // Hover
+    @if(not-option-disabled($options, 'landscape')) {
+        @media(orientation: landscape) {
+            @include visibility("-landscape")
+        }
+    }
 
-    .#{$prefix}-hover-trigger {
-        &:not(:hover):not(:focus) {
-            .#{$prefix}-hidden-hover {
+    @if(not-option-disabled($options, 'touch')) {
+
+        /* smartphones, touchscreens */
+        @media (hover: none) and (pointer: coarse) {
+
+            .#{$prefix}-hidden-touch {
                 @include hidden();
             }
         }
 
+        /* mouse, touch pad */
+        @media (hover: hover) and (pointer: fine) {
 
-        .#{$prefix}-invisible-hover {
-            &:not(:focus-within) {
-                opacity: 0;
+            .#{$prefix}-hidden-precise {
+                @include hidden();
             }
         }
+    }
 
-        &:hover {
+    @if(not-option-disabled($options, 'hover')) {
+        .#{$prefix}-hover-trigger {
+            &:not(:hover):not(:focus) {
+                .#{$prefix}-hidden-hover {
+                    @include hidden();
+                }
+            }
+
+
             .#{$prefix}-invisible-hover {
-                opacity: 1;
+                &:not(:focus-within) {
+                    opacity: 0;
+                }
+            }
+
+            &:hover {
+                .#{$prefix}-invisible-hover {
+                    opacity: 1;
+                }
             }
         }
     }

@@ -4,6 +4,7 @@
 * 
 */
 @use '../variables'as *;
+@use '../mixins'as *;
 // Variables
 $section-padding-normal              : $padding-global;
 $section-padding-large               : $padding-global-large;
@@ -27,12 +28,17 @@ $section-color-inverse-dark :$component-color-inverse-dark;
         display: block;
         padding: $section-padding-normal;
 
+
+    }
+}
+
+@mixin section-space() {
+    .#{$prefix}-section {
         &.#{$prefix}-space {
             padding: $section-padding-large;
         }
     }
 }
-
 
 
 @mixin section-print {
@@ -44,8 +50,14 @@ $section-color-inverse-dark :$component-color-inverse-dark;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include section();
-    //  @include section-dark();
-    @include section-print();
+
+    @if(not-option-disabled($options, 'space')) {
+        @include section-space();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include section-print();
+    }
 }

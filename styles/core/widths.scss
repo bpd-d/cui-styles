@@ -59,7 +59,7 @@
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     [class*="#{$prefix}-width"] {
         box-sizing: border-box;
         width     : 100%;
@@ -84,23 +84,23 @@
 
     @include widths();
 
-    // @include media-screen-max-small {
-    //     @include widths_small();
-    // }
+    @if(not-option-disabled($options, 'responsive')) {
+        @include media-screen-min-small {
+            @include widths(--s);
+        }
 
-    @include media-screen-min-small {
-        @include widths(--s);
+        @include media-screen-min-medium {
+            @include widths(--m);
+        }
+
+        @include media-screen-min-large {
+            @include widths(--l);
+        }
+
+        @include media-screen-min-xlarge {
+            @include widths(--xl);
+        }
     }
 
-    @include media-screen-min-medium {
-        @include widths(--m);
-    }
 
-    @include media-screen-min-large {
-        @include widths(--l);
-    }
-
-    @include media-screen-min-xlarge {
-        @include widths(--xl);
-    }
 }

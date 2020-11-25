@@ -363,3 +363,25 @@ $item-background-default: $component-background-default;
         @content;
     }
 }
+
+@mixin enumerate-base-elements($elements: (), $base) {
+    $list: $elements;
+
+    @if(length($list)==0) {
+        $list: $base;
+    }
+
+    @each $name,
+    $options in $list {
+        @debug "Compile element: #{$name} with options: ";
+        @debug $options;
+
+        $opts: ();
+
+        @if($options !=null) {
+            $opts: $options;
+        }
+
+        @content
+    }
+}

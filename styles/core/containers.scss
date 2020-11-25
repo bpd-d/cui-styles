@@ -24,34 +24,8 @@ $container-padding-normal: $padding-global;
     .#{$prefix}-container {
         @include component-padding();
 
-        
-
         &.#{$prefix}-no-padding {
             padding: 0;
-        }
-
-        &.#{$prefix}-space {
-            padding: $container-padding-large;
-        }
-
-        &.#{$prefix}-lean {
-            @include component-padding(small, true);
-        }
-
-        &.#{$prefix}-center {
-            display        : flex;
-            justify-content: center;
-            align-items    : center;
-        }
-
-        &.#{$prefix}-accent {
-            background-color: $container-background-accent;
-            color           : $container-color-inverse;
-        }
-
-        &.#{$prefix}-secondary {
-            background-color: $container-background-secondary;
-            color           : $container-color-inverse;
         }
 
         &.#{$prefix}-inverse {
@@ -61,23 +35,49 @@ $container-padding-normal: $padding-global;
     }
 }
 
-@mixin container-dark {
+@mixin container-center {
+    .#{$prefix}-container {
+        &.#{$prefix}-center {
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+        }
+    }
+}
 
-    /*
-        * Dark
-        */
-    .#{$prefix}-dark {
+@mixin container-lean {
+    .#{$prefix}-container {
+        &.#{$prefix}-lean {
+            @include component-padding(small, true);
+        }
+    }
+}
+
+@mixin container-space {
+    .#{$prefix}-container {
+        &.#{$prefix}-space {
+            padding: $container-padding-large;
+        }
+    }
+}
+
+@mixin container-theme {
+    .#{$prefix}-container {
+        &.#{$prefix}-accent {
+            background-color: $container-background-accent;
+            color           : $container-color-inverse;
+        }
+
+        &.#{$prefix}-secondary {
+            background-color: $container-background-secondary;
+            color           : $container-color-inverse;
+        }
+    }
+}
+
+@mixin container-theme-dark {
+    @include mode-dark {
         .#{$prefix}-container {
-            &.#{$prefix}-default {
-                background-color: $container-background-default-dark;
-                color           : $container-color-default-dark;
-            }
-
-            &.#{$prefix}-inverse {
-                background-color: $container-background-inverse-dark;
-                color           : $container-color-inverse-dark;
-            }
-
             &.#{$prefix}-accent {
                 background-color: $container-background-accent-dark;
             }
@@ -89,12 +89,32 @@ $container-padding-normal: $padding-global;
     }
 }
 
+@mixin container-dark {
+
+    /*
+        * Dark
+        */
+    @include mode-dark {
+        .#{$prefix}-container {
+            &.#{$prefix}-default {
+                background-color: $container-background-default-dark;
+                color           : $container-color-default-dark;
+            }
+
+            &.#{$prefix}-inverse {
+                background-color: $container-background-inverse-dark;
+                color           : $container-color-inverse-dark;
+            }
+        }
+    }
+}
+
 @mixin container-print {
     /*
 * Print
 */
 
-    .#{$prefix}-print {
+    @include mode-print {
         .#{$prefix}-container {
             background-color: $component-print-background;
             color           : $component-print-color;
@@ -102,8 +122,35 @@ $container-padding-normal: $padding-global;
     }
 }
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     @include container();
-    @include container-dark();
-    @include container-print();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include container-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include container-print();
+    }
+
+    @if(not-option-disabled($options, 'lean')) {
+        @include container-lean();
+    }
+
+    @if(not-option-disabled($options, 'center')) {
+        @include container-center();
+    }
+
+    @if(not-option-disabled($options, 'space')) {
+        @include container-space();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include container-theme();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include container-theme-dark();
+        }
+    }
+
 }

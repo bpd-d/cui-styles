@@ -1,6 +1,6 @@
 @use "../variables.scss"as *;
 
-@mixin definitions {
+@mixin definitions($options) {
     .#{$prefix}-sticky-container {
         position: relative;
     }

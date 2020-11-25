@@ -4,7 +4,7 @@ $transition-toggle-time : $animation-duration-short;
 $transition-toggle-delay: $animation-duration-short;
 
 
-@mixin definitions {
+@mixin definitions($options:()) {
     .#{$prefix}-transition-trigger {
         overflow: hidden;
 

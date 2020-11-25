@@ -47,262 +47,64 @@ $sides: "top",
     }
 }
 
-@mixin margin($size) {
-    /**
-    * Normal
-    */
+@mixin padding($opt:"", $size:"", $value:"") {
+    $option: "";
 
-    .#{$prefix}-margin--#{$size} {
-        margin: $item-margin !important;
+    @if ($opt !="") {
+        $option: "-#{$opt}";
     }
 
-    .#{$prefix}-margin-top--#{$size} {
-        margin-top: $item-margin !important;
+    .#{$prefix}-padding#{$option}#{$size} {
+        padding: $value !important;
     }
 
-    .#{$prefix}-margin-bottom--#{$size} {
-        margin-bottom: $item-margin !important;
+    .#{$prefix}-padding#{$option}-vertical#{$size} {
+        padding: $value 0 !important;
     }
 
-    .#{$prefix}-margin-left--#{$size} {
-        margin-left: $item-margin !important;
-    }
-
-    .#{$prefix}-margin-right--#{$size} {
-        margin-right: $item-margin !important;
-    }
-
-    /**
-    * Small
-    */
-
-    .#{$prefix}-margin-small--#{$size} {
-        margin: $item-margin-small !important;
-    }
-
-    .#{$prefix}-margin-small-top--#{$size} {
-        margin-top: $item-margin-small !important;
-    }
-
-    .#{$prefix}-margin-small-bottom--#{$size} {
-        margin-bottom: $item-margin-small !important;
-    }
-
-    .#{$prefix}-margin-small-left--#{$size} {
-        margin-left: $item-margin-small !important;
-    }
-
-    .#{$prefix}-margin-small-right--#{$size} {
-        margin-right: $item-margin-small !important;
-    }
-
-    /**
-    * Large
-    */
-
-    .#{$prefix}-margin-large--#{$size} {
-        margin: $item-margin-large !important;
-    }
-
-    .#{$prefix}-margin-large-top--#{$size} {
-        margin-top: $item-margin-large !important;
-    }
-
-    .#{$prefix}-margin-large-bottom--#{$size} {
-        margin-bottom: $item-margin-large !important;
-    }
-
-    .#{$prefix}-margin-large-left--#{$size} {
-        margin-left: $item-margin-large !important;
-    }
-
-    .#{$prefix}-margin-large-right--#{$size} {
-        margin-right: $item-margin-large !important;
-    }
-
-}
-
-@mixin padding($size, $sides...) {
-    .#{$prefix}-padding--#{$size} {
-        padding: $item-padding !important;
-    }
-
-    .#{$prefix}-padding-vertical--#{$size} {
-        padding: $item-padding 0 !important;
-    }
-
-    .#{$prefix}-padding-horizontal--#{$size} {
-        padding: 0 $item-padding !important;
+    .#{$prefix}-padding#{$option}-horizontal#{$size} {
+        padding: 0 $value !important;
     }
 
     @each $side in $sides {
-        .#{$prefix}-padding-#{$side}--#{$size} {
-            padding-#{$side}: $item-padding !important;
+        .#{$prefix}-padding#{$option}-#{$side}#{$size} {
+            padding-#{$side}: $value !important;
         }
     }
 }
 
-@mixin margins {
-    .#{$prefix}-margin {
-        margin: $item-margin !important;
+@mixin margin($opt:"", $size:"", $value:"") {
+    $option: "";
+
+    @if ($opt !="") {
+        $option: "-#{$opt}";
     }
 
-    .#{$prefix}-margin-top {
-        margin-top: $item-margin !important;
+    .#{$prefix}-margin#{$option}#{$size} {
+        margin: $value !important;
     }
 
-    .#{$prefix}-margin-bottom {
-        margin-bottom: $item-margin !important;
+    .#{$prefix}-margin#{$option}-vertical#{$size} {
+        margin: $value 0 !important;
     }
 
-    .#{$prefix}-margin-left {
-        margin-left: $item-margin !important;
+    .#{$prefix}-margin#{$option}-horizontal#{$size} {
+        margin: 0 $value !important;
     }
 
-    .#{$prefix}-margin-right {
-        margin-right: $item-margin !important;
+    @each $side in $sides {
+        .#{$prefix}-margin#{$option}-#{$side}#{$size} {
+            margin-#{$side}: $value !important;
+        }
     }
+}
 
-    .#{$prefix}-margin-vertical {
-        margin: $item-margin 0 !important;
-    }
-
-    .#{$prefix}-margin-horizontal {
-        margin: 0 $item-margin !important;
-    }
-
-    .#{$prefix}-margin-auto {
+@mixin margin-auto($size: "") {
+    .#{$prefix}-margin-auto#{$size} {
         margin: 0 auto !important;
     }
 }
 
-@mixin margins-small {
-    /**
-    * Small
-    */
-
-    .#{$prefix}-margin-small {
-        margin: $item-margin-small !important;
-    }
-
-    .#{$prefix}-margin-small-top {
-        margin-top: $item-margin-small !important;
-    }
-
-    .#{$prefix}-margin-small-bottom {
-        margin-bottom: $item-margin-small !important;
-    }
-
-    .#{$prefix}-margin-small-left {
-        margin-left: $item-margin-small !important;
-    }
-
-    .#{$prefix}-margin-small-right {
-        margin-right: $item-margin-small !important;
-    }
-}
-
-@mixin margins-large {
-
-    /**
-* Large
-*/
-
-    .#{$prefix}-margin-large {
-        margin: $item-margin-large !important;
-    }
-
-    .#{$prefix}-margin-large-top {
-        margin-top: $item-margin-large !important;
-    }
-
-    .#{$prefix}-margin-large-bottom {
-        margin-bottom: $item-margin-large !important;
-    }
-
-    .#{$prefix}-margin-large-left {
-        margin-left: $item-margin-large !important;
-    }
-
-    .#{$prefix}-margin-large-right {
-        margin-right: $item-margin-large !important;
-    }
-}
-
-
-@mixin paddings {
-    .#{$prefix}-padding {
-        padding: $item-padding !important;
-    }
-
-    .#{$prefix}-padding-top {
-        padding-top: $item-padding !important;
-    }
-
-    .#{$prefix}-padding-bottom {
-        padding-bottom: $item-padding !important;
-    }
-
-    .#{$prefix}-padding-left {
-        padding-left: $item-padding !important;
-    }
-
-    .#{$prefix}-padding-right {
-        padding-left: $item-padding !important;
-    }
-
-    .#{$prefix}-padding-vertical {
-        padding: $item-padding 0 !important;
-    }
-
-    .#{$prefix}-padding-horizontal {
-        padding: 0 $item-padding !important;
-    }
-}
-
-@mixin paddings-small {
-    .#{$prefix}-padding-small {
-        padding: $item-padding-small !important;
-    }
-
-    .#{$prefix}-padding-small-top {
-        padding-top: $item-padding-small !important;
-    }
-
-    .#{$prefix}-padding-small-bottom {
-        padding-bottom: $item-padding-small !important;
-    }
-
-    .#{$prefix}-padding-small-left {
-        padding-left: $item-padding-small !important;
-    }
-
-    .#{$prefix}-padding-small-right {
-        padding-left: $item-padding-small !important;
-    }
-}
-
-@mixin paddings-large {
-    .#{$prefix}-padding-large {
-        padding: $item-padding-large !important;
-    }
-
-    .#{$prefix}-padding-large-top {
-        padding-top: $item-padding-large !important;
-    }
-
-    .#{$prefix}-padding-large-bottom {
-        padding-bottom: $item-padding-large !important;
-    }
-
-    .#{$prefix}-padding-large-left {
-        padding-left: $item-padding-large !important;
-    }
-
-    .#{$prefix}-padding-large-right {
-        padding-left: $item-padding-large !important;
-    }
-}
 
 /**
 * To be used when marigns on first and last element dont work
@@ -314,39 +116,160 @@ $sides: "top",
     }
 }
 
-/**
-* Media Queries
-*/
-@mixin media {
+
+@mixin responsive($options: ()) {
     @include media-screen-min-small {
-        @include margin(s);
-        @include padding(s);
-        @include remove-padding(--s);
-        @include remove-margin(--s);
+        @if(not-option-disabled($options, 'margin')) {
+            @include margin("", --s, $item-margin);
+
+            @if(not-option-disabled($options, 'remove')) {
+                @include remove-margin(--s);
+            }
+
+            @if(not-option-disabled($options, 'auto')) {
+                @include margin-auto(--s);
+            }
+
+            @if(not-option-disabled($options, 'small')) {
+                @include margin("small", --s, $item-margin-small);
+            }
+
+            @if(not-option-disabled($options, 'large')) {
+                @include margin("large", --s, $item-margin-large);
+            }
+        }
+
+        @if(not-option-disabled($options, 'padding')) {
+            @include padding("", "--s", $item-padding);
+
+            @if(not-option-disabled($options, 'remove')) {
+                @include remove-padding(--s);
+            }
+
+            @if(not-option-disabled($options, 'small')) {
+                @include padding("small", "--s", $item-padding-small);
+            }
+
+            @if(not-option-disabled($options, 'large')) {
+                @include padding("large", "--s", $item-padding-large);
+            }
+        }
     }
 
     @include media-screen-min-medium {
-        @include margin(m);
-        @include padding(m);
-        @include remove-padding(--m);
-        @include remove-margin(--m);
+        @if(not-option-disabled($options, 'margin')) {
+            @include margin("", --m, $item-margin);
+
+            @if(not-option-disabled($options, 'remove')) {
+                @include remove-margin(--m);
+            }
+
+            @if(not-option-disabled($options, 'auto')) {
+                @include margin-auto(--m);
+            }
+
+            @if(not-option-disabled($options, 'small')) {
+                @include margin("small", --m, $item-margin-small);
+            }
+
+            @if(not-option-disabled($options, 'large')) {
+                @include margin("large", --m, $item-margin-large);
+            }
+        }
+
+        @if(not-option-disabled($options, 'padding')) {
+            @include padding("", "--m", $item-padding);
+
+            @if(not-option-disabled($options, 'remove')) {
+                @include remove-padding(--m);
+            }
+
+            @if(not-option-disabled($options, 'small')) {
+                @include padding("small", "--m", $item-padding-small);
+            }
+
+            @if(not-option-disabled($options, 'large')) {
+                @include padding("large", "--m", $item-padding-large);
+            }
+        }
     }
 
     @include media-screen-min-large {
-        @include margin(l);
-        @include padding(l);
-        @include remove-padding(--l);
-        @include remove-margin(--l);
+        @if(not-option-disabled($options, 'margin')) {
+            @include margin("", --l, $item-margin);
+
+            @if(not-option-disabled($options, 'remove')) {
+                @include remove-margin(--l);
+            }
+
+            @if(not-option-disabled($options, 'auto')) {
+                @include margin-auto(--l);
+            }
+
+            @if(not-option-disabled($options, 'small')) {
+                @include margin("small", --l, $item-margin-small);
+            }
+
+            @if(not-option-disabled($options, 'large')) {
+                @include margin("large", --l, $item-margin-large);
+            }
+        }
+
+        @if(not-option-disabled($options, 'padding')) {
+            @include padding("", "--l", $item-padding);
+
+            @if(not-option-disabled($options, 'remove')) {
+                @include remove-padding(--l);
+            }
+
+            @if(not-option-disabled($options, 'small')) {
+                @include padding("small", "--l", $item-padding-small);
+            }
+
+            @if(not-option-disabled($options, 'large')) {
+                @include padding("large", "--l", $item-padding-large);
+            }
+        }
     }
 
     @include media-screen-min-xlarge {
-        @include margin(xl);
-        @include padding(xl);
-        @include remove-padding(--xl);
-        @include remove-margin(--xl);
+        @if(not-option-disabled($options, 'margin')) {
+            @include margin("", --xl, $item-margin);
+
+            @if(not-option-disabled($options, 'remove')) {
+                @include remove-margin(--xl);
+            }
+
+            @if(not-option-disabled($options, 'auto')) {
+                @include margin-auto(--xl);
+            }
+
+            @if(not-option-disabled($options, 'small')) {
+                @include margin("small", --xl, $item-margin-small);
+            }
+
+            @if(not-option-disabled($options, 'large')) {
+                @include margin("large", --xl, $item-margin-large);
+            }
+        }
+
+        @if(not-option-disabled($options, 'padding')) {
+            @include padding("", "--xl", $item-padding);
+
+            @if(not-option-disabled($options, 'remove')) {
+                @include remove-padding(--xl);
+            }
+
+            @if(not-option-disabled($options, 'small')) {
+                @include padding("small", "--xl", $item-padding-small);
+            }
+
+            @if(not-option-disabled($options, 'large')) {
+                @include padding("large", "--xl", $item-padding-large);
+            }
+        }
     }
 }
-
 
 @mixin overflow {
     .#{$prefix}-overflow-hidden {
@@ -408,18 +331,60 @@ $sides: "top",
     }
 }
 
-@mixin definitions {
-    @include margins();
-    @include margins-small();
-    @include margins-large();
-    @include paddings();
-    @include paddings-small();
-    @include paddings-large();
-    @include clearfix();
-    @include display();
-    @include media();
-    @include overflow();
-    @include remove-padding();
-    @include remove-margin();
-    @include wrapper();
+@mixin definitions($options: ()) {
+    @if(not-option-disabled($options, 'clearfix')) {
+        @include clearfix();
+    }
+
+    @if(not-option-disabled($options, 'display')) {
+        @include display();
+    }
+
+    @if(not-option-disabled($options, 'wrapper')) {
+        @include wrapper();
+    }
+
+    @if(not-option-disabled($options, 'overflow')) {
+        @include overflow();
+    }
+
+    @if(not-option-disabled($options, 'margin')) {
+        @include margin("", "", $item-margin);
+
+        @if(not-option-disabled($options, 'remove')) {
+            @include remove-margin();
+        }
+
+        @if(not-option-disabled($options, 'auto')) {
+            @include margin-auto();
+        }
+
+        @if(not-option-disabled($options, 'small')) {
+            @include margin("small", "", $item-margin-small);
+        }
+
+        @if(not-option-disabled($options, 'large')) {
+            @include margin("large", "", $item-margin-large);
+        }
+    }
+
+    @if(not-option-disabled($options, 'padding')) {
+        @include padding("", "", $item-padding);
+
+        @if(not-option-disabled($options, 'remove')) {
+            @include remove-padding();
+        }
+
+        @if(not-option-disabled($options, 'small')) {
+            @include padding("small", "", $item-padding-small);
+        }
+
+        @if(not-option-disabled($options, 'large')) {
+            @include padding("large", "", $item-padding-large);
+        }
+    }
+
+    @if(not-option-disabled($options, 'responsive')) {
+        @include responsive($options);
+    }
 }

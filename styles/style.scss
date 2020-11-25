@@ -30,8 +30,8 @@ body {
 
 
 // Commons
-@include commons.definitions;
-@include base.definitions;
+@include commons.definitions();
+@include base.definitions();
 @include components.definitions();
 @include dark.definitions;
 @include print.definitions;

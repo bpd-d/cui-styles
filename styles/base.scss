@@ -1,3 +1,4 @@
+@use 'mixins'as *;
 @use 'core/flex';
 @use 'core/heads';
 @use 'core/containers';
@@ -9,15 +10,69 @@
 @use 'core/sticky';
 @use 'core/focus';
 
-@mixin definitions {
-    @include flex.definitions;
-    @include heads.definitions;
-    @include containers.definitions;
-    @include section.definitions;
-    @include grid.definitions;
-    @include position.definitions;
-    @include transition.definitions;
-    @include slide.definitions;
-    @include sticky.definitions;
-    //@include focus.definitions;
+$base-elements:("flex",
+    "heads",
+    "containers",
+    "section",
+    "grid",
+    "position",
+    "transition",
+    "slide",
+    "sticky");
+
+@mixin definitions($base:()) {
+
+    $list: $base;
+
+    @if(length($list)==0) {
+        $list: $base-elements;
+    }
+
+    @each $name,
+    $options in $list {
+        @debug "Compile element: #{$name} with options: ";
+        @debug $options;
+
+        $opts: ();
+
+        @if($options !=null) {
+            $opts: $options;
+        }
+
+        @if $name=="flex" {
+            @include flex.definitions($opts);
+        }
+
+        @if $name=="heading" {
+            @include heads.definitions($opts);
+        }
+
+        @if $name=="containers" {
+            @include containers.definitions($opts);
+        }
+
+        @if $name=="section" {
+            @include section.definitions($opts);
+        }
+
+        @if $name=="grid" {
+            @include grid.definitions($opts);
+        }
+
+        @if $name=="position" {
+            @include position.definitions($opts);
+        }
+
+        @if $name=="transition" {
+            @include transition.definitions($opts);
+        }
+
+        @if $name=="slide" {
+            @include slide.definitions($opts);
+        }
+
+        @if $name=="sticky" {
+            @include sticky.definitions($opts);
+        }
+    }
 }

@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.1.47] WIP
+# [0.1.48] WIP
+# [0.1.47] 2020-11-25
+* [Changed] Added more elements to new compilation options
 # [0.1.46] 2020-11-24
 * [Added] New compilation option - list of compoments to build can be defined along with options
 * [Change] Switcher sizes and shade option

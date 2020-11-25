@@ -61,14 +61,40 @@
     }
 }
 
-@mixin definitions {
+
+@mixin flex-base {
     .#{$prefix}-flex {
         display        : flex !important;
         flex-wrap      : wrap;
         justify-content: start;
         align-items    : flex-start;
-        // Justify
+    }
+}
 
+@mixin flex-order {
+    @include order();
+}
+
+@mixin flex-order-responsive {
+    @include media-screen-min-small {
+        @include order(--s);
+    }
+
+    @include media-screen-min-medium {
+        @include order(--m);
+    }
+
+    @include media-screen-min-large {
+        @include order(--l);
+    }
+
+    @include media-screen-min-xlarge {
+        @include order(--xl);
+    }
+}
+
+@mixin flex-align {
+    .#{$prefix}-flex {
         &.#{$prefix}-center {
             justify-content: center;
         }
@@ -102,9 +128,31 @@
         &.#{$prefix}-stretch {
             align-items: stretch;
         }
+    }
+}
 
-        // Wrap
+@mixin flex-align-responsive {
+    .#{$prefix}-flex {
+        @include media-screen-min-small {
+            @include common(--s);
+        }
 
+        @include media-screen-min-medium {
+            @include common(--m);
+        }
+
+        @include media-screen-min-large {
+            @include common(--l);
+        }
+
+        @include media-screen-min-xlarge {
+            @include common(--xl);
+        }
+    }
+}
+
+@mixin flex-wrap {
+    .#{$prefix}-flex {
         &.#{$prefix}-nowrap {
             flex-wrap: nowrap;
         }
@@ -112,9 +160,11 @@
         &.#{$prefix}-wrap-rev {
             flex-wrap: wrap-reverse;
         }
+    }
+}
 
-        // Items
-
+@mixin flex-grow {
+    .#{$prefix}-flex {
         .#{$prefix}-flex-grow {
             flex: 1 1 auto;
         }
@@ -122,35 +172,48 @@
         .#{$prefix}-flex-shrink {
             flex: 0 1 auto;
         }
-
     }
+}
 
-    @include order();
-
-    @include media-screen-min-small {
-        @include order(--s);
-        @include common(--s);
-    }
-
-    @include media-screen-min-medium {
-        @include order(--m);
-        @include common(--m);
-    }
-
-    @include media-screen-min-large {
-        @include order(--l);
-        @include common(--l);
-    }
-
-    @include media-screen-min-xlarge {
-        @include order(--xl);
-        @include common(--xl);
-    }
-
+@mixin flex-center {
     .#{$prefix}-flex-center {
         display        : flex !important;
         justify-content: center;
         align-items    : center;
         overflow       : hidden;
     }
+}
+
+@mixin definitions($options: ()) {
+    @include flex-base();
+
+    @if(not-option-disabled($options, 'center')) {
+        @include flex-center()
+    }
+
+    @if(not-option-disabled($options, 'grow')) {
+        @include flex-grow();
+    }
+
+    @if(not-option-disabled($options, 'wrap')) {
+        @include flex-wrap();
+    }
+
+    @if(not-option-disabled($options, 'order')) {
+        @include flex-order();
+
+        @if(not-option-disabled($options, 'responsive')) {
+            @include flex-order-responsive();
+        }
+
+    }
+
+    @if(not-option-disabled($options, 'align')) {
+        @include flex-align();
+
+        @if(not-option-disabled($options, 'responsive')) {
+            @include flex-align-responsive();
+        }
+    }
+
 }

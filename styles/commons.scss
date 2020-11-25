@@ -4,10 +4,51 @@
 @use 'core/height';
 @use 'animations';
 
-@mixin definitions {
-    @include visibility.definitions;
-    @include spaces.definitions;
-    @include widths.definitions;
-    @include height.definitions;
-    @include animations.definitions;
+
+$commons-list: ("visibility",
+    "spaces",
+    "widths",
+    "height",
+    "animations"
+);
+
+@mixin definitions($commons: ()) {
+
+    $list: $commons;
+
+    @if(length($list)==0) {
+        $list: $commons-list;
+    }
+
+    @each $name,
+    $options in $list {
+        @debug "Compile common element: #{$name} with options: ";
+        @debug $options;
+
+        $opts: ();
+
+        @if($options !=null) {
+            $opts: $options;
+        }
+
+        @if $name=="visibility" {
+            @include visibility.definitions($opts);
+        }
+
+        @if $name=="spaces" {
+            @include spaces.definitions($opts);
+        }
+
+        @if $name=="widths" {
+            @include widths.definitions($opts);
+        }
+
+        @if $name=="height" {
+            @include height.definitions($opts);
+        }
+
+        @if $name=="animations" {
+            @include animations.definitions($opts);
+        }
+    }
 }

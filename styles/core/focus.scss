@@ -57,7 +57,10 @@ $opts: 'accent',
     }
 }
 
-@mixin definitions {
+@mixin definitions($options:()) {
     @include focus();
-    @include focus-dark();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include focus-dark();
+    }
 }

@@ -1,6 +1,6 @@
 @use "../variables.scss"as *;
 
-@mixin definitions {
+@mixin definitions($options: ()) {
     .#{$prefix}-slide {
         scroll-snap-type          : x mandatory;
         -webkit-overflow-scrolling: touch;

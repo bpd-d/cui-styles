@@ -11,58 +11,51 @@ $head-margin      : $margin-global;
 $head-margin-large: $margin-global-large;
 $head-margin-small: $margin-global-small;
 
-@mixin headings {
+@mixin first-not-only {
+    &:not(:only-child) {
+        &:first-child {
+            margin-top: 0px;
+        }
+    }
+}
+
+@mixin h1 {
     .#{$prefix}-h1 {
         font-size  : $head-font-xlarge;
         font-weight: $head-text-weight-thin !important;
         margin     : $head-margin-large 0px;
 
-        &:not(:only-child) {
-            &:first-child {
-                margin-top: 0px;
-            }
-        }
+        @include first-not-only();
     }
+}
 
+@mixin h2 {
     .#{$prefix}-h2 {
         font-size  : $head-font-larger;
         font-weight: $head-text-weight-thin !important;
         margin     : $head-margin-large 0px;
-
-        &:not(:only-child) {
-            &:first-child {
-                margin-top: 0px;
-            }
-        }
-
+        @include first-not-only();
     }
+}
 
+@mixin h3 {
     .#{$prefix}-h3 {
         font-size  : $head-font-large;
         font-weight: $head-text-weight-bold !important;
         margin     : $head-margin 0px;
 
-        &:not(:only-child) {
-            &:first-child {
-                margin-top: 0px;
-            }
-        }
+        @include first-not-only();
     }
+}
 
+@mixin h4 {
     .#{$prefix}-h4 {
         font-size  : $head-font-normal;
         font-weight: $head-text-weight-bold !important;
         margin     : $head-margin-small 0px;
 
-        &:not(:only-child) {
-            &:first-child {
-                margin-top: 0px;
-            }
-        }
+        @include first-not-only();
     }
-
-
-
 }
 
 @mixin title {
@@ -72,7 +65,25 @@ $head-margin-small: $margin-global-small;
     }
 }
 
-@mixin definitions {
-    @include headings;
-    @include title;
+@mixin definitions($options: ()) {
+
+    @if(not-option-disabled($options, 'title')) {
+        @include title;
+    }
+
+    @if(not-option-disabled($options, 'h1')) {
+        @include h1();
+    }
+
+    @if(not-option-disabled($options, 'h2')) {
+        @include h2();
+    }
+
+    @if(not-option-disabled($options, 'h3')) {
+        @include h3();
+    }
+
+    @if(not-option-disabled($options, 'h4')) {
+        @include h4();
+    }
 }

@@ -1,7 +1,7 @@
     $prefix: 'cui' !default;
 
     @use 'variables'with($prefix: $prefix);
-    @use "root"with($prefix     : $prefix);
+    @use "root";
     @use 'core/head';
     @use 'core/body';
     @use 'dark';
@@ -11,10 +11,10 @@
     @use 'components';
 
     @mixin wrapper($components: ()) {
-
+        @debug "Start build using wrapper";
 
         :root {
-            @include root.variables;
+            @include root.variables($prefix);
         }
 
         html {

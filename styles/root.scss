@@ -1,6 +1,4 @@
-$prefix: 'cui' !default;
-
-@mixin variables {
+@mixin variables($prefix:"cui") {
     --#{$prefix}-font-size                 : 16px;
     --#{$prefix}-line-height               : 24px;
     --#{$prefix}-animation-time            : 0.3s;

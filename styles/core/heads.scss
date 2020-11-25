@@ -1,4 +1,5 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $head-text-weight-thin: $text-weight-thin;
 $head-text-weight-bold: $text-weight-bold;

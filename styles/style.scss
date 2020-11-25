@@ -1,7 +1,7 @@
 $prefix : 'cui' !default;
 
 @use 'variables'with($prefix: $prefix);
-@use "root"with($prefix     : $prefix);
+@use "root";
 @use 'core/head';
 @use 'core/body';
 @use 'dark';
@@ -10,8 +10,10 @@ $prefix : 'cui' !default;
 @use 'base';
 @use 'components';
 
+@debug "Start build";
+
 :root {
-    @include root.variables;
+    @include root.variables($prefix);
 }
 
 html {

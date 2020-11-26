@@ -26,6 +26,8 @@ $button-background-warning-active     : $component-background-warning-active;
 $button-background-success            : $component-background-success;
 $button-background-success-hover      : $component-background-success-hover;
 $button-background-success-active     : $component-background-success-active;
+$button-color-disabled                : $component-color-muted;
+$button-color-disabled-dark           : $component-color-muted-dark;
 $button-color-default                 : $component-color-default;
 $button-color-inverse                 : $component-color-inverse;
 $button-color-default-dark            : $component-color-default-dark;
@@ -39,7 +41,7 @@ $button-border-color-active-dark      : $component-color-default-dark;
 $button-outline                       : $outline-default;
 $button-line-height                   : $line-height;
 $button-font-size                     : $font-normal;
-
+$button-disabled-border-style         : $component-disabled-border-style;
 
 @mixin button {
 
@@ -89,6 +91,14 @@ $button-font-size                     : $font-normal;
             background-color: $button-background-shade;
             color           : $button-color-default;
             border-color    : $button-background-shade;
+        }
+
+        &.#{$prefix}-disabled {
+            color         : $button-color-disabled !important;
+            border-color  : $button-color-disabled !important;
+            border-style  : $button-disabled-border-style !important;
+            pointer-events: none;
+            user-select   : none;
         }
 
         &.#{$prefix}-rounded {
@@ -318,6 +328,11 @@ $button-font-size                     : $font-normal;
                 background-color: $button-background-shade-dark;
                 color           : $button-color-default-dark;
                 border-color    : $button-background-shade-dark;
+            }
+
+            &.#{$prefix}-disabled {
+                color       : $button-color-disabled-dark !important;
+                border-color: $button-color-disabled-dark !important;
             }
 
             &:hover,

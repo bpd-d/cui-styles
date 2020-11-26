@@ -1,5 +1,10 @@
 # cUI Styles CHANGELOG:
-# [0.1.51] WIP
+# [0.1.52] WIP
+# [0.1.51] 2020-11-26
+* [Added] Disabled state to input-mix element
+* [Added] Disabled state to button
+* [Changed] Switch modifier classes have been moved to parent element
+* [Fixed] Custom radio/checkbox visual appearance when checked and focused
 # [0.1.50] 2020-11-25
 * [Added] Disabled state to input elements
 * [Added] New options to input text and select

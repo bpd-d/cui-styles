@@ -4,71 +4,130 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
+@mixin hide_base() {
+    display: none !important;
+}
+
+@mixin invisible_base {
+    opacity: 0 !important;
+}
+
 @mixin visibility($size) {
     .#{$prefix}-visible#{$size} {
-        display: none !important;
+        @include invisible_base();
+    }
+}
+
+@mixin unhide($size) {
+    .#{$prefix}-unhidden#{$size} {
+        @include hide_base();
     }
 }
 
 @mixin hide($size) {
     .#{$prefix}-hidden#{$size} {
-        display: none !important;
+        @include hide_base();
+    }
+}
+
+@mixin invisible($size) {
+    .#{$prefix}-invisible#{$size} {
+        @include invisible_base();
+    }
+}
+
+@mixin invisble-hide-on($name: "", $options:()) {
+    @if(not-option-disabled($options, 'invisible')) {
+        .#{$prefix}-invisible#{$name} {
+            @include invisible_base()
+        }
+    }
+
+    @if(not-option-disabled($options, 'hidden')) {
+        .#{$prefix}-hidden#{$name} {
+            @include hide_base()
+        }
+    }
+}
+
+@mixin visible-unhide-on($name: "", $options:()) {
+    @if(not-option-disabled($options, 'visible')) {
+        .#{$prefix}-visible#{$name} {
+            @include invisible_base();
+        }
+    }
+
+    @if(not-option-disabled($options, 'unhidden')) {
+        .#{$prefix}-unhidden#{$name} {
+            @include hide_base();
+        }
+    }
+}
+
+@mixin hover($options: ()) {
+    .#{$prefix}-hover-trigger {
+
+        &:not(:hover):not(:focus):not(:focus-within) {
+            @include visible-unhide-on("-hover", $options)
+        }
+
+        &:hover {
+            @include invisble-hide-on("-hover", $options);
+        }
     }
 }
 
 // Definitions
 @mixin definitions($options: ()) {
-    @if(not-option-disabled($options, 'hidden')) {
-        .#{$prefix}-hidden {
-            display: none !important;
+    @if(not-option-disabled($options, 'responsive')) {
+
+        @include media-screen-min-small {
+            @include invisble-hide-on("--s", $options);
         }
 
-        @if(not-option-disabled($options, 'responsive')) {
-            @include media-screen-min-small {
-                @include hide(--s);
-            }
-
-            @include media-screen-min-medium {
-                @include hide(--m);
-            }
-
-            @include media-screen-min-large {
-                @include hide(--l);
-            }
-
-            @include media-screen-min-xlarge {
-                @include hide(--xl);
-            }
-        }
-    }
-
-    @if(not-option-disabled($options, 'visible')) {
-        .#{$prefix}-visible {
-            visibility: visible !important;
+        @include media-screen-min-medium {
+            @include invisble-hide-on("--m", $options);
         }
 
-        @if(not-option-disabled($options, 'responsive')) {
-            @include media-screen-max-small {
-                @include visibility(--s);
-            }
+        @include media-screen-min-large {
+            @include invisble-hide-on("--l", $options);
+        }
 
-            @include media-screen-max-medium {
-                @include visibility(--m);
-            }
+        @include media-screen-min-xlarge {
+            @include invisble-hide-on("--xl", $options);
+        }
 
-            @include media-screen-max-large {
-                @include visibility(--l);
-            }
 
-            @include media-screen-max-xlarge {
-                @include visibility(--xl);
-            }
+        @include media-screen-max-small {
+            @include visible-unhide-on("--s", $options);
+        }
+
+        @include media-screen-max-medium {
+            @include visible-unhide-on("--m", $options);
+        }
+
+        @include media-screen-max-large {
+            @include visible-unhide-on("--l", $options);
+        }
+
+        @include media-screen-max-xlarge {
+            @include visible-unhide-on("--xl", $options);
         }
     }
 
     @if(not-option-disabled($options, 'landscape')) {
         @media(orientation: landscape) {
-            @include visibility("-landscape")
+            @include invisble-hide-on("-landscape", $options);
+
+            @include visible-unhide-on("-portrait", $options);
+        }
+    }
+
+    @if(not-option-disabled($options, 'portrait')) {
+        @media(orientation: portrait) {
+            @include invisble-hide-on("-portrait", $options);
+
+            @include visible-unhide-on("-landscape", $options);
         }
     }
 
@@ -76,41 +135,21 @@
 
         /* smartphones, touchscreens */
         @media (hover: none) and (pointer: coarse) {
+            @include invisble-hide-on("-touch", $options);
 
-            .#{$prefix}-hidden-touch {
-                @include hidden();
-            }
+            @include visible-unhide-on("-precise", $options);
         }
 
         /* mouse, touch pad */
         @media (hover: hover) and (pointer: fine) {
+            @include invisble-hide-on("-precise", $options);
 
-            .#{$prefix}-hidden-precise {
-                @include hidden();
-            }
+            @include visible-unhide-on("-touch", $options);
         }
+
     }
 
     @if(not-option-disabled($options, 'hover')) {
-        .#{$prefix}-hover-trigger {
-            &:not(:hover):not(:focus) {
-                .#{$prefix}-hidden-hover {
-                    @include hidden();
-                }
-            }
-
-
-            .#{$prefix}-invisible-hover {
-                &:not(:focus-within) {
-                    opacity: 0;
-                }
-            }
-
-            &:hover {
-                .#{$prefix}-invisible-hover {
-                    opacity: 1;
-                }
-            }
-        }
+        @include hover($options);
     }
 }

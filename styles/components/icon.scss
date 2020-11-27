@@ -121,9 +121,7 @@ $icon-color-success  : $component-background-success;
     .#{$prefix}-error,
     .#{$prefix}-warning,
     .#{$prefix}-success {
-
-        &:not(.#{$prefix}-section):not(.#{$prefix}-hint) {
-
+        @include not-light-component {
             .#{$prefix}-icon,
             .#{$prefix}-icon-button {
                 @include get-icon-color-style($icon-color-inverse);
@@ -133,9 +131,7 @@ $icon-color-success  : $component-background-success;
 }
 
 @mixin icon-theme {
-
     .#{$prefix}-icon,
-    //  .#{$prefix}-icon-button,
     .#{$prefix}-svg {
         &.#{$prefix}-accent {
             @include get-icon-color-style($icon-color-accent);

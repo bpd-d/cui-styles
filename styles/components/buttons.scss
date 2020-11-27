@@ -151,8 +151,7 @@ $button-disabled-border-style         : $component-disabled-border-style;
     .#{$prefix}-error,
     .#{$prefix}-warning,
     .#{$prefix}-success {
-
-        &:not(.#{$prefix}-section):not(.#{$prefix}-hint) {
+        @include not-light-component {
             .#{$prefix}-button {
                 color                          : $button-color-default-dark;
                 @include updateHighlight($color: $highlight-color);

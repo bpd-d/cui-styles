@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.52] WIP
+# [0.1.53] WIP
+# [0.1.52] 2020-11-27
+* [Added] Invisible option
+* [Added] Hidden/Invisible on landscape/portrait/hover
+* [Fixed] Visibility fixes on touch/precise
 # [0.1.51] 2020-11-26
 * [Added] Disabled state to input-mix element
 * [Added] Disabled state to button

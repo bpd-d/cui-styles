@@ -58,6 +58,8 @@ $input-margin-small        : $margin-global-small;
 $input-print-color     : $component-print-color;
 $input-print-background: $component-print-background;
 
+$input-disabled-border-style: $component-disabled-border-style;
+
 
 @mixin input-transition($state:normal) {
     @if $state==normal {
@@ -106,7 +108,7 @@ $input-print-background: $component-print-background;
 
         &:disabled {
             color : $input-color-disabled;
-            border: 1px dashed $input-color-disabled !important;
+            border: 1px $input-disabled-border-style $input-color-disabled !important;
         }
 
         &.#{$prefix}-transparent {
@@ -213,7 +215,7 @@ $input-print-background: $component-print-background;
 
             &:disabled {
                 color : $input-color-disabled-dark;
-                border: 1px dashed $input-color-disabled-dark !important;
+                border: 1px $input-disabled-border-style $input-color-disabled-dark !important;
             }
 
             &:not(.#{$prefix}-error):not(.#{$prefix}-success):not(.#{$prefix}-warning):not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
@@ -239,7 +241,7 @@ $input-print-background: $component-print-background;
 
             &:disabled {
                 color : $input-color-disabled;
-                border: 1px dashed $input-color-disabled !important;
+                border: 1px $input-disabled-border-style $input-color-disabled !important;
             }
         }
     }
@@ -332,7 +334,7 @@ $input-print-background: $component-print-background;
             pointer-events: none;
 
             &:before {
-                border-style: dashed !important;
+                border-style: $input-disabled-border-style !important;
                 border-color: $input-color-disabled !important;
             }
 
@@ -543,7 +545,7 @@ $input-print-background: $component-print-background;
 
         &:disabled {
             color : $input-color-disabled;
-            border: 1px dashed $input-color-disabled !important;
+            border: 1px $input-disabled-border-style $input-color-disabled !important;
         }
 
         &.#{$prefix}-large {
@@ -605,7 +607,7 @@ $input-print-background: $component-print-background;
 
             &:disabled {
                 color : $input-color-disabled-dark;
-                border: 1px dashed $input-color-disabled-dark !important;
+                border: 1px $input-disabled-border-style $input-color-disabled-dark !important;
             }
 
             option {
@@ -659,7 +661,11 @@ $input-print-background: $component-print-background;
         }
 
         &:disabled {
-            border: 1px dashed $input-color-disabled !important;
+            color         : $input-color-disabled;
+            border        : 1px $input-disabled-border-style $input-color-disabled !important;
+            user-select   : none;
+            pointer-events: none;
+            resize        : none;
         }
 
         &.#{$prefix}-transparent {
@@ -716,7 +722,8 @@ $input-print-background: $component-print-background;
             }
 
             &:disabled {
-                border: 1px dashed $input-color-disabled-dark !important;
+                color : $input-color-disabled-dark !important;
+                border: 1px $input-disabled-border-style $input-color-disabled-dark !important;
             }
         }
     }
@@ -749,7 +756,7 @@ $input-print-background: $component-print-background;
             display: block;
         }
 
-        >.#{$prefix}-form-description {
+        .#{$prefix}-form-description {
             order    : 1;
             color    : $input-description-color;
             font-size: $input-font-size-small;
@@ -1078,7 +1085,7 @@ $input-print-background: $component-print-background;
                     &:before {
                         width      : calc(100%-2px);
                         height     : calc(100%-2px);
-                        border     : 1px dashed $input-color-disabled !important;
+                        border     : 1px $input-disabled-border-style $input-color-disabled !important;
                         user-select: none;
 
                     }
@@ -1174,7 +1181,7 @@ $input-print-background: $component-print-background;
                         color: $input-color-disabled-dark !important;
 
                         &:before {
-                            border: 1px dashed $input-color-disabled-dark !important;
+                            border: 1px $input-disabled-border-style $input-color-disabled-dark !important;
                         }
                     }
                 }

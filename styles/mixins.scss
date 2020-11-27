@@ -10,7 +10,7 @@ $item-background-default: $component-background-default;
 
 @mixin color($color) {
     @if $color==light {
-        color: $component-color-default
+        color: $component-color-default;
     }
 
     @else if $color==dark {
@@ -147,12 +147,17 @@ $item-background-default: $component-background-default;
     }
 }
 
+@mixin not-light-component {
+    &:not(.#{$prefix}-section):not(.#{$prefix}-hint):not(.#{$prefix}-input-mix) {
+        @content;
+    }
+}
+
 @mixin mode-dark {
     .#{$prefix}-dark {
         @content;
     }
 }
-
 
 @mixin mode-print {
     .#{$prefix}-print {

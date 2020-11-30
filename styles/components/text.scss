@@ -40,6 +40,14 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
         color: $text-color-dark;
     }
 
+    .#{$prefix}-font-mono {
+        font-family: $font-family-mono;
+    }
+
+    .#{$prefix}-font-alternative {
+        font-family: $font-family-alter;
+    }
+
     p:first-child {
         margin-top : 0px;
         padding-top: 0px;

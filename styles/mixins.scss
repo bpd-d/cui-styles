@@ -135,6 +135,18 @@ $item-background-default: $component-background-default;
     @return not option-disabled($map, $option);
 }
 
+@mixin dark-parent-container {
+
+    .#{$prefix}-inverse,
+    .#{$prefix}-accent,
+    .#{$prefix}-secondary,
+    .#{$prefix}-error,
+    .#{$prefix}-warning,
+    .#{$prefix}-success {
+        @content;
+    }
+}
+
 @mixin not-colors {
     &:not(.#{$prefix}-success):not(.#{$prefix}-warning):not(.#{$prefix}-error):not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
         @content;
@@ -388,5 +400,15 @@ $item-background-default: $component-background-default;
         }
 
         @content
+    }
+}
+
+@mixin get-icon-color-style($name: "") {
+    color: $name;
+
+    svg {
+        path {
+            stroke: $name;
+        }
     }
 }

@@ -1,5 +1,9 @@
 # cUI Styles CHANGELOG:
-# [0.1.53] WIP
+# [0.2.0] WIP 
+# [0.1.53] 2020-11-30
+* [Added] NEW - Step sequence component
+* [Added] Font family mono and alternative added to text element
+* [Fixed] Flex align responsive
 # [0.1.52] 2020-11-27
 * [Added] Invisible option
 * [Added] Hidden/Invisible on landscape/portrait/hover

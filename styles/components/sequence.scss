@@ -1,0 +1,397 @@
+/**
+* Sequence step
+*/
+@use '../variables'as *;
+@use '../mixins'as *;
+
+
+
+$sequence-muted-color         : $component-color-muted;
+$sequence-muted-color-dark    : $component-color-muted-dark;
+$sequence-item-background     : $component-background-default;
+$sequence-item-background-dark: $component-background-default-dark;
+
+$sequence-item-color      : $component-color-default;
+$sequence-item-color-dark : $component-color-default-dark;
+
+$sequence-color-active     : $component-background-inverse;
+$sequence-color-active-dark: $component-background-inverse-dark;
+
+$sequence-color-accent   : $component-background-accent;
+$sequence-color-secondary: $component-background-secondary;
+
+$sequence-print-background-color : $component-print-background;
+$sequence-print-color            : $component-print-color;
+$sequence-print-border-color     : $component-print-border-color;
+
+$sequence-border-thickness: 2px;
+$sequence-marker-size     : 40px;
+$sequence-line-margin     : calc(#{$sequence-marker-size} * 0.5 -1px);
+$sequence-marker-margin   : 8px;
+
+
+
+@mixin base() {
+    .#{$prefix}-sequence-step {
+        display        : flex;
+        flex-wrap      : nowrap;
+        justify-content: space-evenly;
+        box-sizing     : border-box;
+
+        .#{$prefix}-sequence-item {
+            position     : relative;
+            width        : 100%;
+            // min-height: $sequence-marker-size;
+            border       : 0px solid transparent;
+
+            &:before,
+            &:after {
+                content           : "";
+                position          : absolute;
+                height            : $sequence-border-thickness;
+                width             : 50%;
+                background-color  : $sequence-muted-color;
+                top               : $sequence-line-margin;
+                //transform       : translateY(-50%);
+            }
+
+            &:first-child {
+                &:before {
+                    width : 0px !important;
+                    height: 0px !important;
+                }
+            }
+
+            &:last-child {
+                &:after {
+                    width : 0px !important;
+                    height: 0px !important;
+                }
+            }
+
+            &:before {
+                left: 0;
+            }
+
+            &:after {
+                right: 0;
+            }
+
+            .#{$prefix}-sequence-item-description {
+                position       : absolute;
+                top            : calc(#{$sequence-marker-size} + 5px + #{$sequence-marker-margin});
+                left           : 50%;
+                transform      : translateX(-50%);
+                text-decoration: none;
+                color          : $sequence-item-color;
+            }
+
+            .#{$prefix}-sequence-item-marker {
+                text-decoration: none;
+                color          : $sequence-item-color;
+                position       : absolute;
+                left           : 50%;
+                width          : $sequence-marker-size;
+                height         : $sequence-marker-size;
+                top            : 0px;
+                transform      : translateX(-50%);
+
+                background-color: $sequence-item-background;
+
+                border       : $sequence-border-thickness solid $sequence-muted-color;
+                border-radius: 50%;
+                z-index      : 10;
+
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+            }
+
+            &.#{$prefix}-active {
+                .#{$prefix}-sequence-item-marker {
+                    border-color: $sequence-item-color;
+                }
+            }
+
+            &.#{$prefix}-completed {
+
+                &:after {
+                    background-color: $sequence-item-color;
+                }
+
+                +.#{$prefix}-sequence-item.#{$prefix}-active,
+                +.#{$prefix}-sequence-item.#{$prefix}-completed {
+                    &:before {
+                        background-color: $sequence-item-color;
+                    }
+                }
+
+                .#{$prefix}-sequence-item-marker {
+                    border-color    : $sequence-item-color;
+                    background-color: $sequence-item-color;
+                    color           : $sequence-item-color-dark;
+
+                    .#{$prefix}-icon {
+                        @include get-icon-color-style($sequence-item-color-dark);
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@mixin vertical() {
+    .#{$prefix}-sequence-step {
+        &.#{$prefix}-vertical {
+            flex-direction: column;
+
+            .#{$prefix}-sequence-item {
+                display   : block;
+                min-height: $sequence-marker-size;
+
+                &:before,
+                &:after {
+                    height: 50%;
+                    width : $sequence-border-thickness;
+                    left  : $sequence-line-margin;
+                }
+
+                &:before {
+                    top: 0;
+                }
+
+                &:after {
+                    top: 50%;
+                }
+
+                .#{$prefix}-sequence-item-description {
+                    left     : calc(#{$sequence-marker-size} + 5px + #{$sequence-marker-margin});
+                    top      : 50%;
+                    transform: translateY(-50%);
+                }
+
+                .#{$prefix}-sequence-item-marker {
+                    position : absolute;
+                    top      : 50%;
+                    width    : $sequence-marker-size;
+                    height   : $sequence-marker-size;
+                    left     : 0px;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
+@mixin theme() {
+    .#{$prefix}-sequence-step {
+        &.#{$prefix}-accent {
+            .#{$prefix}-sequence-item {
+                &.#{$prefix}-completed {
+                    &:after {
+                        background-color: $sequence-color-accent;
+                    }
+
+                    +.#{$prefix}-sequence-item.#{$prefix}-active,
+                    +.#{$prefix}-sequence-item.#{$prefix}-completed {
+                        &:before {
+                            background-color: $sequence-color-accent;
+                        }
+                    }
+
+                    .#{$prefix}-sequence-item-marker {
+                        border-color    : $sequence-color-accent;
+                        background-color: $sequence-color-accent;
+                        color           : $sequence-item-color-dark;
+                    }
+                }
+
+                &.#{$prefix}-active {
+                    .#{$prefix}-sequence-item-marker {
+                        border-color: $sequence-color-accent;
+
+                        .#{$prefix}-icon {
+                            @include get-icon-color-style($sequence-color-accent !important);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.#{$prefix}-secondary {
+            .#{$prefix}-sequence-item {
+
+
+                &.#{$prefix}-completed {
+                    &:after {
+                        background-color: $sequence-color-secondary;
+                    }
+
+                    +.#{$prefix}-sequence-item.#{$prefix}-active,
+                    +.#{$prefix}-sequence-item.#{$prefix}-completed {
+                        &:before {
+                            background-color: $sequence-color-secondary;
+                        }
+                    }
+
+                    .#{$prefix}-sequence-item-marker {
+                        border-color    : $sequence-color-secondary;
+                        background-color: $sequence-color-secondary;
+                        color           : $sequence-item-color-dark;
+                    }
+                }
+
+                &.#{$prefix}-active {
+                    .#{$prefix}-sequence-item-marker {
+                        border-color: $sequence-color-secondary;
+
+                        .#{$prefix}-icon {
+                            @include get-icon-color-style($sequence-color-secondary !important);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin dark() {
+    @include mode-dark {
+        .#{$prefix}-sequence-step {
+            .#{$prefix}-sequence-item {
+
+                &:before,
+                &:after {
+                    background-color: $sequence-muted-color-dark;
+                }
+
+                .#{$prefix}-sequence-item-description {
+                    color: $sequence-item-color-dark;
+                }
+
+                .#{$prefix}-sequence-item-marker {
+                    background-color: $sequence-item-background-dark;
+                    border-color    : $sequence-muted-color-dark;
+                    color           : $sequence-item-color-dark;
+
+                    .#{$prefix}-icon {
+                        @include get-icon-color-style($sequence-item-color-dark !important);
+                    }
+                }
+            }
+
+            @include not-theme {
+                .#{$prefix}-sequence-item {
+                    &.#{$prefix}-active {
+                        .#{$prefix}-sequence-item-marker {
+                            border-color: $sequence-item-color-dark;
+                        }
+                    }
+
+                    &.#{$prefix}-completed {
+                        &:after {
+                            background-color: $sequence-item-color-dark;
+                        }
+
+                        +.#{$prefix}-sequence-item.#{$prefix}-active,
+                        +.#{$prefix}-sequence-item.#{$prefix}-completed {
+                            &:before {
+                                background-color: $sequence-item-color-dark;
+                            }
+                        }
+
+                        .#{$prefix}-sequence-item-marker {
+                            border-color    : $sequence-item-color-dark;
+                            background-color: $sequence-item-color-dark;
+                            color           : $sequence-item-color;
+
+                            .#{$prefix}-icon {
+                                @include get-icon-color-style($sequence-item-color !important);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@mixin print() {
+    @include mode-print {
+        .#{$prefix}-sequence-step {
+            .#{$prefix}-sequence-item {
+
+                &:before,
+                &:after {
+                    background-color: $sequence-print-border-color;
+                }
+
+                .#{$prefix}-sequence-item-description {
+                    color: $sequence-print-color;
+                }
+
+                .#{$prefix}-sequence-item-marker {
+                    background-color: $sequence-print-background-color;
+                    border-color    : $sequence-print-border-color;
+                    color           : $sequence-print-color;
+
+                    .#{$prefix}-icon {
+                        @include get-icon-color-style($sequence-print-color);
+                    }
+                }
+
+                &.#{$prefix}-active {
+                    .#{$prefix}-sequence-item-marker {
+                        border-color: $sequence-print-color;
+                    }
+                }
+
+                &.#{$prefix}-completed {
+                    &:after {
+                        background-color: $sequence-print-color;
+                    }
+
+                    +.#{$prefix}-sequence-item.#{$prefix}-active,
+                    +.#{$prefix}-sequence-item.#{$prefix}-completed {
+                        &:before {
+                            background-color: $sequence-print-color;
+                        }
+                    }
+
+                    .#{$prefix}-sequence-item-marker {
+                        border-color    : $sequence-print-color;
+                        background-color: $sequence-print-color;
+                        color           : $sequence-print-background-color;
+
+                        .#{$prefix}-icon {
+                            @include get-icon-color-style($sequence-print-background-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin definitions($options: ()) {
+    @include base();
+
+    @if(not-option-disabled($options, 'vertical')) {
+        @include vertical();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include theme();
+    }
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include print();
+    }
+
+}

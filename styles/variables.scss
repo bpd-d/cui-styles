@@ -25,6 +25,14 @@ Monaco,
 Courier,
 monospace;
 
+$font-family-mono: "Lucida Console",
+Monaco,
+monospace;
+
+$font-family-alter: "Times New Roman",
+Times,
+serif;
+
 $font-base-size: var(--#{$prefix}-font-size);
 
 $font-xsmall : 0.5rem;

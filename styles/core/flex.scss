@@ -132,22 +132,20 @@
 }
 
 @mixin flex-align-responsive {
-    .#{$prefix}-flex {
-        @include media-screen-min-small {
-            @include common(--s);
-        }
+    @include media-screen-min-small {
+        @include common(--s);
+    }
 
-        @include media-screen-min-medium {
-            @include common(--m);
-        }
+    @include media-screen-min-medium {
+        @include common(--m);
+    }
 
-        @include media-screen-min-large {
-            @include common(--l);
-        }
+    @include media-screen-min-large {
+        @include common(--l);
+    }
 
-        @include media-screen-min-xlarge {
-            @include common(--xl);
-        }
+    @include media-screen-min-xlarge {
+        @include common(--xl);
     }
 }
 

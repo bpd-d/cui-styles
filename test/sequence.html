@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cUI - Links</title>
+    <link rel="stylesheet" href="../dist/cui-styles.css" />
+</head>
+<style>
+    .app-main-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 70px calc(100vh - 106px) 36px;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .app-navbar {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .app-content {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-content-fill {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-side-bar {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .app-footer {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+</style>
+
+<body class="">
+    <div id="main-content" class="main-content content-hidden">
+        <!-- Main grid -->
+        <div class="app-main-grid">
+            <div class="app-navbar">
+                <div class="cui-navbar cui-sticky">
+                    <ul class="cui-navbar-left">
+                        <li><a class="cui-navbar-title cui-icon app-title-icon" href="index.html">Test</a></li>
+                    </ul>
+                    <ul class="cui-navbar-right">
+                        <li><a class="cui-navbar-item" href="./index.html">Home</a></li>
+                        <li><a class="cui-navbar-item" href="#" id="toggle-dark-mode">Dark Mode</a></li>
+                        <li><a class="cui-navbar-item" href="#" id="toggle-print-mode">Print Mode</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="app-content cui-overflow-y-auto cui-section">
+                <h2 class="cui-h2">Step sequence normal</h2>
+                <div class="cui-sequence-step">
+                    <div class="cui-sequence-item cui-active" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>1</span></div>
+                    </div>
+                    <div class="cui-sequence-item" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>2</span></div>
+                    </div>
+                    <div class="cui-sequence-item" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                    </div>
+                    <div class="cui-sequence-item" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                    </div>
+                </div>
+                <h2 class="cui-h2">Step sequence first only</h2>
+                <div class="cui-sequence-step ">
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>1</span></div>
+                    </div>
+                    <div class="cui-sequence-item cui-active" style="height:100px">
+                        <div class="cui-sequence-item-marker "><span>2</span></div>
+                    </div>
+                    <div class="cui-sequence-item" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                    </div>
+                    <div class="cui-sequence-item" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                    </div>
+                </div>
+                <h2 class="cui-h2">Step sequence two items</h2>
+                <div class="cui-sequence-step ">
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>1</span></div>
+                    </div>
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker "><span>2</span></div>
+                    </div>
+                    <div class="cui-sequence-item cui-active" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                    </div>
+                    <div class="cui-sequence-item" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                    </div>
+                </div>
+                <h2 class="cui-h2">Step sequence all items</h2>
+                <div class="cui-sequence-step">
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>1</span></div>
+                    </div>
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker "><span>2</span></div>
+                    </div>
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                    </div>
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                    </div>
+                </div>
+                <h2 class="cui-h2">Step sequence description</h2>
+                <div class="cui-sequence-step" style="height:100px">
+                    <div class="cui-sequence-item cui-active">
+                        <div class="cui-sequence-item-marker"><span>1</span></div>
+                        <span class="cui-sequence-item-description">Item 1</span>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker "><span>2</span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 2</a>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 3</a>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                        <span class="cui-sequence-item-description">Item 4</span>
+                    </div>
+                </div>
+                <h2 class="cui-h2">Step sequence description</h2>
+                <div class="cui-sequence-step" style="height:100px">
+                    <div class="cui-sequence-item cui-completed">
+                        <div class="cui-sequence-item-marker"><span class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </span></div>
+                        <span class="cui-sequence-item-description">Item 1</span>
+                    </div>
+                    <div class="cui-sequence-item cui-active">
+                        <div class="cui-sequence-item-marker "><span class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 2</a>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 3</a>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                        <span class="cui-sequence-item-description">Item 4</span>
+                    </div>
+                </div>
+                <h2 class="cui-h2">Step sequence accent description</h2>
+                <div class="cui-sequence-step cui-accent" style="height:100px">
+                    <div class="cui-sequence-item cui-completed">
+                        <div class="cui-sequence-item-marker"><span class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </span></div>
+                        <span class="cui-sequence-item-description">Item 1</span>
+                    </div>
+                    <div class="cui-sequence-item cui-active">
+                        <div class="cui-sequence-item-marker "><span class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 2</a>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 3</a>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                        <span class="cui-sequence-item-description">Item 4</span>
+                    </div>
+                </div>
+                <h2 class="cui-h2">Step sequence secondary description</h2>
+                <div class="cui-sequence-step cui-secondary" style="height:100px">
+                    <div class="cui-sequence-item cui-completed">
+                        <div class="cui-sequence-item-marker"><span class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </span></div>
+                        <span class="cui-sequence-item-description">Item 1</span>
+                    </div>
+                    <div class="cui-sequence-item cui-active">
+                        <div class="cui-sequence-item-marker "><span class="cui-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                                    <path
+                                        d="m 17,3 c 0.322013,0.3221982 0.362485,0.8347474 -0.717595,1.9154488 L 8.4840194,12.718346 c -1.0800768,1.080702 -3.6449016,2.483838 -3.6449016,2.483838 0,0 1.4023257,-2.566309 2.4824023,-3.647008 L 15.119908,3.7522772 C 16.199984,2.6715758 16.677987,2.6778012 17,3 Z"
+                                        class="fill"></path>
+                                    <path d="M 18,7.7437784 V 18 H 2 V 2.0458775 h 10.552437"></path>
+                                </svg>
+                            </span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 2</a>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 3</a>
+                    </div>
+                    <div class="cui-sequence-item">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                        <span class="cui-sequence-item-description">Item 4</span>
+                    </div>
+                </div>
+                <h2 class="cui-h2">Step sequence vertical</h2>
+                <div class="cui-sequence-step cui-vertical">
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker "><span>1</span></div>
+                        <span class="cui-sequence-item-description">Item 1</span>
+                    </div>
+                    <div class="cui-sequence-item cui-completed" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>2</span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 2</a>
+                    </div>
+                    <div class="cui-sequence-item  cui-active" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>3</span></div>
+                        <a href="#" class="cui-sequence-item-description">Item 3</a>
+                    </div>
+                    <div class="cui-sequence-item" style="height:100px">
+                        <div class="cui-sequence-item-marker"><span>4</span></div>
+                        <span class="cui-sequence-item-description">Item 4</span>
+                    </div>
+                </div>
+            </div>
+            <div class="app-side-bar cui-margin-top">
+
+            </div>
+
+        </div>
+        <script src="index.js"></script>
+</body>
+
+</html>

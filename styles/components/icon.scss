@@ -37,16 +37,6 @@ $icon-color-success  : $component-background-success;
     }
 }
 
-@mixin get-icon-color-style($name: "") {
-    color: $name;
-
-    svg {
-        path {
-            stroke: $name;
-        }
-    }
-}
-
 @mixin icon {
 
     a.#{$prefix}-icon,
@@ -115,13 +105,9 @@ $icon-color-success  : $component-background-success;
 
 
     // For colored containers
-    .#{$prefix}-inverse,
-    .#{$prefix}-accent,
-    .#{$prefix}-secondary,
-    .#{$prefix}-error,
-    .#{$prefix}-warning,
-    .#{$prefix}-success {
+    @include dark-parent-container {
         @include not-light-component {
+
             .#{$prefix}-icon,
             .#{$prefix}-icon-button {
                 @include get-icon-color-style($icon-color-inverse);
@@ -131,6 +117,7 @@ $icon-color-success  : $component-background-success;
 }
 
 @mixin icon-theme {
+
     .#{$prefix}-icon,
     .#{$prefix}-svg {
         &.#{$prefix}-accent {

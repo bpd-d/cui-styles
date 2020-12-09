@@ -160,7 +160,7 @@ $item-background-default: $component-background-default;
 }
 
 @mixin not-light-component {
-    &:not(.#{$prefix}-section):not(.#{$prefix}-hint):not(.#{$prefix}-input-mix) {
+    &:not(.#{$prefix}-section):not(.#{$prefix}-hint):not(.#{$prefix}-input-mix):not(.#{$prefix}-info-box) {
         @content;
     }
 }
@@ -177,11 +177,11 @@ $item-background-default: $component-background-default;
     }
 }
 
-@mixin mode-not-no-transitions {
-    body:not(.#{$prefix}-no-transitions) {
-        @content;
-    }
-}
+// @mixin mode-not-no-transitions {
+//     body:not(.#{$prefix}-no-transitions) {
+//         @content;
+//     }
+// }
 
 @mixin not-reduced-motion {
     body:not(.#{$prefix}-reduced-motion) {

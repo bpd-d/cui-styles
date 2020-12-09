@@ -1,0 +1,164 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$info-box-font-size    : $font-small;
+$info-box-padding      : $padding-global-small;
+$info-box-corner-radius: $border-radius-small;
+
+$info-box-background-color     : $component-background-shade;
+$info-box-background-color-dark: $component-background-shade-dark;
+$info-box-color                : $component-color-muted;
+$info-box-color-dark           : $component-color-muted-dark;
+
+$info-box-background-color-accent     : $component-background-accent-shade;
+$info-box-background-color-accent-dark: $component-background-accent-shade-dark;
+$info-box-color-accent                : $component-background-accent;
+$info-box-color-accent-dark           : $component-background-accent;
+
+$info-box-background-color-secondary     : $component-background-secondary-shade;
+$info-box-background-color-secondary-dark: $component-background-secondary-shade-dark;
+$info-box-color-secondary                : $component-background-secondary;
+$info-box-color-secondary-dark           : $component-background-secondary;
+
+$info-box-background-color-error     : $component-background-error-shade;
+$info-box-background-color-error-dark: $component-background-error-shade-dark;
+$info-box-color-error                : $component-background-error;
+$info-box-color-error-dark           : $component-background-error;
+
+$info-box-background-color-warning     : $component-background-warning-shade;
+$info-box-background-color-warning-dark: $component-background-warning-shade-dark;
+$info-box-color-warning                : $component-background-warning;
+$info-box-color-warning-dark           : $component-background-warning;
+
+$info-box-background-color-success     : $component-background-success-shade;
+$info-box-background-color-success-dark: $component-background-success-shade-dark;
+$info-box-color-success                : $component-background-success;
+$info-box-color-success-dark           : $component-background-success;
+
+@mixin info-box() {
+    .#{$prefix}-info-box {
+        font-size: $info-box-font-size;
+        @include component-padding(small);
+        border-radius: $info-box-corner-radius;
+
+        color           : $info-box-color;
+        background-color: $info-box-background-color;
+    }
+}
+
+@mixin info-box-theme {
+    .#{$prefix}-info-box {
+        &.#{$prefix}-accent {
+            color           : $info-box-color-accent;
+            background-color: $info-box-background-color-accent;
+        }
+
+        &.#{$prefix}-secondary {
+            color           : $info-box-color-secondary;
+            background-color: $info-box-background-color-secondary;
+        }
+    }
+}
+
+@mixin info-box-signal {
+    .#{$prefix}-info-box {
+        &.#{$prefix}-error {
+            color           : $info-box-color-error;
+            background-color: $info-box-background-color-error;
+        }
+
+        &.#{$prefix}-warning {
+            color           : $info-box-color-warning;
+            background-color: $info-box-background-color-warning;
+        }
+
+        &.#{$prefix}-success {
+            color           : $info-box-color-success;
+            background-color: $info-box-background-color-success;
+        }
+    }
+}
+
+@mixin info-box-dark {
+    @include mode-dark {
+        .#{$prefix}-info-box {
+            background-color: $info-box-background-color;
+            color           : $info-box-color-dark;
+        }
+    }
+}
+
+@mixin info-box-theme-dark {
+    @include mode-dark {
+        .#{$prefix}-info-box {
+            &.#{$prefix}-accent {
+                color           : $info-box-color-accent;
+                background-color: $info-box-background-color-accent-dark;
+            }
+
+            &.#{$prefix}-secondary {
+                color           : $info-box-color-secondary;
+                background-color: $info-box-background-color-secondary-dark;
+            }
+        }
+    }
+}
+
+@mixin info-box-signal-dark {
+    @include mode-dark {
+        .#{$prefix}-info-box {
+            &.#{$prefix}-error {
+                color           : $info-box-color-error-dark;
+                background-color: $info-box-background-color-error-dark;
+            }
+
+            &.#{$prefix}-warning {
+                color           : $info-box-color-warning-dark;
+                background-color: $info-box-background-color-warning-dark;
+            }
+
+            &.#{$prefix}-success {
+                color           : $info-box-color-success-dark;
+                background-color: $info-box-background-color-success-dark;
+            }
+        }
+    }
+}
+
+@mixin info-box-print {
+    @include mode-print {
+        .#{$prefix}-info-box {
+            background-color: $component-print-background;
+            color           : $component-print-color;
+            border          : $component-print-border;
+        }
+    }
+}
+
+@mixin definitions($options: ()) {
+    @include info-box();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include info-box-dark();
+    }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include info-box-print();
+    }
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include info-box-theme();
+    }
+
+    @if(not-option-disabled($options, 'theme-dark')) {
+        @include info-box-theme-dark();
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include info-box-signal();
+    }
+
+    @if(not-option-disabled($options, 'signal-dark')) {
+        @include info-box-signal-dark();
+    }
+}

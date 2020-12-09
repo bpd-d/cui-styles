@@ -38,6 +38,7 @@
 @use 'components/sortable';
 @use 'components/corner';
 @use 'components/sequence';
+@use 'components/info-box';
 
 
 $components-list: ("navbar",
@@ -76,6 +77,7 @@ $components-list: ("navbar",
     "float",
     "sortable",
     "corner",
+    "info-box",
     "sequence");
 
 @mixin definitions($components:()) {
@@ -242,6 +244,10 @@ $components-list: ("navbar",
 
         @else if $name=="sequence" {
             @include sequence.definitions($opts);
+        }
+
+        @else if $name=="info-box" {
+            @include info-box.definitions($opts);
         }
     }
 

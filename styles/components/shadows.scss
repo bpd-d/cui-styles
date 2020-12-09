@@ -8,56 +8,84 @@ $transition-time-normal: $animation-duration-default;
         box-shadow: $shadow;
     }
 
-    .#{$prefix}-box-shadow-m {
+    .#{$prefix}-box-shadow--m {
         box-shadow: $shadow2;
     }
 
-    .#{$prefix}-box-shadow-l {
+    .#{$prefix}-box-shadow--l {
         box-shadow: $shadow3;
     }
 
-    .#{$prefix}-box-shadow-xl {
+    .#{$prefix}-box-shadow--xl {
         box-shadow: $shadow4;
     }
 }
 
 @mixin box-shadow-hover {
-    .#{$prefix}-box-shadow-hover {
+
+    .#{$prefix}-box-shadow-hover,
+    .#{$prefix}-box-shadow-hover--m,
+    .#{$prefix}-box-shadow-hover--l,
+    .#{$prefix}-box-shadow-hover--xl {
+        position: relative;
+
+        &:before {
+            position: absolute;
+            content : "";
+            top     : 0;
+            left    : 0;
+            width   : 100%;
+            height  : 100%;
+
+            opacity: 0;
+        }
+
         &:hover {
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+
+    .#{$prefix}-box-shadow-hover {
+        &:before {
             box-shadow: $shadow;
         }
     }
 
-    .#{$prefix}-box-shadow-hover-m {
-        &:hover {
+    .#{$prefix}-box-shadow-hover--m {
+        &:before {
             box-shadow: $shadow2;
         }
     }
 
-    .#{$prefix}-box-shadow-hover-l {
-        &:hover {
+    .#{$prefix}-box-shadow-hover--l {
+        &:before {
             box-shadow: $shadow3;
         }
     }
 
-    .#{$prefix}-box-shadow-hover-xl {
-        &:hover {
+    .#{$prefix}-box-shadow-hover--xl {
+        &:before {
             box-shadow: $shadow4;
         }
     }
 }
 
+@mixin box-shadow-motion {
+    @include not-reduced-motion() {
+        [class*="#{$prefix}-box-shadow-hover"] {
+            &:before {
+                transition: opacity $transition-time-normal ease-out, transform $transition-time-normal ease-out;
+            }
+        }
+    }
+
+}
+
 @mixin box-shadow-remove {
     .#{$prefix}-box-shadow-remove {
         box-shadow: none;
-    }
-}
-
-@mixin box-shadow-no-transition {
-    body:not(.#{$prefix}-no-transitions) {
-        [class*="#{$prefix}-box-shadow-hover"] {
-            transition: box-shadow $transition-time-normal ease-in;
-        }
     }
 }
 
@@ -73,6 +101,6 @@ $transition-time-normal: $animation-duration-default;
     }
 
     @if(not-option-disabled($options, 'animation')) {
-        @include box-shadow-no-transition();
+        @include box-shadow-motion();
     }
 }

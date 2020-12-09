@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.2.0] WIP 
+# [0.2.0] 2020-12-03
+* [Added] New component info-bar with theme and signal colors
+* [Changed] Improved performance of box-shadow hover
 # [0.1.53] 2020-11-30
 * [Added] NEW - Step sequence component
 * [Added] Font family mono and alternative added to text element

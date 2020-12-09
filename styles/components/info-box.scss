@@ -138,27 +138,28 @@ $info-box-color-success-dark           : $component-background-success;
 @mixin definitions($options: ()) {
     @include info-box();
 
-    @if(not-option-disabled($options, 'dark')) {
-        @include info-box-dark();
-    }
-
-    @if(not-option-disabled($options, 'print')) {
-        @include info-box-print();
-    }
-
     @if(not-option-disabled($options, 'theme')) {
         @include info-box-theme();
-    }
-
-    @if(not-option-disabled($options, 'theme-dark')) {
-        @include info-box-theme-dark();
     }
 
     @if(not-option-disabled($options, 'signal')) {
         @include info-box-signal();
     }
 
-    @if(not-option-disabled($options, 'signal-dark')) {
-        @include info-box-signal-dark();
+    @if(not-option-disabled($options, 'dark')) {
+        @include info-box-dark();
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include info-box-theme-dark();
+        }
+
+        @if(not-option-disabled($options, 'signal')) {
+            @include info-box-signal-dark();
+        }
     }
+
+    @if(not-option-disabled($options, 'print')) {
+        @include info-box-print();
+    }
+
 }

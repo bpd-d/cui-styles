@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.2.0] 2020-12-03
+# [0.2.1] 2020-12-09
+* [Changed] Build options in new info bar
+# [0.2.0] 2020-12-09
 * [Added] New component info-bar with theme and signal colors
 * [Changed] Improved performance of box-shadow hover
 # [0.1.53] 2020-11-30

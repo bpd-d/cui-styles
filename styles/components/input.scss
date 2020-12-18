@@ -14,18 +14,20 @@ $input-color-dark            : $component-color-default-dark;
 $input-description-color     : $component-color-muted;
 $input-description-color-dark: $component-color-muted-dark;
 
-$input-border-color-inactive     : $component-color-muted;
-$input-border-color-active       : $component-color-default;
-$input-placeholder-color-inactive: $component-color-muted;
-$input-placeholder-color-active  : $component-color-muted;
+$input-border-color-inactive       : $component-border-default; //$component-color-muted;
+$input-border-color-inactive-hover : $component-border-default-hover; //$component-color-muted;
+$input-border-color-active         : $component-border-default-active; //$component-color-default;
+$input-placeholder-color-inactive  : $component-color-muted;
+$input-placeholder-color-active    : $component-color-muted;
 
-$input-border-color-inactive-dark     : $component-color-muted-dark;
-$input-border-color-active-dark       : $component-color-default-dark;
-$input-placeholder-color-inactive-dark: $component-color-muted-dark;
-$input-placeholder-color-active-dark  : $component-color-muted-dark;
+$input-border-color-inactive-dark       : $component-border-default-dark; //$component-color-muted-dark;
+$input-border-color-inactive-hover-dark : $component-border-default-hover-dark; //$component-color-default-dark;
+$input-border-color-active-dark         : $component-border-default-active-dark; //$component-color-default-dark;
+$input-placeholder-color-inactive-dark  : $component-color-muted-dark;
+$input-placeholder-color-active-dark    : $component-color-muted-dark;
 
-$input-color-disabled     : $component-color-muted;
-$input-color-disabled-dark: $component-color-muted-dark;
+$input-color-disabled     : $component-background-shade-active;
+$input-color-disabled-dark: $component-background-shade-dark-active;
 
 $input-color-error       : $component-background-error;
 $input-color-error-hover : $component-background-error-hover;
@@ -95,7 +97,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
         &:hover {
             outline: none !important;
-            border : 1px solid $input-border-color-active;
+            border : 1px solid $input-border-color-inactive-hover;
         }
 
         &:focus {
@@ -103,6 +105,10 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &::placeholder {
                 color: $input-placeholder-color-active;
+            }
+
+            &:hover {
+                border: 1px solid $input-border-color-active;
             }
         }
 
@@ -207,6 +213,10 @@ $input-disabled-border-style: $component-disabled-border-style;
                 color: $input-placeholder-color-inactive-dark;
             }
 
+            &:hover {
+                border: 1px solid $input-border-color-inactive-hover-dark;
+            }
+
             &:focus {
                 &::placeholder {
                     color: $input-placeholder-color-active-dark;
@@ -272,7 +282,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
         &:hover {
             outline     : none !important;
-            border-color: $input-border-color-active;
+            border-color: $input-border-color-inactive-hover;
         }
 
         &:focus {
@@ -455,7 +465,10 @@ $input-disabled-border-style: $component-disabled-border-style;
                     border: 1px solid $input-border-color-inactive-dark;
                 }
 
-                &:hover,
+                &:hover {
+                    border-color: $input-border-color-inactive-hover-dark;
+                }
+
                 &:focus {
                     &:before {
                         border-color: $input-border-color-active-dark;
@@ -534,7 +547,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
         &:hover {
             outline: none !important;
-            border : 1px solid $input-border-color-active;
+            border : 1px solid $input-border-color-inactive-hover;
         }
 
         &:active,
@@ -601,6 +614,10 @@ $input-disabled-border-style: $component-disabled-border-style;
         select.#{$prefix}-select {
             color: $input-color-dark;
 
+            &:hover {
+                border-color: $input-border-color-inactive-hover-dark;
+            }
+
             &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
                 border: 1px solid $input-border-color-inactive-dark;
             }
@@ -653,6 +670,10 @@ $input-disabled-border-style: $component-disabled-border-style;
 
         &::placeholder {
             color: $input-placeholder-color-inactive;
+        }
+
+        &:hover {
+            border-color: $input-border-color-inactive-hover;
         }
 
         &:focus {
@@ -708,6 +729,10 @@ $input-disabled-border-style: $component-disabled-border-style;
     @include mode-dark {
         textarea.#{$prefix}-textarea {
             color: $input-color-dark;
+
+            &:hover {
+                border-color: $input-border-color-inactive-hover-dark;
+            }
 
             &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
                 border: 1px solid $input-border-color-inactive-dark;

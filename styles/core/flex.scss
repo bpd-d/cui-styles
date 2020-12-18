@@ -71,6 +71,44 @@
     }
 }
 
+@mixin flex-direction($size: "") {
+    .#{$prefix}-flex#{$size} {
+        .#{$prefix}-flex-direction-column {
+            flex-direction: column;
+        }
+
+        .#{$prefix}-flex-direction-column-reverse#{$size} {
+            flex-direction: column-reverse;
+        }
+
+        .#{$prefix}-flex-direction-row-reverse#{$size} {
+            flex-direction: row-reverse;
+        }
+
+        .#{$prefix}-flex-direction-row#{$size} {
+            flex-direction: row;
+        }
+    }
+}
+
+@mixin flex-direction-responsive {
+    @include media-screen-min-small {
+        @include flex-direction(--s);
+    }
+
+    @include media-screen-min-medium {
+        @include flex-direction(--m);
+    }
+
+    @include media-screen-min-large {
+        @include flex-direction(--l);
+    }
+
+    @include media-screen-min-xlarge {
+        @include flex-direction(--xl);
+    }
+}
+
 @mixin flex-order {
     @include order();
 }
@@ -187,6 +225,14 @@
 
     @if(not-option-disabled($options, 'center')) {
         @include flex-center()
+    }
+
+    @if(not-option-disabled($options, 'direction')) {
+        @include flex-direction();
+
+        @if(not-option-disabled($options, 'responsive')) {
+            @include flex-direction-responsive();
+        }
     }
 
     @if(not-option-disabled($options, 'grow')) {

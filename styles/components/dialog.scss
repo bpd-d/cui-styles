@@ -61,7 +61,6 @@ $dialog-margin-large           : $margin-global-large;
 
             .#{$prefix}-dialog-body {
                 @include component-padding(normal, same);
-                overflow-y: auto;
             }
 
             .#{$prefix}-dialog-footer {

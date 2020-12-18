@@ -146,8 +146,8 @@ $component-color-active-dark : var(--#{$prefix}-color-dark-active);
 $component-color-inverse     : var(--#{$prefix}-color-dark-base);
 $component-color-inverse-dark: var(--#{$prefix}-color-light-base);
 
-$button-border-color     : var(--#{$prefix}-color-light-muted);
-$button-border-color-dark: var(--#{$prefix}-color-dark-muted);
+// $button-border-color     : var(--#{$prefix}-color-light-muted);
+// $button-border-color-dark: var(--#{$prefix}-color-dark-muted);
 
 $component-background-accent            : var(--#{$prefix}-color-primary);
 $component-background-accent-hover      : var(--#{$prefix}-color-primary-muted);
@@ -241,3 +241,13 @@ $colors-map: ('accent': $component-background-accent,
     'warning-muted': $component-background-warning-muted,
     'warning-shade': $component-background-warning-shade,
     'warning-shade-dark': $component-background-warning-shade-dark);
+/*
+* For components border, like buttons, inputs
+*/
+
+$component-border-default           : $component-background-shade-active;
+$component-border-default-hover     : $component-color-muted;
+$component-border-default-active    : $component-color-active;
+$component-border-default-dark      : $component-background-shade-dark-active;
+$component-border-default-hover-dark: $component-color-muted-dark;
+$component-border-default-active-dark: $component-color-active-dark;

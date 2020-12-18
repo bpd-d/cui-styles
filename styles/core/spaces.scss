@@ -105,6 +105,22 @@ $sides: "top",
     }
 }
 
+@mixin display($size: "") {
+
+    // Display 
+    .#{$prefix}-inline#{$size} {
+        display: inline !important
+    }
+
+    .#{$prefix}-inline-block#{$size} {
+        display: inline-block !important;
+    }
+
+    .#{$prefix}-block#{$size} {
+        display: block !important;
+    }
+}
+
 
 /**
 * To be used when marigns on first and last element dont work
@@ -119,6 +135,11 @@ $sides: "top",
 
 @mixin responsive($options: ()) {
     @include media-screen-min-small {
+
+        @if(not-option-disabled($options, 'display')) {
+            @include display(--s);
+        }
+
         @if(not-option-disabled($options, 'margin')) {
             @include margin("", --s, $item-margin);
 
@@ -157,6 +178,10 @@ $sides: "top",
     }
 
     @include media-screen-min-medium {
+        @if(not-option-disabled($options, 'display')) {
+            @include display(--m);
+        }
+
         @if(not-option-disabled($options, 'margin')) {
             @include margin("", --m, $item-margin);
 
@@ -175,6 +200,10 @@ $sides: "top",
             @if(not-option-disabled($options, 'large')) {
                 @include margin("large", --m, $item-margin-large);
             }
+
+            @if(not-option-disabled($options, 'display')) {
+                @include display(--s);
+            }
         }
 
         @if(not-option-disabled($options, 'padding')) {
@@ -191,10 +220,16 @@ $sides: "top",
             @if(not-option-disabled($options, 'large')) {
                 @include padding("large", "--m", $item-padding-large);
             }
+
+
         }
     }
 
     @include media-screen-min-large {
+        @if(not-option-disabled($options, 'display')) {
+            @include display(--l);
+        }
+
         @if(not-option-disabled($options, 'margin')) {
             @include margin("", --l, $item-margin);
 
@@ -213,6 +248,8 @@ $sides: "top",
             @if(not-option-disabled($options, 'large')) {
                 @include margin("large", --l, $item-margin-large);
             }
+
+
         }
 
         @if(not-option-disabled($options, 'padding')) {
@@ -233,6 +270,11 @@ $sides: "top",
     }
 
     @include media-screen-min-xlarge {
+
+        @if(not-option-disabled($options, 'display')) {
+            @include display(--xl)
+        }
+
         @if(not-option-disabled($options, 'margin')) {
             @include margin("", --xl, $item-margin);
 
@@ -301,27 +343,13 @@ $sides: "top",
     }
 }
 
-@mixin display {
 
-    // Display 
-    .#{$prefix}-inline {
-        display: inline;
-    }
-
-    .#{$prefix}-inline-block {
-        display: inline-block;
-    }
-
-    .#{$prefix}-block {
-        display: block;
-    }
-}
 
 
 @mixin clearfix {
     .#{$prefix}-clearfix {
         &:after {
-            content    : ".";
+            content    : "";
             display    : block;
             clear      : both;
             visibility : hidden;

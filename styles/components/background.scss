@@ -97,9 +97,7 @@ $themes: "accent",
 
     @if(not-option-disabled($options, 'colors')) {
         @include background-colors();
-    }
 
-    @if(not-option-disabled($options, 'colors')) {
         @if(not-option-disabled($options, 'dark')) {
             @include background-colors-dark();
         }
@@ -108,8 +106,4 @@ $themes: "accent",
     @if(not-option-disabled($options, 'print')) {
         @include background-print();
     }
-
-
-
-
 }

@@ -1,4 +1,14 @@
 # cUI Styles CHANGELOG:
+# [0.2.3] WIP
+# [0.2.2] 2020-12-18
+* [Added] Flex direction and it's responsive modifiers
+* [Added] Display in space added responsive options
+* [Added] Switcher indicator anchor element is if added to cover whole item area
+* [Added] Option cui-large to icon button
+* [Changed] Display in spaces added important flag
+* [Changed] Removed overflow from dialog body
+* [Changed] Border colors of buttons, inputs
+* [Fixed] Glitching on button hover
 # [0.2.1] 2020-12-09
 * [Changed] Build options in new info bar
 # [0.2.0] 2020-12-09

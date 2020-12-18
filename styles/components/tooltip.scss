@@ -23,6 +23,7 @@ $tooltip-animation-time : $animation-duration-short;
         font-size       : $tooltip-font-size;
         background-color: $tooltip-background-color;
         box-shadow      : $shadow;
+        text-transform  : capitalize;
         @include component-padding(small);
         border     : 1px solid transparent;
         user-select: none;

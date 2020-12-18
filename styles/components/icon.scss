@@ -6,12 +6,12 @@ $icon-color-inverse      : $component-color-inverse;
 $icon-color-inverse-dark : $component-color-inverse-dark;
 $icon-color-default-dark : $component-color-default-dark;
 
-$icon-border-color             : $component-color-muted;
-$icon-border-color-hover       : $component-color-default;
-$icon-border-color-active      : $component-color-active;
-$icon-border-color-dark        : $component-color-muted-dark;
-$icon-border-color-hover-dark  : $component-color-default-dark;
-$icon-border-color-active-dark : $component-color-default-dark;
+$icon-border-color             : $component-border-default; //$component-color-muted;
+$icon-border-color-hover       : $component-border-default-hover; //$component-color-default;
+$icon-border-color-active      : $component-border-default-active; //$component-color-active;
+$icon-border-color-dark        : $component-border-default-dark; //$component-color-muted-dark;
+$icon-border-color-hover-dark  : $component-border-default-hover-dark; //$component-color-default-dark;
+$icon-border-color-active-dark : $component-border-default-active-dark; //$component-color-default-dark;
 
 $icon-button-background-default     : $component-background-default;
 $icon-button-background-inverse     : $component-background-inverse;
@@ -294,6 +294,10 @@ $icon-color-success  : $component-background-success;
             border-color    : $icon-border-color;
             background-color: $icon-button-background-default;
 
+        }
+
+        &.#{$prefix}-large {
+            @include component-padding(normal, true);
         }
 
         &.#{$prefix}-inverse {

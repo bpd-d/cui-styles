@@ -61,6 +61,15 @@ $indicator-shade-active-border-dark : 2px solid $indicator-shade-color-dark;
                 border       : $indicator-round-border;
             }
 
+            &>a {
+                content : "";
+                height  : 100%;
+                width   : 100%;
+                position: absolute;
+                top     : 0px;
+                left    : 0px;
+            }
+
             &.#{$prefix}-active {
                 &:before {
                     border: $indicator-active-border;

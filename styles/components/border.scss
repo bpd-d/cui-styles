@@ -1,0 +1,176 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$border-color-default     : $component-border-default;
+$border-color-default-dark: $component-border-default-dark;
+$border-size              : 1px;
+$border-style             : solid;
+$border-radius            : $border-radius-default;
+
+@mixin border($size: "") {
+    .#{$prefix}-border#{$size} {
+        border       : $border-size $border-style $border-color-default;
+        border-radius: $border-radius;
+    }
+
+    .#{$prefix}-border-remove#{$size} {
+        border: none !important;
+    }
+
+    @include dark-parent-container {
+        @include not-light-component {
+            border-color: $border-color-default-dark;
+        }
+    }
+}
+
+@mixin border-dark {
+    @include mode-dark {
+        .#{$prefix}-border {
+            border       : $border-size $border-style $border-color-default-dark;
+            border-radius: $border-radius;
+        }
+    }
+}
+
+@mixin border-sides($size: "") {
+    .#{$prefix}-border-top#{$size} {
+        border-top: $border-size $border-style $border-color-default;
+    }
+
+    .#{$prefix}-border-left#{$size} {
+        border-left: $border-size $border-style $border-color-default;
+    }
+
+    .#{$prefix}-border-bottom#{$size} {
+        border-bottom: $border-size $border-style $border-color-default;
+    }
+
+    .#{$prefix}-border-right#{$size} {
+        border-right: $border-size $border-style $border-color-default;
+    }
+
+    @include dark-parent-container {
+        @include not-light-component {
+            .#{$prefix}-border-top#{$size} {
+                border-color: $border-color-default-dark;
+            }
+
+            .#{$prefix}-border-left#{$size} {
+                border-color: $border-color-default-dark;
+            }
+
+            .#{$prefix}-border-bottom#{$size} {
+                border-color: $border-color-default-dark;
+            }
+
+            .#{$prefix}-border-right#{$size} {
+                border-color: $border-color-default-dark;
+            }
+        }
+    }
+}
+
+@mixin border-sides-dark($size: "") {
+    @include mode-dark {
+        .#{$prefix}-border-top#{$size} {
+            border-color: $border-color-default-dark;
+        }
+
+        .#{$prefix}-border-left#{$size} {
+            border-color: $border-color-default-dark;
+        }
+
+        .#{$prefix}-border-bottom#{$size} {
+            border-color: $border-color-default-dark;
+        }
+
+        .#{$prefix}-border-right#{$size} {
+            border-color: $border-color-default-dark;
+        }
+    }
+
+}
+
+@mixin border-responsive($options: ()) {
+    @include media-screen-min-small {
+        @include border(--s);
+
+        @if(not-option-disabled($options, 'sides')) {
+            @include border-sides(--s);
+
+            @if(not-option-disabled($options, 'dark')) {
+                @include border-sides-dark(--s);
+            }
+        }
+
+
+    }
+
+    @include media-screen-min-medium {
+        @include border(--m);
+
+        @if(not-option-disabled($options, 'sides')) {
+            @include border-sides(--m);
+
+            @if(not-option-disabled($options, 'dark')) {
+                @include border-sides-dark(--m);
+            }
+        }
+
+
+    }
+
+    @include media-screen-min-large {
+        @include border(--l);
+
+        @if(not-option-disabled($options, 'sides')) {
+            @include border-sides(--l);
+
+            @if(not-option-disabled($options, 'dark')) {
+                @include border-sides-dark(--l);
+            }
+        }
+
+
+    }
+
+    @include media-screen-min-xlarge {
+        @include border(--xl);
+
+        @if(not-option-disabled($options, 'sides')) {
+            @include border-sides(--xl);
+
+            @if(not-option-disabled($options, 'dark')) {
+                @include border-sides-dark(--xl);
+            }
+        }
+
+    }
+}
+
+@mixin definitions($options: ()) {
+    @include border();
+
+    @if(not-option-disabled($options, 'sides')) {
+        @include border-sides();
+    }
+
+    @if(not-option-disabled($options, 'responsive')) {
+        @include border-responsive($options);
+    }
+
+    @if(not-option-disabled($options, 'sides')) {
+        @include border-sides();
+    }
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include border-dark();
+
+        @if(not-option-disabled($options, 'sides')) {
+            @include border-sides-dark();
+        }
+
+    }
+
+}

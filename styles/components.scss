@@ -39,6 +39,8 @@
 @use 'components/corner';
 @use 'components/sequence';
 @use 'components/info-box';
+@use 'components/hover';
+@use 'components/border';
 
 
 $components-list: ("navbar",
@@ -78,7 +80,9 @@ $components-list: ("navbar",
     "sortable",
     "corner",
     "info-box",
-    "sequence");
+    "sequence",
+    "hover",
+    "border");
 
 @mixin definitions($components:()) {
     $list: $components;
@@ -249,44 +253,13 @@ $components-list: ("navbar",
         @else if $name=="info-box" {
             @include info-box.definitions($opts);
         }
+
+        @else if $name=="hover" {
+            @include hover.definitions($opts);
+        }
+
+        @else if $name=="border" {
+            @include border.definitions($opts);
+        }
     }
-
-
 }
-
-//   @include navbar.definitions;
-//   @include accordion.definitions;
-//   @include dialog.definitions;
-//   @include tab.definitions;
-//   @include tooltip.definitions;
-//   @include buttons.definitions;
-//   @include banner.definitions;
-//   @include links.definitions;
-//   @include text.definitions;
-//   @include icon.definitions;
-//   @include card.definitions;
-//   @include breadcrumb.definitions;
-//   @include input.definitions;
-//   @include spinner.definitions;
-//   @include table.definitions;
-//   @include drop.definitions;
-//   @include switch.definitions;
-//   @include switcher.definitions;
-//   @include list.definitions;
-//   @include overlay.definitions;
-//   @include progress.definitions;
-//   @include background.definitions;
-//   @include badge.definitions;
-//   @include toast.definitions;
-//   @include offcanvas.definitions;
-//   @include hint.definitions;
-//   @include special.definitions;
-//   @include cover.definitions;
-//   @include shadows.definitions;
-//   @include separator.definitions;
-//   @include scrollbar.definitions;
-//   @include code.definitions;
-//   @include selection.definitions;
-//   @include float.definitions;
-//   @include sortable.definitions;
-//   @include corner.definitions;

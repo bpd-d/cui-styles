@@ -1,5 +1,6 @@
 # cUI Styles CHANGELOG:
-# [0.2.3] WIP
+# [0.2.3] 2020-12-19
+* [Added] Hover and border components
 # [0.2.2] 2020-12-18
 * [Added] Flex direction and it's responsive modifiers
 * [Added] Display in space added responsive options

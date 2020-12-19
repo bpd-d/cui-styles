@@ -1,0 +1,36 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$hover-background     : $component-background-shade;
+$hover-background-dark: $component-background-shade-dark;
+
+@mixin hover {
+    .#{$prefix}-hover {
+        &:not(.#{$prefix}-list):not(.#{$prefix}-card) {
+            &:hover {
+                background-color: $hover-background;
+            }
+        }
+
+    }
+}
+
+@mixin hover-dark {
+    @include mode-dark {
+        .#{$prefix}-hover {
+            &:hover {
+                background-color: $hover-background-dark;
+            }
+        }
+    }
+
+
+}
+
+@mixin definitions($options: ()) {
+    @include hover();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include hover-dark();
+    }
+}

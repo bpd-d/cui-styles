@@ -10,6 +10,9 @@ $navbar-color-default-dark : $component-color-default-dark;
 $navbar-indicator-color-accent   : $component-background-accent;
 $navbar-indicator-color-secondary: $component-background-secondary;
 
+$navbar-indicator-color-accent-dark    : $component-background-accent-dark;
+$navbar-indicator-color-secondary-dark : $component-background-secondary-dark;
+
 $navbar-color-default-active      : $component-color-active;
 $navbar-color-default-active-dark : $component-color-active-dark;
 
@@ -189,7 +192,22 @@ $navbar-transition-time : $animation-duration-short;
             }
         }
     }
+}
 
+@mixin navbar-accent-dark {
+    @include mode-dark {
+        .#{$prefix}-navbar.#{$prefix}-accent {
+            .#{$prefix}-navbar-item {
+                &.#{$prefix}-active {
+                    color: $navbar-indicator-color-accent-dark !important;
+
+                    &:before {
+                        background-color: $navbar-indicator-color-accent-dark !important;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -209,7 +227,24 @@ $navbar-transition-time : $animation-duration-short;
     }
 }
 
+@mixin navbar-secondary-dark {
+    @include mode-dark {
+        .#{$prefix}-navbar.#{$prefix}-secondary {
+            .#{$prefix}-navbar-item {
 
+
+                &.#{$prefix}-active {
+                    color: $navbar-indicator-color-secondary-dark !important;
+
+                    &:before {
+                        background-color: $navbar-indicator-color-secondary-dark !important;
+                    }
+                }
+            }
+        }
+    }
+
+}
 
 @mixin navbar-dark {
 
@@ -328,6 +363,11 @@ $navbar-transition-time : $animation-duration-short;
 
         @if(not-option-disabled($options, 'print')) {
             @include navbar-theme-print();
+        }
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include navbar-accent-dark();
+            @include navbar-secondary-dark();
         }
 
     }

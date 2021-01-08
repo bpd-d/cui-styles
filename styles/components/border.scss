@@ -19,7 +19,9 @@ $border-radius            : $border-radius-default;
 
     @include dark-parent-container {
         @include not-light-component {
-            border-color: $border-color-default-dark;
+            .#{$prefix}-border#{$size} {
+                border-color: $border-color-default-dark;
+            }
         }
     }
 }
@@ -52,21 +54,25 @@ $border-radius            : $border-radius-default;
 
     @include dark-parent-container {
         @include not-light-component {
-            .#{$prefix}-border-top#{$size} {
-                border-color: $border-color-default-dark;
-            }
 
-            .#{$prefix}-border-left#{$size} {
-                border-color: $border-color-default-dark;
-            }
-
-            .#{$prefix}-border-bottom#{$size} {
-                border-color: $border-color-default-dark;
-            }
-
+            .#{$prefix}-border-top#{$size},
+            .#{$prefix}-border-left#{$size},
+            .#{$prefix}-border-bottom#{$size},
             .#{$prefix}-border-right#{$size} {
                 border-color: $border-color-default-dark;
             }
+
+            // .#{$prefix}-border-left#{$size} {
+            //     border-color: $border-color-default-dark;
+            // }
+
+            // .#{$prefix}-border-bottom#{$size} {
+            //     border-color: $border-color-default-dark;
+            // }
+
+            // .#{$prefix}-border-right#{$size} {
+            //     border-color: $border-color-default-dark;
+            // }
         }
     }
 }

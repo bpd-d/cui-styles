@@ -12,6 +12,8 @@ $list-item-color                        : $component-color-default;
 $list-item-color-dark                   : $component-color-default-dark;
 $list-item-active-color-accent          : $component-background-accent;
 $list-item-active-color-secondary       : $component-background-secondary;
+$list-item-active-color-accent-dark     : $component-background-accent-dark;
+$list-item-active-color-secondary-dark  : $component-background-secondary-dark;
 $list-item-inactive-color               : $component-color-muted;
 $list-item-inactive-color-dark          : $component-color-muted-dark;
 $list-transition-time                   : $animation-duration-short;
@@ -225,6 +227,28 @@ $list-item-font-weight-bold             : $text-weight-bold;
     }
 }
 
+@mixin list-interactive-accent-dark {
+    @include mode-dark {
+        ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
+
+            &>li.#{$prefix}-active {
+                a {
+                    &:before {
+                        background-color: $list-item-active-color-accent !important;
+                    }
+                }
+            }
+
+            &>li>a.#{$prefix}-active {
+                &:before {
+                    background-color: $list-item-active-color-accent !important;
+                }
+            }
+        }
+    }
+
+}
+
 @mixin list-interactive-secondary {
     ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
 
@@ -244,8 +268,29 @@ $list-item-font-weight-bold             : $text-weight-bold;
     }
 }
 
+@mixin list-interactive-secondary-dark {
+    @include mode-dark {
+        ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
+
+            &>li.#{$prefix}-active {
+                a {
+                    &:before {
+                        background-color: $list-item-active-color-secondary !important;
+                    }
+                }
+            }
+
+            &>li>a.#{$prefix}-active {
+                &:before {
+                    background-color: $list-item-active-color-secondary !important;
+                }
+            }
+        }
+    }
+}
+
 @mixin list-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         ul.#{$prefix}-list {
             &>li {
                 color: $list-item-color-dark;
@@ -470,6 +515,11 @@ $list-item-font-weight-bold             : $text-weight-bold;
 
         @if(not-option-disabled($options, 'dark')) {
             @include list-dark-interactive();
+
+            @if(not-option-disabled($options, 'theme')) {
+                @include list-interactive-accent-dark();
+                @include list-interactive-secondary-dark();
+            }
         }
 
         @if(not-option-disabled($options, 'print')) {

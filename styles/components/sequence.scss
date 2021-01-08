@@ -20,6 +20,9 @@ $sequence-color-active-dark: $component-background-inverse-dark;
 $sequence-color-accent   : $component-background-accent;
 $sequence-color-secondary: $component-background-secondary;
 
+$sequence-color-accent-dark   : $component-background-accent-dark;
+$sequence-color-secondary-dark: $component-background-secondary-dark;
+
 $sequence-print-background-color : $component-print-background;
 $sequence-print-color            : $component-print-color;
 $sequence-print-border-color     : $component-print-border-color;
@@ -256,6 +259,78 @@ $sequence-marker-margin   : 8px;
     }
 }
 
+@mixin theme-dark() {
+    @include mode-dark {
+        .#{$prefix}-sequence-step {
+            &.#{$prefix}-accent {
+                .#{$prefix}-sequence-item {
+                    &.#{$prefix}-completed {
+                        &:after {
+                            background-color: $sequence-color-accent-dark;
+                        }
+
+                        +.#{$prefix}-sequence-item.#{$prefix}-active,
+                        +.#{$prefix}-sequence-item.#{$prefix}-completed {
+                            &:before {
+                                background-color: $sequence-color-accent-dark;
+                            }
+                        }
+
+                        .#{$prefix}-sequence-item-marker {
+                            border-color    : $sequence-color-accent-dark;
+                            background-color: $sequence-color-accent-dark;
+                        }
+                    }
+
+                    &.#{$prefix}-active {
+                        .#{$prefix}-sequence-item-marker {
+                            border-color: $sequence-color-accent-dark;
+
+                            .#{$prefix}-icon {
+                                @include get-icon-color-style($sequence-color-accent-dark !important);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.#{$prefix}-secondary {
+                .#{$prefix}-sequence-item {
+
+
+                    &.#{$prefix}-completed {
+                        &:after {
+                            background-color: $sequence-color-secondary-dark;
+                        }
+
+                        +.#{$prefix}-sequence-item.#{$prefix}-active,
+                        +.#{$prefix}-sequence-item.#{$prefix}-completed {
+                            &:before {
+                                background-color: $sequence-color-secondary-dark;
+                            }
+                        }
+
+                        .#{$prefix}-sequence-item-marker {
+                            border-color    : $sequence-color-secondary-dark;
+                            background-color: $sequence-color-secondary-dark;
+                        }
+                    }
+
+                    &.#{$prefix}-active {
+                        .#{$prefix}-sequence-item-marker {
+                            border-color: $sequence-color-secondary-dark;
+
+                            .#{$prefix}-icon {
+                                @include get-icon-color-style($sequence-color-secondary-dark !important);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @mixin dark() {
     @include mode-dark {
         .#{$prefix}-sequence-step {
@@ -384,6 +459,10 @@ $sequence-marker-margin   : 8px;
 
     @if(not-option-disabled($options, 'theme')) {
         @include theme();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include theme-dark();
+        }
     }
 
     @if(not-option-disabled($options, 'dark')) {

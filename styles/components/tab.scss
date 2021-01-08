@@ -10,6 +10,9 @@ $tab-color-dark: $component-color-default-dark;
 $tab-color-accent    : $component-background-accent;
 $tab-color-secondary : $component-background-secondary;
 
+$tab-color-accent-dark    : $component-background-accent-dark;
+$tab-color-secondary-dark : $component-background-secondary-dark;
+
 $tab-border-color      : $color-border-light;
 $tab-border-color-dark : $color-border-dark;
 
@@ -251,6 +254,22 @@ $tab-transition-time: $animation-duration-short;
     }
 }
 
+@mixin tab-accent-dark {
+    @include mode-dark {
+        ul.#{$prefix}-tab {
+            &.#{$prefix}-accent {
+                li.#{$prefix}-active {
+                    a {
+                        &:before {
+                            background-color: $tab-color-accent-dark !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @mixin tab-secondary {
     ul.#{$prefix}-tab {
         &.#{$prefix}-secondary {
@@ -261,7 +280,22 @@ $tab-transition-time: $animation-duration-short;
                     }
                 }
             }
+        }
+    }
+}
 
+@mixin tab-secondary-dark {
+    @include mode-dark {
+        ul.#{$prefix}-tab {
+            &.#{$prefix}-secondary {
+                li.#{$prefix}-active {
+                    a {
+                        &:before {
+                            background-color: $tab-color-secondary-dark !important;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -402,6 +436,11 @@ $tab-transition-time: $animation-duration-short;
 
         @if(not-option-disabled($options, 'print')) {
             @include tab-theme-print();
+        }
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include tab-accent-dark();
+            @include tab-secondary-dark();
         }
     }
 

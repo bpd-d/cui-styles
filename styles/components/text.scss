@@ -64,6 +64,18 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     }
 }
 
+@mixin text-theme-dark {
+    @include mode-dark {
+        .#{$prefix}-text-accent {
+            @include color('accent-dark')
+        }
+
+        .#{$prefix}-text-secondary {
+            @include color('secondary-dark')
+        }
+    }
+}
+
 @mixin text-signals {
     .#{$prefix}-text-success {
         @include color('success')
@@ -75,6 +87,22 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
 
     .#{$prefix}-text-error {
         @include color('error')
+    }
+}
+
+@mixin text-signals-dark {
+    @include mode-dark {
+        .#{$prefix}-text-success {
+            @include color('success-dark')
+        }
+
+        .#{$prefix}-text-warning {
+            @include color('warning-dark')
+        }
+
+        .#{$prefix}-text-error {
+            @include color('error-dark')
+        }
     }
 }
 
@@ -243,10 +271,18 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
 
     @if(not-option-disabled($options, 'theme')) {
         @include text-theme;
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include text-theme-dark()
+        }
     }
 
     @if(not-option-disabled($options, 'signal')) {
         @include text-signals;
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include text-signals-dark();
+        }
     }
 
     @if(not-option-disabled($options, 'blockquote')) {

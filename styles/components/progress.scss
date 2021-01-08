@@ -1,20 +1,25 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$progress-normal-height         : 1rem;
-$progress-small-height          : 0.5rem;
-$progress-border-radius         : 0px;
-$progress-border-color          : transparent;
-$progress-background-color      : $component-background-shade;
-$progress-background-color-dark : $component-background-shade-dark;
-$progress-value-color           : $component-color-default;
-$progress-value-color-dark      : $component-color-default-dark;
-$progress-value-color-accent    : $component-background-accent;
-$progress-value-color-secondary : $component-background-secondary;
-$progress-value-color-success   : $component-background-success;
-$progress-value-color-warning   : $component-background-warning;
-$progress-value-color-error     : $component-background-error;
-$progress-transition-time       : $animation-duration-long;
+$progress-normal-height              : 1rem;
+$progress-small-height               : 0.5rem;
+$progress-border-radius              : 0px;
+$progress-border-color               : transparent;
+$progress-background-color           : $component-background-shade;
+$progress-background-color-dark      : $component-background-shade-dark;
+$progress-value-color                : $component-color-default;
+$progress-value-color-dark           : $component-color-default-dark;
+$progress-value-color-accent         : $component-background-accent;
+$progress-value-color-secondary      : $component-background-secondary;
+$progress-value-color-success        : $component-background-success;
+$progress-value-color-warning        : $component-background-warning;
+$progress-value-color-error          : $component-background-error;
+$progress-value-color-accent-dark    : $component-background-accent-dark;
+$progress-value-color-secondary-dark : $component-background-secondary-dark;
+$progress-value-color-success-dark   : $component-background-success-dark;
+$progress-value-color-warning-dark   : $component-background-warning-dark;
+$progress-value-color-error-dark     : $component-background-error-dark;
+$progress-transition-time            : $animation-duration-long;
 
 
 @mixin progress-no-transitions {
@@ -118,6 +123,40 @@ $progress-transition-time       : $animation-duration-long;
     }
 }
 
+@mixin progress-theme-dark {
+    @include mode-dark {
+        progress.#{$prefix}-progress {
+            &.#{$prefix}-accent {
+                &::-webkit-progress-value {
+                    background-color: $progress-value-color-accent-dark;
+                }
+
+                &::-moz-progress-bar {
+                    background-color: $progress-value-color-accent-dark;
+                }
+
+                &::-ms-fill {
+                    background-color: $progress-value-color-accent-dark;
+                }
+            }
+
+            &.#{$prefix}-secondary {
+                &::-webkit-progress-value {
+                    background-color: $progress-value-color-secondary-dark;
+                }
+
+                &::-moz-progress-bar {
+                    background-color: $progress-value-color-secondary-dark;
+                }
+
+                &::-ms-fill {
+                    background-color: $progress-value-color-secondary-dark;
+                }
+            }
+        }
+    }
+}
+
 @mixin progress-signals {
     progress.#{$prefix}-progress {
         &.#{$prefix}-success {
@@ -159,6 +198,54 @@ $progress-transition-time       : $animation-duration-long;
 
             &::-ms-fill {
                 background-color: $progress-value-color-error;
+            }
+        }
+    }
+}
+
+@mixin progress-signals-dark {
+    @include mode-dark {
+        progress.#{$prefix}-progress {
+            &.#{$prefix}-success {
+                &::-webkit-progress-value {
+                    background-color: $progress-value-color-success-dark;
+                }
+
+                &::-moz-progress-bar {
+                    background-color: $progress-value-color-success-dark;
+                }
+
+                &::-ms-fill {
+                    background-color: $progress-value-color-success-dark;
+                }
+            }
+
+            &.#{$prefix}-warning {
+                &::-webkit-progress-value {
+                    background-color: $progress-value-color-warning-dark;
+                }
+
+                &::-moz-progress-bar {
+                    background-color: $progress-value-color-warning-dark;
+                }
+
+                &::-ms-fill {
+                    background-color: $progress-value-color-warning-dark;
+                }
+            }
+
+            &.#{$prefix}-error {
+                &::-webkit-progress-value {
+                    background-color: $progress-value-color-error-dark;
+                }
+
+                &::-moz-progress-bar {
+                    background-color: $progress-value-color-error-dark;
+                }
+
+                &::-ms-fill {
+                    background-color: $progress-value-color-error-dark;
+                }
             }
         }
     }
@@ -235,9 +322,17 @@ $progress-transition-time       : $animation-duration-long;
 
     @if(not-option-disabled($options, 'theme')) {
         @include progress-theme();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include progress-theme-dark();
+        }
     }
 
     @if(not-option-disabled($options, 'signal')) {
         @include progress-signals();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include progress-signals-dark();
+        }
     }
 }

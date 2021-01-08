@@ -6,13 +6,18 @@ $badge-text-size: $font-small;
 $badge-text-line: $line-height-small;
 $badge-padding  : 2px 6px;
 
-$badge-background-accent   : $component-background-accent;
-$badge-background-secondary: $component-background-secondary;
-$badge-background-error    : $component-background-error;
-$badge-background-success  : $component-background-success;
-$badge-background-warning  : $component-background-warning;
-$badge-background          : $component-background-default;
-$badge-background-dark     : $component-background-default-dark;
+$badge-background-accent        : $component-background-accent;
+$badge-background-secondary     : $component-background-secondary;
+$badge-background-error         : $component-background-error;
+$badge-background-success       : $component-background-success;
+$badge-background-warning       : $component-background-warning;
+$badge-background               : $component-background-default;
+$badge-background-dark          : $component-background-default-dark;
+$badge-background-accent-dark   : $component-background-accent-dark;
+$badge-background-secondary-dark: $component-background-secondary-dark;
+$badge-background-error-dark    : $component-background-error-dark;
+$badge-background-success-dark  : $component-background-success-dark;
+$badge-background-warning-dark  : $component-background-warning-dark;
 
 $badge-color        : $component-color-default;
 $badge-color-inverse: $component-color-inverse;
@@ -78,6 +83,29 @@ $badge-color-dark   : $component-color-default-dark;
         .#{$prefix}-badge {
             background-color: $badge-background-dark;
             color           : $badge-color-dark;
+
+            &.#{$prefix}-accent {
+                background-color: $badge-background-accent-dark;
+            }
+
+            &.#{$prefix}-secondary {
+                background-color: $badge-background-secondary-dark;
+
+            }
+
+            &.#{$prefix}-success {
+                background-color: $badge-background-success-dark;
+
+            }
+
+            &.#{$prefix}-warning {
+                background-color: $badge-background-warning-dark;
+
+            }
+
+            &.#{$prefix}-error {
+                background-color: $badge-background-error-dark;
+            }
         }
     }
 }

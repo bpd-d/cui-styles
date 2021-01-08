@@ -12,6 +12,12 @@ $code-unit-color    : get-theme-color('warning');
 $code-attr-color    : get-theme-color('error');
 $code-value-color   : get-theme-color('success');
 
+$code-tag-color-dark     : get-theme-color('accent-dark');
+$code-variable-color-dark: get-theme-color('secondary-dark');
+$code-unit-color-dark    : get-theme-color('warning-dark');
+$code-attr-color-dark    : get-theme-color('error-dark');
+$code-value-color-dark   : get-theme-color('success-dark');
+
 $code-background-color     : $component-background-shade;
 $code-background-color-dark: $component-background-shade-dark;
 
@@ -118,6 +124,26 @@ $code-indent-base   : 1rem;
 
                 &>span {
                     color: $code-color-dark;
+
+                    .#{$prefix}-tag {
+                        color: $code-tag-color-dark;
+                    }
+
+                    .#{$prefix}-value {
+                        color: $code-value-color-dark;
+                    }
+
+                    .#{$prefix}-attribute {
+                        color: $code-attr-color-dark;
+                    }
+
+                    .#{$prefix}-unit {
+                        color: $code-unit-color-dark;
+                    }
+
+                    .#{$prefix}-var {
+                        color: $code-variable-color-dark;
+                    }
                 }
             }
         }

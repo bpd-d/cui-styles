@@ -38,6 +38,7 @@ $item-background-default: $component-background-default;
 
 @mixin component-header {
     font-size  : $font-large;
+    line-height: $font-large;
     font-weight: $text-weight-semi-bold;
     @include text-nowrap;
 }

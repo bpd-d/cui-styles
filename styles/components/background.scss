@@ -15,7 +15,7 @@ $themes: "accent",
 
 @mixin enumerate-backgrounds($suffix: "") {
     @each $accent in $themes {
-        $color-name : "#{$accent}-shade#{$suffix}";
+        $color-name : "#{$accent}#{$suffix}-shade";
 
         .#{$prefix}-background-#{$accent} {
             background-color: get-theme-color("#{$color-name}") !important;

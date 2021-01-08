@@ -140,49 +140,79 @@ $component-background-shade-dark-active : var(--#{$prefix}-color-shade-light-lig
 $component-color-default     : var(--#{$prefix}-color-light-base);
 $component-color-muted       : var(--#{$prefix}-color-light-muted);
 $component-color-active      : var(--#{$prefix}-color-light-active);
+$component-color-inverse     : var(--#{$prefix}-color-dark-base);
 $component-color-default-dark: var(--#{$prefix}-color-dark-base);
 $component-color-muted-dark  : var(--#{$prefix}-color-dark-muted);
 $component-color-active-dark : var(--#{$prefix}-color-dark-active);
-$component-color-inverse     : var(--#{$prefix}-color-dark-base);
 $component-color-inverse-dark: var(--#{$prefix}-color-light-base);
 
 // $button-border-color     : var(--#{$prefix}-color-light-muted);
 // $button-border-color-dark: var(--#{$prefix}-color-dark-muted);
 
-$component-background-accent            : var(--#{$prefix}-color-primary);
-$component-background-accent-hover      : var(--#{$prefix}-color-primary-muted);
-$component-background-accent-active     : var(--#{$prefix}-color-primary-active);
-$component-background-accent-muted      : var(--#{$prefix}-color-primary-muted);
-$component-background-accent-shade      : var(--#{$prefix}-color-primary-shade);
-$component-background-accent-shade-dark : var(--#{$prefix}-color-primary-shade-dark);
+// Accent
+$component-background-accent             : var(--#{$prefix}-color-primary);
+$component-background-accent-hover       : var(--#{$prefix}-color-primary-muted);
+$component-background-accent-active      : var(--#{$prefix}-color-primary-active);
+$component-background-accent-muted       : var(--#{$prefix}-color-primary-muted);
+$component-background-accent-shade       : var(--#{$prefix}-color-primary-shade);
+// Accent dark
+$component-background-accent-dark        : var(--#{$prefix}-color-primary-dark);
+$component-background-accent-dark-hover  : var(--#{$prefix}-color-primary-dark-muted);
+$component-background-accent-dark-active : var(--#{$prefix}-color-primary-dark-active);
+$component-background-accent-dark-muted  : var(--#{$prefix}-color-primary-dark-muted);
+$component-background-accent-dark-shade  : var(--#{$prefix}-color-primary-dark-shade);
 
-$component-background-secondary            : var(--#{$prefix}-color-secondary);
-$component-background-secondary-hover      : var(--#{$prefix}-color-secondary-muted);
-$component-background-secondary-active     : var(--#{$prefix}-color-secondary-active);
-$component-background-secondary-muted      : var(--#{$prefix}-color-secondary-muted);
-$component-background-secondary-shade      : var(--#{$prefix}-color-secondary-shade);
-$component-background-secondary-shade-dark : var(--#{$prefix}-color-secondary-shade-dark);
+//Secondary
+$component-background-secondary             : var(--#{$prefix}-color-secondary);
+$component-background-secondary-hover       : var(--#{$prefix}-color-secondary-muted);
+$component-background-secondary-active      : var(--#{$prefix}-color-secondary-active);
+$component-background-secondary-muted       : var(--#{$prefix}-color-secondary-muted);
+$component-background-secondary-shade       : var(--#{$prefix}-color-secondary-shade);
+//Secondary dark
+$component-background-secondary-dark        : var(--#{$prefix}-color-secondary-dark);
+$component-background-secondary-dark-hover  : var(--#{$prefix}-color-secondary-dark-muted);
+$component-background-secondary-dark-active : var(--#{$prefix}-color-secondary-dark-active);
+$component-background-secondary-dark-muted  : var(--#{$prefix}-color-secondary-dark-muted);
+$component-background-secondary-dark-shade  : var(--#{$prefix}-color-secondary-dark-shade);
 
-$component-background-error            : var(--#{$prefix}-color-error);
-$component-background-error-hover      : var(--#{$prefix}-color-error-muted);
-$component-background-error-active     : var(--#{$prefix}-color-error-active);
-$component-background-error-muted      : var(--#{$prefix}-color-error-muted);
-$component-background-error-shade      : var(--#{$prefix}-color-error-shade);
-$component-background-error-shade-dark : var(--#{$prefix}-color-error-shade-dark);
+//Error
+$component-background-error             : var(--#{$prefix}-color-error);
+$component-background-error-hover       : var(--#{$prefix}-color-error-muted);
+$component-background-error-active      : var(--#{$prefix}-color-error-active);
+$component-background-error-muted       : var(--#{$prefix}-color-error-muted);
+$component-background-error-shade       : var(--#{$prefix}-color-error-shade);
+//Error dark
+$component-background-error-dark        : var(--#{$prefix}-color-error-dark);
+$component-background-error-dark-hover  : var(--#{$prefix}-color-error-dark-muted);
+$component-background-error-dark-active : var(--#{$prefix}-color-error-dark-active);
+$component-background-error-dark-muted  : var(--#{$prefix}-color-error-dark-muted);
+$component-background-error-dark-shade  : var(--#{$prefix}-color-error-dark-shade);
 
-$component-background-warning            : var(--#{$prefix}-color-warning);
-$component-background-warning-hover      : var(--#{$prefix}-color-warning-muted);
-$component-background-warning-active     : var(--#{$prefix}-color-warning-active);
-$component-background-warning-muted      : var(--#{$prefix}-color-warning-muted);
-$component-background-warning-shade      : var(--#{$prefix}-color-warning-shade);
-$component-background-warning-shade-dark : var(--#{$prefix}-color-warning-shade-dark);
+//Warning
+$component-background-warning             : var(--#{$prefix}-color-warning);
+$component-background-warning-hover       : var(--#{$prefix}-color-warning-muted);
+$component-background-warning-active      : var(--#{$prefix}-color-warning-active);
+$component-background-warning-muted       : var(--#{$prefix}-color-warning-muted);
+$component-background-warning-shade       : var(--#{$prefix}-color-warning-shade);
+//Warning dark
+$component-background-warning-dark        : var(--#{$prefix}-color-warning-dark);
+$component-background-warning-dark-hover  : var(--#{$prefix}-color-warning-dark-muted);
+$component-background-warning-dark-active : var(--#{$prefix}-color-warning-dark-active);
+$component-background-warning-dark-muted  : var(--#{$prefix}-color-warning-dark-muted);
+$component-background-warning-dark-shade  : var(--#{$prefix}-color-warning-dark-shade);
 
-$component-background-success            : var(--#{$prefix}-color-success);
-$component-background-success-hover      : var(--#{$prefix}-color-success-muted);
-$component-background-success-active     : var(--#{$prefix}-color-success-active);
-$component-background-success-muted      : var(--#{$prefix}-color-success-muted);
-$component-background-success-shade      : var(--#{$prefix}-color-success-shade);
-$component-background-success-shade-dark : var(--#{$prefix}-color-success-shade-dark);
+//Success
+$component-background-success             : var(--#{$prefix}-color-success);
+$component-background-success-hover       : var(--#{$prefix}-color-success-muted);
+$component-background-success-active      : var(--#{$prefix}-color-success-active);
+$component-background-success-muted       : var(--#{$prefix}-color-success-muted);
+$component-background-success-shade       : var(--#{$prefix}-color-success-shade);
+//Success dark
+$component-background-success-dark        : var(--#{$prefix}-color-success-dark);
+$component-background-success-dark-hover  : var(--#{$prefix}-color-success-dark-muted);
+$component-background-success-dark-active : var(--#{$prefix}-color-success-dark-active);
+$component-background-success-dark-muted  : var(--#{$prefix}-color-success-dark-muted);
+$component-background-success-dark-shade  : var(--#{$prefix}-color-success-dark-shade);
 
 $component-print-background   : white !important;
 $component-print-color        : black !important;
@@ -216,31 +246,51 @@ $colors-map: ('accent': $component-background-accent,
     'accent-active': $component-background-accent-active,
     'accent-muted': $component-background-accent-muted,
     'accent-shade': $component-background-accent-shade,
-    'accent-shade-dark': $component-background-accent-shade-dark,
+    'accent-dark': $component-background-accent-dark,
+    'accent-dark-hover': $component-background-accent-dark-hover,
+    'accent-dark-active': $component-background-accent-dark-active,
+    'accent-dark-muted': $component-background-accent-dark-muted,
+    'accent-dark-shade': $component-background-accent-dark-shade,
     'secondary': $component-background-secondary,
     'secondary-hover': $component-background-secondary-hover,
     'secondary-active': $component-background-secondary-active,
     'secondary-muted': $component-background-secondary-muted,
     'secondary-shade': $component-background-secondary-shade,
-    'secondary-shade-dark': $component-background-secondary-shade-dark,
+    'secondary-dark': $component-background-secondary-dark,
+    'secondary-dark-hover': $component-background-secondary-dark-hover,
+    'secondary-dark-active': $component-background-secondary-dark-active,
+    'secondary-dark-muted': $component-background-secondary-dark-muted,
+    'secondary-dark-shade': $component-background-secondary-dark-shade,
     'success': $component-background-success,
     'success-hover': $component-background-success-hover,
     'success-active': $component-background-success-active,
     'success-muted': $component-background-success-muted,
     'success-shade': $component-background-success-shade,
-    'success-shade-dark': $component-background-success-shade-dark,
+    'success-dark': $component-background-success-dark,
+    'success-dark-hover': $component-background-success-dark-hover,
+    'success-dark-active': $component-background-success-dark-active,
+    'success-dark-muted': $component-background-success-dark-muted,
+    'success-dark-shade': $component-background-success-dark-shade,
     'error': $component-background-error,
+    'error-dark': $component-background-error-dark,
     'error-hover': $component-background-error-hover,
+    'error-dark-hover': $component-background-error-dark-hover,
     'error-active': $component-background-error-active,
+    'error-dark-active': $component-background-error-dark-active,
     'error-muted': $component-background-error-muted,
+    'error-dark-muted': $component-background-error-dark-muted,
     'error-shade': $component-background-error-shade,
-    'error-shade-dark': $component-background-error-shade-dark,
+    'error-dark-shade': $component-background-error-dark-shade,
     'warning': $component-background-warning,
+    'warning-dark': $component-background-warning-dark,
     'warning-hover': $component-background-warning-hover,
+    'warning-dark-hover': $component-background-warning-dark-hover,
     'warning-active': $component-background-warning-active,
+    'warning-dark-active': $component-background-warning-dark-active,
     'warning-muted': $component-background-warning-muted,
+    'warning-dark-muted': $component-background-warning-dark-muted,
     'warning-shade': $component-background-warning-shade,
-    'warning-shade-dark': $component-background-warning-shade-dark);
+    'warning-dark-shade': $component-background-warning-dark-shade);
 /*
 * For components border, like buttons, inputs
 */

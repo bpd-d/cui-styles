@@ -8,7 +8,14 @@ $link-color-secondary  : $component-background-secondary-muted;
 $link-color-error      : $component-background-error-muted;
 $link-color-warning    : $component-background-warning-muted;
 $link-color-success    : $component-background-success-muted;
-$link-transition-time  : $animation-duration-short;
+
+$link-color-accent-dark    : $component-background-accent-dark-muted;
+$link-color-secondary-dark : $component-background-secondary-dark-muted;
+$link-color-error-dark     : $component-background-error-dark-muted;
+$link-color-warning-dark   : $component-background-warning-dark-muted;
+$link-color-success-dark   : $component-background-success-dark-muted;
+
+$link-transition-time : $animation-duration-short;
 
 @mixin link {
     .#{$prefix}-link {
@@ -92,6 +99,39 @@ $link-transition-time  : $animation-duration-short;
     }
 }
 
+@mixin link-theme-dark {
+    @include mode-dark {
+        .#{$prefix}-link {
+            &.#{$prefix}-accent {
+                color: $link-color-accent-dark;
+            }
+
+            &.#{$prefix}-secondary {
+                color: $link-color-secondary-dark;
+            }
+
+            &:visited {
+                &.#{$prefix}-accent {
+                    color: $link-color-accent-dark;
+
+                    &:before {
+                        background-color: $link-color-accent-dark;
+                    }
+
+                }
+
+                &.#{$prefix}-secondary {
+                    color: $link-color-secondary-dark;
+
+                    &:before {
+                        background-color: $link-color-secondary-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @mixin link-signals {
     .#{$prefix}-link {
         &.#{$prefix}-error {
@@ -134,6 +174,50 @@ $link-transition-time  : $animation-duration-short;
     }
 }
 
+@mixin link-signals-dark {
+    @include mode-dark {
+        .#{$prefix}-link {
+            &.#{$prefix}-error {
+                color: $link-color-error-dark;
+
+                &:before {
+                    background-color: $link-color-error-dark;
+                }
+            }
+
+            &.#{$prefix}-warning {
+                color: $link-color-warning-dark;
+
+                &:before {
+                    background-color: $link-color-warning-dark;
+                }
+            }
+
+            &.#{$prefix}-success {
+                color: $link-color-success-dark;
+
+                &:before {
+                    background-color: $link-color-success-dark;
+                }
+            }
+
+            &:visited {
+                &.#{$prefix}-error {
+                    color: $link-color-error-dark;
+                }
+
+                &.#{$prefix}-warning {
+                    color: $link-color-warning-dark;
+                }
+
+                &.#{$prefix}-success {
+                    color: $link-color-success-dark;
+                }
+            }
+        }
+    }
+}
+
 @mixin link-print {
     .#{$prefix}-print {
         .#{$prefix}-link {
@@ -166,10 +250,18 @@ $link-transition-time  : $animation-duration-short;
 
     @if(not-option-disabled($options, 'theme')) {
         @include link-theme();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include link-theme-dark();
+        }
     }
 
     @if(not-option-disabled($options, 'signal')) {
         @include link-signals();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include link-signals-dark();
+        }
     }
 
     @if(not-option-disabled($options, 'animation')) {

@@ -7,7 +7,7 @@ $toast-background-color-dark: $component-background-default-dark;
 $toast-color                : $component-color-default;
 $toast-color-dark           : $component-color-default-dark;
 $toast-animation-duration   : $animation-duration-default;
-$toast-font-size            : $font-small;
+$toast-font-size            : $font-normal;
 
 
 @mixin toast {
@@ -21,7 +21,7 @@ $toast-font-size            : $font-small;
         font-size    : $toast-font-size;
         color        : $toast-color;
         background   : $toast-background-color;
-        box-shadow   : $shadow3;
+        box-shadow   : $shadow2;
         border-radius: 50px;
         opacity      : 0;
 
@@ -73,12 +73,12 @@ $toast-font-size            : $font-small;
     @keyframes #{$prefix}AnimToastIn {
         0% {
             opacity  : 0;
-            transform: translateX(-50%) translateY(0%) scale(0, 0);
+            transform: translateX(-50%) translateY($toast-margin-bottom) scale(0, 0);
         }
 
         80% {
             opacity  : 1;
-            transform: translateX(-50%) translateY(-60px) scale(1.1, 1.1);
+            transform: translateX(-50%) translateY($toast-margin-bottom) scale(1.1, 1.1);
         }
 
         100% {
@@ -96,7 +96,7 @@ $toast-font-size            : $font-small;
 
         100% {
             opacity  : 0;
-            transform: translateX(-50%) translateY(0%) scale(0, 0);
+            transform: translateX(-50%) translateY($toast-margin-bottom) scale(0, 0);
         }
     }
 }

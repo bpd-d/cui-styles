@@ -7,7 +7,7 @@
     //Breakpoints
     // colors
     // Light
-    --#{$prefix}-color-light-app-background: #ffffff;
+    --#{$prefix}-color-light-app-background: #fefefe;
     --#{$prefix}-color-light-background    : #fff;
     --#{$prefix}-color-light-border        : #00000020;
     --#{$prefix}-color-light-base          : #333;
@@ -20,38 +20,59 @@
     --#{$prefix}-color-dark-base           : #fff;
     --#{$prefix}-color-dark-active         : #777;
     --#{$prefix}-color-dark-muted          : #ccc;
-    // --primary pink      : FF0066
-    --#{$prefix}-color-primary             : #2585B5;
-    --#{$prefix}-color-primary-active      : #1E6A91;
-    --#{$prefix}-color-primary-muted       : #519DC4;
-    --#{$prefix}-color-primary-shade       : #D3E7F0;
-    --#{$prefix}-color-primary-shade-dark  : #0F3548;
+
+    // Primary
+    --#{$prefix}-color-primary            : #21547B;
+    --#{$prefix}-color-primary-active     : #0B3453;
+    --#{$prefix}-color-primary-muted      : #3C6E95;
+    --#{$prefix}-color-primary-shade      : #B3CFE5;
+    // Primary dark
+    --#{$prefix}-color-primary-dark       : #355E7E;
+    --#{$prefix}-color-primary-dark-active: #052D4C;
+    --#{$prefix}-color-primary-dark-muted : #4787B8;
+    --#{$prefix}-color-primary-dark-shade : #233646;
 
     // Secondary
-    --#{$prefix}-color-secondary           : #8a3f9e;
-    --#{$prefix}-color-secondary-active    : #6E327E;
-    --#{$prefix}-color-secondary-muted     : #A165B1;
-    --#{$prefix}-color-secondary-shade     : #E8D9EC;
-    --#{$prefix}-color-secondary-shade-dark: #37193F;
+    --#{$prefix}-color-secondary            : #5B258A;
+    --#{$prefix}-color-secondary-active     : #341451;
+    --#{$prefix}-color-secondary-muted      : #7A30BA;
+    --#{$prefix}-color-secondary-shade      : #D1B0EF;
+    // Secondary dark
+    --#{$prefix}-color-secondary-dark       : #693299;
+    --#{$prefix}-color-secondary-dark-active: #461E68;
+    --#{$prefix}-color-secondary-dark-muted : #8D41CF;
+    --#{$prefix}-color-secondary-dark-shade : #4E3A5F;
     // Signals 
     // Warning
-    --#{$prefix}-color-warning             : #fb8c00;
-    --#{$prefix}-color-warning-active      : #C97000;
-    --#{$prefix}-color-warning-muted       : #FCA333;
-    --#{$prefix}-color-warning-shade       : #FEE8CC;
-    --#{$prefix}-color-warning-shade-dark  : #643800;
+    --#{$prefix}-color-warning              : #fb8c00;
+    --#{$prefix}-color-warning-active       : #C97000;
+    --#{$prefix}-color-warning-muted        : #FCA333;
+    --#{$prefix}-color-warning-shade        : #ceba9d;
+    // Warning dark
+    --#{$prefix}-color-warning-dark         : #f79a28;
+    --#{$prefix}-color-warning-dark-active  : #c57d25;
+    --#{$prefix}-color-warning-dark-muted   : #f8b562;
+    --#{$prefix}-color-warning-dark-shade   : #3f362b;
     // Success
-    --#{$prefix}-color-success             : #7cb342;
-    --#{$prefix}-color-success-active      : #638F35;
-    --#{$prefix}-color-success-muted       : #96C268;
-    --#{$prefix}-color-success-shade       : #E5F0D9;
-    --#{$prefix}-color-success-shade-dark  : #32481A;
+    --#{$prefix}-color-success              : #7cb342;
+    --#{$prefix}-color-success-active       : #638F35;
+    --#{$prefix}-color-success-muted        : #96C268;
+    --#{$prefix}-color-success-shade        : #E5F0D9;
+    // Success dark
+    --#{$prefix}-color-success-dark         : #95d550;
+    --#{$prefix}-color-success-dark-active  : #84bd47;
+    --#{$prefix}-color-success-dark-muted   : #a0bb84;
+    --#{$prefix}-color-success-dark-shade   : #3f4439;
     //Error
-    --#{$prefix}-color-error               : #f44336;
-    --#{$prefix}-color-error-active        : #E21B0C;
-    --#{$prefix}-color-error-muted         : #F6695E;
-    --#{$prefix}-color-error-shade         : #FDD9D7;
-    --#{$prefix}-color-error-shade-dark    : #710D06;
+    --#{$prefix}-color-error                : #f44336;
+    --#{$prefix}-color-error-active         : #E21B0C;
+    --#{$prefix}-color-error-muted          : #F6695E;
+    --#{$prefix}-color-error-shade          : #FDD9D7;
+    //Error dark
+    --#{$prefix}-color-error-dark           : #fa6157;
+    --#{$prefix}-color-error-dark-active    : #d13d33;
+    --#{$prefix}-color-error-dark-muted     : #c5554d;
+    --#{$prefix}-color-error-dark-shade     : #5f4846;
 
     --#{$prefix}-input-background-color: transparent;
 

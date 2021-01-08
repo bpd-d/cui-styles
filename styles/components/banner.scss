@@ -87,12 +87,44 @@ $banner-color-secondary: $component-background-secondary;
 }
 
 @mixin banner-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         div.#{$prefix}-banner {
             @include not-colors {
                 border          : 1px solid $banner-border-color-dark;
                 background-color: $banner-background-default-dark;
                 color           : $banner-color-default-dark;
+            }
+        }
+    }
+}
+
+@mixin banner-signals-dark {
+    @include mode-dark {
+        div.#{$prefix}-banner {
+            &.#{$prefix}-success {
+                @include banner-color('success-dark');
+            }
+
+            &.#{$prefix}-error {
+                @include banner-color('error-dark');
+            }
+
+            &.#{$prefix}-warning {
+                @include banner-color('warning-dark');
+            }
+        }
+    }
+}
+
+@mixin banner-theme-dark {
+    @include mode-dark {
+        div.#{$prefix}-banner {
+            &.#{$prefix}-accent {
+                @include banner-color('accent-dark');
+            }
+
+            &.#{$prefix}-secondary {
+                @include banner-color('secondary-dark');
             }
         }
     }
@@ -122,10 +154,18 @@ $banner-color-secondary: $component-background-secondary;
 
     @if(not-option-disabled($options, 'theme')) {
         @include banner-theme();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include banner-theme-dark();
+        }
     }
 
     @if(not-option-disabled($options, 'signal')) {
         @include banner-signals();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include banner-signals-dark();
+        }
     }
 
 }

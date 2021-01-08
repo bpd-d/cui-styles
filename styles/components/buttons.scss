@@ -1,47 +1,73 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$button-background-default            : $component-background-default;
-$button-background-default-active     : $component-background-shade;
-$button-background-default-active-dark: $component-background-shade-dark;
-$button-background-inverse            : $component-background-default;
-$button-background-shade              : $component-background-shade;
-$button-background-shade-active       : $component-background-shade-active;
-$button-background-shade-dark         : $component-background-shade-dark;
-$button-background-shade-dark-active  : $component-background-shade-dark-active;
-$button-background-default-dark       : $component-background-default-dark;
-$button-background-inverse-dark       : $component-background-default-dark;
-$button-background-accent             : $component-background-accent;
-$button-background-accent-hover       : $component-background-accent-hover;
-$button-background-accent-active      : $component-background-accent-active;
-$button-background-secondary          : $component-background-secondary;
-$button-background-secondary-hover    : $component-background-secondary-hover;
-$button-background-secondary-active   : $component-background-secondary-active;
-$button-background-error              : $component-background-error;
-$button-background-error-hover        : $component-background-error-hover;
-$button-background-error-active       : $component-background-error-active;
-$button-background-warning            : $component-background-warning;
-$button-background-warning-hover      : $component-background-warning-hover;
-$button-background-warning-active     : $component-background-warning-active;
-$button-background-success            : $component-background-success;
-$button-background-success-hover      : $component-background-success-hover;
-$button-background-success-active     : $component-background-success-active;
-$button-color-disabled                : $component-color-muted;
-$button-color-disabled-dark           : $component-color-muted-dark;
-$button-color-default                 : $component-color-default;
-$button-color-inverse                 : $component-color-inverse;
-$button-color-default-dark            : $component-color-default-dark;
-$button-color-inverse-dark            : $component-color-inverse-dark;
-$button-border-color                  : $component-border-default; //$component-color-muted;
-$button-border-color-hover            : $component-border-default-hover; //$component-color-default;
-$button-border-color-active           : $component-border-default-active;
-$button-border-color-dark             : $component-border-default-dark; //$component-color-muted-dark;
-$button-border-color-hover-dark       : $component-border-default-hover-dark; //$component-color-default-dark;
-$button-border-color-active-dark      : $component-border-default-active-dark;
-$button-outline                       : $outline-default;
-$button-line-height                   : $line-height;
-$button-font-size                     : $font-normal;
-$button-disabled-border-style         : $component-disabled-border-style;
+$button-background-default               : $component-background-default;
+$button-background-default-active        : $component-background-shade;
+$button-background-default-active-dark   : $component-background-shade-dark;
+$button-background-inverse               : $component-background-default;
+$button-background-shade                 : $component-background-shade;
+$button-background-shade-active          : $component-background-shade-active;
+$button-background-shade-dark            : $component-background-shade-dark;
+$button-background-shade-dark-active     : $component-background-shade-dark-active;
+$button-background-default-dark          : $component-background-default-dark;
+$button-background-inverse-dark          : $component-background-default-dark;
+// Accent
+$button-background-accent                : $component-background-accent;
+$button-background-accent-hover          : $component-background-accent-hover;
+$button-background-accent-active         : $component-background-accent-active;
+// Accent dark
+$button-background-accent-dark           : $component-background-accent-dark;
+$button-background-accent-dark-hover     : $component-background-accent-dark-hover;
+$button-background-accent-dark-active    : $component-background-accent-dark-active;
+// Secondary
+$button-background-secondary             : $component-background-secondary;
+$button-background-secondary-hover       : $component-background-secondary-hover;
+$button-background-secondary-active      : $component-background-secondary-active;
+// Secondary dark
+$button-background-secondary-dark        : $component-background-secondary-dark;
+$button-background-secondary-dark-hover  : $component-background-secondary-dark-hover;
+$button-background-secondary-dark-active : $component-background-secondary-dark-active;
+// Error
+$button-background-error                 : $component-background-error;
+$button-background-error-hover           : $component-background-error-hover;
+$button-background-error-active          : $component-background-error-active;
+// Error dark
+$button-background-error-dark            : $component-background-error-dark;
+$button-background-error-dark-hover      : $component-background-error-dark-hover;
+$button-background-error-dark-active     : $component-background-error-dark-active;
+// Warning
+$button-background-warning               : $component-background-warning;
+$button-background-warning-hover         : $component-background-warning-hover;
+$button-background-warning-active        : $component-background-warning-active;
+// Warning dark
+$button-background-warning-dark          : $component-background-warning-dark;
+$button-background-warning-dark-hover    : $component-background-warning-dark-hover;
+$button-background-warning-dark-active   : $component-background-warning-dark-active;
+// Success
+$button-background-success               : $component-background-success;
+$button-background-success-hover         : $component-background-success-hover;
+$button-background-success-active        : $component-background-success-active;
+// Success dark
+$button-background-success-dark          : $component-background-success-dark;
+$button-background-success-dark-hover    : $component-background-success-dark-hover;
+$button-background-success-dark-active   : $component-background-success-dark-active;
+// Disabled
+$button-color-disabled                   : $component-color-muted;
+$button-color-disabled-dark              : $component-color-muted-dark;
+$button-color-default                    : $component-color-default;
+$button-color-inverse                    : $component-color-inverse;
+$button-color-default-dark               : $component-color-default-dark;
+$button-color-inverse-dark               : $component-color-inverse-dark;
+$button-border-color                     : $component-border-default; //$component-color-muted;
+$button-border-color-hover               : $component-border-default-hover; //$component-color-default;
+$button-border-color-active              : $component-border-default-active;
+$button-border-color-dark                : $component-border-default-dark; //$component-color-muted-dark;
+$button-border-color-hover-dark          : $component-border-default-hover-dark; //$component-color-default-dark;
+$button-border-color-active-dark         : $component-border-default-active-dark;
+$button-outline                          : $outline-default;
+$button-line-height                      : $line-height;
+$button-font-size                        : $font-normal;
+$button-disabled-border-style            : $component-disabled-border-style;
 
 @mixin button {
 
@@ -244,6 +270,54 @@ $button-disabled-border-style         : $component-disabled-border-style;
     }
 }
 
+@mixin button-theme-dark {
+    @include mode-dark {
+
+        .#{$prefix}-button,
+        .#{$prefix}-icon-button {
+            &.#{$prefix}-accent {
+                background-color               : $button-background-accent-dark !important;
+                color                          : $button-color-inverse;
+                border-color                   : $button-background-accent-dark;
+                @include updateHighlight($color: $highlight-color);
+
+            }
+
+            &.#{$prefix}-secondary {
+                background-color               : $button-background-secondary-dark !important;
+                color                          : $button-color-inverse;
+                border-color                   : $button-background-secondary-dark;
+                @include updateHighlight($color: $highlight-color);
+            }
+
+            &:hover,
+            &:focus:not(:hover) {
+                &.#{$prefix}-accent {
+                    background-color: $button-background-accent-dark-hover !important;
+                    border-color    : $button-background-accent-dark-hover;
+                }
+
+                &.#{$prefix}-secondary {
+                    background-color: $button-background-secondary-dark-hover !important;
+                    border-color    : $button-background-secondary-dark-hover;
+                }
+            }
+
+            &:active {
+                &.#{$prefix}-accent {
+                    background-color: $button-background-accent-dark-active !important;
+                    border-color    : $button-background-accent-dark-active;
+                }
+
+                &.#{$prefix}-secondary {
+                    background-color: $button-background-secondary-dark-active !important;
+                    border-color    : $button-background-secondary-dark-active;
+                }
+            }
+        }
+    }
+}
+
 @mixin button-signals {
 
     .#{$prefix}-button,
@@ -309,10 +383,76 @@ $button-disabled-border-style         : $component-disabled-border-style;
     }
 }
 
+@mixin button-signals-dark {
+    @include mode-dark {
 
+        .#{$prefix}-button,
+        .#{$prefix}-icon-button {
+            &.#{$prefix}-success {
+                background-color               : $button-background-success-dark !important;
+                color                          : $button-color-inverse;
+                border-color                   : $button-background-success-dark;
+                @include updateHighlight($color: $highlight-color);
+            }
+
+            &.#{$prefix}-error {
+                background-color               : $button-background-error-dark !important;
+                color                          : $button-color-inverse;
+                border-color                   : $button-background-error-dark;
+                @include updateHighlight($color: $highlight-color);
+            }
+
+            &.#{$prefix}-warning {
+                background-color               : $button-background-warning-dark !important;
+                color                          : $button-color-inverse;
+                border-color                   : $button-background-warning-dark;
+                @include updateHighlight($color: $highlight-color);
+            }
+
+            &:hover,
+            &:focus:not(:hover) {
+
+                &.#{$prefix}-success {
+                    background-color: $button-background-success-dark-hover !important;
+                    border-color    : $button-background-success-dark-hover;
+                }
+
+                &.#{$prefix}-error {
+                    background-color: $button-background-error-dark-hover !important;
+                    border-color    : $button-background-error-dark-hover;
+                }
+
+                &.#{$prefix}-warning {
+                    background-color: $button-background-warning-dark-hover !important;
+                    border-color    : $button-background-warning-dark-hover;
+                }
+            }
+
+            &:active {
+                &.#{$prefix}-error {
+                    background-color: $button-background-error-dark-active !important;
+                    border-color    : $button-background-error-dark-active;
+
+                }
+
+                &.#{$prefix}-warning {
+                    background-color: $button-background-warning-dark-active !important;
+                    border-color    : $button-background-warning-dark-active;
+
+                }
+
+                &.#{$prefix}-success {
+                    background-color: $button-background-success-active !important;
+                    border-color    : $button-background-success-active;
+
+                }
+            }
+        }
+    }
+}
 
 @mixin button-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         .#{$prefix}-button {
             color                          : $button-color-default-dark;
             @include updateHighlight($color: $highlight-color);
@@ -534,6 +674,10 @@ $button-disabled-border-style         : $component-disabled-border-style;
     @if(not-option-disabled($options, 'signal')) {
         @include button-signals();
 
+        @if(not-option-disabled($options, 'dark')) {
+            @include button-signals-dark();
+        }
+
         @if(not-option-disabled($options, 'print')) {
             @include button-print-signal();
         }
@@ -541,6 +685,10 @@ $button-disabled-border-style         : $component-disabled-border-style;
 
     @if(not-option-disabled($options, 'theme')) {
         @include button-theme();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include button-theme-dark();
+        }
 
         @if(not-option-disabled($options, 'print')) {
             @include button-print-theme();

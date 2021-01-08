@@ -10,6 +10,9 @@ $table-stripped-color-dark: $component-background-shade-dark;
 $table-header-color-accent    : $component-background-accent;
 $table-header-color-secondary : $component-background-secondary;
 
+$table-header-color-accent-dark    : $component-background-accent-dark;
+$table-header-color-secondary-dark : $component-background-secondary-dark;
+
 $table-color-inverse      : $component-color-default;
 $table-color-inverse-dark : $component-color-default-dark;
 
@@ -243,6 +246,34 @@ $table-background-inverse-dark: $component-background-shade-dark;
     }
 }
 
+@mixin table-theme-dark {
+    @include mode-dark {
+        table.#{$prefix}-table {
+            tr {
+                th {
+                    &.#{$prefix}-accent {
+                        color: $table-header-color-accent-dark;
+                    }
+
+                    &.#{$prefix}-secondary {
+                        color: $table-header-color-secondary-dark;
+                    }
+                }
+
+                td {
+                    &.#{$prefix}-accent {
+                        color: $table-header-color-accent-dark;
+                    }
+
+                    &.#{$prefix}-secondary {
+                        color: $table-header-color-secondary-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @mixin table-theme-print {
     @include mode-print {
         table.#{$prefix}-table {
@@ -390,6 +421,10 @@ $table-background-inverse-dark: $component-background-shade-dark;
 
         @if(not-option-disabled($options, 'print')) {
             @include table-theme-print();
+        }
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include table-theme-dark();
         }
     }
 

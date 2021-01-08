@@ -11,29 +11,29 @@ $info-box-color                : $component-color-muted;
 $info-box-color-dark           : $component-color-muted-dark;
 
 $info-box-background-color-accent     : $component-background-accent-shade;
-$info-box-background-color-accent-dark: $component-background-accent-shade-dark;
+$info-box-background-color-accent-dark: $component-background-accent-dark-shade;
 $info-box-color-accent                : $component-background-accent;
-$info-box-color-accent-dark           : $component-background-accent;
+$info-box-color-accent-dark           : $component-background-accent-dark-muted;
 
 $info-box-background-color-secondary     : $component-background-secondary-shade;
-$info-box-background-color-secondary-dark: $component-background-secondary-shade-dark;
+$info-box-background-color-secondary-dark: $component-background-secondary-dark-shade;
 $info-box-color-secondary                : $component-background-secondary;
-$info-box-color-secondary-dark           : $component-background-secondary;
+$info-box-color-secondary-dark           : $component-background-secondary-dark-muted;
 
 $info-box-background-color-error     : $component-background-error-shade;
-$info-box-background-color-error-dark: $component-background-error-shade-dark;
+$info-box-background-color-error-dark: $component-background-error-dark-shade;
 $info-box-color-error                : $component-background-error;
-$info-box-color-error-dark           : $component-background-error;
+$info-box-color-error-dark           : $component-background-error-dark;
 
 $info-box-background-color-warning     : $component-background-warning-shade;
-$info-box-background-color-warning-dark: $component-background-warning-shade-dark;
+$info-box-background-color-warning-dark: $component-background-warning-dark-shade;
 $info-box-color-warning                : $component-background-warning;
-$info-box-color-warning-dark           : $component-background-warning;
+$info-box-color-warning-dark           : $component-background-warning-dark;
 
 $info-box-background-color-success     : $component-background-success-shade;
-$info-box-background-color-success-dark: $component-background-success-shade-dark;
+$info-box-background-color-success-dark: $component-background-success-dark-shade;
 $info-box-color-success                : $component-background-success;
-$info-box-color-success-dark           : $component-background-success;
+$info-box-color-success-dark           : $component-background-success-dark;
 
 @mixin info-box() {
     .#{$prefix}-info-box {

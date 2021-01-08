@@ -82,7 +82,8 @@ $components-list: ("navbar",
     "info-box",
     "sequence",
     "hover",
-    "border");
+    "border"
+);
 
 @mixin definitions($components:()) {
     $list: $components;

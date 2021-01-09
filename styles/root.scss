@@ -22,57 +22,57 @@
     --#{$prefix}-color-dark-muted          : #ccc;
 
     // Primary
-    --#{$prefix}-color-primary            : #21547B;
-    --#{$prefix}-color-primary-active     : #0B3453;
-    --#{$prefix}-color-primary-muted      : #3C6E95;
-    --#{$prefix}-color-primary-shade      : #B3CFE5;
+    --#{$prefix}-color-primary            : #3178ce;
+    --#{$prefix}-color-primary-active     : #225391;
+    --#{$prefix}-color-primary-muted      : #669ddb;
+    --#{$prefix}-color-primary-shade      : #E6EFF9;
     // Primary dark
-    --#{$prefix}-color-primary-dark       : #355E7E;
-    --#{$prefix}-color-primary-dark-active: #052D4C;
-    --#{$prefix}-color-primary-dark-muted : #4787B8;
-    --#{$prefix}-color-primary-dark-shade : #233646;
+    --#{$prefix}-color-primary-dark       : #3d83d1;
+    --#{$prefix}-color-primary-dark-active: #255d9d;
+    --#{$prefix}-color-primary-dark-muted : #73a8de;
+    --#{$prefix}-color-primary-dark-shade : #252D37;
 
     // Secondary
-    --#{$prefix}-color-secondary            : #5B258A;
-    --#{$prefix}-color-secondary-active     : #341451;
-    --#{$prefix}-color-secondary-muted      : #7A30BA;
-    --#{$prefix}-color-secondary-shade      : #D1B0EF;
+    --#{$prefix}-color-secondary            : #b340d9;
+    --#{$prefix}-color-secondary-active     : #8822aa;
+    --#{$prefix}-color-secondary-muted      : #c977e4;
+    --#{$prefix}-color-secondary-shade      : #F6E8FB;
     // Secondary dark
-    --#{$prefix}-color-secondary-dark       : #693299;
-    --#{$prefix}-color-secondary-dark-active: #461E68;
-    --#{$prefix}-color-secondary-dark-muted : #8D41CF;
-    --#{$prefix}-color-secondary-dark-shade : #4E3A5F;
+    --#{$prefix}-color-secondary-dark       : #b748db;
+    --#{$prefix}-color-secondary-dark-active: #9023b3;
+    --#{$prefix}-color-secondary-dark-muted : #cd7fe6;
+    --#{$prefix}-color-secondary-dark-shade : #342638;
     // Signals 
     // Warning
-    --#{$prefix}-color-warning              : #fb8c00;
-    --#{$prefix}-color-warning-active       : #C97000;
-    --#{$prefix}-color-warning-muted        : #FCA333;
-    --#{$prefix}-color-warning-shade        : #ceba9d;
+    --#{$prefix}-color-warning              : #db8d2e;
+    --#{$prefix}-color-warning-active       : #a1651c;
+    --#{$prefix}-color-warning-muted        : #e5ac67;
+    --#{$prefix}-color-warning-shade        : #FBF1E6;
     // Warning dark
-    --#{$prefix}-color-warning-dark         : #f79a28;
-    --#{$prefix}-color-warning-dark-active  : #c57d25;
-    --#{$prefix}-color-warning-dark-muted   : #f8b562;
-    --#{$prefix}-color-warning-dark-shade   : #3f362b;
+    --#{$prefix}-color-warning-dark         : #dd943b;
+    --#{$prefix}-color-warning-dark-active  : #ae6d1e;
+    --#{$prefix}-color-warning-dark-muted   : #e7b374;
+    --#{$prefix}-color-warning-dark-shade   : #382F25;
     // Success
-    --#{$prefix}-color-success              : #7cb342;
-    --#{$prefix}-color-success-active       : #638F35;
-    --#{$prefix}-color-success-muted        : #96C268;
-    --#{$prefix}-color-success-shade        : #E5F0D9;
+    --#{$prefix}-color-success              : #29ad55;
+    --#{$prefix}-color-success-active       : #1a7037;
+    --#{$prefix}-color-success-muted        : #45d375;
+    --#{$prefix}-color-success-shade        : #E5F5EB;
     // Success dark
-    --#{$prefix}-color-success-dark         : #95d550;
-    --#{$prefix}-color-success-dark-active  : #84bd47;
-    --#{$prefix}-color-success-dark-muted   : #a0bb84;
-    --#{$prefix}-color-success-dark-shade   : #3f4439;
-    //Error
-    --#{$prefix}-color-error                : #f44336;
-    --#{$prefix}-color-error-active         : #E21B0C;
-    --#{$prefix}-color-error-muted          : #F6695E;
-    --#{$prefix}-color-error-shade          : #FDD9D7;
+    --#{$prefix}-color-success-dark         : #2bb559;
+    --#{$prefix}-color-success-dark-active  : #1c783b;
+    --#{$prefix}-color-success-dark-muted   : #4ed57b;
+    --#{$prefix}-color-success-dark-shade   : #233328;
+
+    --#{$prefix}-color-error            : #ce314b;
+    --#{$prefix}-color-error-active     : #912235;
+    --#{$prefix}-color-error-muted      : #db667a;
+    --#{$prefix}-color-error-shade      : #F9E6EA;
     //Error dark
-    --#{$prefix}-color-error-dark           : #fa6157;
-    --#{$prefix}-color-error-dark-active    : #d13d33;
-    --#{$prefix}-color-error-dark-muted     : #c5554d;
-    --#{$prefix}-color-error-dark-shade     : #5f4846;
+    --#{$prefix}-color-error-dark       : #d13d56;
+    --#{$prefix}-color-error-dark-active: #c22e47;
+    --#{$prefix}-color-error-dark-muted : #e798a5;
+    --#{$prefix}-color-error-dark-shade : #372528;
 
     --#{$prefix}-input-background-color: transparent;
 

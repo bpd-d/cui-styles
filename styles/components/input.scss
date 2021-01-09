@@ -1977,20 +1977,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                     }
                 }
 
-                &:checked {
-                    +.#{$prefix}-content {
-                        &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
-                            &:after {
-                                background-color: $input-border-color-active-dark;
-                                border-color    : $input-border-color-active-dark;
-                            }
 
-                            &:before {
-                                background-color: $input-border-color-active-dark;
-                            }
-                        }
-                    }
-                }
 
                 &:disabled {
                     +.#{$prefix}-content {
@@ -2016,6 +2003,24 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                             &:before {
                                 background-color: $input-color-disabled-dark;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
+                input[type="checkbox"] {
+                    &:checked {
+                        +.#{$prefix}-content {
+
+                            &:after {
+                                background-color: $input-border-color-active-dark;
+                                border-color    : $input-border-color-active-dark;
+                            }
+
+                            &:before {
+                                background-color: $input-border-color-active-dark;
                             }
                         }
                     }

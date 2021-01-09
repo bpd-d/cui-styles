@@ -1,4 +1,10 @@
 # cUI Styles CHANGELOG:
+# [0.2.4] 2021-01-09
+* [Added] Accent, secondary, success, warning, error palletes get dark shades now
+* [Changed] New colors
+* [Fixed] Line height on card title
+* [Fixed] Input checbox and radio
+* [Fixed] Incorrect definition of border
 # [0.2.3] 2020-12-19
 * [Added] Hover and border components
 # [0.2.2] 2020-12-18

@@ -1,4 +1,7 @@
 # cUI Styles CHANGELOG:
+# [0.2.5] 2021-01-10
+* [Changed] Shadows definifition
+* [Fixed] Icon button default border
 # [0.2.4] 2021-01-09
 * [Added] Accent, secondary, success, warning, error palletes get dark shades now
 * [Changed] New colors

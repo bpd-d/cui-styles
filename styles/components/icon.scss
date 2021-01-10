@@ -52,7 +52,7 @@ $icon-color-success-dark  : $component-background-success-dark;
 
     span.#{$prefix}-svg,
     span.#{$prefix}-icon {
-        border    : 1px solid transparent !important;
+        border    : 1px solid transparent;
         box-sizing: border-box;
     }
 

@@ -25,7 +25,7 @@ $toast-font-size            : $font-normal;
         border-radius: 50px;
         opacity      : 0;
 
-        @include component-padding(normal);
+        @include component-padding($size: normal, $wide: true);
         @content;
 
         &:not(.animation-progress):not(.#{$prefix}-active) {

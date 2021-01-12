@@ -118,8 +118,6 @@ $outline-default: var(--#{$prefix}-outline);
 $color-backdrop-light: rgba(255, 255, 255, 0.6);
 $color-backdrop-dark : rgba(22, 22, 22, 0.6);
 
-$color-border-light: var(--#{$prefix}-color-light-border);
-$color-border-dark : var(--#{$prefix}-color-dark-border);
 
 $app-background     : var(--#{$prefix}-color-light-app-background);
 $app-background-dark: var(--#{$prefix}-color-dark-app-background);
@@ -221,8 +219,8 @@ $component-print-border       : 1px solid $component-color-muted !important;
 $component-print-border-color : $component-color-muted !important;
 
 // Used in interactive components to highlight on hover: buttons
-$highlight-color     : rgba(200, 200, 200, 0.05);
-$highlight-color-dark: rgba(80, 80, 80, 0.05);
+$highlight-color     : rgba(240, 245, 250, 0.05);
+$highlight-color-dark: rgba(100, 120, 140, 0.05);
 
 $selection-color           : $component-color-default;
 $selection-background      : $component-background-shade-active;
@@ -295,9 +293,9 @@ $colors-map: ('accent': $component-background-accent,
 * For components border, like buttons, inputs
 */
 
-$component-border-default           : $component-background-shade-active;
-$component-border-default-hover     : $component-color-muted;
-$component-border-default-active    : $component-color-active;
-$component-border-default-dark      : $component-background-shade-dark-active;
-$component-border-default-hover-dark: $component-color-muted-dark;
-$component-border-default-active-dark: $component-color-active-dark;
+$component-border-default           : var(--#{$prefix}-color-light-border);
+$component-border-default-hover     : var(--#{$prefix}-color-light-border-hover);
+$component-border-default-active    : var(--#{$prefix}-color-light-border-active);
+$component-border-default-dark      : var(--#{$prefix}-color-dark-border);
+$component-border-default-hover-dark: var(--#{$prefix}-color-dark-border-hover);
+$component-border-default-active-dark: var(--#{$prefix}-color-dark-border-active);

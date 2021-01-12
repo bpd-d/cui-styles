@@ -1,8 +1,8 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$float-border-color             : $color-border-light;
-$float-border-color-dark        : $color-border-dark;
+$float-border-color             : $component-border-default;
+$float-border-color-dark        : $component-border-default-dark;
 $float-background-default       : $component-background-default;
 $float-background-print         : $component-print-background;
 $float-background-default-dark  : $component-background-default-dark;

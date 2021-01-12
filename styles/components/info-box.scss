@@ -82,7 +82,7 @@ $info-box-color-success-dark           : $component-background-success-dark;
 @mixin info-box-dark {
     @include mode-dark {
         .#{$prefix}-info-box {
-            background-color: $info-box-background-color;
+            background-color: $info-box-background-color-dark;
             color           : $info-box-color-dark;
         }
     }

@@ -1,8 +1,8 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$table-cell-divider-color     : $color-border-light;
-$table-cell-divider-color-dark: $color-border-dark;
+$table-cell-divider-color     : $component-border-default;
+$table-cell-divider-color-dark: $component-border-default-dark;
 
 $table-stripped-color     : $component-background-shade;
 $table-stripped-color-dark: $component-background-shade-dark;

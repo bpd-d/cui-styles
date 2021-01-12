@@ -13,9 +13,9 @@ $card-color-default             : $component-color-default;
 $card-color-inverse             : $component-color-inverse;
 $card-color-inverse-dark        : $component-color-inverse-dark;
 $card-color-default-dark        : $component-color-default-dark;
-$card-separator-color           : $color-border-light;
-$card-separator-color-dark      : $color-border-dark;
-$card-separator-color-accent    : $color-border-dark;
+$card-separator-color           : $component-border-default;
+$card-separator-color-dark      : $component-border-default-dark;
+$card-separator-color-accent    : $component-border-default-dark;
 $card-border-color              : transparent; //$color-border-light;
 $card-border-color-dark         : transparent; //$color-border-dark;
 

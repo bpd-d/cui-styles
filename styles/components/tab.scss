@@ -13,8 +13,8 @@ $tab-color-secondary : $component-background-secondary;
 $tab-color-accent-dark    : $component-background-accent-dark;
 $tab-color-secondary-dark : $component-background-secondary-dark;
 
-$tab-border-color      : $color-border-light;
-$tab-border-color-dark : $color-border-dark;
+$tab-border-color      : $component-border-default;
+$tab-border-color-dark : $component-border-default-dark;
 
 $tab-border-bottom: 1px solid $tab-border-color;
 $tab-border-aside : 1px solid $tab-border-color;

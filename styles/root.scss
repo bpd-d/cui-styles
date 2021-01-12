@@ -7,19 +7,25 @@
     //Breakpoints
     // colors
     // Light
-    --#{$prefix}-color-light-app-background: #fefefe;
+    --#{$prefix}-color-light-app-background: #fdfeff;
     --#{$prefix}-color-light-background    : #fff;
-    --#{$prefix}-color-light-border        : #00000020;
-    --#{$prefix}-color-light-base          : #333;
-    --#{$prefix}-color-light-active        : #222;
-    --#{$prefix}-color-light-muted         : #aaa;
+    --#{$prefix}-color-light-base          : #333435;
+    --#{$prefix}-color-light-active        : #222324;
+    --#{$prefix}-color-light-muted         : #aaabac;
+
+    --#{$prefix}-color-light-border       : #d5d6d8;
+    --#{$prefix}-color-light-border-hover : #b5b6b7;
+    --#{$prefix}-color-light-border-active: #858687;
     //Dark
-    --#{$prefix}-color-dark-app-background : #222;
-    --#{$prefix}-color-dark-background     : #262626;
-    --#{$prefix}-color-dark-border         : #ffffff20;
-    --#{$prefix}-color-dark-base           : #fff;
-    --#{$prefix}-color-dark-active         : #777;
-    --#{$prefix}-color-dark-muted          : #ccc;
+    --#{$prefix}-color-dark-app-background: #222324;
+    --#{$prefix}-color-dark-background    : #242526;
+    --#{$prefix}-color-dark-base          : #fff;
+    --#{$prefix}-color-dark-active        : #777879;
+    --#{$prefix}-color-dark-muted         : #cccdce;
+
+    --#{$prefix}-color-dark-border       : #353637;
+    --#{$prefix}-color-dark-border-hover : #656667;
+    --#{$prefix}-color-dark-border-active: #858687;
 
     // Primary
     --#{$prefix}-color-primary            : #3178ce;
@@ -76,16 +82,14 @@
 
     --#{$prefix}-input-background-color: transparent;
 
-    // Static
-    --#{$prefix}-color-shade              : #00000010;
-    --#{$prefix}-color-shade-darker       : #00000030;
-    --#{$prefix}-color-shade-light        : #ffffff10;
-    --#{$prefix}-color-shade-light-lighter: #ffffff30;
-
     // --#{$prefix}-color-outline: #ffffff30;
     // --#{$prefix}-color-outline-dark-lighter: #ffffff30;
 
-
+    // Static
+    --#{$prefix}-color-shade              : #f1f2f3;
+    --#{$prefix}-color-shade-darker       : #e5e6e7;
+    --#{$prefix}-color-shade-light        : #272829;
+    --#{$prefix}-color-shade-light-lighter: #303132;
 
     // Outline
     --#{$prefix}-outline: 1px dotted #999;

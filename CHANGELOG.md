@@ -1,4 +1,8 @@
 # cUI Styles CHANGELOG:
+# [0.2.7] WIP
+* [Added] List highlight
+* [Changed] Shade colors and borders
+* [Changed] Toast sizes - icreased padding
 # [0.2.6] 2020-01-12
 * [Added] Layer option to provide z-index placement for absolute positioned items
 * [Added] fill-parent class that sets 100% for width and height

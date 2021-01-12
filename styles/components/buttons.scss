@@ -72,21 +72,21 @@ $button-disabled-border-style            : $component-disabled-border-style;
 @mixin button {
 
     .#{$prefix}-button {
-        @include component-padding;
-        display         : inline-flex;
-        align-items     : center;
-        background-color: transparent;
-        border          : 1px solid transparent;
-        border-radius   : $border-radius-default;
-        color           : $button-color-default;
-        font-size       : $button-font-size;
-        line-height     : $button-line-height;
-        text-align      : center;
-        vertical-align  : middle;
-        text-decoration : none;
-        margin          : 0px;
-        box-sizing      : border-box;
-        font-family     : $font-family;
+        @include component-padding($size: normal, $wide: true);
+        display                         : inline-flex;
+        align-items                     : center;
+        background-color                : transparent;
+        border                          : 1px solid transparent;
+        border-radius                   : $border-radius-default;
+        color                           : $button-color-default;
+        font-size                       : $button-font-size;
+        line-height                     : $button-line-height;
+        text-align                      : center;
+        vertical-align                  : middle;
+        text-decoration                 : none;
+        margin                          : 0px;
+        box-sizing                      : border-box;
+        font-family                     : $font-family;
 
 
         // background-color: var(--color-light-lighten);
@@ -99,7 +99,7 @@ $button-disabled-border-style            : $component-disabled-border-style;
         }
 
         &.#{$prefix}-small {
-            @include component-padding(small);
+            @include component-padding($size: small, $wide: true);
         }
 
         &.#{$prefix}-fill {

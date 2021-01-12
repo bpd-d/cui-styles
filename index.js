@@ -1,1 +1,1 @@
-export const CUI_STYLES_VERSION = "0.2.5";
+export const CUI_STYLES_VERSION = "0.2.6";

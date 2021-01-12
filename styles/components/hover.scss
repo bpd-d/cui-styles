@@ -18,8 +18,10 @@ $hover-background-dark: $component-background-shade-dark;
 @mixin hover-dark {
     @include mode-dark {
         .#{$prefix}-hover {
-            &:hover {
-                background-color: $hover-background-dark;
+            &:not(.#{$prefix}-list):not(.#{$prefix}-card) {
+                &:hover {
+                    background-color: $hover-background-dark;
+                }
             }
         }
     }

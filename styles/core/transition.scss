@@ -1,10 +1,11 @@
 @use '../variables'as *;
+@use '../mixins'as *;
 
 $transition-toggle-time : $animation-duration-short;
 $transition-toggle-delay: $animation-duration-short;
 
 
-@mixin definitions($options:()) {
+@mixin transitions {
     .#{$prefix}-transition-trigger {
         overflow: hidden;
 
@@ -79,4 +80,81 @@ $transition-toggle-delay: $animation-duration-short;
             }
         }
     }
+}
+
+@mixin transitions-reverse {
+    .#{$prefix}-transition-trigger {
+        overflow: hidden;
+
+        .#{$prefix}-transition-scale-reverse {
+            transform          : scale(1);
+            transition-property: transform;
+        }
+
+        .#{$prefix}-transition-fade-reverse {
+            opacity: 1;
+        }
+
+        //
+        [class*="#{$prefix}-transition-slide-reverse"] {
+            opacity  : 1;
+            transform: translate(0, 0);
+        }
+
+        &:hover {
+            .#{$prefix}-transition-scale-reverse {
+                transform: scale(0);
+            }
+
+            .#{$prefix}-transition-fade-reverse {
+                opacity: 0;
+            }
+
+            [class*="#{$prefix}-transition-slide-reverse"] {
+                opacity: 0;
+            }
+
+            .#{$prefix}-transition-slide-reverse-top {
+                transform: translateY(-100%);
+            }
+
+            .#{$prefix}-transition-slide-reverse-bottom {
+                transform: translateY(100%);
+            }
+
+            .#{$prefix}-transition-slide-reverse-left {
+                transform: translateX(-100%);
+            }
+
+            .#{$prefix}-transition-slide-reverse-right {
+                transform: translateX(100%);
+            }
+
+            .#{$prefix}-transition-slide-reverse-top--s {
+                transform: translateY(-30%);
+            }
+
+            .#{$prefix}-transition-slide-reverse-bottom--s {
+                transform: translateY(30%);
+            }
+
+            .#{$prefix}-transition-slide-reverse-left--s {
+                transform: translateX(-30%);
+            }
+
+            .#{$prefix}-transition-slide-reverse-right--s {
+                transform: translateX(30%);
+            }
+        }
+    }
+}
+
+@mixin definitions($options:()) {
+    @include transitions();
+
+    @if(not-option-disabled($options, 'reverse')) {
+        @include transitions-reverse();
+    }
+
+
 }

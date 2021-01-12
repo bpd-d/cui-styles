@@ -47,34 +47,32 @@
     .#{$prefix}-position-relative {
         position: relative;
 
-        .#{$prefix}-position-top {
+        [class*="#{$prefix}-position"] {
             position: absolute;
-            top     : 0px;
+        }
+
+        .#{$prefix}-position-top {
+            top: 0px;
         }
 
         .#{$prefix}-position-bottom {
-            position: absolute;
-            bottom  : 0px;
+            bottom: 0px;
         }
 
         .#{$prefix}-position-middle {
-            position : absolute;
             top      : 50%;
             transform: translateY(-50%);
         }
 
         .#{$prefix}-position-left {
-            position: absolute;
-            left    : 0px;
+            left: 0px;
         }
 
         .#{$prefix}-position-right {
-            position: absolute;
-            right   : 0px;
+            right: 0px;
         }
 
         .#{$prefix}-position-center {
-            position : absolute;
             left     : 50%;
             transform: translateX(-50%);
 
@@ -85,6 +83,21 @@
     }
 }
 
+
+@mixin layer {
+    .#{$prefix}-layer-bottom {
+        z-index: 0;
+    }
+
+    .#{$prefix}-layer-middle {
+        z-index: 1;
+    }
+
+    .#{$prefix}-layer-top {
+        z-index: 2;
+    }
+}
+
 @mixin definitions($options: ()) {
     @if(not-option-disabled($options, 'relative')) {
         @include relative();
@@ -92,5 +105,9 @@
 
     @if(not-option-disabled($options, 'float')) {
         @include float();
+    }
+
+    @if(not-option-disabled($options, 'layer')) {
+        @include layer();
     }
 }

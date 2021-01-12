@@ -27,21 +27,9 @@ $table-background-inverse-dark: $component-background-shade-dark;
 
 
 
-        // Give a row divider
-        &.#{$prefix}-divider {
-            tr:last-child {
-                td {
-                    border-bottom: none;
-                }
-            }
 
-            td {
-                border-bottom: 1px solid $table-cell-divider-color;
-            }
-        }
 
         // Give a column divider
-
 
         tr {
             th {
@@ -86,6 +74,19 @@ $table-background-inverse-dark: $component-background-shade-dark;
                         border-right: none;
                     }
                 }
+            }
+        }
+
+        // Give a row divider
+        &.#{$prefix}-divider {
+            tr:last-child {
+                td {
+                    border-bottom: none;
+                }
+            }
+
+            td {
+                border-bottom: 1px solid $table-cell-divider-color;
             }
         }
     }

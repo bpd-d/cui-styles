@@ -1,4 +1,11 @@
 # cUI Styles CHANGELOG:
+# [0.2.6] 2020-01-12
+* [Added] Layer option to provide z-index placement for absolute positioned items
+* [Added] fill-parent class that sets 100% for width and height
+* [Added] Transition reverse
+* [Changed] Shadows adjustments
+* [Changed] Buttons paddings
+* [Fixed] Icon stroke color in dark mode
 # [0.2.5] 2021-01-10
 * [Changed] Shadows definifition
 * [Fixed] Icon button default border

@@ -52,8 +52,8 @@ $button-background-success-dark          : $component-background-success-dark;
 $button-background-success-dark-hover    : $component-background-success-dark-hover;
 $button-background-success-dark-active   : $component-background-success-dark-active;
 // Disabled
-$button-color-disabled                   : $component-color-muted;
-$button-color-disabled-dark              : $component-color-muted-dark;
+$button-color-disabled                   : $component-background-shade-active;
+$button-color-disabled-dark              : $component-background-shade-dark-active;
 $button-color-default                    : $component-color-default;
 $button-color-inverse                    : $component-color-inverse;
 $button-color-default-dark               : $component-color-default-dark;

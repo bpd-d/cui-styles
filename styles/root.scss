@@ -13,9 +13,9 @@
     --#{$prefix}-color-light-active        : #222324;
     --#{$prefix}-color-light-muted         : #aaabac;
 
-    --#{$prefix}-color-light-border       : #d5d6d8;
-    --#{$prefix}-color-light-border-hover : #b5b6b7;
-    --#{$prefix}-color-light-border-active: #858687;
+    --#{$prefix}-color-light-border       : #22232430; //#d5d6d8;
+    --#{$prefix}-color-light-border-hover : #22232450; //#b5b6b7;
+    --#{$prefix}-color-light-border-active: #22232470; //#858687;
     //Dark
     --#{$prefix}-color-dark-app-background: #222324;
     --#{$prefix}-color-dark-background    : #242526;
@@ -23,52 +23,52 @@
     --#{$prefix}-color-dark-active        : #777879;
     --#{$prefix}-color-dark-muted         : #cccdce;
 
-    --#{$prefix}-color-dark-border       : #353637;
-    --#{$prefix}-color-dark-border-hover : #656667;
-    --#{$prefix}-color-dark-border-active: #858687;
+    --#{$prefix}-color-dark-border       : #fdfeff30; //#353637;
+    --#{$prefix}-color-dark-border-hover : #fdfeff50; //#656667;
+    --#{$prefix}-color-dark-border-active: #fdfeff70; //#858687;
 
     // Primary
     --#{$prefix}-color-primary            : #3178ce;
     --#{$prefix}-color-primary-active     : #225391;
     --#{$prefix}-color-primary-muted      : #669ddb;
-    --#{$prefix}-color-primary-shade      : #E6EFF9;
+    --#{$prefix}-color-primary-shade      : #3178ce1f; //E6EFF9;
     // Primary dark
     --#{$prefix}-color-primary-dark       : #3d83d1;
     --#{$prefix}-color-primary-dark-active: #255d9d;
     --#{$prefix}-color-primary-dark-muted : #73a8de;
-    --#{$prefix}-color-primary-dark-shade : #252D37;
+    --#{$prefix}-color-primary-dark-shade : #3d83d11f; //252D37;
 
     // Secondary
     --#{$prefix}-color-secondary            : #b340d9;
     --#{$prefix}-color-secondary-active     : #8822aa;
     --#{$prefix}-color-secondary-muted      : #c977e4;
-    --#{$prefix}-color-secondary-shade      : #F6E8FB;
+    --#{$prefix}-color-secondary-shade      : #b340d91f; //F6E8FB;
     // Secondary dark
     --#{$prefix}-color-secondary-dark       : #b748db;
     --#{$prefix}-color-secondary-dark-active: #9023b3;
     --#{$prefix}-color-secondary-dark-muted : #cd7fe6;
-    --#{$prefix}-color-secondary-dark-shade : #342638;
+    --#{$prefix}-color-secondary-dark-shade : #b748db1f; //342638;
     // Signals 
     // Warning
     --#{$prefix}-color-warning              : #db8d2e;
     --#{$prefix}-color-warning-active       : #a1651c;
     --#{$prefix}-color-warning-muted        : #e5ac67;
-    --#{$prefix}-color-warning-shade        : #FBF1E6;
+    --#{$prefix}-color-warning-shade        : #db8d2e1f; //FBF1E6;
     // Warning dark
     --#{$prefix}-color-warning-dark         : #dd943b;
     --#{$prefix}-color-warning-dark-active  : #ae6d1e;
     --#{$prefix}-color-warning-dark-muted   : #e7b374;
-    --#{$prefix}-color-warning-dark-shade   : #382F25;
+    --#{$prefix}-color-warning-dark-shade   : #dd943b1f; //382F25;
     // Success
-    --#{$prefix}-color-success              : #29ad55;
-    --#{$prefix}-color-success-active       : #1a7037;
-    --#{$prefix}-color-success-muted        : #45d375;
-    --#{$prefix}-color-success-shade        : #E5F5EB;
+    --#{$prefix}-color-success              : #259d4d; //29ad55;
+    --#{$prefix}-color-success-active       : #165f2f; //1a7037;
+    --#{$prefix}-color-success-muted        : #35cf69; //45d375;
+    --#{$prefix}-color-success-shade        : #259d4d1f; //#E5F5EB;
     // Success dark
-    --#{$prefix}-color-success-dark         : #2bb559;
-    --#{$prefix}-color-success-dark-active  : #1c783b;
-    --#{$prefix}-color-success-dark-muted   : #4ed57b;
-    --#{$prefix}-color-success-dark-shade   : #233328;
+    --#{$prefix}-color-success-dark         : #27a551; //29ad55;
+    --#{$prefix}-color-success-dark-active  : #186733; //1a7037;
+    --#{$prefix}-color-success-dark-muted   : #3dd16f; //45d375;
+    --#{$prefix}-color-success-dark-shade   : #27a5511f; //#233328;
 
     --#{$prefix}-color-error            : #ce314b;
     --#{$prefix}-color-error-active     : #912235;
@@ -86,10 +86,10 @@
     // --#{$prefix}-color-outline-dark-lighter: #ffffff30;
 
     // Static
-    --#{$prefix}-color-shade              : #f1f2f3;
-    --#{$prefix}-color-shade-darker       : #e5e6e7;
-    --#{$prefix}-color-shade-light        : #272829;
-    --#{$prefix}-color-shade-light-lighter: #303132;
+    --#{$prefix}-color-shade              : #22232410;
+    --#{$prefix}-color-shade-darker       : #22232420;
+    --#{$prefix}-color-shade-light        : #ffffff10;
+    --#{$prefix}-color-shade-light-lighter: #ffffff20;
 
     // Outline
     --#{$prefix}-outline: 1px dotted #999;

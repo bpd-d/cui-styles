@@ -4,6 +4,12 @@
 $transition-toggle-time : $animation-duration-short;
 $transition-toggle-delay: $animation-duration-short;
 
+$transition-container-padding         : $padding-global;
+$transition-container-background      : $component-background-default;
+$transition-container-background-dark : $component-background-default-dark;
+$transition-container-color-dark      : $component-color-default-dark;
+
+$transition-container-header-font-size: $font-large;
 
 @mixin transitions {
     .#{$prefix}-transition-trigger {
@@ -149,11 +155,164 @@ $transition-toggle-delay: $animation-duration-short;
     }
 }
 
+@mixin transition-details {
+    .#{$prefix}-transition-trigger.#{$prefix}-position-relative {
+        overflow: hidden;
+        position: relative;
+
+        .#{$prefix}-transition-container {
+            position  : absolute;
+            box-sizing: border-box;
+
+            width  : 100%;
+            height : 100%;
+            top    : 0px;
+            left   : 0px;
+            z-index: 1;
+
+            .#{$prefix}-transition-wrapper {
+                position: relative;
+                width   : 100%;
+                height  : 100%;
+
+                &:after {
+                    content         : "";
+                    position        : absolute;
+                    background-color: $transition-container-background;
+                    opacity         : 0;
+                    width           : 100%;
+                    height          : 100%;
+                    top             : 0px;
+                    left            : 0px;
+                    z-index         : -1;
+                    transition      : opacity 150ms ease-out;
+
+                }
+
+                .#{$prefix}-transition-header {
+                    font-size : $transition-container-header-font-size;
+                    padding   : $transition-container-padding;
+                    opacity   : 0;
+                    transition: opacity 300ms ease-out;
+                    z-index   : 1;
+                }
+
+                .#{$prefix}-transition-details {
+                    padding  : $transition-container-padding;
+                    z-index  : 1;
+                    opacity  : 0;
+                    transform: translateY(100%);
+                    transition: transform 300ms ease-out,
+                        opacity 300ms ease;
+                }
+            }
+        }
+
+        &.#{$prefix}-active,
+        &:hover {
+            .#{$prefix}-transition-container {
+                .#{$prefix}-transition-wrapper {
+                    &:after {
+                        opacity: 0.9;
+                    }
+
+
+                    .#{$prefix}-transition-header {
+                        opacity: 1;
+                    }
+
+                    .#{$prefix}-transition-details {
+                        transform: translateY(0px);
+                        opacity  : 1;
+                    }
+                }
+
+
+            }
+        }
+
+        &.cui-transition-slide-up {
+            .#{$prefix}-transition-container {
+                height: auto;
+                bottom: 0px;
+                top   : auto;
+
+                transform: translateY(calc(100% - #{$transition-container-header-font-size} - (#{$transition-container-padding}*2) - 2px));
+
+                .#{$prefix}-transition-wrapper {
+                    height: auto;
+
+                    &:after {
+                        opacity   : 0.5;
+                        transition: opacity 300ms ease-out;
+                    }
+
+                    .#{$prefix}-transition-header {
+                        opacity: 0.9;
+                    }
+                }
+            }
+
+            &.#{$prefix}-active,
+            &:hover {
+                .#{$prefix}-transition-container {
+                    transform: translateY(0px);
+
+                    .#{$prefix}-transition-wrapper {
+                        &:after {
+                            opacity: 0.9;
+                        }
+
+                        .#{$prefix}-transition-header {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.#{$prefix}-inverse {
+            color: $transition-container-color-dark;
+
+            .#{$prefix}-transition-wrapper {
+                &:after {
+                    background-color: $transition-container-background-dark;
+                }
+            }
+        }
+
+    }
+
+}
+
+
+@mixin transition-details-dark {
+    @include mode-dark {
+        .#{$prefix}-transition-trigger.#{$prefix}-position-relative {
+            .#{$prefix}-transition-container {
+                .#{$prefix}-transition-wrapper {
+                    &:after {
+                        background-color: $transition-container-background-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @mixin definitions($options:()) {
     @include transitions();
 
     @if(not-option-disabled($options, 'reverse')) {
         @include transitions-reverse();
+    }
+
+    @if(not-option-disabled($options, 'details')) {
+        @include transition-details();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include transition-details-dark();
+        }
     }
 
 

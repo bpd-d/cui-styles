@@ -1,0 +1,55 @@
+/**
+* User interactions
+*/
+@use '../variables'as *;
+@use '../mixins'as *;
+
+@mixin cursor {
+    .#{$prefix}-cursor-pointer {
+        cursor: pointer;
+    }
+
+    .#{$prefix}-cursor-none {
+        cursor: none;
+    }
+
+    .#{$prefix}-cursor-cross {
+        cursor: crosshair;
+    }
+}
+
+@mixin select {
+    .#{$prefix}-select-none {
+        user-select: none;
+    }
+
+    .#{$prefix}-select-text {
+        user-select: text;
+    }
+
+}
+
+@mixin events {
+    .#{$prefix}-events-none {
+        pointer-events: none;
+    }
+
+    .#{$prefix}-events-all {
+        pointer-events: all;
+    }
+
+}
+
+@mixin definitions($options: ()) {
+    @if(not-option-disabled($options, 'cursor')) {
+        @include cursor();
+    }
+
+    @if(not-option-disabled($options, 'select')) {
+        @include select();
+    }
+
+    @if(not-option-disabled($options, 'evnets')) {
+        @include events();
+    }
+}

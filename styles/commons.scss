@@ -2,6 +2,7 @@
 @use 'core/spaces';
 @use 'core/widths';
 @use 'core/height';
+@use 'core/interactions';
 @use 'animations';
 
 
@@ -9,7 +10,8 @@ $commons-list: ("visibility",
     "spaces",
     "widths",
     "height",
-    "animations"
+    "animations",
+    "interactions"
 );
 
 @mixin definitions($commons: ()) {
@@ -49,6 +51,10 @@ $commons-list: ("visibility",
 
         @if $name=="animations" {
             @include animations.definitions($opts);
+        }
+
+        @if $name=="interactions" {
+            @include interactions.definitions($opts);
         }
     }
 }

@@ -1,4 +1,7 @@
 # cUI Styles CHANGELOG:
+# [0.2.9] 2020-01-14
+* [Added] Classes related to user interaction: user select, events, cursor
+* [Added] Transition containers
 # [0.2.8] 2020-01-13
 * [Fixed] Shade colors are now transparent
 # [0.2.7] 2020-01-12

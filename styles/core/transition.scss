@@ -156,7 +156,7 @@ $transition-container-header-font-size: $font-large;
     }
 }
 
-@mixin transition-details {
+@mixin transition-special {
     .#{$prefix}-transition-trigger.#{$prefix}-position-relative {
         overflow: hidden;
         position: relative;
@@ -171,7 +171,7 @@ $transition-container-header-font-size: $font-large;
             left   : 0px;
             z-index: 1;
 
-            .#{$prefix}-transition-wrapper {
+            .#{$prefix}-transition-body {
                 position: relative;
                 width   : 100%;
                 height  : 100%;
@@ -198,7 +198,7 @@ $transition-container-header-font-size: $font-large;
                     z-index   : 1;
                 }
 
-                .#{$prefix}-transition-details {
+                .#{$prefix}-transition-content {
                     padding  : $transition-container-padding;
                     z-index  : 1;
                     opacity  : 0;
@@ -212,7 +212,7 @@ $transition-container-header-font-size: $font-large;
         &.#{$prefix}-active,
         &:hover {
             .#{$prefix}-transition-container {
-                .#{$prefix}-transition-wrapper {
+                .#{$prefix}-transition-body {
                     &:after {
                         opacity: 1;
                     }
@@ -222,7 +222,7 @@ $transition-container-header-font-size: $font-large;
                         opacity: 1;
                     }
 
-                    .#{$prefix}-transition-details {
+                    .#{$prefix}-transition-content {
                         transform: translateY(0px);
                         opacity  : 1;
                     }
@@ -240,7 +240,7 @@ $transition-container-header-font-size: $font-large;
 
                 transform: translateY(calc(100% - #{$transition-container-header-font-size} - (#{$transition-container-padding}*2) - 6px));
 
-                .#{$prefix}-transition-wrapper {
+                .#{$prefix}-transition-body {
                     height: auto;
 
                     &:after {
@@ -249,7 +249,8 @@ $transition-container-header-font-size: $font-large;
                     }
 
                     .#{$prefix}-transition-header {
-                        opacity: 0.8;
+                        opacity: 1;
+                        height : calc(#{$transition-container-header-font-size} + (#{$transition-container-padding}*2) + 6px);
                     }
                 }
             }
@@ -259,7 +260,7 @@ $transition-container-header-font-size: $font-large;
                 .#{$prefix}-transition-container {
                     transform: translateY(0px);
 
-                    .#{$prefix}-transition-wrapper {
+                    .#{$prefix}-transition-body {
                         &:after {
                             opacity: 1;
                         }
@@ -275,7 +276,7 @@ $transition-container-header-font-size: $font-large;
         &.#{$prefix}-inverse {
             color: $transition-container-color-dark;
 
-            .#{$prefix}-transition-wrapper {
+            .#{$prefix}-transition-body {
                 &:after {
                     background-color: $transition-container-background-dark;
                 }
@@ -287,11 +288,11 @@ $transition-container-header-font-size: $font-large;
 }
 
 
-@mixin transition-details-dark {
+@mixin transition-special-dark {
     @include mode-dark {
         .#{$prefix}-transition-trigger.#{$prefix}-position-relative {
             .#{$prefix}-transition-container {
-                .#{$prefix}-transition-wrapper {
+                .#{$prefix}-transition-body {
                     &:after {
                         background-color: $transition-container-background-dark;
                     }
@@ -308,11 +309,11 @@ $transition-container-header-font-size: $font-large;
         @include transitions-reverse();
     }
 
-    @if(not-option-disabled($options, 'details')) {
-        @include transition-details();
+    @if(not-option-disabled($options, 'special')) {
+        @include transition-special();
 
         @if(not-option-disabled($options, 'dark')) {
-            @include transition-details-dark();
+            @include transition-special-dark();
         }
     }
 

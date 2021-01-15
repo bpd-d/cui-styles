@@ -1,4 +1,8 @@
 # cUI Styles CHANGELOG:
+# [0.2.11] 2020-01-15
+* [Changed] Transition special changes
+* [Changed] Input switch
+* [Fixed] Input radio, checkbox and switch color corrections
 # [0.2.10] 2020-01-14
 * [Fixed] Transition adjustments
 # [0.2.9] 2020-01-14

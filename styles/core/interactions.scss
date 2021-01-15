@@ -49,7 +49,7 @@
         @include select();
     }
 
-    @if(not-option-disabled($options, 'evnets')) {
+    @if(not-option-disabled($options, 'events')) {
         @include events();
     }
 }

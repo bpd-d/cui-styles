@@ -1176,7 +1176,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:checked {
                 border-color    : $input-border-color-active;
-                background-color: $input-border-color-active;
+                background-color: $input-color;
                 background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle r='3' cy='7' cx='7' id='path842' style='fill:%23ffffff;stroke:none;fill-opacity:1' /%3E%3C/svg%3E%0A");
             }
 
@@ -1268,7 +1268,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                     &:checked {
                         border-color    : $input-border-color-active-dark;
-                        background-color: $input-border-color-active-dark;
+                        background-color: $input-color-dark;
                         background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle r='3' cy='7' cx='7' id='path842' style='fill:%23222222;stroke:none;fill-opacity:1' /%3E%3C/svg%3E%0A");
                         ;
                     }
@@ -1620,7 +1620,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:checked {
                 border-color    : $input-border-color-active;
-                background-color: $input-border-color-active;
+                background-color: $input-color;
                 background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='16' width='16'%3E%3Cpath d='M 3,8 8,13 13,3' style='fill:none;stroke:%23fff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' /%3E%3C/svg%3E%0A");
             }
 
@@ -1721,7 +1721,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                     &:checked {
                         border-color    : $input-border-color-active-dark;
-                        background-color: $input-border-color-active-dark;
+                        background-color: $input-color-dark;
                         background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='16' width='16'%3E%3Cpath d='M 3,8 8,13 13,3' style='fill:none;stroke:%23222;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' /%3E%3C/svg%3E%0A");
                     }
                 }
@@ -1779,11 +1779,12 @@ $input-disabled-border-style: $component-disabled-border-style;
         display: inline-block;
 
         input[type="checkbox"] {
-            margin   : 0;
-            font-size: $input-font-size-default;
-            opacity  : 0;
-            position : fixed;
-            width    : 0;
+            margin    : 0;
+            font-size : $input-font-size-default;
+            opacity   : 0;
+            position  : fixed;
+            width     : 0;
+            box-sizing: border-box;
 
             +.#{$prefix}-content {
                 padding    : 4px 10px 4px 44px;
@@ -1798,10 +1799,12 @@ $input-disabled-border-style: $component-disabled-border-style;
                     content         : '';
                     position        : absolute;
                     width           : 30px;
-                    height          : 2px;
-                    top             : 12px;
+                    height          : 6px;
+                    top             : 7px;
                     left            : 5px;
-                    background-color: $input-border-color-inactive;
+                    background-color: $input-background-color;
+                    border          : 1px solid $input-border-color-inactive;
+                    border-radius   : 20px;
                     opacity         : 0.8;
                 }
 
@@ -1810,8 +1813,9 @@ $input-disabled-border-style: $component-disabled-border-style;
                     position        : absolute;
                     height          : 16px;
                     width           : 16px;
-                    top             : 4px;
+                    top             : 3px;
                     left            : 3px;
+                    box-sizing      : border-box;
                     border          : 1px solid $input-border-color-inactive;
                     border-radius   : 50%;
                     background-color: $input-option-background-color;
@@ -1822,7 +1826,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:checked {
                 +.#{$prefix}-content {
                     &:after {
-                        background-color: $input-border-color-active;
+                        background-color: $input-color;
                         border-color    : $input-border-color-active;
                         transform       : translateX(18px);
                         animation       : switchMoveOn $input-animation-time ease-in forwards;
@@ -2015,7 +2019,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                         +.#{$prefix}-content {
 
                             &:after {
-                                background-color: $input-border-color-active-dark;
+                                background-color: $input-color-dark;
                                 border-color    : $input-border-color-active-dark;
                             }
 

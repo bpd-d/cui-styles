@@ -4,6 +4,7 @@
 
 @mixin main-body() {
     font-size       : vars.$font-normal;
+    line-height     : vars.$line-height;
     box-sizing      : border-box;
     font-family     : vars.$font-family;
     margin          : 0;

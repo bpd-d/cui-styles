@@ -1,4 +1,10 @@
 # cUI Styles CHANGELOG:
+# [0.2.13] 2020-01-17
+* [Fixed] Animation slide
+# [0.2.12] 2020-01-16
+* [Changed] Clean up animation classes
+* [Fixed] Input mix
+* [Fixed] Default line height
 # [0.2.11] 2020-01-15
 * [Changed] Transition special changes
 * [Changed] Input switch

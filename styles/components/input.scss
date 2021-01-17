@@ -376,8 +376,10 @@ $input-disabled-border-style: $component-disabled-border-style;
         }
 
         &:hover {
-            outline     : none !important;
-            border-color: $input-border-color-inactive-hover;
+            &:before {
+                outline     : none !important;
+                border-color: $input-border-color-inactive-hover;
+            }
         }
 
         &:focus {
@@ -387,8 +389,9 @@ $input-disabled-border-style: $component-disabled-border-style;
         }
 
 
+
         .#{$prefix}-input {
-            border          : none;
+            border          : none !important;
             background-color: transparent;
             order           : 0;
             flex            : 1 1 auto !important;
@@ -1799,8 +1802,8 @@ $input-disabled-border-style: $component-disabled-border-style;
                     content         : '';
                     position        : absolute;
                     width           : 30px;
-                    height          : 6px;
-                    top             : 7px;
+                    height          : 4px;
+                    top             : 8px;
                     left            : 5px;
                     background-color: $input-background-color;
                     border          : 1px solid $input-border-color-inactive;

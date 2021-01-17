@@ -5,6 +5,11 @@ $default-animation-time : $animation-duration-default;
 $short-animation-time   : $animation-duration-short;
 $default-animation-long : calc(#{$animation-duration-long}*5);
 
+@mixin create-animation($name) {
+    @content;
+    animation: $name $default-animation-time ease-out;
+}
+
 @mixin animations() {
 
     .#{$prefix}-animation-pause {
@@ -102,59 +107,7 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
         }
     }
 
-    @include not-reduced-motion {
-        .#{$prefix}-anim-slide-in {
-            z-index    : 100;
-            will-change: transform;
-            animation  : animSlideIn $default-animation-time ease-in forwards;
-        }
 
-        .#{$prefix}-anim-slide-out {
-            z-index    : 99;
-            will-change: transform;
-            animation  : animSlideOut $default-animation-time ease-in forwards;
-        }
-
-        .#{$prefix}-anim-fade-in {
-            will-change: opacity;
-            animation  : animFadeIn $default-animation-time ease-in forwards;
-        }
-
-        .#{$prefix}-anim-fade-out {
-            will-change: opacity;
-            animation  : animFadeOut $default-animation-time ease-out forwards;
-        }
-
-        .#{$prefix}-scale-y-in {
-            will-change     : transform;
-            transform-origin: top;
-            animation       : scaleYIn $default-animation-time ease-in forwards;
-        }
-
-        .#{$prefix}-scale-y-out {
-            will-change     : transform;
-            transform-origin: top;
-            animation       : scaleYOut $default-animation-time ease-out forwards;
-        }
-
-        .#{$prefix}-animation-fade-in {
-            opacity  : 0;
-            animation: animFadeIn $default-animation-time ease-out forwards;
-        }
-
-        .#{$prefix}-animation-fade-out {
-            opacity  : 1;
-            animation: animFadeOut $default-animation-time ease-out forwards;
-        }
-
-        .#{$prefix}-animation-slide-in {
-            animation: slideInLeft $default-animation-time ease-in forwards;
-        }
-
-        .#{$prefix}-animation-slide-out {
-            animation: slideOutRight $default-animation-time ease-out forwards;
-        }
-    }
 
     .#{$prefix}-animation-delay {
         animation-delay: $default-animation-time;
@@ -168,28 +121,27 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
         animation-delay: $default-animation-long;
     }
 
+    .#{$prefix}-animation-loop {
+        animation-iteration-count: infinite !important;
+    }
+
     .#{$prefix}-accordion-out {
         display: none;
     }
 
 
-    @keyframes animSlideIn {
-        0% {
-            transform: translateX(-100%);
+}
+
+@mixin animations-fade {
+    @include not-reduced-motion {
+        .#{$prefix}-animation-fade-in {
+            opacity  : 1;
+            animation: animFadeIn $default-animation-time ease-out;
         }
 
-        100% {
-            transform: translateX(0%);
-        }
-    }
-
-    @keyframes animSlideOut {
-        0% {
-            transform: translateX(0%);
-        }
-
-        100% {
-            transform: translateX(100%);
+        .#{$prefix}-animation-fade-out {
+            opacity  : 0;
+            animation: animFadeOut $default-animation-time ease-out;
         }
     }
 
@@ -212,6 +164,34 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
             opacity: 0;
         }
     }
+}
+
+@mixin animations-scale {
+    @include not-reduced-motion {
+        .#{$prefix}-scale-y-in {
+            transform-origin: top;
+            transform       : scale(1);
+            animation       : scaleYIn $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-scale-y-out {
+            transform-origin: top;
+            transform       : scale(0);
+            animation       : scaleYOut $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-scale-out {
+            transform-origin: center center;
+            transform       : scale(0);
+            animation       : scaleOut $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-scale-in {
+            transform-origin: center center;
+            transform       : scale(1);
+            animation       : scaleIn $default-animation-time ease-out;
+        }
+    }
 
     @keyframes scaleYIn {
         0% {
@@ -230,6 +210,112 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
 
         100% {
             transform: scaleY(0);
+        }
+    }
+
+    @keyframes scaleIn {
+        0% {
+            transform: scale(0, 0);
+        }
+
+        100% {
+            transform: scale(1, 1);
+        }
+    }
+
+    @keyframes scaleOut {
+        0% {
+            transform: scaleY(1, 1);
+        }
+
+        100% {
+            transform: scaleY(0, 0);
+        }
+    }
+}
+
+@mixin animations-slide {
+    @include not-reduced-motion {
+        .#{$prefix}-anim-slide-in {
+            z-index    : 100;
+            will-change: transform;
+            animation  : animSlideIn $default-animation-time ease-out forwards;
+        }
+
+        .#{$prefix}-anim-slide-out {
+            z-index    : 99;
+            will-change: transform;
+            animation  : animSlideOut $default-animation-time ease-out forwards;
+        }
+
+        .#{$prefix}-animation-slide-in {
+            transform: translateX(0%);
+            animation: slideInLeft $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-out {
+            transform: translateX(100%);
+            animation: slideOutRight $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-in-left {
+            transform: translateX(0%);
+            animation: slideInLeft $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-out-left {
+            transform: translateX(-100%);
+            animation: slideOutLeft $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-in-right {
+            transform: translateX(0%);
+            animation: slideInRight $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-out-right {
+            transform: translateX(100%);
+            animation: slideOutRight $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-in-bottom {
+            transform: translateY(0%);
+            animation: slideInBottom $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-out-bottom {
+            transform: translateY(100%);
+            animation: slideOutBottom $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-in-top {
+            transform: translateY(0%);
+            animation: slideInTop $default-animation-time ease-out;
+        }
+
+        .#{$prefix}-animation-slide-out-top {
+            transform: translateY(-100%);
+            animation: slideOutTop $default-animation-time ease-out;
+        }
+    }
+
+    @keyframes animSlideIn {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    @keyframes animSlideOut {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(100%);
         }
     }
 
@@ -271,6 +357,98 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
 
         100% {
             transform: translateX(100%);
+        }
+    }
+
+    @keyframes slideInBottom {
+        0% {
+            transform: translateY(100%)
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideOutBottom {
+        0% {
+            transform: translateY(0%)
+        }
+
+        100% {
+            transform: translateY(100%);
+        }
+    }
+
+    @keyframes slideInTop {
+        0% {
+            transform: translateY(-100%)
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideOutTop {
+        0% {
+            transform: translateY(0%)
+        }
+
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+}
+
+@mixin animations-hop {
+    @include not-reduced-motion {
+        .#{$prefix}-animation-hop-in {
+            @include create-animation(animHopIn) {
+                opacity  : 1;
+                transform: scale(1, 1);
+            }
+        }
+
+        .#{$prefix}-animation-hop-out {
+            @include create-animation(animHopOut) {
+                opacity  : 0;
+                transform: scale(0, 0);
+            }
+        }
+    }
+
+    @keyframes animHopIn {
+        0% {
+            opacity  : 0;
+            transform: scale(0, 0);
+        }
+
+        80% {
+            opacity  : 1;
+            transform: scale(1.1, 1.1);
+        }
+
+        100% {
+            opacity  : 1;
+            transform: scale(1, 1);
+        }
+    }
+
+    @keyframes animHopOut {
+        0% {
+            opacity  : 1;
+            transform: scale(1, 1);
+        }
+
+        20% {
+            opacity  : 1;
+            transform: scale(1.1, 1.1);
+        }
+
+        100% {
+            opacity  : 0;
+            transform: scale(0, 0);
         }
     }
 }
@@ -375,6 +553,26 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
 
     @if(not-option-disabled($options, 'repeat')) {
         @include animation-repeat();
+    }
+
+    @if(not-option-disabled($options, 'fade')) {
+        @include animation-repeat();
+    }
+
+    @if(not-option-disabled($options, 'fade')) {
+        @include animations-fade();
+    }
+
+    @if(not-option-disabled($options, 'scale')) {
+        @include animations-scale();
+    }
+
+    @if(not-option-disabled($options, 'slide')) {
+        @include animations-slide();
+    }
+
+    @if(not-option-disabled($options, 'hop')) {
+        @include animations-hop();
     }
 
 

@@ -1,5 +1,7 @@
 # cUI Styles CHANGELOG:
-# [0.2.15] WIP
+# [0.2.16] WIP
+# [0.2.15] 2020-01-22
+* [Fixed] Headers line-height
 # [0.2.14] 2021-01-22
 * [Added] List highlight theme color
 * [Changed] Header h3 font-weight to semi-bold

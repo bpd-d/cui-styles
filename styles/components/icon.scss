@@ -194,77 +194,96 @@ $icon-color-success-dark  : $component-background-success-dark;
 @mixin icon-fill {
 
     .#{$prefix}-icon,
-    .#{$prefix}-icon-button,
     .#{$prefix}-svg {
-        &.#{$prefix}-fill {
-            &>svg {
-                path.fill {
-                    fill: $icon-color-default;
-                }
+        &>svg {
+            path.fill {
+                fill: $icon-color-inverse;
             }
+        }
 
-            &.#{$prefix}-inverse {
-                svg {
+        &:not(.#{$prefix}-icon-button) {
+            &.#{$prefix}-fill {
+                &>svg {
                     path.fill {
-                        fill: $icon-color-inverse;
+                        fill: $icon-color-default;
                     }
                 }
-            }
 
-            &.#{$prefix}-accent {
-                svg {
-                    path.fill {
-                        fill: $icon-color-accent;
+                &.#{$prefix}-inverse {
+                    svg {
+                        path.fill {
+                            fill: $icon-color-inverse;
+                        }
                     }
                 }
-            }
 
-            &.#{$prefix}-secondary {
-                svg {
-                    path.fill {
-                        fill: $icon-color-secondary;
+                &.#{$prefix}-accent {
+                    svg {
+                        path.fill {
+                            fill: $icon-color-accent;
+                        }
                     }
                 }
-            }
 
-            &.#{$prefix}-success {
-                svg {
-                    path.fill {
-                        fill: $icon-color-success;
+                &.#{$prefix}-secondary {
+                    svg {
+                        path.fill {
+                            fill: $icon-color-secondary;
+                        }
                     }
                 }
-            }
 
-            &.#{$prefix}-warning {
-                svg {
-                    path.fill {
-                        fill: $icon-color-warning;
+                &.#{$prefix}-success {
+                    svg {
+                        path.fill {
+                            fill: $icon-color-success;
+                        }
                     }
                 }
-            }
 
-            &.#{$prefix}-error {
-                svg {
-                    path.fill {
-                        fill: $icon-color-error;
+                &.#{$prefix}-warning {
+                    svg {
+                        path.fill {
+                            fill: $icon-color-warning;
+                        }
                     }
                 }
-            }
+
+                &.#{$prefix}-error {
+                    svg {
+                        path.fill {
+                            fill: $icon-color-error;
+                        }
+                    }
+                }
 
 
-            @include for-color-button {
-                svg {
-                    path.fill {
-                        fill: $icon-color-inverse;
+                @include for-color-button {
+                    svg {
+                        path.fill {
+                            fill: $icon-color-inverse;
+                        }
                     }
                 }
             }
         }
+
+
+        // .#{$prefix}-icon-button {
+        //     &.#{$prefix}-fill {
+        //         &>svg {
+        //             path.fill {
+        //                 fill: $icon-color-inverse;
+        //             }
+        //         }
+        //     }
+        // }
     }
 
-    .#{$prefix}-dark {
+    @include mode-dark {
         .#{$prefix}-icon {
             &.#{$prefix}-fill {
+
                 @include not-colors {
                     &>svg {
                         path.fill {
@@ -353,7 +372,8 @@ $icon-color-success-dark  : $component-background-success-dark;
 
 @mixin icon-button {
     .#{$prefix}-icon-button {
-        cursor: pointer;
+        cursor : pointer;
+        outline: none;
         @include component-padding(small, true);
         background-color: transparent;
         border          : 1px solid transparent;

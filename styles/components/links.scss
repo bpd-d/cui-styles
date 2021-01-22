@@ -22,6 +22,7 @@ $link-transition-time : $animation-duration-short;
         text-decoration: none;
         color          : $link-color-muted;
         position       : relative;
+        cursor         : pointer;
 
         &:before {
             content         : "";

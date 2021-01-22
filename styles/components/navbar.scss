@@ -247,12 +247,10 @@ $navbar-transition-time : $animation-duration-short;
 }
 
 @mixin navbar-dark {
-
-    .#{$prefix}-dark {
-        color: $component-color-default-dark;
-
+    @include mode-dark {
         .#{$prefix}-navbar {
             background-color: $navbar-background-default-dark;
+            color           : $component-color-default-dark;
 
             .#{$prefix}-navbar-title {
                 color: $navbar-color-default-dark;

@@ -1,26 +1,35 @@
 # cUI Styles CHANGELOG:
-# [0.2.13] 2020-01-17
+# [0.2.15] WIP
+# [0.2.14] 2021-01-22
+* [Added] List highlight theme color
+* [Changed] Header h3 font-weight to semi-bold
+* [Fixed] Flex direction
+* [Fixed] Animation code cleanup
+* [Fixed] Navbar colors in dark mode
+* [Fixed] Icon fill color in icon-button
+* [Fixed] Text color in dark components
+# [0.2.13] 2021-01-17
 * [Fixed] Animation slide
-# [0.2.12] 2020-01-16
+# [0.2.12] 2021-01-16
 * [Changed] Clean up animation classes
 * [Fixed] Input mix
 * [Fixed] Default line height
-# [0.2.11] 2020-01-15
+# [0.2.11] 2021-01-15
 * [Changed] Transition special changes
 * [Changed] Input switch
 * [Fixed] Input radio, checkbox and switch color corrections
-# [0.2.10] 2020-01-14
+# [0.2.10] 2021-01-14
 * [Fixed] Transition adjustments
-# [0.2.9] 2020-01-14
+# [0.2.9] 2021-01-14
 * [Added] Classes related to user interaction: user select, events, cursor
 * [Added] Transition containers
-# [0.2.8] 2020-01-13
+# [0.2.8] 2021-01-13
 * [Fixed] Shade colors are now transparent
-# [0.2.7] 2020-01-12
+# [0.2.7] 2021-01-12
 * [Added] List highlight
 * [Changed] Shade colors and borders
 * [Changed] Toast sizes - icreased padding
-# [0.2.6] 2020-01-12
+# [0.2.6] 2021-01-12
 * [Added] Layer option to provide z-index placement for absolute positioned items
 * [Added] fill-parent class that sets 100% for width and height
 * [Added] Transition reverse

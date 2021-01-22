@@ -1801,10 +1801,10 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:before {
                     content         : '';
                     position        : absolute;
-                    width           : 30px;
-                    height          : 4px;
-                    top             : 8px;
-                    left            : 5px;
+                    width           : 16px;
+                    height          : 8px;
+                    top             : 6px;
+                    left            : 11px;
                     background-color: $input-background-color;
                     border          : 1px solid $input-border-color-inactive;
                     border-radius   : 20px;

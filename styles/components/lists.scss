@@ -1,27 +1,31 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$list-item-hover-background                : $component-background-shade-active;
-$list-item-hover-background-dark           : $component-background-shade-dark-active;
-$list-item-highlight-background            : $component-background-shade;
-$list-item-highlight-background-dark       : $component-background-shade-dark;
-$list-item-highlight-hover-background      : $component-background-shade-active;
-$list-item-highlight-hover-background-dark : $component-background-shade-dark-active;
-$list-item-even-background                 : $component-background-shade;
-$list-item-even-background-dark            : $component-background-shade-dark;
-$list-item-bullet-shade-background         : $component-background-shade-active;
-$list-item-bullet-shade-background-dark    : $component-background-shade-dark-active;
-$list-item-bullet-size                     : 8px;
-$list-item-color                           : $component-color-default;
-$list-item-color-dark                      : $component-color-default-dark;
-$list-item-active-color-accent             : $component-background-accent;
-$list-item-active-color-secondary          : $component-background-secondary;
-$list-item-active-color-accent-dark        : $component-background-accent-dark;
-$list-item-active-color-secondary-dark     : $component-background-secondary-dark;
-$list-item-inactive-color                  : $component-color-muted;
-$list-item-inactive-color-dark             : $component-color-muted-dark;
-$list-transition-time                      : $animation-duration-short;
-$list-item-font-weight-bold                : $text-weight-bold;
+$list-item-hover-background                    : $component-background-shade-active;
+$list-item-hover-background-dark               : $component-background-shade-dark-active;
+$list-item-highlight-background                : $component-background-shade;
+$list-item-highlight-background-dark           : $component-background-shade-dark;
+$list-item-highlight-background-accent         : $component-background-accent-shade;
+$list-item-highlight-background-accent-dark    : $component-background-accent-dark-shade;
+$list-item-highlight-background-secondary      : $component-background-secondary-shade;
+$list-item-highlight-background-secondary-dark : $component-background-secondary-dark-shade;
+$list-item-highlight-hover-background          : $component-background-shade-active;
+$list-item-highlight-hover-background-dark     : $component-background-shade-dark-active;
+$list-item-even-background                     : $component-background-shade;
+$list-item-even-background-dark                : $component-background-shade-dark;
+$list-item-bullet-shade-background             : $component-background-shade-active;
+$list-item-bullet-shade-background-dark        : $component-background-shade-dark-active;
+$list-item-bullet-size                         : 8px;
+$list-item-color                               : $component-color-default;
+$list-item-color-dark                          : $component-color-default-dark;
+$list-item-active-color-accent                 : $component-background-accent;
+$list-item-active-color-secondary              : $component-background-secondary;
+$list-item-active-color-accent-dark            : $component-background-accent-dark;
+$list-item-active-color-secondary-dark         : $component-background-secondary-dark;
+$list-item-inactive-color                      : $component-color-muted;
+$list-item-inactive-color-dark                 : $component-color-muted-dark;
+$list-transition-time                          : $animation-duration-short;
+$list-item-font-weight-bold                    : $text-weight-bold;
 
 @mixin list {
     ul.#{$prefix}-list {
@@ -136,6 +140,10 @@ $list-item-font-weight-bold                : $text-weight-bold;
                     @include component-padding;
                     @include link-decoration($list-item-color);
                     @include createHighlight($color: $highlight-color-dark, $noTransition: true);
+
+                    &.#{$prefix}-active {
+                        background-color: $list-item-highlight-background;
+                    }
                 }
 
                 &.#{$prefix}-active {
@@ -146,6 +154,41 @@ $list-item-font-weight-bold                : $text-weight-bold;
     }
 }
 
+@mixin list-highlight-theme {
+    ul.#{$prefix}-list.#{$prefix}-highlight.#{$prefix}-accent {
+        &>li {
+
+            a {
+                &.#{$prefix}-active {
+                    background-color: $list-item-highlight-background-accent;
+                }
+            }
+
+            &.#{$prefix}-active {
+                background-color: $list-item-highlight-background-accent;
+            }
+        }
+    }
+
+    ul.#{$prefix}-list.#{$prefix}-highlight.#{$prefix}-secondary {
+        &>li {
+
+            a {
+                &.#{$prefix}-active {
+                    background-color: $list-item-highlight-background-secondary;
+                }
+            }
+
+            &.#{$prefix}-active {
+                background-color: $list-item-highlight-background-secondary;
+            }
+        }
+    }
+}
+
+
+
+
 @mixin list-highlight-dark {
     @include mode-dark {
         ul.#{$prefix}-list {
@@ -155,15 +198,49 @@ $list-item-font-weight-bold                : $text-weight-bold;
                     a {
                         color                          : $list-item-color-dark;
                         @include createHighlight($color: $highlight-color);
-                    }
 
-                    // &:hover {
-                    //     background-color: $list-item-highlight-hover-background-dark;
-                    // }
+                        &.#{$prefix}-active {
+                            background-color: $list-item-highlight-background-dark;
+                        }
+                    }
 
                     &.#{$prefix}-active {
                         background-color: $list-item-highlight-background-dark;
                     }
+                }
+            }
+        }
+    }
+}
+
+@mixin list-highlight-theme-dark {
+    @include mode-dark {
+        ul.#{$prefix}-list.#{$prefix}-highlight.#{$prefix}-accent {
+            &>li {
+
+                a {
+                    &.#{$prefix}-active {
+                        background-color: $list-item-highlight-background-accent-dark;
+                    }
+                }
+
+                &.#{$prefix}-active {
+                    background-color: $list-item-highlight-background-accent-dark;
+                }
+            }
+        }
+
+        ul.#{$prefix}-list.#{$prefix}-highlight.#{$prefix}-secondary {
+            &>li {
+
+                a {
+                    &.#{$prefix}-active {
+                        background-color: $list-item-highlight-background-secondary-dark;
+                    }
+                }
+
+                &.#{$prefix}-active {
+                    background-color: $list-item-highlight-background-secondary-dark;
                 }
             }
         }
@@ -553,9 +630,19 @@ $list-item-font-weight-bold                : $text-weight-bold;
     @if(not-option-disabled($options, 'highlight')) {
         @include list-highlight();
 
+        @if(not-option-disabled($options, 'theme')) {
+            @include list-highlight-theme();
+        }
+
         @if(not-option-disabled($options, 'dark')) {
             @include list-highlight-dark();
+
+            @if(not-option-disabled($options, 'theme')) {
+                @include list-highlight-theme-dark();
+            }
         }
+
+
     }
 
     @if(not-option-disabled($options, 'interactive')) {

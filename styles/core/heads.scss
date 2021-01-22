@@ -1,12 +1,13 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$head-text-weight-thin: $text-weight-thin;
-$head-text-weight-bold: $text-weight-bold;
-$head-font-large      : $font-large;
-$head-font-larger     : $font-larger;
-$head-font-xlarge     : $font-xlarge;
-$head-font-normal     : $font-normal;
+$head-text-weight-thin     : $text-weight-thin;
+$head-text-weight-bold     : $text-weight-bold;
+$head-text-weight-semi-bold: $text-weight-semi-bold;
+$head-font-large           : $font-large;
+$head-font-larger          : $font-larger;
+$head-font-xlarge          : $font-xlarge;
+$head-font-normal          : $font-normal;
 
 $head-margin      : $margin-global;
 $head-margin-large: $margin-global-large;
@@ -42,7 +43,7 @@ $head-margin-small: $margin-global-small;
 @mixin h3 {
     .#{$prefix}-h3 {
         font-size  : $head-font-large;
-        font-weight: $head-text-weight-bold !important;
+        font-weight: $head-text-weight-semi-bold !important;
         margin     : $head-margin 0px;
 
         @include first-not-only();

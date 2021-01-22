@@ -556,10 +556,6 @@ $default-animation-long : calc(#{$animation-duration-long}*5);
     }
 
     @if(not-option-disabled($options, 'fade')) {
-        @include animation-repeat();
-    }
-
-    @if(not-option-disabled($options, 'fade')) {
         @include animations-fade();
     }
 

@@ -72,20 +72,20 @@
 }
 
 @mixin flex-direction($size: "") {
-    .#{$prefix}-flex#{$size} {
-        .#{$prefix}-flex-direction-column {
+    .#{$prefix}-flex {
+        &.#{$prefix}-flex-direction-column#{$size} {
             flex-direction: column;
         }
 
-        .#{$prefix}-flex-direction-column-reverse#{$size} {
+        &.#{$prefix}-flex-direction-column-reverse#{$size} {
             flex-direction: column-reverse;
         }
 
-        .#{$prefix}-flex-direction-row-reverse#{$size} {
+        &.#{$prefix}-flex-direction-row-reverse#{$size} {
             flex-direction: row-reverse;
         }
 
-        .#{$prefix}-flex-direction-row#{$size} {
+        &.#{$prefix}-flex-direction-row#{$size} {
             flex-direction: row;
         }
     }

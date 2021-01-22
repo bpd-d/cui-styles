@@ -31,12 +31,14 @@
             box-sizing: border-box;
         }
 
-        @content;
-
         // Commons
         @include commons.definitions($components);
         @include base.definitions($components);
         @include components.definitions($components);
         @include dark.definitions;
         @include print.definitions;
+
+        @content;
+
+
     }

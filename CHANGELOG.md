@@ -1,5 +1,10 @@
 # cUI Styles CHANGELOG:
-# [0.2.16] WIP
+# [0.2.17] 2020-02-03
+* [Added] New build options: exclude dark/theme/signal/print from components globally
+* [Added] New toolkit allowing build color palletes with mixins
+* [Fixed] Button content alignment
+# [0.2.16] 2020-01-22
+* [Fixed] Icon fill variants
 # [0.2.15] 2020-01-22
 * [Fixed] Headers line-height
 # [0.2.14] 2021-01-22

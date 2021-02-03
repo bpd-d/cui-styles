@@ -9,6 +9,7 @@
 @use 'core/slide';
 @use 'core/sticky';
 @use 'core/focus';
+@use "sass:map";
 
 $base-elements:("flex",
     "heading",
@@ -20,7 +21,7 @@ $base-elements:("flex",
     "slide",
     "sticky");
 
-@mixin definitions($base:()) {
+@mixin definitions($base:(), $dark: true, $print: true, $theme: true, $signal: true) {
 
     $list: $base;
 
@@ -37,6 +38,26 @@ $base-elements:("flex",
 
         @if($options !=null) {
             $opts: $options;
+        }
+
+        @if not $dark {
+            @warn "Setting option dark to false";
+            $opts: map.set($opts, "dark", false);
+        }
+
+        @if not $print {
+            @warn "Setting option print to false";
+            $opts: map.set($opts, "print", false);
+        }
+
+        @if not $theme {
+            @warn "Setting option theme to false";
+            $opts: map.set($opts, "theme", false);
+        }
+
+        @if not $signal {
+            @warn "Setting option signal to false";
+            $opts: map.set($opts, "signal", false);
         }
 
         @if $name=="flex" {

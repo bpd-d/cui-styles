@@ -1,6 +1,3 @@
-@use "sass:map";
-@use "sass:list";
-@use "sass:string";
 @use 'components/navbar';
 @use 'components/accordion';
 @use 'components/dialog';
@@ -42,6 +39,9 @@
 @use 'components/hover';
 @use 'components/border';
 
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
 
 $components-list: ("navbar",
     "accordion",
@@ -85,7 +85,7 @@ $components-list: ("navbar",
     "border"
 );
 
-@mixin definitions($components:()) {
+@mixin definitions($components:(), $dark: true, $print: true, $theme: true, $signal: true) {
     $list: $components;
 
     @if(length($list)==0) {
@@ -101,6 +101,26 @@ $components-list: ("navbar",
 
         @if($options !=null) {
             $opts: $options;
+        }
+
+        @if not $dark {
+            @warn "Setting option DARK to false";
+            $opts: map.set($opts, "dark", false);
+        }
+
+        @if not $print {
+            @warn "Setting option PRINT to false";
+            $opts: map.set($opts, "print", false);
+        }
+
+        @if not $theme {
+            @warn "Setting option THEME to false";
+            $opts: map.set($opts, "theme", false);
+        }
+
+        @if not $signal {
+            @warn "Setting option SIGNAL to false";
+            $opts: map.set($opts, "signal", false);
         }
 
         @if $name=="navbar" {

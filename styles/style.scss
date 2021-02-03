@@ -1,39 +1,8 @@
 $prefix : 'cui' !default;
 
 @use 'variables'with($prefix: $prefix);
-@use "root";
-@use 'core/head';
-@use 'core/body';
-@use 'dark';
-@use 'components/print';
-@use 'commons';
-@use 'base';
-@use 'components';
+
+@use "build";
 
 @debug "Start build";
-
-:root {
-    @include root.variables($prefix);
-}
-
-html {
-    @include head.html;
-}
-
-
-body {
-    @include body.main-body;
-
-}
-
-* {
-    box-sizing: border-box;
-}
-
-
-// Commons
-@include commons.definitions();
-@include base.definitions();
-@include components.definitions();
-@include dark.definitions;
-@include print.definitions;
+@include build.wrapper();

@@ -1,95 +1,65 @@
-@mixin variables($prefix:"cui") {
-    --#{$prefix}-font-size                 : 16px;
-    --#{$prefix}-line-height               : 24px;
-    --#{$prefix}-animation-time            : 0.3s;
-    --#{$prefix}-animation-time-long       : 0.5s;
-    --#{$prefix}-animation-time-short      : 0.15s;
-    //Breakpoints
+@use "./toolkit/colors.scss"as colors;
+@use "./toolkit//animations.scss"as animations;
+
+@mixin variables($prefix:"cui", $dark: true, $theme: true, $signal: true) {
+    --#{$prefix}-font-size  : 16px;
+    --#{$prefix}-line-height: 24px;
+
+    @include animations.set-animations-duration($prefix: $prefix, $base: 300ms, $short: 150ms, $long: 500ms);
     // colors
     // Light
-    --#{$prefix}-color-light-app-background: #fdfeff;
-    --#{$prefix}-color-light-background    : #fff;
-    --#{$prefix}-color-light-base          : #333435;
-    --#{$prefix}-color-light-active        : #222324;
-    --#{$prefix}-color-light-muted         : #aaabac;
+    --#{$prefix}-color-light-app-background            : #fbfcfe;
+    --#{$prefix}-color-light-background                : #fff;
+    --#{$prefix}-color-light-base                      : #333435;
+    --#{$prefix}-color-light-active                    : #222324;
+    --#{$prefix}-color-light-muted                     : #aaabac;
 
     --#{$prefix}-color-light-border       : #22232430; //#d5d6d8;
     --#{$prefix}-color-light-border-hover : #22232450; //#b5b6b7;
     --#{$prefix}-color-light-border-active: #22232470; //#858687;
-    //Dark
-    --#{$prefix}-color-dark-app-background: #222324;
-    --#{$prefix}-color-dark-background    : #242526;
-    --#{$prefix}-color-dark-base          : #fff;
-    --#{$prefix}-color-dark-active        : #777879;
-    --#{$prefix}-color-dark-muted         : #cccdce;
 
-    --#{$prefix}-color-dark-border       : #fdfeff30; //#353637;
-    --#{$prefix}-color-dark-border-hover : #fdfeff50; //#656667;
-    --#{$prefix}-color-dark-border-active: #fdfeff70; //#858687;
 
-    // Primary
-    --#{$prefix}-color-primary            : #3178ce;
-    --#{$prefix}-color-primary-active     : #225391;
-    --#{$prefix}-color-primary-muted      : #669ddb;
-    --#{$prefix}-color-primary-shade      : #3178ce1f; //E6EFF9;
-    // Primary dark
-    --#{$prefix}-color-primary-dark       : #3d83d1;
-    --#{$prefix}-color-primary-dark-active: #255d9d;
-    --#{$prefix}-color-primary-dark-muted : #73a8de;
-    --#{$prefix}-color-primary-dark-shade : #3d83d11f; //252D37;
+    --#{$prefix}-color-shade       : #22232410;
+    --#{$prefix}-color-shade-darker: #22232420;
 
-    // Secondary
-    --#{$prefix}-color-secondary            : #b340d9;
-    --#{$prefix}-color-secondary-active     : #8822aa;
-    --#{$prefix}-color-secondary-muted      : #c977e4;
-    --#{$prefix}-color-secondary-shade      : #b340d91f; //F6E8FB;
-    // Secondary dark
-    --#{$prefix}-color-secondary-dark       : #b748db;
-    --#{$prefix}-color-secondary-dark-active: #9023b3;
-    --#{$prefix}-color-secondary-dark-muted : #cd7fe6;
-    --#{$prefix}-color-secondary-dark-shade : #b748db1f; //342638;
-    // Signals 
-    // Warning
-    --#{$prefix}-color-warning              : #db8d2e;
-    --#{$prefix}-color-warning-active       : #a1651c;
-    --#{$prefix}-color-warning-muted        : #e5ac67;
-    --#{$prefix}-color-warning-shade        : #db8d2e1f; //FBF1E6;
-    // Warning dark
-    --#{$prefix}-color-warning-dark         : #dd943b;
-    --#{$prefix}-color-warning-dark-active  : #ae6d1e;
-    --#{$prefix}-color-warning-dark-muted   : #e7b374;
-    --#{$prefix}-color-warning-dark-shade   : #dd943b1f; //382F25;
-    // Success
-    --#{$prefix}-color-success              : #259d4d; //29ad55;
-    --#{$prefix}-color-success-active       : #165f2f; //1a7037;
-    --#{$prefix}-color-success-muted        : #35cf69; //45d375;
-    --#{$prefix}-color-success-shade        : #259d4d1f; //#E5F5EB;
-    // Success dark
-    --#{$prefix}-color-success-dark         : #27a551; //29ad55;
-    --#{$prefix}-color-success-dark-active  : #186733; //1a7037;
-    --#{$prefix}-color-success-dark-muted   : #3dd16f; //45d375;
-    --#{$prefix}-color-success-dark-shade   : #27a5511f; //#233328;
+    @if $theme {
+        @include colors.set-accent-colors($prefix    : $prefix, $base:#3178ce, $muted: #669ddb, $active: #225391, $shade: #3178ce1f);
+        @include colors.set-secondary-colors($prefix : $prefix, $base:#b340d9, $muted: #c977e4, $active: #8822aa, $shade: #b340d91f);
+    }
 
-    --#{$prefix}-color-error            : #ce314b;
-    --#{$prefix}-color-error-active     : #912235;
-    --#{$prefix}-color-error-muted      : #db667a;
-    --#{$prefix}-color-error-shade      : #F9E6EA;
-    //Error dark
-    --#{$prefix}-color-error-dark       : #d13d56;
-    --#{$prefix}-color-error-dark-active: #c22e47;
-    --#{$prefix}-color-error-dark-muted : #e798a5;
-    --#{$prefix}-color-error-dark-shade : #372528;
+    @if $signal {
+        @include colors.set-warning-colors($prefix : $prefix, $base:#db8d2e, $muted: #e5ac67, $active: #a1651c, $shade: #b340d91f);
+        @include colors.set-success-colors($prefix : $prefix, $base:#259d4d, $muted: #35cf69, $active: #165f2f, $shade: #259d4d1f);
+        @include colors.set-error-colors($prefix   : $prefix, $base:#ce314b, $muted: #db667a, $active: #912235, $shade: #F9E6EA);
+    }
+
+    @if $dark {
+        @if $theme {
+            @include colors.set-accent-dark-colors($prefix    : $prefix, $base:#3d83d1, $muted: #73a8de, $active: #255d9d, $shade: #3d83d11f);
+            @include colors.set-secondary-dark-colors($prefix : $prefix, $base:#b748db, $muted: #cd7fe6, $active: #9023b3, $shade: #b748db1f);
+        }
+
+        @if $signal {
+            @include colors.set-warning-dark-colors($prefix : $prefix, $base:#dd943b, $muted: #e7b374, $active: #ae6d1e, $shade: #dd943b1f);
+            @include colors.set-success-dark-colors($prefix : $prefix, $base:#27a551, $muted: #3dd16f, $active: #186733, $shade: #27a5511f);
+            @include colors.set-error-dark-colors($prefix   : $prefix, $base:#d13d56, $muted: #e798a5, $active: #c22e47, $shade: #372528);
+        }
+
+        --#{$prefix}-color-dark-app-background: #222324;
+        --#{$prefix}-color-dark-background    : #242526;
+        --#{$prefix}-color-dark-base          : #fff;
+        --#{$prefix}-color-dark-active        : #777879;
+        --#{$prefix}-color-dark-muted         : #cccdce;
+
+        --#{$prefix}-color-dark-border       : #fdfeff30; //#353637;
+        --#{$prefix}-color-dark-border-hover : #fdfeff50; //#656667;
+        --#{$prefix}-color-dark-border-active: #fdfeff70; //#858687;
+
+        --#{$prefix}-color-shade-light        : #ffffff10;
+        --#{$prefix}-color-shade-light-lighter: #ffffff20;
+    }
 
     --#{$prefix}-input-background-color: transparent;
-
-    // --#{$prefix}-color-outline: #ffffff30;
-    // --#{$prefix}-color-outline-dark-lighter: #ffffff30;
-
-    // Static
-    --#{$prefix}-color-shade              : #22232410;
-    --#{$prefix}-color-shade-darker       : #22232420;
-    --#{$prefix}-color-shade-light        : #ffffff10;
-    --#{$prefix}-color-shade-light-lighter: #ffffff20;
 
     // Outline
     --#{$prefix}-outline: 1px dotted #999;
@@ -109,4 +79,6 @@
     --#{$prefix}-component-space: 4px;
 
     --#{$prefix}-accordion-icon: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' height='20' width='20'%3E%3Cpath d='M 5.0000475,7.4490018 10.000024,12.551028 15,7.4490018' style='fill:none;stroke:%23999;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1' /%3E%3C/svg%3E");
+
+    @content;
 }

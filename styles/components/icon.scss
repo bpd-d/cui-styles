@@ -195,12 +195,6 @@ $icon-color-success-dark  : $component-background-success-dark;
 
     .#{$prefix}-icon,
     .#{$prefix}-svg {
-        &>svg {
-            path.fill {
-                fill: $icon-color-inverse;
-            }
-        }
-
         &:not(.#{$prefix}-icon-button) {
             &.#{$prefix}-fill {
                 &>svg {
@@ -267,42 +261,76 @@ $icon-color-success-dark  : $component-background-success-dark;
                 }
             }
         }
-
-
-        // .#{$prefix}-icon-button {
-        //     &.#{$prefix}-fill {
-        //         &>svg {
-        //             path.fill {
-        //                 fill: $icon-color-inverse;
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     @include mode-dark {
         .#{$prefix}-icon {
-            &.#{$prefix}-fill {
+            &:not(.#{$prefix}-icon-button) {
+                &.#{$prefix}-fill {
 
-                @include not-colors {
-                    &>svg {
-                        path.fill {
-                            fill: $icon-color-default-dark;
+                    @include not-colors {
+                        &>svg {
+                            path.fill {
+                                fill: $icon-color-default-dark;
+                            }
                         }
                     }
-                }
 
 
-                &.#{$prefix}-inverse {
-                    svg {
-                        path.fill {
-                            fill: $icon-color-inverse-dark;
+                    &.#{$prefix}-inverse {
+                        svg {
+                            path.fill {
+                                fill: $icon-color-inverse-dark;
+                            }
                         }
                     }
                 }
             }
         }
     }
+
+
+}
+
+@mixin icon-button-fill {
+    .#{$prefix}-icon-button.#{$prefix}-fill {
+        &>svg {
+            path.fill {
+                fill: $icon-color-inverse;
+            }
+        }
+
+        @include not-colors {
+            :not(.#{$prefix}-inverse) {
+                &>svg {
+                    path.fill {
+                        fill: $icon-color-default;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin icon-button-fill-dark {
+    @include mode-dark {
+        .#{$prefix}-icon-button.#{$prefix}-fill {
+            &>svg {
+                path.fill {
+                    fill: $icon-color-default-dark;
+                }
+            }
+
+            &.#{$prefix}-inverse {
+                &>svg {
+                    path.fill {
+                        fill: $icon-color-default;
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 @mixin stroke-theme {
@@ -383,7 +411,6 @@ $icon-color-success-dark  : $component-background-success-dark;
         &.#{$prefix}-default {
             border-color    : $icon-border-color;
             background-color: $icon-button-background-default;
-
         }
 
         &.#{$prefix}-large {
@@ -394,7 +421,6 @@ $icon-color-success-dark  : $component-background-success-dark;
             border-color    : $icon-border-color-dark;
             background-color: $icon-button-background-inverse;
         }
-
 
         &:hover {
             outline: none !important;
@@ -563,6 +589,8 @@ $icon-color-success-dark  : $component-background-success-dark;
 
     @if(not-option-disabled($options, 'fill')) {
         @include icon-fill();
+        @include icon-button-fill();
+        @include icon-button-fill-dark();
     }
 
     @if(not-option-disabled($options, 'dark')) {

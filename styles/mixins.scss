@@ -195,6 +195,12 @@ $item-background-default: $component-background-default;
     }
 }
 
+@mixin root {
+    :root {
+        @content;
+    }
+}
+
 // @mixin mode-not-no-transitions {
 //     body:not(.#{$prefix}-no-transitions) {
 //         @content;

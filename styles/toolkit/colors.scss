@@ -1,0 +1,102 @@
+$palletes: ("accent": "primary",
+    "secondary": "secondary",
+    'error': "error",
+    "success": "success",
+    "warning": "warning");
+
+@mixin set-color($prefix, $pallete, $base, $muted, $active, $shade, $dark: false) {
+
+    @if not $prefix {
+        @error "Prefix was not provided";
+    }
+
+    @if not $pallete {
+        @error "Pallete was not provided";
+    }
+
+    $resolved: map-get($palletes, $pallete);
+
+    $suff: "";
+
+    @if $dark {
+        $suff: "-dark";
+    }
+
+    @if not $resolved {
+        @error "Pallete name was incorrect";
+    }
+
+    @if $base {
+        --#{$prefix}-color-#{$resolved}#{$suff}: #{$base};
+    }
+
+    @else {
+        @warn "Base value was not provided";
+    }
+
+    @if $muted {
+        --#{$prefix}-color-#{$resolved}#{$suff}-muted: #{$muted};
+    }
+
+    @else {
+        @warn "Muted value was not provided";
+    }
+
+    @if $active {
+        --#{$prefix}-color-#{$resolved}#{$suff}-active: #{$active};
+    }
+
+    @else {
+        @warn "Active value was not provided";
+    }
+
+    @if $shade {
+        --#{$prefix}-color-#{$resolved}#{$suff}-shade: #{$shade};
+    }
+
+    @else {
+        @warn "Shade value was not provided";
+    }
+
+}
+
+
+@mixin set-accent-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'accent', $base: $base, $muted: $muted, $active: $active, $shade: $shade);
+}
+
+@mixin set-accent-dark-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'accent', $base: $base, $muted: $muted, $active: $active, $shade: $shade, $dark: true);
+}
+
+@mixin set-secondary-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'secondary', $base: $base, $muted: $muted, $active: $active, $shade: $shade);
+}
+
+@mixin set-secondary-dark-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'secondary', $base: $base, $muted: $muted, $active: $active, $shade: $shade, $dark: true);
+}
+
+@mixin set-error-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'error', $base: $base, $muted: $muted, $active: $active, $shade: $shade);
+}
+
+@mixin set-error-dark-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'error', $base: $base, $muted: $muted, $active: $active, $shade: $shade, $dark: true);
+}
+
+@mixin set-warning-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'warning', $base: $base, $muted: $muted, $active: $active, $shade: $shade);
+}
+
+@mixin set-warning-dark-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'warning', $base: $base, $muted: $muted, $active: $active, $shade: $shade, $dark: true);
+}
+
+@mixin set-success-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'success', $base: $base, $muted: $muted, $active: $active, $shade: $shade);
+}
+
+@mixin set-success-dark-colors($prefix: 'cui', $base, $muted, $active, $shade) {
+    @include set-color($prefix: $prefix, $pallete: 'success', $base: $base, $muted: $muted, $active: $active, $shade: $shade, $dark: true);
+}

@@ -75,6 +75,7 @@ $button-disabled-border-style            : $component-disabled-border-style;
         @include component-padding($size: normal, $wide: true);
         display                         : inline-flex;
         align-items                     : center;
+        justify-content                 : center;
         background-color                : transparent;
         border                          : 1px solid transparent;
         border-radius                   : $border-radius-default;

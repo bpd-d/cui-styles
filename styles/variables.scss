@@ -60,13 +60,18 @@ $breakpoint-max-xl: 1599px;
 
 $breakpoint-height-s: 500px;
 
-$padding-global       : var(--#{$prefix}-padding);
-$padding-global-large : calc(#{$padding-global} * 2);
-$padding-global-small : calc(#{$padding-global} * 0.5);
+$padding-global        : var(--#{$prefix}-padding);
+$padding-global-xsmall : calc(#{$padding-global} * 0.25);
+$padding-global-small  : calc(#{$padding-global} * 0.5);
+$padding-global-large  : calc(#{$padding-global} * 2);
+$padding-global-xlarge : calc(#{$padding-global} * 4);
 
-$margin-global      : var(--#{$prefix}-margin);
-$margin-global-large: calc(#{$margin-global} * 2);
-$margin-global-small: calc(#{$margin-global} * 0.5);
+$margin-global       : var(--#{$prefix}-margin);
+$margin-global-xsmall: calc(#{$margin-global} * 0.25);
+$margin-global-small : calc(#{$margin-global} * 0.5);
+$margin-global-large : calc(#{$margin-global} * 2);
+$margin-global-xlarge: calc(#{$margin-global} * 4);
+
 
 $notification-width  : 350px;
 $notification-margin : 20px;

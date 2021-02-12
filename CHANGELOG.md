@@ -1,4 +1,15 @@
 # cUI Styles CHANGELOG:
+# [0.3.0] 2020-02-12
+* [Added] Notification
+* [Added] New xsmall and xlarge options in paddings and margins
+* [Added] Tab underline moved to separate modifier
+* [Added] Navbar dot/line indicator
+* [Added] Card fill parent
+* [Added] Table sticky cell and first column
+* [Added] Sticky options to table, default modifier for background color under all cells
+* [Changed] List interactive rework
+* [Fixed] Flex options
+* [Fixed] Toast text alignment
 # [0.2.17] 2020-02-03
 * [Added] New build options: exclude dark/theme/signal/print from components globally
 * [Added] New toolkit allowing build color palletes with mixins

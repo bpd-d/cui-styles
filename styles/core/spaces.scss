@@ -8,13 +8,17 @@
 @use '../mixins'as *;
 
 // Variables
-$item-padding-large : $padding-global-large;
-$item-padding       : $padding-global;
-$item-padding-small : $padding-global-small;
+$item-padding-large  : $padding-global-large;
+$item-padding        : $padding-global;
+$item-padding-small  : $padding-global-small;
+$item-padding-xsmall : $padding-global-xsmall;
+$item-padding-xlarge : $padding-global-xlarge;
 
-$item-margin      : $margin-global;
-$item-margin-large: $margin-global-large;
-$item-margin-small: $margin-global-small;
+$item-margin       : $margin-global;
+$item-margin-large : $margin-global-large;
+$item-margin-xlarge: $margin-global-xlarge;
+$item-margin-small : $margin-global-small;
+$item-margin-xsmall: $margin-global-xsmall;
 
 // MIxins
 
@@ -151,12 +155,20 @@ $sides: "top",
                 @include margin-auto(--s);
             }
 
+            @if(not-option-disabled($options, 'xsmall')) {
+                @include margin("xsmall", --s, $item-margin-xsmall);
+            }
+
             @if(not-option-disabled($options, 'small')) {
                 @include margin("small", --s, $item-margin-small);
             }
 
             @if(not-option-disabled($options, 'large')) {
                 @include margin("large", --s, $item-margin-large);
+            }
+
+            @if(not-option-disabled($options, 'xlarge')) {
+                @include margin("xlarge", --s, $item-margin-xlarge);
             }
         }
 
@@ -167,12 +179,21 @@ $sides: "top",
                 @include remove-padding(--s);
             }
 
+            @if(not-option-disabled($options, 'xsmall')) {
+                @include padding("xsmall", "--s", $item-padding-xsmall);
+            }
+
             @if(not-option-disabled($options, 'small')) {
                 @include padding("small", "--s", $item-padding-small);
             }
 
             @if(not-option-disabled($options, 'large')) {
                 @include padding("large", "--s", $item-padding-large);
+
+            }
+
+            @if(not-option-disabled($options, 'xlarge')) {
+                @include padding("xlarge", "--s", $item-padding-xlarge);
             }
         }
     }
@@ -193,6 +214,10 @@ $sides: "top",
                 @include margin-auto(--m);
             }
 
+            @if(not-option-disabled($options, 'xsmall')) {
+                @include margin("xsmall", --m, $item-margin-xsmall);
+            }
+
             @if(not-option-disabled($options, 'small')) {
                 @include margin("small", --m, $item-margin-small);
             }
@@ -201,8 +226,8 @@ $sides: "top",
                 @include margin("large", --m, $item-margin-large);
             }
 
-            @if(not-option-disabled($options, 'display')) {
-                @include display(--s);
+            @if(not-option-disabled($options, 'xlarge')) {
+                @include margin("xlarge", --m, $item-margin-xlarge);
             }
         }
 
@@ -213,6 +238,10 @@ $sides: "top",
                 @include remove-padding(--m);
             }
 
+            @if(not-option-disabled($options, 'xsmall')) {
+                @include padding("xsmall", "--m", $item-padding-xsmall);
+            }
+
             @if(not-option-disabled($options, 'small')) {
                 @include padding("small", "--m", $item-padding-small);
             }
@@ -221,7 +250,9 @@ $sides: "top",
                 @include padding("large", "--m", $item-padding-large);
             }
 
-
+            @if(not-option-disabled($options, 'xlarge')) {
+                @include padding("xlarge", "--m", $item-padding-xlarge);
+            }
         }
     }
 
@@ -241,6 +272,10 @@ $sides: "top",
                 @include margin-auto(--l);
             }
 
+            @if(not-option-disabled($options, 'xsmall')) {
+                @include margin("xsmall", --l, $item-margin-xsmall);
+            }
+
             @if(not-option-disabled($options, 'small')) {
                 @include margin("small", --l, $item-margin-small);
             }
@@ -249,7 +284,9 @@ $sides: "top",
                 @include margin("large", --l, $item-margin-large);
             }
 
-
+            @if(not-option-disabled($options, 'xlarge')) {
+                @include margin("xlarge", --l, $item-margin-xlarge);
+            }
         }
 
         @if(not-option-disabled($options, 'padding')) {
@@ -259,12 +296,20 @@ $sides: "top",
                 @include remove-padding(--l);
             }
 
+            @if(not-option-disabled($options, 'xsmall')) {
+                @include padding("xsmall", "--l", $item-padding-xsmall);
+            }
+
             @if(not-option-disabled($options, 'small')) {
                 @include padding("small", "--l", $item-padding-small);
             }
 
             @if(not-option-disabled($options, 'large')) {
                 @include padding("large", "--l", $item-padding-large);
+            }
+
+            @if(not-option-disabled($options, 'xlarge')) {
+                @include padding("xlarge", "--l", $item-padding-xlarge);
             }
         }
     }
@@ -286,8 +331,16 @@ $sides: "top",
                 @include margin-auto(--xl);
             }
 
+            @if(not-option-disabled($options, 'xsmall')) {
+                @include margin("xsmall", --xl, $item-margin-xsmall);
+            }
+
             @if(not-option-disabled($options, 'small')) {
                 @include margin("small", --xl, $item-margin-small);
+            }
+
+            @if(not-option-disabled($options, 'xlarge')) {
+                @include margin("xlarge", --xl, $item-margin-xlarge);
             }
 
             @if(not-option-disabled($options, 'large')) {
@@ -302,12 +355,20 @@ $sides: "top",
                 @include remove-padding(--xl);
             }
 
+            @if(not-option-disabled($options, 'xsmall')) {
+                @include padding("xsmall", "--xl", $item-padding-xsmall);
+            }
+
             @if(not-option-disabled($options, 'small')) {
                 @include padding("small", "--xl", $item-padding-small);
             }
 
             @if(not-option-disabled($options, 'large')) {
                 @include padding("large", "--xl", $item-padding-large);
+            }
+
+            @if(not-option-disabled($options, 'xlarge')) {
+                @include padding("xlarge", "--xl", $item-padding-xlarge);
             }
         }
     }
@@ -387,12 +448,20 @@ $sides: "top",
             @include margin-auto();
         }
 
+        @if(not-option-disabled($options, 'xsmall')) {
+            @include margin("xsmall", "", $item-margin-xsmall);
+        }
+
         @if(not-option-disabled($options, 'small')) {
             @include margin("small", "", $item-margin-small);
         }
 
         @if(not-option-disabled($options, 'large')) {
             @include margin("large", "", $item-margin-large);
+        }
+
+        @if(not-option-disabled($options, 'xlarge')) {
+            @include margin("xlarge", "", $item-margin-xlarge);
         }
     }
 
@@ -403,12 +472,20 @@ $sides: "top",
             @include remove-padding();
         }
 
+        @if(not-option-disabled($options, 'xsmall')) {
+            @include padding("xsmall", "", $item-padding-xsmall);
+        }
+
         @if(not-option-disabled($options, 'small')) {
             @include padding("small", "", $item-padding-small);
         }
 
         @if(not-option-disabled($options, 'large')) {
             @include padding("large", "", $item-padding-large);
+        }
+
+        @if(not-option-disabled($options, 'xlarge')) {
+            @include padding("xlarge", "", $item-padding-xlarge);
         }
     }
 

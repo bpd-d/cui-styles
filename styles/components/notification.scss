@@ -1,0 +1,171 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+$notification-width           : 270px;
+$notification-background      : $component-background-default;
+$notification-background-dark : $component-background-default-dark;
+$nofitication-color           : $component-color-default;
+$nofitication-color-muted     : $component-color-muted;
+$nofitication-color-muted-dark: $component-color-muted-dark;
+
+$nofitication-color-dark    : $component-color-default-dark;
+$notification-border-radius : $border-radius-default;
+$notification-shadow        : $shadow2;
+$notification-margin        : $margin-global-small;
+$notification-font-bold     : $text-weight-semi-bold;
+$notification-font-normal   : $font-normal;
+$notification-font-small    : $font-small;
+// HELPERS
+
+@mixin base {
+    .#{$prefix}-notification {
+        @content;
+    }
+}
+
+@mixin header {
+    .#{$prefix}-notification-header {
+        @content;
+    }
+}
+
+@mixin body {
+    .#{$prefix}-notification-body {
+        @content;
+    }
+}
+
+@mixin footer {
+    .#{$prefix}-notification-footer {
+        @content;
+    }
+}
+
+@mixin icon {
+    .#{$prefix}-notification-icon {
+        @content;
+    }
+}
+
+@mixin close {
+    .#{$prefix}-notification-close {
+        @content;
+    }
+}
+
+@mixin title {
+    .#{$prefix}-notification-title {
+        @content;
+    }
+}
+
+// MAIN
+@mixin notification {
+    @include base {
+        width           : $notification-width;
+        background-color: $notification-background;
+        color           : $nofitication-color;
+        border-radius   : $notification-border-radius;
+        box-shadow      : $notification-shadow;
+
+
+
+
+        @include header() {
+            @include component-padding-complex(header);
+            display  : flex;
+            flex-wrap: nowrap;
+            font-size: $notification-font-normal;
+
+
+            &:only-child {
+                @include component-padding(normal, same);
+            }
+
+            @include icon() {
+                margin-right: $notification-margin;
+                flex        : 0 0 auto;
+                order       : 1;
+            }
+
+            @include title {
+                @include text-nowrap;
+                margin-right: $notification-margin;
+                font-weight : $notification-font-bold;
+                flex        : 1 1 auto;
+                order       : 2;
+
+
+            }
+
+            @include close() {
+                flex : 0 0 auto;
+                order: 3;
+            }
+        }
+
+        @include body() {
+            @include component-padding-complex(body);
+            max-height: 150px;
+            overflow-y: auto;
+            text-align: justify;
+        }
+
+        @include footer() {
+            @include component-padding-complex(footer);
+            display   : flex;
+            flex-wrap : nowrap;
+            overflow-y: auto;
+
+            ul {
+                margin : 0;
+                padding: 0;
+
+                li {
+                    display: inline-block;
+
+                    a {
+                        text-decoration: none;
+                        cursor         : pointer;
+                        color          : $nofitication-color-muted;
+                        padding        : $notification-margin;
+
+                        &:hover {
+                            @include text-shadow($nofitication-color-muted);
+                        }
+                    }
+
+                    &:first-child a {
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@mixin notification-dark() {
+    @include mode-dark {
+        @include base() {
+            background-color: $notification-background-dark;
+            color           : $nofitication-color-dark;
+
+            @include footer() {
+                ul li a {
+                    color: $nofitication-color-muted-dark;
+                }
+            }
+        }
+    }
+
+}
+
+@mixin definitions($options:()) {
+
+    @include notification();
+
+    @if(not-option-disabled($options, 'dark')) {
+        @include notification-dark();
+    }
+}

@@ -32,32 +32,6 @@ $card-border-color-dark         : transparent; //$color-border-dark;
             @include component-padding(normal, same);
         }
 
-        &.#{$prefix}-side {
-            display    : flex;
-            flex-wrap  : wrap;
-            box-sizing : border-box;
-            align-items: stretch;
-
-            .#{$prefix}-content {
-                display       : flex;
-                flex-direction: column;
-
-                .#{$prefix}-card-header,
-                .#{$prefix}-card-footer {
-                    flex: 0 0 auto;
-                }
-
-                .#{$prefix}-card-body {
-                    flex: 1 1 auto;
-                }
-
-                >*:only-child {
-                    flex: 1 1 auto;
-                    @include component-padding(normal, same);
-                }
-            }
-        }
-
         &.#{$prefix}-hover {
             &:hover {
                 box-shadow: $shadow2 !important;
@@ -85,7 +59,6 @@ $card-border-color-dark         : transparent; //$color-border-dark;
         }
 
         .#{$prefix}-card-header {
-            // @include component-padding-complex(header);
             @include component-padding(normal, same);
         }
 
@@ -125,6 +98,29 @@ $card-border-color-dark         : transparent; //$color-border-dark;
             .#{$prefix}-card-header,
             .#{$prefix}-card-footer {
                 border-color: $card-separator-color-dark;
+            }
+        }
+    }
+}
+
+@mixin card-fill {
+    .#{$prefix}-card {
+        &.#{$prefix}-fill-parent {
+            width         : 100%;
+            height        : 100%;
+            display       : flex;
+            flex-direction: column;
+
+            .#{$prefix}-card-header,
+            .#{$prefix}-card-footer {
+                width: 100%;
+                flex : 0 0 auto;
+            }
+
+            .#{$prefix}-card-body {
+                width     : 100%;
+                flex      : 1 1 auto;
+                overflow-y: auto;
             }
         }
     }
@@ -317,6 +313,10 @@ $card-border-color-dark         : transparent; //$color-border-dark;
 
     @if(not-option-disabled($options, 'dark')) {
         @include card-dark();
+    }
+
+    @if(not-option-disabled($options, 'fill')) {
+        @include card-fill();
     }
 
     @if(not-option-disabled($options, 'print')) {

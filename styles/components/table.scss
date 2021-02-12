@@ -7,9 +7,10 @@ $table-cell-divider-color-dark: $component-border-default-dark;
 $table-stripped-color     : $component-background-shade;
 $table-stripped-color-dark: $component-background-shade-dark;
 
-$table-header-color-accent    : $component-background-accent;
-$table-header-color-secondary : $component-background-secondary;
-
+$table-color-default               : $component-background-default;
+$table-header-color-accent         : $component-background-accent;
+$table-header-color-secondary      : $component-background-secondary;
+$table-color-default-dark          : $component-background-default-dark;
 $table-header-color-accent-dark    : $component-background-accent-dark;
 $table-header-color-secondary-dark : $component-background-secondary-dark;
 
@@ -22,14 +23,9 @@ $table-background-inverse-dark: $component-background-shade-dark;
 @mixin table {
     table.#{$prefix}-table {
         width          : 100%;
-        border-collapse: collapse;
+        border-collapse: separate;
         table-layout   : fixed;
-
-
-
-
-
-        // Give a column divider
+        border-spacing : 0;
 
         tr {
             th {
@@ -50,6 +46,14 @@ $table-background-inverse-dark: $component-background-shade-dark;
             td {
                 @include component-padding;
                 text-align: left;
+            }
+        }
+
+        &.#{$prefix}-default {
+
+            th,
+            td {
+                background-color: $table-color-default;
             }
         }
     }
@@ -134,7 +138,57 @@ $table-background-inverse-dark: $component-background-shade-dark;
             th {
                 position: sticky;
                 top     : 0;
+                z-index : 1;
             }
+        }
+
+        &.#{$prefix}-first-column-sticky {
+            th {
+                position: sticky;
+                top     : 0;
+                z-index : 1;
+
+                &:first-child {
+                    z-index: 2;
+                    left   : 0;
+                }
+            }
+
+            tr {
+                td:first-child {
+                    position: sticky;
+                    left    : 0;
+                    z-index : 0;
+                }
+            }
+        }
+
+        th,
+        td {
+            &.#{$prefix}-cell-sticky-top {
+                position: sticky;
+                top     : 0;
+                z-index : 2;
+            }
+
+            &.#{$prefix}-cell-sticky-left {
+                position: sticky;
+                left    : 0;
+                z-index : 1;
+            }
+        }
+
+        th.#{$prefix}-cell-sticky {
+            position: sticky;
+            top     : 0;
+            left    : 0;
+            z-index : 2;
+        }
+
+        td.#{$prefix}-cell-sticky {
+            position: sticky;
+            left    : 0;
+            z-index : 1;
         }
     }
 }
@@ -250,6 +304,7 @@ $table-background-inverse-dark: $component-background-shade-dark;
 @mixin table-theme-dark {
     @include mode-dark {
         table.#{$prefix}-table {
+
             tr {
                 th {
                     &.#{$prefix}-accent {
@@ -341,6 +396,14 @@ $table-background-inverse-dark: $component-background-shade-dark;
 @mixin table-dark {
     @include mode-dark {
         table.#{$prefix}-table {
+            &.#{$prefix}-default {
+
+                th,
+                td {
+                    background-color: $table-color-default-dark;
+                }
+            }
+
             &.#{$prefix}-divider {
                 td {
                     border-color: $table-cell-divider-color-dark;

@@ -24,6 +24,7 @@ $toast-font-size            : $font-normal;
         box-shadow   : $shadow2;
         border-radius: 50px;
         opacity      : 0;
+        text-align   : center;
 
         @include component-padding($size: normal, $wide: true);
         @content;

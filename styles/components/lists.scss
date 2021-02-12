@@ -25,7 +25,7 @@ $list-item-active-color-secondary-dark         : $component-background-secondary
 $list-item-inactive-color                      : $component-color-muted;
 $list-item-inactive-color-dark                 : $component-color-muted-dark;
 $list-transition-time                          : $animation-duration-short;
-$list-item-font-weight-bold                    : $text-weight-bold;
+$list-item-font-weight-bold                    : $text-weight-semi-bold;
 
 @mixin list {
     ul.#{$prefix}-list {
@@ -129,33 +129,31 @@ $list-item-font-weight-bold                    : $text-weight-bold;
     }
 }
 
-@mixin list-highlight {
-    ul.#{$prefix}-list {
-        &.#{$prefix}-highlight {
-            &>li {
-                padding: 0px;
+@mixin list-interactive {
+    ul.#{$prefix}-list.#{$prefix}-interactive {
+        &>li {
+            padding: 0px;
 
-                a {
-                    display: block;
-                    @include component-padding;
-                    @include link-decoration($list-item-color);
-                    @include createHighlight($color: $highlight-color-dark, $noTransition: true);
-
-                    &.#{$prefix}-active {
-                        background-color: $list-item-highlight-background;
-                    }
-                }
+            a {
+                display: block;
+                @include component-padding;
+                @include link-decoration($list-item-color);
+                @include createHighlight($color: $highlight-color-dark, $noTransition: true);
 
                 &.#{$prefix}-active {
                     background-color: $list-item-highlight-background;
                 }
             }
+
+            &.#{$prefix}-active {
+                background-color: $list-item-highlight-background;
+            }
         }
     }
 }
 
-@mixin list-highlight-theme {
-    ul.#{$prefix}-list.#{$prefix}-highlight.#{$prefix}-accent {
+@mixin list-interactive-theme {
+    ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
         &>li {
 
             a {
@@ -170,7 +168,7 @@ $list-item-font-weight-bold                    : $text-weight-bold;
         }
     }
 
-    ul.#{$prefix}-list.#{$prefix}-highlight.#{$prefix}-secondary {
+    ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
         &>li {
 
             a {
@@ -186,36 +184,30 @@ $list-item-font-weight-bold                    : $text-weight-bold;
     }
 }
 
-
-
-
-@mixin list-highlight-dark {
+@mixin list-interactive-dark {
     @include mode-dark {
-        ul.#{$prefix}-list {
-            &.#{$prefix}-highlight {
-                &>li {
-
-                    a {
-                        color                          : $list-item-color-dark;
-                        @include createHighlight($color: $highlight-color);
-
-                        &.#{$prefix}-active {
-                            background-color: $list-item-highlight-background-dark;
-                        }
-                    }
+        ul.#{$prefix}-list.#{$prefix}-interactive {
+            &>li {
+                a {
+                    color                          : $list-item-color-dark;
+                    @include createHighlight($color: $highlight-color, $noTransition: true);
 
                     &.#{$prefix}-active {
                         background-color: $list-item-highlight-background-dark;
                     }
+                }
+
+                &.#{$prefix}-active {
+                    background-color: $list-item-highlight-background-dark;
                 }
             }
         }
     }
 }
 
-@mixin list-highlight-theme-dark {
+@mixin list-interactive-theme-dark {
     @include mode-dark {
-        ul.#{$prefix}-list.#{$prefix}-highlight.#{$prefix}-accent {
+        ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
             &>li {
 
                 a {
@@ -230,7 +222,7 @@ $list-item-font-weight-bold                    : $text-weight-bold;
             }
         }
 
-        ul.#{$prefix}-list.#{$prefix}-highlight.#{$prefix}-secondary {
+        ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
             &>li {
 
                 a {
@@ -247,9 +239,9 @@ $list-item-font-weight-bold                    : $text-weight-bold;
     }
 }
 
-@mixin list-interactive {
+@mixin list-interactive-line {
     ul.#{$prefix}-list {
-        &.#{$prefix}-interactive {
+        &.#{$prefix}-interactive-line {
             &>li {
                 padding: 0px;
 
@@ -291,8 +283,7 @@ $list-item-font-weight-bold                    : $text-weight-bold;
                         font-weight: $list-item-font-weight-bold;
 
                         &:before {
-                            background-color  : $list-item-color;
-                            //transition      : transform $list-transition-time ease-out;
+                            background-color: $list-item-color;
                         }
 
                         &:hover {
@@ -334,8 +325,8 @@ $list-item-font-weight-bold                    : $text-weight-bold;
     }
 }
 
-@mixin list-interactive-accent {
-    ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
+@mixin list-interactive-line-accent {
+    ul.#{$prefix}-list.#{$prefix}-interactive-line.#{$prefix}-accent {
 
         &>li.#{$prefix}-active {
             a {
@@ -353,9 +344,9 @@ $list-item-font-weight-bold                    : $text-weight-bold;
     }
 }
 
-@mixin list-interactive-accent-dark {
+@mixin list-interactive-accent-line-dark {
     @include mode-dark {
-        ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
+        ul.#{$prefix}-list.#{$prefix}-interactive-line.#{$prefix}-accent {
 
             &>li.#{$prefix}-active {
                 a {
@@ -375,8 +366,8 @@ $list-item-font-weight-bold                    : $text-weight-bold;
 
 }
 
-@mixin list-interactive-secondary {
-    ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
+@mixin list-interactive-secondary-line {
+    ul.#{$prefix}-list.#{$prefix}-interactive-line.#{$prefix}-secondary {
 
         &>li.#{$prefix}-active {
             a {
@@ -394,9 +385,9 @@ $list-item-font-weight-bold                    : $text-weight-bold;
     }
 }
 
-@mixin list-interactive-secondary-dark {
+@mixin list-interactive-secondary-line-dark {
     @include mode-dark {
-        ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-secondary {
+        ul.#{$prefix}-list.#{$prefix}-interactive-line.#{$prefix}-secondary {
 
             &>li.#{$prefix}-active {
                 a {
@@ -467,34 +458,32 @@ $list-item-font-weight-bold                    : $text-weight-bold;
     }
 }
 
-@mixin list-dark-interactive {
+@mixin list-dark-interactive-line {
     @include mode-dark {
-        ul.#{$prefix}-list {
-            &.#{$prefix}-interactive {
-                &>li {
-                    &>a {
-                        color                          : $list-item-color-dark;
-                        @include updateHighlight($color: $highlight-color);
-                        user-select                    : none;
+        ul.#{$prefix}-list.#{$prefix}-interactive-line {
+            &>li {
+                &>a {
+                    color                          : $list-item-color-dark;
+                    @include updateHighlight($color: $highlight-color);
+                    user-select                    : none;
 
-                        &:focus {
-                            &:before {
-                                background-color: $list-item-inactive-color-dark;
-                            }
-                        }
-
-                        &.#{$prefix}-active {
-                            &:before {
-                                background-color: $list-item-color-dark;
-                            }
+                    &:focus {
+                        &:before {
+                            background-color: $list-item-inactive-color-dark;
                         }
                     }
 
                     &.#{$prefix}-active {
-                        a {
-                            &:before {
-                                background-color: $list-item-color-dark;
-                            }
+                        &:before {
+                            background-color: $list-item-color-dark;
+                        }
+                    }
+                }
+
+                &.#{$prefix}-active {
+                    a {
+                        &:before {
+                            background-color: $list-item-color-dark;
                         }
                     }
                 }
@@ -567,13 +556,13 @@ $list-item-font-weight-bold                    : $text-weight-bold;
     }
 }
 
-@mixin list-interactive-print {
+@mixin list-interactive-line-print {
     @include mode-print {
         ul.#{$prefix}-list {
 
-            &.#{$prefix}-interactive,
-            &.#{$prefix}-interactive.#{$prefix}-accent,
-            &.#{$prefix}-interactive.#{$prefix}-secondary {
+            &.#{$prefix}-interactive-line,
+            &.#{$prefix}-interactive-line.#{$prefix}-accent,
+            &.#{$prefix}-interactive-line.#{$prefix}-secondary {
                 &>li {
                     &.#{$prefix}-active {
                         a {
@@ -587,6 +576,30 @@ $list-item-font-weight-bold                    : $text-weight-bold;
                 &>li>a.#{$prefix}-active {
                     &:before {
                         background-color: $component-print-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin list-interactive-print {
+    @include mode-print {
+        ul.#{$prefix}-list {
+
+            &.#{$prefix}-interactive,
+            &.#{$prefix}-interactive.#{$prefix}-accent,
+            &.#{$prefix}-interactive.#{$prefix}-secondary {
+
+                &>li {
+                    &>a {
+                        &.#{$prefix}-active {
+                            background-color: $list-item-highlight-background;
+                        }
+                    }
+
+                    &.#{$prefix}-active {
+                        background-color: $list-item-highlight-background;
                     }
                 }
             }
@@ -627,47 +640,46 @@ $list-item-font-weight-bold                    : $text-weight-bold;
         @include list-print();
     }
 
-    @if(not-option-disabled($options, 'highlight')) {
-        @include list-highlight();
-
-        @if(not-option-disabled($options, 'theme')) {
-            @include list-highlight-theme();
-        }
-
-        @if(not-option-disabled($options, 'dark')) {
-            @include list-highlight-dark();
-
-            @if(not-option-disabled($options, 'theme')) {
-                @include list-highlight-theme-dark();
-            }
-        }
-
-
-    }
-
     @if(not-option-disabled($options, 'interactive')) {
         @include list-interactive();
 
         @if(not-option-disabled($options, 'theme')) {
-            @include list-interactive-accent();
-            @include list-interactive-secondary();
-        }
-
-        @if(not-option-disabled($options, 'animation')) {
-            @include list-no-transitions();
+            @include list-interactive-theme();
         }
 
         @if(not-option-disabled($options, 'dark')) {
-            @include list-dark-interactive();
+            @include list-interactive-dark();
 
             @if(not-option-disabled($options, 'theme')) {
-                @include list-interactive-accent-dark();
-                @include list-interactive-secondary-dark();
+                @include list-interactive-theme-dark();
             }
         }
 
         @if(not-option-disabled($options, 'print')) {
             @include list-interactive-print();
+        }
+    }
+
+    @if(not-option-disabled($options, 'interactive-line')) {
+        @include list-interactive-line();
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include list-interactive-line-accent();
+            @include list-interactive-secondary-line();
+
+        }
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include list-dark-interactive-line();
+
+            @if(not-option-disabled($options, 'theme')) {
+                @include list-interactive-accent-line-dark();
+                @include list-interactive-secondary-line-dark();
+            }
+        }
+
+        @if(not-option-disabled($options, 'print')) {
+            @include list-interactive-line-print()
         }
     }
 

@@ -21,7 +21,8 @@ $tab-border-aside : 1px solid $tab-border-color;
 
 $tab-border-color-dark: $tab-border-color-dark;
 
-$tab-transition-time: $animation-duration-short;
+$tab-transition-time   : $animation-duration-short;
+$tab-font-weight-active: $text-weight-semi-bold;
 
 @mixin pointer {
     cursor     : pointer;
@@ -40,12 +41,38 @@ $tab-transition-time: $animation-duration-short;
             box-sizing: border-box;
 
             a {
-                position: relative;
-                display : block;
+                display: block;
                 @include component-padding;
                 @include link-decoration($tab-color);
                 appearance : none;
                 user-select: none;
+
+                &:hover {
+                    @include text-shadow($tab-color);
+                    outline: none !important;
+                }
+
+                &:active,
+                &:focus {
+                    outline   : none !important;
+                    box-shadow: none !important;
+                }
+            }
+
+            &.#{$prefix}-active {
+                a {
+                    font-weight: $tab-font-weight-active;
+                }
+            }
+        }
+    }
+}
+
+@mixin tab-underline {
+    ul.#{$prefix}-tab.#{$prefix}-underline {
+        li {
+            a {
+                position: relative;
 
                 &:before {
                     position        : absolute;
@@ -65,7 +92,6 @@ $tab-transition-time: $animation-duration-short;
                         transform: translateX(-50%) scale(0.6, 1);
                     }
 
-                    outline: none !important;
                 }
 
                 &:active,
@@ -73,9 +99,6 @@ $tab-transition-time: $animation-duration-short;
                     &:before {
                         transform: translateX(-50%) scale(0.8, 1);
                     }
-
-                    outline   : none !important;
-                    box-shadow: none !important;
                 }
             }
 
@@ -107,6 +130,39 @@ $tab-transition-time: $animation-duration-short;
 
 @mixin tab-side {
     ul.#{$prefix}-tab {
+        &.#{$prefix}-tab-side {
+            border-right : $tab-border-aside;
+            border-bottom: none;
+
+            li {
+                display: list-item;
+
+                a {
+                    position: relative;
+                    display : block;
+                }
+            }
+        }
+
+        &.#{$prefix}-tab-side-reverse {
+            border-left  : $tab-border-aside;
+            border-bottom: none;
+
+            li {
+                display: list-item;
+
+                a {
+                    position: relative;
+                    display : block;
+                }
+            }
+        }
+    }
+}
+
+
+@mixin tab-underline-side {
+    ul.#{$prefix}-tab.#{$prefix}-underline {
         &.#{$prefix}-tab-side {
             border-right : $tab-border-aside;
             border-bottom: none;
@@ -239,77 +295,80 @@ $tab-transition-time: $animation-duration-short;
     }
 }
 
-@mixin tab-accent {
-    ul.#{$prefix}-tab {
-        &.#{$prefix}-accent {
+
+
+@mixin tab-underline-accent {
+    ul.#{$prefix}-tab.#{$prefix}-underline.#{$prefix}-accent {
+        li.#{$prefix}-active {
+            a {
+                &:before {
+                    background-color: $tab-color-accent !important;
+                }
+            }
+        }
+    }
+}
+
+@mixin tab-underline-accent-dark {
+    @include mode-dark {
+        ul.#{$prefix}-tab.#{$prefix}-underline.#{$prefix}-accent {
             li.#{$prefix}-active {
                 a {
                     &:before {
-                        background-color: $tab-color-accent !important;
+                        background-color: $tab-color-accent-dark !important;
                     }
                 }
             }
-
         }
     }
 }
 
-@mixin tab-accent-dark {
+@mixin tab-underline-secondary {
+    ul.#{$prefix}-tab.#{$prefix}-underline.#{$prefix}-secondary {
+        li.#{$prefix}-active {
+            a {
+                &:before {
+                    background-color: $tab-color-secondary !important;
+                }
+            }
+        }
+    }
+}
+
+@mixin tab-underline-secondary-dark {
     @include mode-dark {
-        ul.#{$prefix}-tab {
-            &.#{$prefix}-accent {
-                li.#{$prefix}-active {
-                    a {
-                        &:before {
-                            background-color: $tab-color-accent-dark !important;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@mixin tab-secondary {
-    ul.#{$prefix}-tab {
-        &.#{$prefix}-secondary {
+        ul.#{$prefix}-tab.#{$prefix}-underline.#{$prefix}-secondary {
             li.#{$prefix}-active {
                 a {
                     &:before {
-                        background-color: $tab-color-secondary !important;
+                        background-color: $tab-color-secondary-dark !important;
                     }
                 }
             }
         }
     }
 }
-
-@mixin tab-secondary-dark {
-    @include mode-dark {
-        ul.#{$prefix}-tab {
-            &.#{$prefix}-secondary {
-                li.#{$prefix}-active {
-                    a {
-                        &:before {
-                            background-color: $tab-color-secondary-dark !important;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-
 
 @mixin tab-dark {
+    @include mode-dark {
+        ul.#{$prefix}-tab {
+            li {
+                a {
+                    color: $tab-color-dark;
+                }
+            }
+        }
+    }
+}
+
+
+@mixin tab-underline-dark {
     @include mode-dark {
         ul.#{$prefix}-tab {
             border-color: $tab-border-color-dark;
 
             li {
                 a {
-                    color: $tab-color-dark;
 
                     &:before {
                         background-color: $tab-color-indicator-dark;
@@ -332,8 +391,21 @@ $tab-transition-time: $animation-duration-short;
 @mixin tab-side-dark {
     @include mode-dark {
         ul.#{$prefix}-tab {
-            &.#{$prefix}-tab-side {
+
+            &.#{$prefix}-tab-side,
+            &.#{$prefix}-tab-side-reverse {
                 border-color: $tab-border-color-dark;
+            }
+        }
+    }
+}
+
+@mixin tab-underline-side-dark {
+    @include mode-dark {
+        ul.#{$prefix}-tab {
+
+            &.#{$prefix}-tab-side,
+            &.#{$prefix}-tab-side-reverse {
 
                 li {
                     &.#{$prefix}-active {
@@ -426,26 +498,42 @@ $tab-transition-time: $animation-duration-short;
         @include tab-dark();
     }
 
+    @if(not-option-disabled($options, 'underline')) {
+        @include tab-underline();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include tab-underline-dark();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include tab-underline-accent();
+            @include tab-underline-secondary();
+
+            @if(not-option-disabled($options, 'print')) {
+                @include tab-theme-print();
+            }
+
+            @if(not-option-disabled($options, 'dark')) {
+                @include tab-underline-accent-dark();
+                @include tab-underline-secondary-dark();
+            }
+        }
+    }
+
     @if(not-option-disabled($options, 'print')) {
         @include tab-print();
     }
 
-    @if(not-option-disabled($options, 'theme')) {
-        @include tab-accent();
-        @include tab-secondary();
-
-        @if(not-option-disabled($options, 'print')) {
-            @include tab-theme-print();
-        }
-
-        @if(not-option-disabled($options, 'dark')) {
-            @include tab-accent-dark();
-            @include tab-secondary-dark();
-        }
-    }
-
     @if(not-option-disabled($options, 'side')) {
         @include tab-side();
+
+        @if(not-option-disabled($options, 'underline')) {
+            @include tab-underline-side();
+
+            @if(not-option-disabled($options, 'dark')) {
+                @include tab-underline-side-dark();
+            }
+        }
 
         @if(not-option-disabled($options, 'print')) {
             @include tab-side-print();

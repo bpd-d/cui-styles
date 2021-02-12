@@ -22,11 +22,47 @@ $navbar-color-default-active-dark : $component-color-active-dark;
 $navbar-item-padding      : $padding-global;
 $navbar-item-padding-small: $padding-global-small;
 
-$navbar-text-normal: $text-weight-normal;
-$navbar-text-bold  : $text-weight-bold;
-$navbar-margin     : $margin-global;
+$navbar-text-normal    : $text-weight-normal;
+$navbar-text-bold      : $text-weight-bold;
+$navbar-text-semi-bold : $text-weight-semi-bold;
+$navbar-margin         : $margin-global;
 
 $navbar-transition-time : $animation-duration-short;
+
+// HELPERS
+
+@mixin default-navbar-item-style($color) {
+    color: $color;
+
+    &:hover {
+        @include text-shadow($color);
+    }
+}
+
+@mixin default-navbar-item-theme-style($color) {
+    &.#{$prefix}-active {
+        color: $color;
+
+        &:hover {
+            @include text-shadow($color);
+        }
+    }
+}
+
+@mixin dot-navbar-item-style($color) {
+    color: $color;
+
+    &:hover {
+        @include text-shadow($color);
+    }
+
+    &:before {
+        background-color: $color;
+    }
+}
+
+
+// MAIN
 
 @mixin navbar {
     .#{$prefix}-navbar {
@@ -124,65 +160,219 @@ $navbar-transition-time : $animation-duration-short;
 
         .#{$prefix}-navbar-title {
             color          : $navbar-color-default;
-            font-weight    : 700;
+            font-weight    : $navbar-text-bold;
             text-decoration: none;
             font-size      : 1.2rem;
         }
     }
 
     .#{$prefix}-navbar-item {
-        color      : $navbar-color-default;
-        font-weight: $navbar-text-normal;
-        position   : relative;
-
-        &:before {
-            content         : "";
-            height          : 2px;
-            border-radius   : 20px;
-            position        : absolute;
-            bottom          : 2px;
-            left            : 50%;
-            transform       : translate(-50%, 2px) scale(0, 1);
-            width           : 100%;
-            background-color: $navbar-color-default;
-        }
-
-        &:hover {
-            &:before {
-                transform: translate(-50%, 2px) scale(0.1, 1);
-            }
-        }
+        @include default-navbar-item-style($navbar-color-default);
 
         &:focus {
-            outline: none !important;
-
-            &:before {
-                transform: translate(-50%, 2px) scale(0.1, 1);
-            }
+            @include outline();
         }
 
         &.#{$prefix}-active {
-            color: $navbar-color-default-active;
+            font-weight: $navbar-text-semi-bold;
+        }
+    }
+}
 
-            &:before {
-                background-color: $navbar-color-default-active;
-                transform       : translate(-50%, 2px) scale(0.2, 1);
+
+@mixin navbar-theme {
+    .#{$prefix}-navbar {
+        &.#{$prefix}-accent {
+            .#{$prefix}-navbar-item {
+                @include default-navbar-item-theme-style($navbar-indicator-color-accent);
+            }
+        }
+
+        &.#{$prefix}-secondary {
+            .#{$prefix}-navbar-item {
+                @include default-navbar-item-theme-style($navbar-indicator-color-secondary);
+            }
+        }
+    }
+}
+
+@mixin navbar-theme-dark {
+    @include mode-dark {
+        .#{$prefix}-navbar {
+            &.#{$prefix}-accent {
+                .#{$prefix}-navbar-item {
+                    @include default-navbar-item-theme-style($navbar-indicator-color-accent-dark);
+                }
             }
 
-            &:hover,
-            &:focus {
-                &:before {
-                    transform: translate(-50%, 2px) scale(0.3, 1);
+            &.#{$prefix}-secondary {
+                .#{$prefix}-navbar-item {
+                    @include default-navbar-item-theme-style($navbar-indicator-color-secondary-dark);
                 }
             }
         }
     }
-
 }
 
-@mixin navbar-accent {
+@mixin navbar-item-dot {
+    .#{$prefix}-navbar {
+        .#{$prefix}-navbar-item-dot {
+            color   : $navbar-color-default;
+            position: relative;
+
+            &:before {
+                content         : "";
+                position        : absolute;
+                left            : 50%;
+                bottom          : 5px;
+                width           : 4px;
+                height          : 4px;
+                background-color: $navbar-color-default;
+                border-radius   : 50%;
+                opacity         : 0;
+            }
+
+            &:hover {
+                @include text-shadow($navbar-color-default);
+
+                &:before {
+                    opacity: 0.2;
+                }
+            }
+
+            &.#{$prefix}-active {
+                font-weight: $navbar-text-semi-bold;
+
+                &:before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@mixin navbar-item-dot-dark {
+    @include mode-dark {
+        .#{$prefix}-navbar {
+            .#{$prefix}-navbar-item-dot {
+                @include dot-navbar-item-style($navbar-color-default-dark);
+            }
+        }
+    }
+}
+
+@mixin navbar-item-dot-theme {
+    .#{$prefix}-navbar {
+        &.#{$prefix}-accent {
+            .#{$prefix}-navbar-item-dot {
+                &.#{$prefix}-active {
+                    @include dot-navbar-item-style($navbar-indicator-color-accent);
+                }
+            }
+        }
+
+        &.#{$prefix}-secondary {
+            .#{$prefix}-navbar-item-dot {
+                &.#{$prefix}-active {
+                    @include dot-navbar-item-style($navbar-indicator-color-secondary);
+                }
+            }
+        }
+    }
+}
+
+@mixin navbar-item-dot-theme-dark {
+    @include mode-dark {
+        .#{$prefix}-navbar {
+            &.#{$prefix}-accent {
+                .#{$prefix}-navbar-item-dot {
+                    &.#{$prefix}-active {
+                        @include dot-navbar-item-style($navbar-indicator-color-accent-dark);
+                    }
+                }
+            }
+
+            &.#{$prefix}-secondary {
+                .#{$prefix}-navbar-item-dot {
+                    &.#{$prefix}-active {
+                        @include dot-navbar-item-style($navbar-indicator-color-secondary-dark);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin navbar-item-line {
+    .#{$prefix}-navbar {
+        .#{$prefix}-navbar-item-line {
+            color      : $navbar-color-default;
+            font-weight: $navbar-text-normal;
+            position   : relative;
+
+            &:before {
+                content         : "";
+                height          : 2px;
+                border-radius   : 20px;
+                position        : absolute;
+                bottom          : 2px;
+                left            : 50%;
+                transform       : translate(-50%, 2px) scale(0, 1);
+                width           : 100%;
+                background-color: $navbar-color-default;
+            }
+
+            &:hover {
+                &:before {
+                    transform: translate(-50%, 2px) scale(0.1, 1);
+                }
+            }
+
+            &:focus {
+                outline: none !important;
+
+                &:before {
+                    transform: translate(-50%, 2px) scale(0.1, 1);
+                }
+            }
+
+            &.#{$prefix}-active {
+                color      : $navbar-color-default-active;
+                font-weight: $navbar-text-semi-bold;
+
+                &:before {
+                    background-color: $navbar-color-default-active;
+                    transform       : translate(-50%, 2px) scale(0.2, 1);
+                }
+
+                &:hover,
+                &:focus {
+                    &:before {
+                        transform: translate(-50%, 2px) scale(0.3, 1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin navbar-item-line-dark {
+    @include mode-dark {
+        .#{$prefix}-navbar {
+            .#{$prefix}-navbar-item-line {
+                color: $navbar-color-default-dark;
+
+                &:before {
+                    background-color: $navbar-color-default-dark;
+                }
+            }
+        }
+    }
+}
+
+@mixin navbar-accent-line {
     .#{$prefix}-navbar.#{$prefix}-accent {
-        .#{$prefix}-navbar-item {
+        .#{$prefix}-navbar-item-line {
             &.#{$prefix}-active {
                 color: $navbar-indicator-color-accent !important;
 
@@ -194,10 +384,10 @@ $navbar-transition-time : $animation-duration-short;
     }
 }
 
-@mixin navbar-accent-dark {
+@mixin navbar-accent-line-dark {
     @include mode-dark {
         .#{$prefix}-navbar.#{$prefix}-accent {
-            .#{$prefix}-navbar-item {
+            .#{$prefix}-navbar-item-line {
                 &.#{$prefix}-active {
                     color: $navbar-indicator-color-accent-dark !important;
 
@@ -211,9 +401,9 @@ $navbar-transition-time : $animation-duration-short;
 }
 
 
-@mixin navbar-secondary {
+@mixin navbar-secondary-line {
     .#{$prefix}-navbar.#{$prefix}-secondary {
-        .#{$prefix}-navbar-item {
+        .#{$prefix}-navbar-item-line {
 
 
             &.#{$prefix}-active {
@@ -227,10 +417,10 @@ $navbar-transition-time : $animation-duration-short;
     }
 }
 
-@mixin navbar-secondary-dark {
+@mixin navbar-secondary-line-dark {
     @include mode-dark {
         .#{$prefix}-navbar.#{$prefix}-secondary {
-            .#{$prefix}-navbar-item {
+            .#{$prefix}-navbar-item-line {
 
 
                 &.#{$prefix}-active {
@@ -258,19 +448,7 @@ $navbar-transition-time : $animation-duration-short;
         }
 
         .#{$prefix}-navbar-item {
-            color: $navbar-color-default-dark;
-
-            &:before {
-                background-color: $navbar-color-default-dark;
-            }
-
-            &.#{$prefix}-active {
-                color: $component-color-default-dark;
-
-                &:before {
-                    background-color: $navbar-color-default-dark;
-                }
-            }
+            @include default-navbar-item-style($navbar-color-default-dark);
         }
     }
 }
@@ -300,7 +478,7 @@ $navbar-transition-time : $animation-duration-short;
     }
 }
 
-@mixin navbar-theme-print {
+@mixin navbar-theme-line-print {
     @include mode-print {
 
         .#{$prefix}-navbar.#{$prefix}-secondary,
@@ -347,25 +525,57 @@ $navbar-transition-time : $animation-duration-short;
 @mixin definitions($options: ()) {
     @include navbar();
 
+    @if(not-option-disabled($options, 'theme')) {
+        @include navbar-theme();
+    }
+
     @if(not-option-disabled($options, 'dark')) {
         @include navbar-dark();
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include navbar-theme-dark();
+        }
     }
 
     @if(not-option-disabled($options, 'print')) {
         @include navbar-print();
     }
 
-    @if(not-option-disabled($options, 'theme')) {
-        @include navbar-accent();
-        @include navbar-secondary();
-
-        @if(not-option-disabled($options, 'print')) {
-            @include navbar-theme-print();
-        }
+    @if(not-option-disabled($options, 'item-dot')) {
+        @include navbar-item-dot();
 
         @if(not-option-disabled($options, 'dark')) {
-            @include navbar-accent-dark();
-            @include navbar-secondary-dark();
+            @include navbar-item-dot-dark();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include navbar-item-dot-theme();
+
+            @if(not-option-disabled($options, 'dark')) {
+                @include navbar-item-dot-theme-dark();
+            }
+        }
+    }
+
+    @if(not-option-disabled($options, 'item-line')) {
+        @include navbar-item-line();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include navbar-item-line-dark();
+        }
+
+        @if(not-option-disabled($options, 'theme')) {
+            @include navbar-accent-line();
+            @include navbar-secondary-line();
+
+            @if(not-option-disabled($options, 'print')) {
+                @include navbar-theme-line-print();
+            }
+
+            @if(not-option-disabled($options, 'dark')) {
+                @include navbar-accent-line-dark();
+                @include navbar-secondary-line-dark();
+            }
         }
 
     }

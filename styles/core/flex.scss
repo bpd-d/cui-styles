@@ -9,8 +9,22 @@
     }
 }
 
-@mixin common($size: "") {
+@mixin flex-base {
     .#{$prefix}-flex {
+        display        : flex !important;
+        flex-wrap      : wrap;
+        justify-content: start;
+        align-items    : flex-start;
+    }
+}
+
+@mixin flex-align($size: "") {
+    .#{$prefix}-flex {
+
+        >* {
+            flex: 0 0 auto;
+        }
+
         &.#{$prefix}-center#{$size} {
             justify-content: center !important;
         }
@@ -44,32 +58,10 @@
         &.#{$prefix}-stretch#{$size} {
             align-items: stretch !important;
         }
-
-        // Items
-
-        .#{$prefix}-flex-grow#{$size} {
-            flex: 1 1 auto !important;
-        }
-
-        .#{$prefix}-flex-shrink#{$size} {
-            flex: 0 0 auto !important;
-        }
-
-        .#{$prefix}-flex-auto#{$size} {
-            flex: 1 1 auto !important;
-        }
     }
 }
 
 
-@mixin flex-base {
-    .#{$prefix}-flex {
-        display        : flex !important;
-        flex-wrap      : wrap;
-        justify-content: start;
-        align-items    : flex-start;
-    }
-}
 
 @mixin flex-direction($size: "") {
     .#{$prefix}-flex {
@@ -91,101 +83,10 @@
     }
 }
 
-@mixin flex-direction-responsive {
-    @include media-screen-min-small {
-        @include flex-direction(--s);
-    }
-
-    @include media-screen-min-medium {
-        @include flex-direction(--m);
-    }
-
-    @include media-screen-min-large {
-        @include flex-direction(--l);
-    }
-
-    @include media-screen-min-xlarge {
-        @include flex-direction(--xl);
-    }
+@mixin flex-order($size: "") {
+    @include order($size);
 }
 
-@mixin flex-order {
-    @include order();
-}
-
-@mixin flex-order-responsive {
-    @include media-screen-min-small {
-        @include order(--s);
-    }
-
-    @include media-screen-min-medium {
-        @include order(--m);
-    }
-
-    @include media-screen-min-large {
-        @include order(--l);
-    }
-
-    @include media-screen-min-xlarge {
-        @include order(--xl);
-    }
-}
-
-@mixin flex-align {
-    .#{$prefix}-flex {
-        &.#{$prefix}-center {
-            justify-content: center;
-        }
-
-        &.#{$prefix}-right {
-            justify-content: flex-end;
-        }
-
-        &.#{$prefix}-left {
-            justify-content: flex-start;
-        }
-
-        &.#{$prefix}-evenly {
-            justify-content: space-evenly;
-        }
-
-        &.#{$prefix}-between {
-            justify-content: space-between;
-        }
-
-        // ALign
-
-        &.#{$prefix}-middle {
-            align-items: center;
-        }
-
-        &.#{$prefix}-end {
-            align-items: flex-end;
-        }
-
-        &.#{$prefix}-stretch {
-            align-items: stretch;
-        }
-    }
-}
-
-@mixin flex-align-responsive {
-    @include media-screen-min-small {
-        @include common(--s);
-    }
-
-    @include media-screen-min-medium {
-        @include common(--m);
-    }
-
-    @include media-screen-min-large {
-        @include common(--l);
-    }
-
-    @include media-screen-min-xlarge {
-        @include common(--xl);
-    }
-}
 
 @mixin flex-wrap {
     .#{$prefix}-flex {
@@ -199,14 +100,18 @@
     }
 }
 
-@mixin flex-grow {
+@mixin flex-grow($size: "") {
     .#{$prefix}-flex {
-        .#{$prefix}-flex-grow {
-            flex: 1 1 auto;
+        .#{$prefix}-flex-grow#{$size} {
+            flex: 1 1 auto !important;
         }
 
-        .#{$prefix}-flex-shrink {
-            flex: 0 1 auto;
+        .#{$prefix}-flex-shrink#{$size} {
+            flex: 0 1 auto !important;
+        }
+
+        .#{$prefix}-flex-auto#{$size} {
+            flex: 1 1 auto !important;
         }
     }
 }
@@ -220,6 +125,81 @@
     }
 }
 
+
+@mixin flex-responsive($options) {
+    @include media-screen-min-small {
+        @if(not-option-disabled($options, 'grow')) {
+            @include flex-grow(--s);
+        }
+
+        @if(not-option-disabled($options, 'order')) {
+            @include order(--s);
+        }
+
+        @if(not-option-disabled($options, 'direction')) {
+            @include flex-direction(--s);
+        }
+
+        @if(not-option-disabled($options, 'align')) {
+            @include flex-align(--s);
+        }
+    }
+
+    @include media-screen-min-medium {
+        @if(not-option-disabled($options, 'grow')) {
+            @include flex-grow(--m);
+        }
+
+        @if(not-option-disabled($options, 'order')) {
+            @include order(--m);
+        }
+
+        @if(not-option-disabled($options, 'direction')) {
+            @include flex-direction(--m);
+        }
+
+        @if(not-option-disabled($options, 'align')) {
+            @include flex-align(--m);
+        }
+    }
+
+    @include media-screen-min-large {
+        @if(not-option-disabled($options, 'grow')) {
+            @include flex-grow(--l);
+        }
+
+        @if(not-option-disabled($options, 'order')) {
+            @include order(--l);
+        }
+
+        @if(not-option-disabled($options, 'direction')) {
+            @include flex-direction(--l);
+        }
+
+        @if(not-option-disabled($options, 'align')) {
+            @include flex-align(--l);
+        }
+    }
+
+    @include media-screen-min-xlarge {
+        @if(not-option-disabled($options, 'grow')) {
+            @include flex-grow(--xl);
+        }
+
+        @if(not-option-disabled($options, 'order')) {
+            @include order(--xl);
+        }
+
+        @if(not-option-disabled($options, 'direction')) {
+            @include flex-direction(--xl);
+        }
+
+        @if(not-option-disabled($options, 'align')) {
+            @include flex-align(--xl);
+        }
+    }
+}
+
 @mixin definitions($options: ()) {
     @include flex-base();
 
@@ -229,14 +209,11 @@
 
     @if(not-option-disabled($options, 'direction')) {
         @include flex-direction();
-
-        @if(not-option-disabled($options, 'responsive')) {
-            @include flex-direction-responsive();
-        }
     }
 
     @if(not-option-disabled($options, 'grow')) {
         @include flex-grow();
+
     }
 
     @if(not-option-disabled($options, 'wrap')) {
@@ -245,19 +222,14 @@
 
     @if(not-option-disabled($options, 'order')) {
         @include flex-order();
-
-        @if(not-option-disabled($options, 'responsive')) {
-            @include flex-order-responsive();
-        }
-
     }
 
     @if(not-option-disabled($options, 'align')) {
         @include flex-align();
+    }
 
-        @if(not-option-disabled($options, 'responsive')) {
-            @include flex-align-responsive();
-        }
+    @if(not-option-disabled($options, 'responsive')) {
+        @include flex-responsive($options);
     }
 
 }

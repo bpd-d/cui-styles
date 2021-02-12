@@ -38,6 +38,7 @@
 @use 'components/info-box';
 @use 'components/hover';
 @use 'components/border';
+@use 'components/notification';
 
 @use "sass:map";
 @use "sass:list";
@@ -82,7 +83,8 @@ $components-list: ("navbar",
     "info-box",
     "sequence",
     "hover",
-    "border"
+    "border",
+    "notification"
 );
 
 @mixin definitions($components:(), $dark: true, $print: true, $theme: true, $signal: true) {
@@ -281,6 +283,10 @@ $components-list: ("navbar",
 
         @else if $name=="border" {
             @include border.definitions($opts);
+        }
+
+        @else if $name=="notification" {
+            @include notification.definitions($opts);
         }
     }
 }

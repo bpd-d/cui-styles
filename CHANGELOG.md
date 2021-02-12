@@ -1,4 +1,6 @@
 # cUI Styles CHANGELOG:
+# [0.3.1] 2020-02-12
+* [Added] Notification enhancements
 # [0.3.0] 2020-02-12
 * [Added] Notification
 * [Added] New xsmall and xlarge options in paddings and margins

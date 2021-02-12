@@ -1,7 +1,7 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$notification-width           : 270px;
+$notification-width           : min(90vw, 350px);
 $notification-background      : $component-background-default;
 $notification-background-dark : $component-background-default-dark;
 $nofitication-color           : $component-color-default;
@@ -15,6 +15,23 @@ $notification-margin        : $margin-global-small;
 $notification-font-bold     : $text-weight-semi-bold;
 $notification-font-normal   : $font-normal;
 $notification-font-small    : $font-small;
+
+$notification-color-accent     : $component-background-accent;
+$notification-color-accent-dark: $component-background-accent-dark;
+
+$notification-color-secondary     : $component-background-secondary;
+$notification-color-secondary-dark: $component-background-secondary-dark;
+
+$notification-color-success     : $component-background-success;
+$notification-color-success-dark: $component-background-success-dark;
+
+$notification-color-warning     : $component-background-warning;
+$notification-color-warning-dark: $component-background-warning-dark;
+
+$notification-color-error     : $component-background-error;
+$notification-color-error-dark: $component-background-error-dark;
+
+$notification-animation-duration: $animation-duration-default;
 // HELPERS
 
 @mixin base {
@@ -67,9 +84,11 @@ $notification-font-small    : $font-small;
         color           : $nofitication-color;
         border-radius   : $notification-border-radius;
         box-shadow      : $notification-shadow;
+        opacity         : 0;
 
-
-
+        &.#{$prefix}-active {
+            opacity: 1;
+        }
 
         @include header() {
             @include component-padding-complex(header);
@@ -144,6 +163,146 @@ $notification-font-small    : $font-small;
     }
 }
 
+@mixin notification-theme {
+    @include base() {
+        &.#{$prefix}-accent {
+            background-color: $notification-color-accent;
+            color           : $nofitication-color-dark;
+
+
+            @include footer() {
+                ul li a {
+                    color: $nofitication-color-muted-dark;
+                }
+            }
+        }
+
+        &.#{$prefix}-secondary {
+            background-color: $notification-color-secondary;
+            color           : $nofitication-color-dark;
+
+
+            @include footer() {
+                ul li a {
+                    color: $nofitication-color-muted-dark;
+                }
+
+            }
+        }
+    }
+}
+
+@mixin notification-theme-dark {
+    @include mode-dark {
+        @include base() {
+            &.#{$prefix}-accent {
+                background-color: $notification-color-accent-dark;
+                color           : $nofitication-color-dark;
+
+
+                @include footer() {
+                    ul li a {
+                        color: $nofitication-color-muted-dark;
+                    }
+                }
+            }
+
+            &.#{$prefix}-secondary {
+                background-color: $notification-color-secondary-dark;
+                color           : $nofitication-color-dark;
+
+
+                @include footer() {
+                    ul li a {
+                        color: $nofitication-color-muted-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin notification-signal {
+    @include base() {
+        &.#{$prefix}-success {
+            background-color: $notification-color-success;
+            color           : $nofitication-color-dark;
+
+
+            @include footer() {
+                ul li a {
+                    color: $nofitication-color-muted-dark;
+                }
+            }
+        }
+
+        &.#{$prefix}-warning {
+            background-color: $notification-color-warning;
+            color           : $nofitication-color-dark;
+
+
+            @include footer() {
+                ul li a {
+                    color: $nofitication-color-muted-dark;
+                }
+            }
+        }
+
+        &.#{$prefix}-error {
+            background-color: $notification-color-error;
+            color           : $nofitication-color-dark;
+
+
+            @include footer() {
+                ul li a {
+                    color: $nofitication-color-muted-dark;
+                }
+            }
+        }
+    }
+}
+
+@mixin notification-signal-dark {
+    @include mode-dark {
+        @include base() {
+            &.#{$prefix}-success {
+                background-color: $notification-color-success-dark;
+                color           : $nofitication-color-dark;
+
+
+                @include footer() {
+                    ul li a {
+                        color: $nofitication-color-muted-dark;
+                    }
+                }
+            }
+
+            &.#{$prefix}-warning {
+                background-color: $notification-color-warning-dark;
+                color           : $nofitication-color-dark;
+
+
+                @include footer() {
+                    ul li a {
+                        color: $nofitication-color-muted-dark;
+                    }
+                }
+            }
+
+            &.#{$prefix}-error {
+                background-color: $notification-color-error-dark;
+                color           : $nofitication-color-dark;
+
+
+                @include footer() {
+                    ul li a {
+                        color: $nofitication-color-muted-dark;
+                    }
+                }
+            }
+        }
+    }
+}
 
 @mixin notification-dark() {
     @include mode-dark {
@@ -158,12 +317,98 @@ $notification-font-small    : $font-small;
             }
         }
     }
+}
 
+@mixin container() {
+    .#{$prefix}-notification-container {
+        position  : fixed;
+        top       : 0;
+        left      : 50%;
+        transform : translateX(-50%);
+        width     : $notification-width;
+        max-height: 100vh;
+    }
+
+    @include media-screen-min-large {
+        .#{$prefix}-notification-container {
+            left        : auto;
+            right       : 0;
+            transform   : translateX(0%);
+            margin-right: $notification-margin;
+        }
+    }
+}
+
+@mixin animation() {
+    @include not-reduced-motion {
+        .#{$prefix}-notification-animation-in {
+            transform: scale(1, 1) translateY(0);
+            opacity  : 1;
+
+            animation: notificationIn $notification-animation-duration ease-out;
+        }
+
+        .#{$prefix}-notification-animation-out {
+            transform: scale(0, 0) translateY(60%);
+            opacity  : 0;
+            animation: notificationOut $notification-animation-duration ease-out;
+        }
+    }
+
+
+    @keyframes notificationIn {
+        0% {
+            opacity  : 0;
+            transform: scale(0, 0) translateY(-60%);
+        }
+
+        80% {
+            opacity  : 1;
+            transform: scale(1.1, 1.1) translateY(0%);
+        }
+
+        100% {
+            opacity  : 1;
+            transform: scale(1, 1) translateY(0%);
+        }
+    }
+
+    @keyframes notificationOut {
+        0% {
+            opacity  : 1;
+            transform: scale(1, 1) translateY(0%);
+        }
+
+        100% {
+            opacity  : 0;
+            transform: scale(0, 0) translateY(60%);
+        }
+    }
 }
 
 @mixin definitions($options:()) {
 
     @include notification();
+
+    @include container();
+
+    @include animation();
+
+    @if(not-option-disabled($options, 'theme')) {
+        @include notification-theme();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include notification-theme-dark();
+        }
+    }
+
+    @if(not-option-disabled($options, 'signal')) {
+        @include notification-signal();
+
+        @if(not-option-disabled($options, 'dark')) {
+            @include notification-signal-dark();
+        }
+    }
 
     @if(not-option-disabled($options, 'dark')) {
         @include notification-dark();

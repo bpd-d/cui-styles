@@ -4,6 +4,7 @@
 @use 'core/height';
 @use 'core/interactions';
 @use 'animations';
+@use 'core/focus';
 
 
 $commons-list: ("visibility",
@@ -11,7 +12,8 @@ $commons-list: ("visibility",
     "widths",
     "height",
     "animations",
-    "interactions"
+    "interactions",
+    'focus'
 );
 
 @mixin definitions($commons: ()) {
@@ -55,6 +57,10 @@ $commons-list: ("visibility",
 
         @if $name=="interactions" {
             @include interactions.definitions($opts);
+        }
+
+        @if $name=="focus" {
+            @include focus.definitions($opts);
         }
     }
 }

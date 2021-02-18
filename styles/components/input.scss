@@ -121,7 +121,8 @@ $input-disabled-border-style: $component-disabled-border-style;
         }
 
         &:focus {
-            border: 1px solid $input-border-color-active;
+            border : 1px solid $input-border-color-active;
+            outline: none;
 
             &::placeholder {
                 color: $input-placeholder-color-active;

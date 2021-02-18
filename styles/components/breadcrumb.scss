@@ -36,10 +36,6 @@ $breadcrumb-border-focus-dark     : $component-color-active-dark;
                 &:active {
                     background-color: $breadcrumb-background-active;
                 }
-
-                &:focus {
-                    outline: $outline-default;
-                }
             }
 
 

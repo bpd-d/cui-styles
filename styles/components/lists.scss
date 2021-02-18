@@ -140,13 +140,17 @@ $list-item-font-weight-bold                    : $text-weight-semi-bold;
                 @include link-decoration($list-item-color);
                 @include createHighlight($color: $highlight-color-dark, $noTransition: true);
 
+                //  @include add-focus-outline;
+
                 &.#{$prefix}-active {
                     background-color: $list-item-highlight-background;
+                    font-weight     : $list-item-font-weight-bold;
                 }
             }
 
             &.#{$prefix}-active {
                 background-color: $list-item-highlight-background;
+                font-weight     : $list-item-font-weight-bold;
             }
         }
     }
@@ -251,6 +255,7 @@ $list-item-font-weight-bold                    : $text-weight-semi-bold;
                     @include component-padding;
                     @include link-decoration($list-item-color);
                     @include createHighlight($color: $highlight-color-dark, $noTransition: true);
+                    //@include add-focus-outline;
 
                     &:before {
                         content           : "";

@@ -44,17 +44,19 @@ $tab-font-weight-active: $text-weight-semi-bold;
                 display: block;
                 @include component-padding;
                 @include link-decoration($tab-color);
-                appearance : none;
-                user-select: none;
+                @include createHighlight($color: $highlight-color-dark, $noTransition: true);
+                // @include add-focus-outline;
+                appearance                     : none;
+                user-select                    : none;
 
                 &:hover {
                     @include text-shadow($tab-color);
-                    outline: none !important;
+                    //  outline: none !important;
                 }
 
                 &:active,
                 &:focus {
-                    outline   : none !important;
+                    // outline   : none !important;
                     box-shadow: none !important;
                 }
             }
@@ -99,6 +101,10 @@ $tab-font-weight-active: $text-weight-semi-bold;
                     &:before {
                         transform: translateX(-50%) scale(0.8, 1);
                     }
+                }
+
+                &:focus {
+                    outline: $outline-default;
                 }
             }
 

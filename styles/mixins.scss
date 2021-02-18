@@ -108,7 +108,7 @@ $item-background-default: $component-background-default;
                 padding-bottom: $padding-global;
             }
 
-            &:only-child {
+            &:first-child {
                 padding-top: $padding-global;
             }
         }
@@ -136,9 +136,10 @@ $item-background-default: $component-background-default;
                 padding-bottom: $padding-global-large;
             }
 
-            // &:only-child {
-            //     padding: $padding-global-large;
-            // }
+            &:first-child {
+                padding-top: $padding-global-large;
+            }
+
         }
 
         @else if $part==footer {
@@ -397,7 +398,10 @@ $item-background-default: $component-background-default;
         z-index : 0;
     }
 
+    &:focus,
     &:hover {
+        outline: none;
+
         &:after {
             position        : absolute;
             width           : 100%;
@@ -423,6 +427,12 @@ $item-background-default: $component-background-default;
         }
 
         @content;
+    }
+}
+
+@mixin add-focus-outline {
+    &:focus:not(:hover) {
+        outline: $outline-default;
     }
 }
 

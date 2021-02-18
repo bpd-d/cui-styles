@@ -65,11 +65,6 @@ $card-border-color-dark         : transparent; //$color-border-dark;
         .#{$prefix}-card-body {
             max-width: 100%;
             @include component-padding-complex(body);
-
-            // &:last-child {
-            //     @include component-padding-complex(footer);
-            // }
-
         }
 
         .#{$prefix}-card-footer {

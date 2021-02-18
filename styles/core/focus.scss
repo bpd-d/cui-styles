@@ -1,66 +1,23 @@
 @use "../variables.scss"as *;
 @use "../mixins.scss"as *;
 
-$opts: 'accent',
-'secondary',
-'error',
-'warning',
-'success';
+@mixin base {
 
-@mixin not-element {
-    &:not(.#{$prefix}-link):not(.#{$prefix}-navbar-item):not(.#{$prefix}-tab):not(.#{$prefix}-tab-side):not(.#{$prefix}-list) {
-        @content;
+    *:focus-visible {
+        outline       : $outline-default;
+        outline-offset: 0px;
+    }
+
+}
+
+@mixin common-focus() {
+    *:not(:hover):focus {
+        outline       : $outline-default;
+        outline-offset: 0px;
     }
 }
 
-@mixin focus {
-    body.#{$prefix}-focus {
-        * {
-            @include not-element() {
-                @include not-colors {
-                    &:focus {
-                        outline         : 1px dotted #999 !important;
-                        outline-offset  : 1px;
-                        //box-shadow    : 0 0 0 1px $component-color-muted;
-                    }
-                }
-
-                @each $opt in $opts {
-                    &.#{$prefix}-#{$opt} {
-                        &:focus {
-                            outline          : 1px dotted #999 !important;
-                            outline-offset   : 1px;
-                            // outline       : none !important;
-                            // box-shadow    : 0 0 0 1px get-theme-color('#{$opt}-active');
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@mixin focus-dark {
-    @include mode-dark {
-        body.#{$prefix}-focus {
-            * {
-                @include not-element() {
-                    @include not-colors {
-                        &:focus {
-                            outline   : none;
-                            box-shadow: 0 0 0 1px $component-color-muted-dark;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@mixin definitions($options:()) {
-    @include focus();
-
-    @if(not-option-disabled($options, 'dark')) {
-        @include focus-dark();
-    }
+@mixin definitions($options: ()) {
+    //@include base()
+    @include common-focus();
 }

@@ -1,7 +1,9 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$notification-width           : min(90vw, 350px);
+$notification-width-small     :90vw;
+$notification-width           : 350px;
+$notification-z-index         : 1500;
 $notification-background      : $component-background-default;
 $notification-background-dark : $component-background-default-dark;
 $nofitication-color           : $component-color-default;
@@ -79,7 +81,7 @@ $notification-animation-duration: $animation-duration-default;
 // MAIN
 @mixin notification {
     @include base {
-        width           : $notification-width;
+        width           : 100%;
         background-color: $notification-background;
         color           : $nofitication-color;
         border-radius   : $notification-border-radius;
@@ -125,9 +127,11 @@ $notification-animation-duration: $animation-duration-default;
 
         @include body() {
             @include component-padding-complex(body);
-            max-height: 150px;
-            overflow-y: auto;
-            text-align: justify;
+
+            &>* {
+                max-height: 150px;
+                text-align: justify;
+            }
         }
 
         @include footer() {
@@ -325,8 +329,17 @@ $notification-animation-duration: $animation-duration-default;
         top       : 0;
         left      : 50%;
         transform : translateX(-50%);
-        width     : $notification-width;
+        width     : $notification-width-small;
         max-height: 100vh;
+        overflow-y: auto;
+        z-index   : $notification-z-index;
+    }
+
+    @include media-screen-min-small {
+        .#{$prefix}-notification-container {
+            width: $notification-width;
+        }
+
     }
 
     @include media-screen-min-large {

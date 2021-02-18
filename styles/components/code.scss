@@ -72,7 +72,9 @@ $code-indent-base   : 1rem;
                 }
 
                 &>span {
-                    display: block;
+                    display    : block;
+                    word-wrap  : none;
+                    white-space: nowrap;
 
                     &>* {
                         display: inline-block;

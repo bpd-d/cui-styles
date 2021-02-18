@@ -28,9 +28,9 @@ $card-border-color-dark         : transparent; //$color-border-dark;
         border          : 1px solid transparent;
 
 
-        >*:only-child {
-            @include component-padding(normal, same);
-        }
+        // >*:only-child {
+        //     @include component-padding(normal, same);
+        // }
 
         &.#{$prefix}-hover {
             &:hover {
@@ -66,9 +66,9 @@ $card-border-color-dark         : transparent; //$color-border-dark;
             max-width: 100%;
             @include component-padding-complex(body);
 
-            &:last-child {
-                @include component-padding-complex(footer);
-            }
+            // &:last-child {
+            //     @include component-padding-complex(footer);
+            // }
 
         }
 

@@ -7,7 +7,10 @@ $background-color-shade-dark : $component-background-shade-dark;
 $background-color-default     : $component-background-default;
 $background-color-default-dark: $component-background-default-dark;
 
-$themes: "accent",
+$background-color-app     : $app-background;
+$background-color-app-dark: $app-background-dark;
+
+$themes : "accent",
 "secondary",
 "error",
 "warning",
@@ -61,31 +64,39 @@ $themes: "accent",
     @include enumerate-backgrounds();
 
     .#{$prefix}-background-shade {
-        background-color: $background-color-shade !important;
+        background-color: $background-color-shade;
     }
 
     .#{$prefix}-background-default {
-        background-color: $background-color-default !important;
+        background-color: $background-color-default;
+    }
+
+    .#{$prefix}-background-app {
+        background-color: $background-color-app;
     }
 
 }
 
 @mixin background-colors-dark {
-    .#{$prefix}-dark {
+    @include mode-dark {
         @include enumerate-backgrounds("-dark");
 
         .#{$prefix}-background-shade {
-            background-color: $background-color-shade-dark !important;
+            background-color: $background-color-shade-dark;
         }
 
         .#{$prefix}-background-default {
-            background-color: $background-color-default-dark !important;
+            background-color: $background-color-default-dark;
+        }
+
+        .#{$prefix}-background-app {
+            background-color: $background-color-app-dark;
         }
     }
 }
 
 @mixin background-print {
-    .#{$prefix}-print {
+    @include mode-print {
         [class*="#{$prefix}-background"] {
             background-color: $component-print-background;
         }

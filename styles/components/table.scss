@@ -134,14 +134,6 @@ $table-background-inverse-dark: $component-background-shade-dark;
 
 @mixin table-header-sticky {
     table.#{$prefix}-table {
-        &.#{$prefix}-header-sticky {
-            th {
-                position: sticky;
-                top     : 0;
-                z-index : 1;
-            }
-        }
-
         &.#{$prefix}-first-column-sticky {
             th {
                 position: sticky;
@@ -160,6 +152,16 @@ $table-background-inverse-dark: $component-background-shade-dark;
                     left    : 0;
                     z-index : 0;
                 }
+            }
+        }
+
+        tr.#{$prefix}-row-sticky {
+
+            td,
+            th {
+                position: sticky;
+                top     : 0;
+                z-index : 1;
             }
         }
 

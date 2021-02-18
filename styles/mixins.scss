@@ -98,7 +98,21 @@ $item-background-default: $component-background-default;
         }
 
         @else if $part==body {
-            padding: $padding-global-small $padding-global $padding-global-small $padding-global;
+            padding : $padding-global-small 0;
+            overflow: hidden;
+
+            &>* {
+                padding   : 0px $padding-global;
+                overflow-y: auto;
+            }
+
+            &:last-child {
+                padding-bottom: $padding-global;
+            }
+
+            &:only-child {
+                padding-top: $padding-global;
+            }
         }
 
         @else if $part==footer {
@@ -112,7 +126,23 @@ $item-background-default: $component-background-default;
         }
 
         @else if $part==body {
-            padding: $padding-global $padding-global-large $padding-global $padding-global-large;
+            // padding: $padding-global $padding-global-large $padding-global $padding-global-large;
+
+            padding : $padding-global 0;
+            overflow: hidden;
+
+            &>* {
+                padding   : 0px $padding-global-large;
+                overflow-y: auto;
+            }
+
+            &:last-child {
+                padding-bottom: $padding-global-large;
+            }
+
+            // &:only-child {
+            //     padding: $padding-global-large;
+            // }
         }
 
         @else if $part==footer {

@@ -22,7 +22,7 @@
     .#{$prefix}-flex {
 
         >* {
-            flex: 0 0 auto;
+            flex: 0 1 auto;
         }
 
         &.#{$prefix}-center#{$size} {
@@ -111,7 +111,7 @@
         }
 
         .#{$prefix}-flex-auto#{$size} {
-            flex: 1 1 auto !important;
+            flex: 0 0 auto !important;
         }
     }
 }

@@ -1,4 +1,11 @@
 # cUI Styles CHANGELOG:
+# [0.3.3] 2020-02-18
+* [Changed] Card, notification layout
+* [Changed] Table stickyness options
+# [0.3.2] 2020-02-15
+* [Added] Background app class
+* [Changed] Table stickyness from header to more common sticky row 
+* [Changed] Don't break lines in code element
 # [0.3.1] 2020-02-12
 * [Added] Notification enhancements
 # [0.3.0] 2020-02-12

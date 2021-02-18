@@ -87,6 +87,7 @@ $notification-animation-duration: $animation-duration-default;
         border-radius   : $notification-border-radius;
         box-shadow      : $notification-shadow;
         opacity         : 0;
+        margin          : $notification-margin;
 
         &.#{$prefix}-active {
             opacity: 1;
@@ -127,10 +128,12 @@ $notification-animation-duration: $animation-duration-default;
 
         @include body() {
             @include component-padding-complex(body);
+            overflow: hidden;
 
             &>* {
                 max-height: 150px;
                 text-align: justify;
+                overflow-y: auto;
             }
         }
 
@@ -325,14 +328,14 @@ $notification-animation-duration: $animation-duration-default;
 
 @mixin container() {
     .#{$prefix}-notification-container {
-        position  : fixed;
-        top       : 0;
-        left      : 50%;
-        transform : translateX(-50%);
-        width     : $notification-width-small;
-        max-height: 100vh;
-        overflow-y: auto;
-        z-index   : $notification-z-index;
+        position    : fixed;
+        top         : 0;
+        left        : 50%;
+        transform   : translateX(-50%);
+        width       : $notification-width-small;
+        max-height  : 100vh;
+        //overflow-y: auto;
+        z-index     : $notification-z-index;
     }
 
     @include media-screen-min-small {

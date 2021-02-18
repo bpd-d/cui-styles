@@ -1,4 +1,6 @@
 # cUI Styles CHANGELOG:
+# [0.3.4] 2020-02-18
+* [Fixed] Card layout
 # [0.3.3] 2020-02-18
 * [Changed] Card, notification layout
 * [Changed] Table stickyness options

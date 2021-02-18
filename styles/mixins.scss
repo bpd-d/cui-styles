@@ -98,12 +98,10 @@ $item-background-default: $component-background-default;
         }
 
         @else if $part==body {
-            padding : $padding-global-small 0;
-            overflow: hidden;
+            padding: $padding-global-small 0;
 
             &>* {
-                padding   : 0px $padding-global;
-                overflow-y: auto;
+                padding: 0px $padding-global;
             }
 
             &:last-child {
@@ -128,12 +126,10 @@ $item-background-default: $component-background-default;
         @else if $part==body {
             // padding: $padding-global $padding-global-large $padding-global $padding-global-large;
 
-            padding : $padding-global 0;
-            overflow: hidden;
+            padding: $padding-global 0;
 
             &>* {
-                padding   : 0px $padding-global-large;
-                overflow-y: auto;
+                padding: 0px $padding-global-large;
             }
 
             &:last-child {

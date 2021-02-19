@@ -1,10 +1,10 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$list-item-hover-background                    : $component-background-shade-active;
-$list-item-hover-background-dark               : $component-background-shade-dark-active;
-$list-item-highlight-background                : $component-background-shade;
-$list-item-highlight-background-dark           : $component-background-shade-dark;
+$list-item-hover-background                    : $component-background-shade;
+$list-item-hover-background-dark               : $component-background-shade-active;
+$list-item-highlight-background                : $component-background-shade-active;
+$list-item-highlight-background-dark           : $component-background-shade-dark-active;
 $list-item-highlight-background-accent         : $component-background-accent-shade;
 $list-item-highlight-background-accent-dark    : $component-background-accent-dark-shade;
 $list-item-highlight-background-secondary      : $component-background-secondary-shade;
@@ -138,9 +138,7 @@ $list-item-font-weight-bold                    : $text-weight-semi-bold;
                 display: block;
                 @include component-padding;
                 @include link-decoration($list-item-color);
-                @include createHighlight($color: $highlight-color-dark, $noTransition: true);
-
-                //  @include add-focus-outline;
+                @include list-element-interaction($list-item-hover-background);
 
                 &.#{$prefix}-active {
                     background-color: $list-item-highlight-background;
@@ -193,8 +191,8 @@ $list-item-font-weight-bold                    : $text-weight-semi-bold;
         ul.#{$prefix}-list.#{$prefix}-interactive {
             &>li {
                 a {
-                    color                          : $list-item-color-dark;
-                    @include createHighlight($color: $highlight-color, $noTransition: true);
+                    color: $list-item-color-dark;
+                    @include list-element-interaction($list-item-hover-background-dark);
 
                     &.#{$prefix}-active {
                         background-color: $list-item-highlight-background-dark;
@@ -213,7 +211,6 @@ $list-item-font-weight-bold                    : $text-weight-semi-bold;
     @include mode-dark {
         ul.#{$prefix}-list.#{$prefix}-interactive.#{$prefix}-accent {
             &>li {
-
                 a {
                     &.#{$prefix}-active {
                         background-color: $list-item-highlight-background-accent-dark;
@@ -254,8 +251,7 @@ $list-item-font-weight-bold                    : $text-weight-semi-bold;
                     display : block;
                     @include component-padding;
                     @include link-decoration($list-item-color);
-                    @include createHighlight($color: $highlight-color-dark, $noTransition: true);
-                    //@include add-focus-outline;
+                    @include list-element-interaction($list-item-hover-background);
 
                     &:before {
                         content           : "";
@@ -270,14 +266,8 @@ $list-item-font-weight-bold                    : $text-weight-semi-bold;
                         //transition      : transform $list-transition-time ease-out;
                     }
 
-                    &:hover,
-                    &:active {
-                        outline: none !important;
-                    }
-
                     &:focus {
                         font-weight: $text-weight-semi-bold;
-                        box-shadow : none !important;
 
                         &:before {
                             background-color: $list-item-inactive-color;
@@ -468,9 +458,8 @@ $list-item-font-weight-bold                    : $text-weight-semi-bold;
         ul.#{$prefix}-list.#{$prefix}-interactive-line {
             &>li {
                 &>a {
-                    color                          : $list-item-color-dark;
-                    @include updateHighlight($color: $highlight-color);
-                    user-select                    : none;
+                    color: $list-item-color-dark;
+                    @include list-element-interaction($list-item-hover-background);
 
                     &:focus {
                         &:before {

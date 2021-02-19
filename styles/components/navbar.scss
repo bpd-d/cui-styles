@@ -34,6 +34,7 @@ $navbar-transition-time : $animation-duration-short;
 @mixin default-navbar-item-style($color) {
     color: $color;
 
+    &:focus,
     &:hover {
         @include text-shadow($color);
     }

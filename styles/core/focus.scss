@@ -11,10 +11,54 @@
 }
 
 @mixin common-focus() {
-    *:not(:hover):focus {
-        outline       : $outline-default;
-        outline-offset: 0px;
+    *:focus {
+        outline         : $outline-default;
+        outline-offset  : 0px;
+        background-color: $outline-default-background;
+
+        &.#{$prefix}-range {
+            &::-webkit-slider-thumb {
+                outline: $outline-default;
+            }
+
+            &::-moz-range-thumb {
+                outline: $outline-default;
+            }
+        }
     }
+
+    div.#{$prefix}-input-switch {
+        +.#{$prefix}-content {
+            outline         : $outline-default;
+            outline-offset  : 0px;
+            background-color: $outline-default-background;
+        }
+    }
+
+    body.focus-precise {
+        *:focus {
+            outline         : none;
+            background-color: transparent;
+
+            &.#{$prefix}-range {
+                &::-webkit-slider-thumb {
+                    outline: none;
+                }
+
+                &::-moz-range-thumb {
+                    outline: none;
+                }
+            }
+        }
+
+        div.#{$prefix}-input-switch {
+            +.#{$prefix}-content {
+                outline         : none;
+                background-color: transparent;
+            }
+        }
+    }
+
 }
 
 @mixin definitions($options: ()) {

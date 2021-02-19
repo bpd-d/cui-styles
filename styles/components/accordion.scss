@@ -9,6 +9,9 @@ $accordion-indicator-duration: $animation-duration-short;
 $accordion-content-duration  : $animation-duration-short;
 $accordion-font-size         : $font-normal;
 
+$accordion-item-hover-background     : $component-background-shade;
+$accordion-item-hover-background-dark: $component-background-shade-dark;
+
 @mixin accordion {
     .#{$prefix}-accordion {
         display   : block;
@@ -26,8 +29,8 @@ $accordion-font-size         : $font-normal;
                 user-select    : none;
                 position       : relative;
 
-                color                                 : $accordion-color-default;
-                @include createHighlight($noTransition: true);
+                color: $accordion-color-default;
+                @include list-element-interaction($accordion-item-hover-background);
 
                 &:before {
                     content              : "";
@@ -80,8 +83,8 @@ $accordion-font-size         : $font-normal;
         .#{$prefix}-accordion {
             >* {
                 .#{$prefix}-accordion-title {
-                    @include updateHighlight($color: $highlight-color);
-                    color                          : $accordion-color-default-dark;
+                    @include list-element-interaction($accordion-item-hover-background-dark);
+                    color: $accordion-color-default-dark;
                 }
             }
         }

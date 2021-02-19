@@ -1,5 +1,6 @@
 const darkModeTrigger = document.getElementById('toggle-dark-mode');
 const printModeTrigger = document.getElementById('toggle-print-mode');
+const focusVisibeTrigger = document.getElementById('toggle-focus-visible');
 darkModeTrigger.addEventListener('click', () => {
     if (document.body.classList.contains('cui-dark')) {
         document.body.classList.remove('cui-dark')
@@ -22,3 +23,16 @@ printModeTrigger.addEventListener('click', () => {
         printModeTrigger.classList.add('cui-active')
     }
 })
+
+
+if (focusVisibeTrigger) {
+    focusVisibeTrigger.addEventListener('click', () => {
+        if (document.body.classList.contains('focus-precise')) {
+            document.body.classList.remove('focus-precise')
+            focusVisibeTrigger.classList.remove('cui-active')
+        } else {
+            document.body.classList.add('focus-precise')
+            focusVisibeTrigger.classList.add('cui-active')
+        }
+    })
+}

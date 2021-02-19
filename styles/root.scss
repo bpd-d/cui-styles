@@ -8,7 +8,7 @@
     @include animations.set-animations-duration($prefix: $prefix, $base: 300ms, $short: 150ms, $long: 500ms);
     // colors
     // Light
-    --#{$prefix}-color-light-app-background            : #fbfcfe;
+    --#{$prefix}-color-light-app-background            : #fdfdfe;
     --#{$prefix}-color-light-background                : #fff;
     --#{$prefix}-color-light-base                      : #333435;
     --#{$prefix}-color-light-active                    : #222324;
@@ -19,8 +19,8 @@
     --#{$prefix}-color-light-border-active: #22232470; //#858687;
 
 
-    --#{$prefix}-color-shade       : #22232410;
-    --#{$prefix}-color-shade-darker: #22232420;
+    --#{$prefix}-color-shade       : rgba(0, 0, 0, 0.04);
+    --#{$prefix}-color-shade-darker: rgba(0, 0, 0, 0.08);
 
     @if $theme {
         @include colors.set-accent-colors($prefix    : $prefix, $base:#3178ce, $muted: #669ddb, $active: #225391, $shade: #3178ce1f);
@@ -62,7 +62,8 @@
     --#{$prefix}-input-background-color: transparent;
 
     // Outline
-    --#{$prefix}-outline: 1px dotted rgba(127, 127, 127, 0.5);
+    --#{$prefix}-outline-background: rgba(127, 127, 127, 0.04);
+    --#{$prefix}-outline           : 1px dotted rgba(127, 127, 127, 0.5);
 
     // Border radius
     --#{$prefix}-border-radius-small: 2px;

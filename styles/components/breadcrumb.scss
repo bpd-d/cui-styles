@@ -27,15 +27,7 @@ $breadcrumb-border-focus-dark     : $component-color-active-dark;
                 text-decoration: none;
                 color          : $breadcrumb-color;
                 @include component-padding;
-                @include createHighlight($radius: $border-radius-default);
-
-                &:hover {
-                    background-color: $breadcrumb-background-hover;
-                }
-
-                &:active {
-                    background-color: $breadcrumb-background-active;
-                }
+                @include list-element-interaction($breadcrumb-background-hover);
             }
 
 
@@ -62,20 +54,13 @@ $breadcrumb-border-focus-dark     : $component-color-active-dark;
         ul.#{$prefix}-breadcrumb {
             li {
                 a {
-                    color                          : $breadcrumb-color-dark;
-                    @include updateHighlight($color: $highlight-color);
-
-                    &:hover {
-                        background-color: $breadcrumb-background-hover-dark;
-                    }
+                    color: $breadcrumb-color-dark;
+                    @include list-element-interaction($breadcrumb-background-hover-dark);
 
                     &:active {
                         background-color: $breadcrumb-background-active-dark;
                     }
 
-                    &:focus {
-                        outline: $outline-default;
-                    }
                 }
             }
         }

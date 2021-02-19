@@ -24,6 +24,9 @@ $tab-border-color-dark: $tab-border-color-dark;
 $tab-transition-time   : $animation-duration-short;
 $tab-font-weight-active: $text-weight-semi-bold;
 
+$tab-item-hover-background     : $component-background-shade;
+$tab-item-hover-background-dark: $component-background-shade-dark;
+
 @mixin pointer {
     cursor     : pointer;
     user-select: none;
@@ -44,19 +47,17 @@ $tab-font-weight-active: $text-weight-semi-bold;
                 display: block;
                 @include component-padding;
                 @include link-decoration($tab-color);
-                @include createHighlight($color: $highlight-color-dark, $noTransition: true);
-                // @include add-focus-outline;
-                appearance                     : none;
-                user-select                    : none;
+                // @include list-element-interaction($tab-item-hover-background);
+
+                appearance : none;
+                user-select: none;
 
                 &:hover {
                     @include text-shadow($tab-color);
-                    //  outline: none !important;
                 }
 
                 &:active,
                 &:focus {
-                    // outline   : none !important;
                     box-shadow: none !important;
                 }
             }
@@ -98,13 +99,10 @@ $tab-font-weight-active: $text-weight-semi-bold;
 
                 &:active,
                 &:focus {
+
                     &:before {
                         transform: translateX(-50%) scale(0.8, 1);
                     }
-                }
-
-                &:focus {
-                    outline: $outline-default;
                 }
             }
 
@@ -204,7 +202,6 @@ $tab-font-weight-active: $text-weight-semi-bold;
                             transform: translateY(-50%) scale(0.8, 1);
                         }
 
-                        outline   : none !important;
                         box-shadow: none !important;
                     }
                 }
@@ -269,7 +266,6 @@ $tab-font-weight-active: $text-weight-semi-bold;
                             transform: translateY(-50%) scale(0.8, 1);
                         }
 
-                        outline   : none !important;
                         box-shadow: none !important;
                     }
                 }
@@ -361,6 +357,7 @@ $tab-font-weight-active: $text-weight-semi-bold;
             li {
                 a {
                     color: $tab-color-dark;
+                    // @include list-element-interaction($tab-item-hover-background-dark);
                 }
             }
         }

@@ -492,3 +492,20 @@ $item-background-default: $component-background-default;
         @include outline-none();
     }
 }
+
+@mixin list-element-interaction($hover, $focus: null) {
+    &:hover {
+        background-color: $hover;
+    }
+
+    &:active,
+    &:focus {
+        @if $focus {
+            background-color: $focus;
+        }
+
+        @else {
+            background-color: $hover;
+        }
+    }
+}

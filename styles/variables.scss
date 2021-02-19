@@ -118,7 +118,8 @@ $default-line-height: 20px;
 
 //$transition-time  : 150ms;
 
-$outline-default: var(--#{$prefix}-outline);
+$outline-default           : var(--#{$prefix}-outline);
+$outline-default-background: var(--#{$prefix}-outline-background);
 
 $color-backdrop-light: rgba(255, 255, 255, 0.6);
 $color-backdrop-dark : rgba(22, 22, 22, 0.6);

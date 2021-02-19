@@ -13,7 +13,7 @@ $drop-background-default-dark : $component-background-default-dark;
 $drop-color-default            : $component-color-default;
 $drop-color-default-dark       : $component-color-default-dark;
 $drop-nav-hover-background     : $component-background-shade;
-$drop-nav-dark-hover-background: $component-background-shade-dark;
+$drop-nav-hover-background-dark: $component-background-shade-dark;
 $drop-translate-y              : $component-margin;
 $drop-transition-time          : $animation-duration-short;
 
@@ -98,20 +98,12 @@ $drop-transition-time          : $animation-duration-short;
                 color           : inherit;
                 display         : block;
                 background-color: transparent;
+                @include list-element-interaction($drop-nav-hover-background);
 
                 &.#{$prefix}-icon {
                     display                         : flex;
                     justify-content                 : flex-start;
                     @include component-padding($size: small, $same: true);
-                }
-
-                &:hover {
-                    background-color: $drop-nav-hover-background;
-                    outline         : none !important;
-                }
-
-                &:active {
-                    outline: none !important;
                 }
             }
 
@@ -132,9 +124,7 @@ $drop-transition-time          : $animation-duration-short;
 
             li {
                 a {
-                    &:hover {
-                        background-color: $drop-nav-dark-hover-background;
-                    }
+                    @include list-element-interaction($drop-nav-hover-background-dark);
                 }
             }
         }

@@ -126,6 +126,7 @@ $button-disabled-border-style            : $component-disabled-border-style;
             border-style  : $button-disabled-border-style !important;
             pointer-events: none;
             user-select   : none;
+
         }
 
         &.#{$prefix}-rounded {
@@ -147,6 +148,10 @@ $button-disabled-border-style            : $component-disabled-border-style;
 
             &.#{$prefix}-default {
                 border-color    : $button-border-color-hover;
+                background-color: transparent;
+            }
+
+            &.#{$prefix}-disabled {
                 background-color: transparent;
             }
         }

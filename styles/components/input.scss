@@ -136,6 +136,10 @@ $input-disabled-border-style: $component-disabled-border-style;
         &:disabled {
             color : $input-color-disabled;
             border: 1px $input-disabled-border-style $input-color-disabled !important;
+
+            &:focus {
+                border-color: $input-color-disabled;
+            }
         }
 
         &.#{$prefix}-transparent {
@@ -322,6 +326,10 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:disabled {
                 color : $input-color-disabled-dark;
                 border: 1px $input-disabled-border-style $input-color-disabled-dark !important;
+
+                &:focus {
+                    border-color: $input-color-disabled-dark;
+                }
             }
 
             &:not(.#{$prefix}-error):not(.#{$prefix}-success):not(.#{$prefix}-warning):not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
@@ -1167,15 +1175,15 @@ $input-disabled-border-style: $component-disabled-border-style;
             @include input-transition;
 
             &:hover {
-                outline     : none !important;
+                //  outline     : none !important;
                 border-color: $input-border-color-active;
                 @include input-transition(hover)
             }
 
             &:active,
             &:focus {
-                outline: none !important;
-                @include input-transition(hover)
+                //  outline: none !important;
+                @include input-transition(hover);
             }
 
             &:checked {
@@ -1388,9 +1396,9 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:checked {
                     +.#{$prefix}-content {
                         &:before {
-                            width       : calc(100% -4px);
-                            height      : calc(100% -4px);
-                            border-width: 2px;
+                            width       : calc(100% -6px);
+                            height      : calc(100% -6px);
+                            border-width: 3px;
                         }
                     }
                 }
@@ -1629,7 +1637,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             }
 
             &:focus {
-                outline: none !important;
+                //  outline: none !important;
                 @include input-transition(hover);
             }
 
@@ -1876,6 +1884,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 +.#{$prefix}-content {
+
                     &:after {
                         border-width: 2px;
                     }

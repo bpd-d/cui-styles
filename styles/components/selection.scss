@@ -15,9 +15,11 @@
     .#{$prefix}-error,
     .#{$prefix}-warning,
     .#{$prefix}-success {
-        ::selection {
-            color           : $selection-color-dark;
-            background-color: $selection-background-dark;
+        &:not(.#{$prefix}-input-mix) {
+            ::selection {
+                color           : $selection-color-dark;
+                background-color: $selection-background-dark;
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
 # cUI Styles CHANGELOG:
+# [0.3.7] 2020-02-20
+* [Changed] New input focus state
 # [0.3.6] 2020-02-19
 * [Changed] Setup default focus and ability to turn off it by adding class to body
 # [0.3.5] 2020-02-18

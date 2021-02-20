@@ -1,4 +1,7 @@
 # cUI Styles CHANGELOG:
+# [0.3.8] 2020-02-20
+* [Fixed] Input mix fixes
+* [Fixed] Component header
 # [0.3.7] 2020-02-20
 * [Changed] New input focus state
 # [0.3.6] 2020-02-19

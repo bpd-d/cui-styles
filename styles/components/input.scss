@@ -412,9 +412,12 @@ $input-disabled-border-style: $component-disabled-border-style;
         }
 
         &:focus {
+
+            border    : none;
+            box-shadow: none;
+
             &:before {
                 border-color: $input-border-color-active;
-                @include focus-box-shadow($input-border-color-active);
             }
         }
 
@@ -437,6 +440,12 @@ $input-disabled-border-style: $component-disabled-border-style;
                     user-select   : none;
                     pointer-events: none;
                 }
+            }
+
+            &:focus {
+                border    : none;
+                box-shadow: none;
+                ;
             }
         }
 
@@ -502,7 +511,6 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:focus {
                 &:before {
                     border-color: $input-color-accent-active;
-                    @include focus-box-shadow($input-color-accent-active);
                 }
             }
         }
@@ -521,7 +529,6 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:focus {
                 &:before {
                     border-color: $input-color-secondary-active;
-                    @include focus-box-shadow($input-color-secondary-active);
                 }
             }
         }
@@ -546,7 +553,6 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:focus {
                     &:before {
                         border-color: $input-color-accent-dark-active;
-                        @include focus-box-shadow($input-color-accent-dark-active);
                     }
                 }
             }
@@ -565,7 +571,6 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:focus {
                     &:before {
                         border-color: $input-color-secondary-dark-active;
-                        @include focus-box-shadow($input-color-secondary-dark-active);
                     }
                 }
             }
@@ -590,7 +595,6 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:focus {
                 &:before {
                     border-color: $input-color-error-active;
-                    @include focus-box-shadow($input-color-error-active);
                 }
             }
         }
@@ -609,7 +613,6 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:focus {
                 &:before {
                     border-color: $input-color-warning-active;
-                    @include focus-box-shadow($input-color-warning-active);
                 }
             }
         }
@@ -628,7 +631,6 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:focus {
                 &:before {
                     border-color: $input-color-success-active;
-                    @include focus-box-shadow($input-color-success-active);
                 }
             }
         }
@@ -652,7 +654,6 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:focus {
                     &:before {
                         border-color: $input-color-error-dark-active;
-                        @include focus-box-shadow($input-color-error-dark-active);
                     }
                 }
             }
@@ -672,7 +673,6 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:focus {
                     &:before {
                         border-color: $input-color-warning-dark-active;
-                        @include focus-box-shadow($input-color-warning-dark-active);
                     }
                 }
             }
@@ -691,7 +691,6 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:focus {
                     &:before {
                         border-color: $input-color-success-dark-active;
-                        @include focus-box-shadow($input-color-success-dark-active);
                     }
                 }
             }
@@ -717,7 +716,6 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:focus {
                     &:before {
                         border-color: $input-border-color-active-dark;
-                        @include focus-box-shadow($input-border-color-active-dark);
                     }
                 }
             }
@@ -1474,6 +1472,8 @@ $input-disabled-border-style: $component-disabled-border-style;
                         }
                     }
                 }
+
+
             }
 
             &:disabled {
@@ -1482,13 +1482,23 @@ $input-disabled-border-style: $component-disabled-border-style;
                     user-select: none;
 
                     &:before {
-                        width      : calc(100%-2px);
-                        height     : calc(100%-2px);
+                        width      : calc(100%-6px);
+                        height     : calc(100%-6px);
                         border     : 1px $input-disabled-border-style $input-color-disabled !important;
                         user-select: none;
 
                     }
                 }
+
+                &:active,
+                &:focus {
+                    +.#{$prefix}-content {
+                        &:before {
+                            box-shadow: none !important;
+                        }
+                    }
+                }
+
             }
         }
     }

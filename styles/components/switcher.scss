@@ -87,22 +87,8 @@ $indicator-shade-active-border-dark : 2px solid $indicator-shade-color-dark;
                     border: $indicator-active-border;
                     top   : $indicator-position-active;
                     left  : $indicator-position-active;
-                }
-            }
-        }
 
-        &.#{$prefix}-shade {
-            li {
-                &:before {
-                    border          : $indicator-shade-border;
-                    background-color: $indicator-shade-color;
-                }
-
-                &.#{$prefix}-active {
-                    &:before {
-                        border          : $indicator-shade-active-border;
-                        background-color: $indicator-shade-color-active;
-                    }
+                    @include component-highlight-shadow($indicator-item-color);
                 }
             }
         }
@@ -147,8 +133,9 @@ $indicator-shade-active-border-dark : 2px solid $indicator-shade-color-dark;
 
                 &.#{$prefix}-active {
                     &:before {
-                        border: $indicator-shade-active-border;
-
+                        border          : $indicator-shade-active-border;
+                        background-color: $indicator-shade-color-active;
+                        @include component-highlight-shadow($indicator-shade-color-active);
                     }
                 }
             }
@@ -170,6 +157,7 @@ $indicator-shade-active-border-dark : 2px solid $indicator-shade-color-dark;
                         &:before {
                             border          : $indicator-shade-active-border-dark;
                             background-color: $indicator-shade-color-active-dark;
+                            @include component-highlight-shadow($indicator-shade-color-active-dark);
 
                         }
                     }
@@ -213,6 +201,7 @@ $indicator-shade-active-border-dark : 2px solid $indicator-shade-color-dark;
                 &.#{$prefix}-active {
                     &:before {
                         border: $indicator-active-border-dark;
+                        @include component-highlight-shadow($indicator-item-color-dark);
                     }
                 }
             }

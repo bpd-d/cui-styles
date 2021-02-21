@@ -82,11 +82,6 @@ $input-print-background: $component-print-background;
 
 $input-disabled-border-style: $component-disabled-border-style;
 
-//Helpers
-@mixin focus-box-shadow($color) {
-    box-shadow: 0px 0px 3px $color;
-}
-
 //MAIN
 
 @mixin input-transition($state:normal) {
@@ -129,7 +124,7 @@ $input-disabled-border-style: $component-disabled-border-style;
         &:focus {
             border : 1px solid $input-border-color-active;
             outline: none;
-            @include focus-box-shadow($input-border-color-active);
+            @include component-highlight-shadow($input-border-color-active);
 
             &::placeholder {
                 color: $input-placeholder-color-active;
@@ -179,7 +174,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-accent-active;
-                @include focus-box-shadow($input-color-accent-active);
+                @include component-highlight-shadow($input-color-accent);
             }
         }
 
@@ -192,7 +187,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-secondary-active;
-                @include focus-box-shadow($input-color-secondary-active);
+                @include component-highlight-shadow($input-color-secondary);
             }
         }
     }
@@ -210,7 +205,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-accent-dark-active;
-                    @include focus-box-shadow($input-color-accent-dark-active);
+                    @include component-highlight-shadow($input-color-accent-dark);
                 }
             }
 
@@ -223,7 +218,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-secondary-dark-active;
-                    @include focus-box-shadow($input-color-secondary-dark-active);
+                    @include component-highlight-shadow($input-color-secondary-dark);
                 }
             }
         }
@@ -243,7 +238,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-error-active;
-                @include focus-box-shadow($input-color-error-active);
+                @include component-highlight-shadow($input-color-error);
             }
         }
 
@@ -256,7 +251,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-warning-active;
-                @include focus-box-shadow($input-color-warning-active);
+                @include component-highlight-shadow($input-color-warning);
             }
         }
 
@@ -269,7 +264,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-success-active;
-                @include focus-box-shadow($input-color-success-active);
+                @include component-highlight-shadow($input-color-success);
             }
         }
     }
@@ -287,7 +282,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-error-dark-active;
-                    @include focus-box-shadow($input-color-error-dark-active);
+                    @include component-highlight-shadow($input-color-error-dark);
                 }
             }
 
@@ -300,7 +295,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-warning-dark-active;
-                    @include focus-box-shadow($input-color-warning-dark-active);
+                    @include component-highlight-shadow($input-color-warning-dark);
                 }
             }
 
@@ -313,7 +308,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-success-dark-active;
-                    @include focus-box-shadow($input-color-success-dark-active);
+                    @include component-highlight-shadow($input-color-success-dark);
                 }
             }
         }
@@ -356,7 +351,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border: 1px solid $input-border-color-active-dark;
-                    @include focus-box-shadow($input-border-color-active-dark);
+                    @include component-highlight-shadow($input-border-color-active-dark);
                 }
             }
         }
@@ -798,7 +793,7 @@ $input-disabled-border-style: $component-disabled-border-style;
         &:focus {
             outline     : none !important;
             border-color: $input-border-color-active;
-            @include focus-box-shadow($input-border-color-active);
+            @include component-highlight-shadow($input-border-color-active);
         }
 
         &:disabled {
@@ -837,7 +832,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-accent-active;
-                @include focus-box-shadow($input-color-accent-active);
+                @include component-highlight-shadow($input-color-accent);
             }
         }
 
@@ -850,7 +845,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-secondary-active;
-                @include focus-box-shadow($input-color-secondary-active);
+                @include component-highlight-shadow($input-color-secondary);
             }
         }
     }
@@ -868,7 +863,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-accent-dark-active;
-                    @include focus-box-shadow($input-color-accent-dark-active);
+                    @include component-highlight-shadow($input-color-accent-dark);
                 }
             }
 
@@ -881,7 +876,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-secondary-dark-active;
-                    @include focus-box-shadow($input-color-secondary-dark-active);
+                    @include component-highlight-shadow($input-color-secondary-dark);
                 }
             }
         }
@@ -900,7 +895,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:active,
             &:focus {
                 border-color: $input-border-color-active-dark;
-                @include focus-box-shadow($input-border-color-active-dark);
+                @include component-highlight-shadow($input-border-color-active-dark);
             }
 
             &:not(.#{$prefix}-accent):not(.#{$prefix}-secondary) {
@@ -964,7 +959,7 @@ $input-disabled-border-style: $component-disabled-border-style;
         &:focus {
             outline     : none !important;
             border-color: $input-border-color-active;
-            @include focus-box-shadow($input-border-color-active);
+            @include component-highlight-shadow($input-border-color-active);
         }
 
         &:disabled {
@@ -994,7 +989,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-accent-active;
-                @include focus-box-shadow($input-color-accent-active);
+                @include component-highlight-shadow($input-color-accent);
             }
         }
 
@@ -1007,7 +1002,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 border-color: $input-color-secondary-active;
-                @include focus-box-shadow($input-color-secondary-active);
+                @include component-highlight-shadow($input-color-secondary);
             }
         }
     }
@@ -1025,7 +1020,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-accent-dark-active;
-                    @include focus-box-shadow($input-color-accent-dark-active);
+                    @include component-highlight-shadow($input-color-accent-dark);
                 }
             }
 
@@ -1038,7 +1033,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-color-secondary-dark-active;
-                    @include focus-box-shadow($input-color-secondary-dark-active);
+                    @include component-highlight-shadow($input-color-secondary-dark);
                 }
             }
         }
@@ -1060,7 +1055,7 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus {
                     border-color: $input-border-color-active-dark;
-                    @include focus-box-shadow($input-border-color-active-dark);
+                    @include component-highlight-shadow($input-border-color-active-dark);
                 }
             }
 
@@ -1233,7 +1228,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:focus {
                 outline: none !important;
                 @include input-transition(hover);
-                @include focus-box-shadow($input-border-color-active);
+                @include component-highlight-shadow($input-border-color-active);
             }
 
             &:checked {
@@ -1275,7 +1270,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             }
 
             &:focus {
-                @include focus-box-shadow($input-color-accent);
+                @include component-highlight-shadow($input-color-accent);
             }
         }
 
@@ -1290,7 +1285,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             }
 
             &:focus {
-                @include focus-box-shadow($input-color-secondary);
+                @include component-highlight-shadow($input-color-secondary);
             }
         }
     }
@@ -1310,7 +1305,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                 }
 
                 &:focus {
-                    @include focus-box-shadow($input-color-accent-dark);
+                    @include component-highlight-shadow($input-color-accent-dark);
                 }
             }
 
@@ -1325,7 +1320,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                 }
 
                 &:focus {
-                    @include focus-box-shadow($input-color-secondary-dark);
+                    @include component-highlight-shadow($input-color-secondary-dark);
                 }
             }
         }
@@ -1351,7 +1346,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                     }
 
                     &:focus {
-                        @include focus-box-shadow($input-border-color-active-dark);
+                        @include component-highlight-shadow($input-border-color-active-dark);
                     }
                 }
 
@@ -1459,7 +1454,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                         height      : calc(100% -6px);
                         border-width: 1px;
                         border-color: $input-border-color-active;
-                        @include focus-box-shadow($input-border-color-active);
+                        @include component-highlight-shadow($input-border-color-active);
                     }
                 }
 
@@ -1530,7 +1525,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:focus {
                     +.#{$prefix}-content {
                         &:before {
-                            @include focus-box-shadow($input-color-accent-active);
+                            @include component-highlight-shadow($input-color-accent);
                         }
                     }
                 }
@@ -1560,7 +1555,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                 &:focus {
                     +.#{$prefix}-content {
                         &:before {
-                            @include focus-box-shadow($input-color-secondary-active);
+                            @include component-highlight-shadow($input-color-secondary);
                         }
                     }
                 }
@@ -1600,7 +1595,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                     &:focus {
                         +.#{$prefix}-content {
                             &:before {
-                                @include focus-box-shadow($input-color-accent-dark-active);
+                                @include component-highlight-shadow($input-color-accent-dark);
                             }
                         }
                     }
@@ -1634,7 +1629,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                     &:focus {
                         +.#{$prefix}-content {
                             &:before {
-                                @include focus-box-shadow($input-color-secondary-dark-active);
+                                @include component-highlight-shadow($input-color-secondary-dark);
                             }
                         }
                     }
@@ -1674,7 +1669,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                     &:focus {
                         +.#{$prefix}-content {
                             &:before {
-                                @include focus-box-shadow($input-border-color-active-dark);
+                                @include component-highlight-shadow($input-border-color-active-dark);
                             }
                         }
                     }
@@ -1761,7 +1756,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             &:focus {
                 outline: none !important;
                 @include input-transition(hover);
-                @include focus-box-shadow($input-border-color-active);
+                @include component-highlight-shadow($input-border-color-active);
 
             }
 
@@ -1802,7 +1797,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             }
 
             &:focus:checked {
-                @include focus-box-shadow($input-color-accent);
+                @include component-highlight-shadow($input-color-accent);
             }
         }
 
@@ -1817,7 +1812,7 @@ $input-disabled-border-style: $component-disabled-border-style;
             }
 
             &:focus:checked {
-                @include focus-box-shadow($input-color-secondary);
+                @include component-highlight-shadow($input-color-secondary);
             }
         }
     }
@@ -1837,7 +1832,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                 }
 
                 &:focus {
-                    @include focus-box-shadow($input-color-accent-dark);
+                    @include component-highlight-shadow($input-color-accent-dark);
                 }
             }
 
@@ -1852,7 +1847,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                 }
 
                 &:focus {
-                    @include focus-box-shadow($input-color-secondary-dark);
+                    @include component-highlight-shadow($input-color-secondary-dark);
                 }
             }
         }
@@ -1878,7 +1873,7 @@ $input-disabled-border-style: $component-disabled-border-style;
                     }
 
                     &:focus {
-                        @include focus-box-shadow($input-border-color-active-dark);
+                        @include component-highlight-shadow($input-border-color-active-dark);
                     }
                 }
 
@@ -2028,9 +2023,10 @@ $input-disabled-border-style: $component-disabled-border-style;
 
             &:focus {
                 +.#{$prefix}-content {
-                    &:after {
-                        border-width: 2px;
-                        @include focus-box-shadow($input-border-color-active);
+
+                    &:after,
+                    &:before {
+                        @include component-highlight-shadow($input-border-color-active);
                     }
                 }
             }
@@ -2058,8 +2054,10 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                 &:focus:checked {
                     +.#{$prefix}-content {
-                        &:after {
-                            @include focus-box-shadow($input-color-accent);
+
+                        &:after,
+                        &:before {
+                            @include component-highlight-shadow($input-color-accent);
                         }
                     }
                 }
@@ -2084,8 +2082,10 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                     &:focus:checked {
                         +.#{$prefix}-content {
-                            &:after {
-                                @include focus-box-shadow($input-color-secondary);
+
+                            &:after,
+                            &:before {
+                                @include component-highlight-shadow($input-color-secondary);
                             }
                         }
                     }
@@ -2116,8 +2116,10 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                     &:focus:checked {
                         +.#{$prefix}-content {
-                            &:after {
-                                @include focus-box-shadow($input-color-accent-dark);
+
+                            &:after,
+                            &:before {
+                                @include component-highlight-shadow($input-color-accent-dark);
                             }
                         }
                     }
@@ -2143,8 +2145,10 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                     &:focus:checked {
                         +.#{$prefix}-content {
-                            &:after {
-                                @include focus-box-shadow($input-color-secondary-dark);
+
+                            &:after,
+                            &:before {
+                                @include component-highlight-shadow($input-color-secondary-dark);
                             }
                         }
                     }
@@ -2220,8 +2224,10 @@ $input-disabled-border-style: $component-disabled-border-style;
 
                     &:focus {
                         +.#{$prefix}-content {
-                            &:after {
-                                @include focus-box-shadow($input-border-color-active-dark);
+
+                            &:after,
+                            &:before {
+                                @include component-highlight-shadow($input-border-color-active-dark);
                             }
                         }
                     }

@@ -437,6 +437,7 @@ $icon-color-success-dark  : $component-background-success-dark;
 
         &:focus,
         &:active {
+            @include component-highlight-shadow($icon-border-color);
 
             &.#{$prefix}-default {
                 border-color: $icon-border-color-active;

@@ -1,4 +1,7 @@
 # cUI Styles CHANGELOG:
+# [0.3.9] 2020-02-21
+* [Added] Option flat to card
+* [Changed] Adjusted shadow higlight on input elements
 # [0.3.8] 2020-02-20
 * [Fixed] Input mix fixes
 * [Fixed] Component header

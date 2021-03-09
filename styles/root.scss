@@ -3,7 +3,7 @@
 
 @mixin variables($prefix:"cui", $dark: true, $theme: true, $signal: true) {
     --#{$prefix}-font-size  : 16px;
-    --#{$prefix}-line-height: 24px;
+    --#{$prefix}-line-height: 1.4;
 
     @include animations.set-animations-duration($prefix: $prefix, $base: 300ms, $short: 150ms, $long: 500ms);
     // colors

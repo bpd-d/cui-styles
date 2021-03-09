@@ -1,0 +1,13 @@
+@use '../variables'as *;
+@use '../mixins'as *;
+
+@mixin image() {
+    .#{$prefix}-img {
+        height   : auto;
+        max-width: 100%;
+    }
+}
+
+@mixin definitions($options: ()) {
+    @include image();
+}

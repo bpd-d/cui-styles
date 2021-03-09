@@ -1,4 +1,8 @@
 # cUI Styles CHANGELOG:
+# [0.3.10] 2020-03-09
+* [Added] Simple image component
+* [Change] Tooltip style
+* [Fixed] Line height settings
 # [0.3.9] 2020-02-21
 * [Added] Option flat to card
 * [Changed] Adjusted shadow higlight on input elements

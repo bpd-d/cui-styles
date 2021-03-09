@@ -39,6 +39,7 @@
 @use 'components/hover';
 @use 'components/border';
 @use 'components/notification';
+@use 'components/image';
 
 @use "sass:map";
 @use "sass:list";
@@ -84,7 +85,8 @@ $components-list: ("navbar",
     "sequence",
     "hover",
     "border",
-    "notification"
+    "notification",
+    "image"
 );
 
 @mixin definitions($components:(), $dark: true, $print: true, $theme: true, $signal: true) {
@@ -287,6 +289,10 @@ $components-list: ("navbar",
 
         @else if $name=="notification" {
             @include notification.definitions($opts);
+        }
+
+        @else if $name=="image" {
+            @include image.definitions($opts);
         }
     }
 }

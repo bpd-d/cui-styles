@@ -1,4 +1,9 @@
 # cUI Styles CHANGELOG:
+# [0.3.11] 2020-03-11
+* [Added] Line height in text component
+* [Changed] Removed line height from heading
+* [Fixed] Warning shade
+* [Fixed] Reverted tooltip color
 # [0.3.10] 2020-03-09
 * [Added] Simple image component
 * [Change] Tooltip style

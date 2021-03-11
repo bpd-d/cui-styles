@@ -30,7 +30,6 @@ $head-margin-small: $margin-global-small;
         font-size  : $head-font-xlarge;
         font-weight: $head-text-weight-thin !important;
         margin     : $head-margin-large 0px;
-        line-height: $head-line-xlarge;
         @include first-not-only();
     }
 }
@@ -40,7 +39,6 @@ $head-margin-small: $margin-global-small;
         font-size  : $head-font-larger;
         font-weight: $head-text-weight-thin !important;
         margin     : $head-margin-large 0px;
-        line-height: $head-line-xlarge;
         @include first-not-only();
     }
 }
@@ -50,7 +48,6 @@ $head-margin-small: $margin-global-small;
         font-size  : $head-font-large;
         font-weight: $head-text-weight-semi-bold !important;
         margin     : $head-margin 0px;
-        line-height: $head-line-large;
 
         @include first-not-only();
     }

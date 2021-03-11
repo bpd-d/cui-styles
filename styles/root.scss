@@ -28,7 +28,7 @@
     }
 
     @if $signal {
-        @include colors.set-warning-colors($prefix : $prefix, $base:#db8d2e, $muted: #e5ac67, $active: #a1651c, $shade: #b340d91f);
+        @include colors.set-warning-colors($prefix : $prefix, $base:#db8d2e, $muted: #e5ac67, $active: #a1651c, $shade: #db8d2e1f);
         @include colors.set-success-colors($prefix : $prefix, $base:#259d4d, $muted: #35cf69, $active: #165f2f, $shade: #259d4d1f);
         @include colors.set-error-colors($prefix   : $prefix, $base:#ce314b, $muted: #db667a, $active: #912235, $shade: #F9E6EA);
     }

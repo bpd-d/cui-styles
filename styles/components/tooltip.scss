@@ -1,8 +1,8 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$tooltip-background-color     : $component-background-shade; //$component-background-default;
-$tooltip-background-color-dark: $component-background-shade-dark; //$component-background-default-dark;
+$tooltip-background-color     : $component-background-default;
+$tooltip-background-color-dark: $component-background-default-dark;
 $tooltip-text-color           : $component-color-default;
 $tooltip-text-color-dark      : $component-color-default-dark;
 

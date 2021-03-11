@@ -105,7 +105,13 @@ $sides: "top",
 
 @mixin margin-auto($size: "") {
     .#{$prefix}-margin-auto#{$size} {
-        margin: 0 auto !important;
+        margin-left : auto !important;
+        margin-right: auto !important;
+    }
+
+    .#{$prefix}-margin-auto-vertical#{$size} {
+        margin-top   : auto !important;
+        margin-bottom: auto !important;
     }
 }
 

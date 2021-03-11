@@ -4,14 +4,14 @@
 @use '../mixins'as *;
 
 
-$text-large      : $font-large;
-$text-small      : $font-small;
-$text-xlarge     : $font-xlarge;
-$text-line-height: $line-height;
-$text-line-large : $line-height-large;
-$text-line-small : $line-height-small;
-$text-line-xlarge: $line-height-xlarge;
-$font-weight     : $text-weight-normal;
+$text-large       : $font-large;
+$text-small       : $font-small;
+$text-xlarge      : $font-xlarge;
+$text-line-height : $line-height;
+$text-line-large  : $line-height-large;
+$text-line-small  : $line-height-small;
+$text-line-xlarge : $line-height-xlarge;
+$font-weight      : $text-weight-normal;
 
 
 $text-color-muted             : $component-color-muted;
@@ -226,12 +226,10 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
     .#{$prefix}-article-title {
         font-size  : $text-xlarge;
         font-weight: $text-weight-thin;
-        line-height: $text-line-xlarge;
     }
 
     .#{$prefix}-article-description {
         font-size  : $text-large;
-        line-height: $line-height-large;
         font-weight: $text-weight-thin;
     }
 }
@@ -267,6 +265,42 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
             border-color    : $component-print-color;
             background-color: $component-print-background;
         }
+    }
+}
+
+@mixin line-height($size:"") {
+    .#{$prefix}-line-height#{$size} {
+        line-height: $text-line-height;
+    }
+
+    .#{$prefix}-line-height-large#{$size} {
+        line-height: $text-line-large;
+    }
+
+    .#{$prefix}-line-height-xlarge#{$size} {
+        line-height: $text-line-xlarge;
+    }
+
+    .#{$prefix}-line-height-small#{$size} {
+        line-height: $text-line-small;
+    }
+}
+
+@mixin line-height-responsive() {
+    @include media-screen-min-small {
+        @include line-height(--s);
+    }
+
+    @include media-screen-min-medium {
+        @include line-height(--m);
+    }
+
+    @include media-screen-min-large {
+        @include line-height(--l);
+    }
+
+    @include media-screen-min-xlarge {
+        @include line-height(--xl);
     }
 }
 
@@ -332,6 +366,14 @@ $blockquote-border-color-dark : $component-background-shade-dark-active;
 
     @if(not-option-disabled($options, 'decoration')) {
         @include text-decorations;
+    }
+
+    @if(not-option-disabled($options, 'line-height')) {
+        @include line-height();
+
+        @if(not-option-disabled($options, 'responsive')) {
+            @include line-height-responsive();
+        }
     }
 
 }

@@ -1,4 +1,7 @@
 # cUI Styles CHANGELOG:
+# [0.3.12] 2020-04-14
+* [Added] Overflow nowrap and wrap options to overflow features which allows to create horizontal overflow containers
+* [Changed] Added border to toast, tooltip, badge
 # [0.3.11] 2020-03-11
 * [Added] Line height in text component
 * [Changed] Removed line height from heading

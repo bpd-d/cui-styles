@@ -8,6 +8,8 @@ $toast-color                : $component-color-default;
 $toast-color-dark           : $component-color-default-dark;
 $toast-animation-duration   : $animation-duration-default;
 $toast-font-size            : $font-normal;
+$toast-border-color         : $component-border-default;
+$toast-border-color-dark    : $component-border-default-dark;
 
 
 @mixin toast {
@@ -22,6 +24,7 @@ $toast-font-size            : $font-normal;
         color        : $toast-color;
         background   : $toast-background-color;
         box-shadow   : $shadow2;
+        border       : 1px solid $toast-border-color;
         border-radius: 50px;
         opacity      : 0;
         text-align   : center;
@@ -43,8 +46,9 @@ $toast-font-size            : $font-normal;
 @mixin toast-dark {
     .#{$prefix}-dark {
         .#{$prefix}-toast {
-            color     : $toast-color-dark;
-            background: $toast-background-color-dark;
+            color       : $toast-color-dark;
+            background  : $toast-background-color-dark;
+            border-color: $toast-border-color-dark;
         }
     }
 }

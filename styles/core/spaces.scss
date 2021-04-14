@@ -407,7 +407,17 @@ $sides: "top",
 
     .#{$prefix}-overflow-y-hidden {
         overflow-y: hidden;
+
     }
+
+    .#{$prefix}-overflow-nowrap {
+        white-space: nowrap;
+    }
+
+    .#{$prefix}-overflow-wrap {
+        white-space: normal;
+    }
+
 }
 
 

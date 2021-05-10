@@ -126,6 +126,36 @@
 }
 
 
+@mixin flex-gap($size: "") {
+
+    .#{$prefix}-flex {
+        &.#{$prefix}-flex-gap {
+            margin: -8px 0 0 -8px;
+            width : calc(100% + 8px);
+
+            &>* {
+                margin: 8px 0 0 8px;
+            }
+        }
+    }
+
+    // @supports(gap: 8px) {
+    //     .#{$prefix}-flex {
+    //         &.#{$prefix}-flex-gap {
+    //             gap   : 8px;
+    //             margin: 0px;
+
+
+    //             &>* {
+    //                 margin: 0px;
+    //             }
+    //         }
+    //     }
+    // }
+
+
+}
+
 @mixin flex-responsive($options) {
     @include media-screen-min-small {
         @if(not-option-disabled($options, 'grow')) {
@@ -204,7 +234,11 @@
     @include flex-base();
 
     @if(not-option-disabled($options, 'center')) {
-        @include flex-center()
+        @include flex-center();
+    }
+
+    @if(not-option-disabled($options, 'gap')) {
+        @include flex-gap();
     }
 
     @if(not-option-disabled($options, 'direction')) {

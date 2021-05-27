@@ -2,268 +2,251 @@
 @use "../mixins.scss"as *;
 
 @mixin order($size: "") {
-    @for $i from 1 through 10 {
-        .#{$prefix}-order-#{$i}#{$size} {
-            order: $i;
-        }
-    }
+	@for $i from 1 through 10 {
+		.#{$prefix}-order-#{$i}#{$size} {
+			order: $i;
+		}
+	}
 }
 
 @mixin flex-base {
-    .#{$prefix}-flex {
-        display        : flex !important;
-        flex-wrap      : wrap;
-        justify-content: start;
-        align-items    : flex-start;
-    }
+	.#{$prefix}-flex {
+		display: flex !important;
+		flex-wrap: wrap;
+		justify-content: start;
+		align-items: flex-start;
+
+		& > {
+			min-width: 0px;
+			min-height: 0px;
+		}
+	}
 }
 
 @mixin flex-align($size: "") {
-    .#{$prefix}-flex {
+	.#{$prefix}-flex {
+		> * {
+			flex: 0 1 auto;
+		}
 
-        >* {
-            flex: 0 1 auto;
-        }
+		&.#{$prefix}-center#{$size} {
+			justify-content: center !important;
+		}
 
-        &.#{$prefix}-center#{$size} {
-            justify-content: center !important;
-        }
+		&.#{$prefix}-evenly#{$size} {
+			justify-content: space-evenly !important;
+		}
 
-        &.#{$prefix}-evenly#{$size} {
-            justify-content: space-evenly !important;
-        }
+		&.#{$prefix}-between#{$size} {
+			justify-content: space-between !important;
+		}
 
-        &.#{$prefix}-between#{$size} {
-            justify-content: space-between !important;
-        }
+		&.#{$prefix}-right#{$size} {
+			justify-content: flex-end !important;
+		}
 
-        &.#{$prefix}-right#{$size} {
-            justify-content: flex-end !important;
-        }
+		&.#{$prefix}-left#{$size} {
+			justify-content: flex-start !important;
+		}
 
-        &.#{$prefix}-left#{$size} {
-            justify-content: flex-start !important;
-        }
+		// ALign
 
-        // ALign
+		&.#{$prefix}-middle#{$size} {
+			align-items: center !important;
+		}
 
-        &.#{$prefix}-middle#{$size} {
-            align-items: center !important;
-        }
+		&.#{$prefix}-end#{$size} {
+			align-items: flex-end !important;
+		}
 
-        &.#{$prefix}-end#{$size} {
-            align-items: flex-end !important;
-        }
-
-        &.#{$prefix}-stretch#{$size} {
-            align-items: stretch !important;
-        }
-    }
+		&.#{$prefix}-stretch#{$size} {
+			align-items: stretch !important;
+		}
+	}
 }
 
-
-
 @mixin flex-direction($size: "") {
-    .#{$prefix}-flex {
-        &.#{$prefix}-flex-direction-column#{$size} {
-            flex-direction: column;
-        }
+	.#{$prefix}-flex {
+		&.#{$prefix}-flex-direction-column#{$size} {
+			flex-direction: column;
+		}
 
-        &.#{$prefix}-flex-direction-column-reverse#{$size} {
-            flex-direction: column-reverse;
-        }
+		&.#{$prefix}-flex-direction-column-reverse#{$size} {
+			flex-direction: column-reverse;
+		}
 
-        &.#{$prefix}-flex-direction-row-reverse#{$size} {
-            flex-direction: row-reverse;
-        }
+		&.#{$prefix}-flex-direction-row-reverse#{$size} {
+			flex-direction: row-reverse;
+		}
 
-        &.#{$prefix}-flex-direction-row#{$size} {
-            flex-direction: row;
-        }
-    }
+		&.#{$prefix}-flex-direction-row#{$size} {
+			flex-direction: row;
+		}
+	}
 }
 
 @mixin flex-order($size: "") {
-    @include order($size);
+	@include order($size);
 }
 
-
 @mixin flex-wrap {
-    .#{$prefix}-flex {
-        &.#{$prefix}-nowrap {
-            flex-wrap: nowrap;
-        }
+	.#{$prefix}-flex {
+		&.#{$prefix}-nowrap {
+			flex-wrap: nowrap;
+		}
 
-        &.#{$prefix}-wrap-rev {
-            flex-wrap: wrap-reverse;
-        }
-    }
+		&.#{$prefix}-wrap-rev {
+			flex-wrap: wrap-reverse;
+		}
+	}
 }
 
 @mixin flex-grow($size: "") {
-    .#{$prefix}-flex {
-        .#{$prefix}-flex-grow#{$size} {
-            flex: 1 1 auto !important;
-        }
+	.#{$prefix}-flex {
+		.#{$prefix}-flex-grow#{$size} {
+			flex: 1 1 auto !important;
+		}
 
-        .#{$prefix}-flex-shrink#{$size} {
-            flex: 0 1 auto !important;
-        }
+		.#{$prefix}-flex-shrink#{$size} {
+			flex: 0 1 auto !important;
+		}
 
-        .#{$prefix}-flex-auto#{$size} {
-            flex: 0 0 auto !important;
-        }
-    }
+		.#{$prefix}-flex-auto#{$size} {
+			flex: 0 0 auto !important;
+		}
+	}
 }
 
 @mixin flex-center {
-    .#{$prefix}-flex-center {
-        display        : flex !important;
-        justify-content: center;
-        align-items    : center;
-        overflow       : hidden;
-    }
+	.#{$prefix}-flex-center {
+		display: flex !important;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
 }
 
-
 @mixin flex-gap($size: "") {
+	@supports (gap: 8px) {
+		.#{$prefix}-flex {
+			&.#{$prefix}-flex-gap {
+				gap: 8px;
+				margin: 0px;
 
-    .#{$prefix}-flex {
-        &.#{$prefix}-flex-gap {
-            margin: -8px 0 0 -8px;
-            width : calc(100% + 8px);
-
-            &>* {
-                margin: 8px 0 0 8px;
-            }
-        }
-    }
-
-    // @supports(gap: 8px) {
-    //     .#{$prefix}-flex {
-    //         &.#{$prefix}-flex-gap {
-    //             gap   : 8px;
-    //             margin: 0px;
-
-
-    //             &>* {
-    //                 margin: 0px;
-    //             }
-    //         }
-    //     }
-    // }
-
-
+				& > * {
+					margin: 0px;
+				}
+			}
+		}
+	}
 }
 
 @mixin flex-responsive($options) {
-    @include media-screen-min-small {
-        @if(not-option-disabled($options, 'grow')) {
-            @include flex-grow(--s);
-        }
+	@include media-screen-min-small {
+		@if (not-option-disabled($options, "grow")) {
+			@include flex-grow(--s);
+		}
 
-        @if(not-option-disabled($options, 'order')) {
-            @include order(--s);
-        }
+		@if (not-option-disabled($options, "order")) {
+			@include order(--s);
+		}
 
-        @if(not-option-disabled($options, 'direction')) {
-            @include flex-direction(--s);
-        }
+		@if (not-option-disabled($options, "direction")) {
+			@include flex-direction(--s);
+		}
 
-        @if(not-option-disabled($options, 'align')) {
-            @include flex-align(--s);
-        }
-    }
+		@if (not-option-disabled($options, "align")) {
+			@include flex-align(--s);
+		}
+	}
 
-    @include media-screen-min-medium {
-        @if(not-option-disabled($options, 'grow')) {
-            @include flex-grow(--m);
-        }
+	@include media-screen-min-medium {
+		@if (not-option-disabled($options, "grow")) {
+			@include flex-grow(--m);
+		}
 
-        @if(not-option-disabled($options, 'order')) {
-            @include order(--m);
-        }
+		@if (not-option-disabled($options, "order")) {
+			@include order(--m);
+		}
 
-        @if(not-option-disabled($options, 'direction')) {
-            @include flex-direction(--m);
-        }
+		@if (not-option-disabled($options, "direction")) {
+			@include flex-direction(--m);
+		}
 
-        @if(not-option-disabled($options, 'align')) {
-            @include flex-align(--m);
-        }
-    }
+		@if (not-option-disabled($options, "align")) {
+			@include flex-align(--m);
+		}
+	}
 
-    @include media-screen-min-large {
-        @if(not-option-disabled($options, 'grow')) {
-            @include flex-grow(--l);
-        }
+	@include media-screen-min-large {
+		@if (not-option-disabled($options, "grow")) {
+			@include flex-grow(--l);
+		}
 
-        @if(not-option-disabled($options, 'order')) {
-            @include order(--l);
-        }
+		@if (not-option-disabled($options, "order")) {
+			@include order(--l);
+		}
 
-        @if(not-option-disabled($options, 'direction')) {
-            @include flex-direction(--l);
-        }
+		@if (not-option-disabled($options, "direction")) {
+			@include flex-direction(--l);
+		}
 
-        @if(not-option-disabled($options, 'align')) {
-            @include flex-align(--l);
-        }
-    }
+		@if (not-option-disabled($options, "align")) {
+			@include flex-align(--l);
+		}
+	}
 
-    @include media-screen-min-xlarge {
-        @if(not-option-disabled($options, 'grow')) {
-            @include flex-grow(--xl);
-        }
+	@include media-screen-min-xlarge {
+		@if (not-option-disabled($options, "grow")) {
+			@include flex-grow(--xl);
+		}
 
-        @if(not-option-disabled($options, 'order')) {
-            @include order(--xl);
-        }
+		@if (not-option-disabled($options, "order")) {
+			@include order(--xl);
+		}
 
-        @if(not-option-disabled($options, 'direction')) {
-            @include flex-direction(--xl);
-        }
+		@if (not-option-disabled($options, "direction")) {
+			@include flex-direction(--xl);
+		}
 
-        @if(not-option-disabled($options, 'align')) {
-            @include flex-align(--xl);
-        }
-    }
+		@if (not-option-disabled($options, "align")) {
+			@include flex-align(--xl);
+		}
+	}
 }
 
 @mixin definitions($options: ()) {
-    @include flex-base();
+	@include flex-base();
 
-    @if(not-option-disabled($options, 'center')) {
-        @include flex-center();
-    }
+	@if (not-option-disabled($options, "center")) {
+		@include flex-center();
+	}
 
-    @if(not-option-disabled($options, 'gap')) {
-        @include flex-gap();
-    }
+	@if (not-option-disabled($options, "gap")) {
+		@include flex-gap();
+	}
 
-    @if(not-option-disabled($options, 'direction')) {
-        @include flex-direction();
-    }
+	@if (not-option-disabled($options, "direction")) {
+		@include flex-direction();
+	}
 
-    @if(not-option-disabled($options, 'grow')) {
-        @include flex-grow();
+	@if (not-option-disabled($options, "grow")) {
+		@include flex-grow();
+	}
 
-    }
+	@if (not-option-disabled($options, "wrap")) {
+		@include flex-wrap();
+	}
 
-    @if(not-option-disabled($options, 'wrap')) {
-        @include flex-wrap();
-    }
+	@if (not-option-disabled($options, "order")) {
+		@include flex-order();
+	}
 
-    @if(not-option-disabled($options, 'order')) {
-        @include flex-order();
-    }
+	@if (not-option-disabled($options, "align")) {
+		@include flex-align();
+	}
 
-    @if(not-option-disabled($options, 'align')) {
-        @include flex-align();
-    }
-
-    @if(not-option-disabled($options, 'responsive')) {
-        @include flex-responsive($options);
-    }
-
+	@if (not-option-disabled($options, "responsive")) {
+		@include flex-responsive($options);
+	}
 }

@@ -1,29 +1,30 @@
-@mixin set-animations-duration($prefix: 'cui', $base: null, $short: null, $long: null) {
-    @if not $prefix {
-        @error "Prefix was not provided";
-    }
+@mixin set-animations-duration(
+	$prefix: "cui",
+	$base: null,
+	$short: null,
+	$long: null
+) {
+	@if not $prefix {
+		@error "Prefix was not provided";
+	}
 
-    @if not $base {
-        @error "Base animation value must be provided";
-    }
+	@if not $base {
+		@error "Base animation value must be provided";
+	}
 
-    --#{$prefix}-animation-time : #{$base};
+	--#{$prefix}-anim: #{$base};
 
-    @if $short {
-        --#{$prefix}-animation-time-short : #{$short};
-    }
+	@if $short {
+		--#{$prefix}-anim-s: #{$short};
+	} @else {
+		@warn "Short was not provided - using 0.5x base";
+		--#{$prefix}-anim-s: calc(#{$base}* 0.5);
+	}
 
-    @else {
-        @warn "Short was not provided - using 0.5x base";
-        --#{$prefix}-animation-time-short : calc(#{$base}*0.5);
-    }
-
-    @if $long {
-        --#{$prefix}-animation-time-long : #{$long};
-    }
-
-    @else {
-        @warn "Long was not provided - using 2x base";
-        --#{$prefix}-animation-time-long : calc(#{$base}*2);
-    }
+	@if $long {
+		--#{$prefix}-anim-l: #{$long};
+	} @else {
+		@warn "Long was not provided - using 2x base";
+		--#{$prefix}-anim-l: calc(#{$base}* 2);
+	}
 }

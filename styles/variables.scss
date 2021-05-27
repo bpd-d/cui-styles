@@ -1,108 +1,83 @@
-$prefix : 'cui' !default;
+$prefix: "cui" !default;
 
-$font-family : -apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Roboto,
-Helvetica,
-Arial,
-sans-serif,
-"Apple Color Emoji",
-"Segoe UI Emoji",
-"Segoe UI Symbol";
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+	Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-$font-family-mono: Consolas,
-"Andale Mono WT",
-"Andale Mono",
-"Lucida Console",
-"Lucida Sans Typewriter",
-"DejaVu Sans Mono",
-"Bitstream Vera Sans Mono",
-"Liberation Mono",
-"Nimbus Mono L",
-Monaco,
-"Courier New",
-Courier,
-monospace;
+$font-family-mono: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
+	"Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+	"Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
+	monospace;
 
-$font-family-alter: "Times New Roman",
-Times,
-serif;
+$font-family-alter: "Times New Roman", Times, serif;
 
-$font-base-size: var(--#{$prefix}-font-size);
+$font-base-size: var(--#{$prefix}-fts);
 
-$font-xsmall : 0.5rem;
-$font-small  : 0.7rem;
-$font-normal : $font-base-size;
-$font-large  : 1.3rem;
-$font-larger : 1.6rem;
-$font-xlarge : 2.2rem;
+$font-xsmall: 0.5rem;
+$font-small: 0.7rem;
+$font-normal: $font-base-size;
+$font-large: 1.3rem;
+$font-larger: 1.6rem;
+$font-xlarge: 2.2rem;
 
-
-$line-height       : var(--#{$prefix}-line-height);
-$line-height-large : calc(#{$line-height} * 1.4);
-$line-height-small : calc(#{$line-height} * 0.8);
+$line-height: var(--#{$prefix}-ln-ht);
+$line-height-large: calc(#{$line-height} * 1.4);
+$line-height-small: calc(#{$line-height} * 0.8);
 $line-height-xlarge: calc(#{$line-height} * 1.8);
 
-$animation-duration-default: var(--#{$prefix}-animation-time);
-$animation-duration-short  : var(--#{$prefix}-animation-time-short);
-$animation-duration-long   : var(--#{$prefix}-animation-time-long);
+$animation-duration-default: var(--#{$prefix}-anim);
+$animation-duration-short: var(--#{$prefix}-anim-s);
+$animation-duration-long: var(--#{$prefix}-anim-l);
 
-$breakpoint-s : 640px;
-$breakpoint-m : 960px;
-$breakpoint-l : 1200px;
+$breakpoint-s: 640px;
+$breakpoint-m: 960px;
+$breakpoint-l: 1200px;
 $breakpoint-xl: 1600px;
 
-$breakpoint-max-s : 639px;
-$breakpoint-max-m : 959px;
-$breakpoint-max-l : 1199px;
+$breakpoint-max-s: 639px;
+$breakpoint-max-m: 959px;
+$breakpoint-max-l: 1199px;
 $breakpoint-max-xl: 1599px;
 
 $breakpoint-height-s: 500px;
 
-$padding-global        : var(--#{$prefix}-padding);
-$padding-global-xsmall : calc(#{$padding-global} * 0.25);
-$padding-global-small  : calc(#{$padding-global} * 0.5);
-$padding-global-large  : calc(#{$padding-global} * 2);
-$padding-global-xlarge : calc(#{$padding-global} * 4);
+$padding-global: var(--#{$prefix}-pd);
+$padding-global-xsmall: calc(#{$padding-global} * 0.25);
+$padding-global-small: calc(#{$padding-global} * 0.5);
+$padding-global-large: calc(#{$padding-global} * 2);
+$padding-global-xlarge: calc(#{$padding-global} * 4);
 
-$margin-global       : var(--#{$prefix}-margin);
+$margin-global: var(--#{$prefix}-mg);
 $margin-global-xsmall: calc(#{$margin-global} * 0.25);
-$margin-global-small : calc(#{$margin-global} * 0.5);
-$margin-global-large : calc(#{$margin-global} * 2);
+$margin-global-small: calc(#{$margin-global} * 0.5);
+$margin-global-large: calc(#{$margin-global} * 2);
 $margin-global-xlarge: calc(#{$margin-global} * 4);
 
+$notification-width: 350px;
+$notification-margin: 20px;
 
-$notification-width  : 350px;
-$notification-margin : 20px;
-
-$border-radius-small  : var(--#{$prefix}-border-radius-small);
-$border-radius-default: var(--#{$prefix}-border-radius);
-$border-radius-large  : var(--#{$prefix}-border-radius-large);
-$border-radius-round  : 300px;
+$border-radius-small: var(--#{$prefix}-bdr-r-s);
+$border-radius-default: var(--#{$prefix}-bdr-r);
+$border-radius-large: var(--#{$prefix}-bdr-r-l);
+$border-radius-round: 300px;
 
 // Sizes
-$size-small : 150px;
+$size-small: 150px;
 $size-medium: 330px;
-$size-large : 600px;
+$size-large: 600px;
 $size-xlarge: 800px;
 
 // Text weight
-$text-weight-normal   : 400;
+$text-weight-normal: 400;
 $text-weight-semi-bold: 550;
-$text-weight-thin     : 300;
-$text-weight-bold     : 700;
+$text-weight-thin: 300;
+$text-weight-bold: 700;
 
 // shadows
 
-$shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
-0 1px 2px rgba(0, 0, 0, 0.24);
-$shadow2: 0 4px 8px rgba(0, 0, 0, 0.16),
-0 2px 4px rgba(0, 0, 0, 0.23);
-$shadow3: 0 10px 20px rgba(0, 0, 0, 0.15),
-0 4px 6px rgba(0, 0, 0, 0.25);
-$shadow4: 0 15px 30px rgba(0, 0, 0, 0.20),
-0 6px 8px rgba(0, 0, 0, 0.3);
+$shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$shadow2: 0 4px 8px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+$shadow3: 0 10px 20px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.25);
+$shadow4: 0 15px 30px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.3);
 
 /**
 * box-shadow: 0 12px 30px 0 rgba(0, 0, 0, .2);
@@ -111,195 +86,194 @@ box-shadow: rgba(0, 0, 0, 0.22) 0px 25.6px 57.6px 0px,
 rgba(0, 0, 0, 0.18) 0px 4.8px 14.4px 0px;
 */
 
-
 // Form elements
-$form-element-size  : 20px;
+$form-element-size: 20px;
 $default-line-height: 20px;
 
 //$transition-time  : 150ms;
 
-$outline-default           : var(--#{$prefix}-outline);
-$outline-default-background: var(--#{$prefix}-outline-background);
+$outline-default: var(--#{$prefix}-ol);
+$outline-default-background: var(--#{$prefix}-ol-bg);
 
 $color-backdrop-light: rgba(255, 255, 255, 0.6);
-$color-backdrop-dark : rgba(22, 22, 22, 0.6);
+$color-backdrop-dark: rgba(22, 22, 22, 0.6);
 
+$app-background: var(--#{$prefix}-clr-l-app-bg);
+$app-background-dark: var(--#{$prefix}-clr-d-app-bg);
+$app-color: var(--#{$prefix}-clr-l-base);
+$app-color-dark: var(--#{$prefix}-clr-d-base);
 
-$app-background     : var(--#{$prefix}-color-light-app-background);
-$app-background-dark: var(--#{$prefix}-color-dark-app-background);
-$app-color          : var(--#{$prefix}-color-light-base);
-$app-color-dark     : var(--#{$prefix}-color-dark-base);
+$component-background-default: var(--#{$prefix}-clr-l-bg);
+$component-background-default-dark: var(--#{$prefix}-clr-d-bg);
+$component-background-inverse: var(--#{$prefix}-clr-d-bg);
+$component-background-inverse-dark: var(--#{$prefix}-clr-l-bg);
+$component-background-shade: var(--#{$prefix}-clr-sh-d);
+$component-background-shade-active: var(--#{$prefix}-clr-sh-dr);
+$component-background-shade-dark: var(--#{$prefix}-clr-sh-l);
+$component-background-shade-dark-active: var(--#{$prefix}-clr-sh-lr);
 
-$component-background-default           : var(--#{$prefix}-color-light-background);
-$component-background-default-dark      : var(--#{$prefix}-color-dark-background);
-$component-background-inverse           : var(--#{$prefix}-color-dark-background);
-$component-background-inverse-dark      : var(--#{$prefix}-color-light-background);
-$component-background-shade             : var(--#{$prefix}-color-shade);
-$component-background-shade-active      : var(--#{$prefix}-color-shade-darker);
-$component-background-shade-dark        : var(--#{$prefix}-color-shade-light);
-$component-background-shade-dark-active : var(--#{$prefix}-color-shade-light-lighter);
+$component-color-default: var(--#{$prefix}-clr-l-base);
+$component-color-muted: var(--#{$prefix}-clr-l-m);
+$component-color-active: var(--#{$prefix}-clr-l-a);
+$component-color-inverse: var(--#{$prefix}-clr-d-base);
+$component-color-default-dark: var(--#{$prefix}-clr-d-base);
+$component-color-muted-dark: var(--#{$prefix}-clr-d-m);
+$component-color-active-dark: var(--#{$prefix}-clr-d-a);
+$component-color-inverse-dark: var(--#{$prefix}-clr-l-base);
 
-$component-color-default     : var(--#{$prefix}-color-light-base);
-$component-color-muted       : var(--#{$prefix}-color-light-muted);
-$component-color-active      : var(--#{$prefix}-color-light-active);
-$component-color-inverse     : var(--#{$prefix}-color-dark-base);
-$component-color-default-dark: var(--#{$prefix}-color-dark-base);
-$component-color-muted-dark  : var(--#{$prefix}-color-dark-muted);
-$component-color-active-dark : var(--#{$prefix}-color-dark-active);
-$component-color-inverse-dark: var(--#{$prefix}-color-light-base);
-
-// $button-border-color     : var(--#{$prefix}-color-light-muted);
-// $button-border-color-dark: var(--#{$prefix}-color-dark-muted);
+// $button-border-clr     : var(--#{$prefix}-clr-light-muted);
+// $button-border-clr-dark: var(--#{$prefix}-clr-dark-muted);
 
 // Accent
-$component-background-accent             : var(--#{$prefix}-color-primary);
-$component-background-accent-hover       : var(--#{$prefix}-color-primary-muted);
-$component-background-accent-active      : var(--#{$prefix}-color-primary-active);
-$component-background-accent-muted       : var(--#{$prefix}-color-primary-muted);
-$component-background-accent-shade       : var(--#{$prefix}-color-primary-shade);
+$component-background-accent: var(--#{$prefix}-clr-acc);
+$component-background-accent-hover: var(--#{$prefix}-clr-acc-m);
+$component-background-accent-active: var(--#{$prefix}-clr-acc-a);
+$component-background-accent-muted: var(--#{$prefix}-clr-acc-m);
+$component-background-accent-shade: var(--#{$prefix}-clr-acc-sh);
 // Accent dark
-$component-background-accent-dark        : var(--#{$prefix}-color-primary-dark);
-$component-background-accent-dark-hover  : var(--#{$prefix}-color-primary-dark-muted);
-$component-background-accent-dark-active : var(--#{$prefix}-color-primary-dark-active);
-$component-background-accent-dark-muted  : var(--#{$prefix}-color-primary-dark-muted);
-$component-background-accent-dark-shade  : var(--#{$prefix}-color-primary-dark-shade);
+$component-background-accent-dark: var(--#{$prefix}-clr-acc-d);
+$component-background-accent-dark-hover: var(--#{$prefix}-clr-acc-d-m);
+$component-background-accent-dark-active: var(--#{$prefix}-clr-acc-d-a);
+$component-background-accent-dark-muted: var(--#{$prefix}-clr-acc-d-m);
+$component-background-accent-dark-shade: var(--#{$prefix}-clr-acc-d-sh);
 
 //Secondary
-$component-background-secondary             : var(--#{$prefix}-color-secondary);
-$component-background-secondary-hover       : var(--#{$prefix}-color-secondary-muted);
-$component-background-secondary-active      : var(--#{$prefix}-color-secondary-active);
-$component-background-secondary-muted       : var(--#{$prefix}-color-secondary-muted);
-$component-background-secondary-shade       : var(--#{$prefix}-color-secondary-shade);
+$component-background-secondary: var(--#{$prefix}-clr-sec);
+$component-background-secondary-hover: var(--#{$prefix}-clr-sec-m);
+$component-background-secondary-active: var(--#{$prefix}-clr-sec-a);
+$component-background-secondary-muted: var(--#{$prefix}-clr-sec-m);
+$component-background-secondary-shade: var(--#{$prefix}-clr-sec-sh);
 //Secondary dark
-$component-background-secondary-dark        : var(--#{$prefix}-color-secondary-dark);
-$component-background-secondary-dark-hover  : var(--#{$prefix}-color-secondary-dark-muted);
-$component-background-secondary-dark-active : var(--#{$prefix}-color-secondary-dark-active);
-$component-background-secondary-dark-muted  : var(--#{$prefix}-color-secondary-dark-muted);
-$component-background-secondary-dark-shade  : var(--#{$prefix}-color-secondary-dark-shade);
+$component-background-secondary-dark: var(--#{$prefix}-clr-sec-d);
+$component-background-secondary-dark-hover: var(--#{$prefix}-clr-sec-d-m);
+$component-background-secondary-dark-active: var(--#{$prefix}-clr-sec-d-a);
+$component-background-secondary-dark-muted: var(--#{$prefix}-clr-sec-d-m);
+$component-background-secondary-dark-shade: var(--#{$prefix}-clr-sec-d-sh);
 
 //Error
-$component-background-error             : var(--#{$prefix}-color-error);
-$component-background-error-hover       : var(--#{$prefix}-color-error-muted);
-$component-background-error-active      : var(--#{$prefix}-color-error-active);
-$component-background-error-muted       : var(--#{$prefix}-color-error-muted);
-$component-background-error-shade       : var(--#{$prefix}-color-error-shade);
+$component-background-error: var(--#{$prefix}-clr-err);
+$component-background-error-hover: var(--#{$prefix}-clr-err-m);
+$component-background-error-active: var(--#{$prefix}-clr-err-a);
+$component-background-error-muted: var(--#{$prefix}-clr-err-m);
+$component-background-error-shade: var(--#{$prefix}-clr-err-sh);
 //Error dark
-$component-background-error-dark        : var(--#{$prefix}-color-error-dark);
-$component-background-error-dark-hover  : var(--#{$prefix}-color-error-dark-muted);
-$component-background-error-dark-active : var(--#{$prefix}-color-error-dark-active);
-$component-background-error-dark-muted  : var(--#{$prefix}-color-error-dark-muted);
-$component-background-error-dark-shade  : var(--#{$prefix}-color-error-dark-shade);
+$component-background-error-dark: var(--#{$prefix}-clr-err-d);
+$component-background-error-dark-hover: var(--#{$prefix}-clr-err-d-m);
+$component-background-error-dark-active: var(--#{$prefix}-clr-err-d-a);
+$component-background-error-dark-muted: var(--#{$prefix}-clr-err-d-m);
+$component-background-error-dark-shade: var(--#{$prefix}-clr-err-d-sh);
 
 //Warning
-$component-background-warning             : var(--#{$prefix}-color-warning);
-$component-background-warning-hover       : var(--#{$prefix}-color-warning-muted);
-$component-background-warning-active      : var(--#{$prefix}-color-warning-active);
-$component-background-warning-muted       : var(--#{$prefix}-color-warning-muted);
-$component-background-warning-shade       : var(--#{$prefix}-color-warning-shade);
+$component-background-warning: var(--#{$prefix}-clr-warn);
+$component-background-warning-hover: var(--#{$prefix}-clr-warn-m);
+$component-background-warning-active: var(--#{$prefix}-clr-warn-a);
+$component-background-warning-muted: var(--#{$prefix}-clr-warn-m);
+$component-background-warning-shade: var(--#{$prefix}-clr-warn-sh);
 //Warning dark
-$component-background-warning-dark        : var(--#{$prefix}-color-warning-dark);
-$component-background-warning-dark-hover  : var(--#{$prefix}-color-warning-dark-muted);
-$component-background-warning-dark-active : var(--#{$prefix}-color-warning-dark-active);
-$component-background-warning-dark-muted  : var(--#{$prefix}-color-warning-dark-muted);
-$component-background-warning-dark-shade  : var(--#{$prefix}-color-warning-dark-shade);
+$component-background-warning-dark: var(--#{$prefix}-clr-warn-d);
+$component-background-warning-dark-hover: var(--#{$prefix}-clr-warn-d-m);
+$component-background-warning-dark-active: var(--#{$prefix}-clr-warn-d-a);
+$component-background-warning-dark-muted: var(--#{$prefix}-clr-warn-d-m);
+$component-background-warning-dark-shade: var(--#{$prefix}-clr-warn-d-sh);
 
 //Success
-$component-background-success             : var(--#{$prefix}-color-success);
-$component-background-success-hover       : var(--#{$prefix}-color-success-muted);
-$component-background-success-active      : var(--#{$prefix}-color-success-active);
-$component-background-success-muted       : var(--#{$prefix}-color-success-muted);
-$component-background-success-shade       : var(--#{$prefix}-color-success-shade);
+$component-background-success: var(--#{$prefix}-clr-scs);
+$component-background-success-hover: var(--#{$prefix}-clr-scs-m);
+$component-background-success-active: var(--#{$prefix}-clr-scs-a);
+$component-background-success-muted: var(--#{$prefix}-clr-scs-m);
+$component-background-success-shade: var(--#{$prefix}-clr-scs-sh);
 //Success dark
-$component-background-success-dark        : var(--#{$prefix}-color-success-dark);
-$component-background-success-dark-hover  : var(--#{$prefix}-color-success-dark-muted);
-$component-background-success-dark-active : var(--#{$prefix}-color-success-dark-active);
-$component-background-success-dark-muted  : var(--#{$prefix}-color-success-dark-muted);
-$component-background-success-dark-shade  : var(--#{$prefix}-color-success-dark-shade);
+$component-background-success-dark: var(--#{$prefix}-clr-scs-d);
+$component-background-success-dark-hover: var(--#{$prefix}-clr-scs-d-m);
+$component-background-success-dark-active: var(--#{$prefix}-clr-scs-d-a);
+$component-background-success-dark-muted: var(--#{$prefix}-clr-scs-d-m);
+$component-background-success-dark-shade: var(--#{$prefix}-clr-scs-d-sh);
 
-$component-print-background   : white !important;
-$component-print-color        : black !important;
-$component-print-shadow       : none !important;
-$component-print-border       : 1px solid $component-color-muted !important;
-$component-print-border-color : $component-color-muted !important;
+$component-print-background: white !important;
+$component-print-color: black !important;
+$component-print-shadow: none !important;
+$component-print-border: 1px solid $component-color-muted !important;
+$component-print-border-color: $component-color-muted !important;
 
 // Used in interactive components to highlight on hover: buttons
-$highlight-color     : rgba(240, 245, 250, 0.05);
+$highlight-color: rgba(240, 245, 250, 0.05);
 $highlight-color-dark: rgba(100, 120, 140, 0.05);
 
-$selection-color           : $component-color-default;
-$selection-background      : $component-background-shade-active;
-$selection-color-dark      : $component-color-default-dark;
-$selection-background-dark : $component-background-shade-dark-active;
+$selection-color: $component-color-default;
+$selection-background: $component-background-shade-active;
+$selection-color-dark: $component-color-default-dark;
+$selection-background-dark: $component-background-shade-dark-active;
 
-$component-margin : var(--#{$prefix}-component-space);
-$scrollbar-width  : var(--#{$prefix}-scrollbar-width);
+$component-margin: var(--#{$prefix}-comp-sp);
+$scrollbar-width: var(--#{$prefix}-scrl-w);
 
-$accordion-icon: var(--#{$prefix}-accordion-icon);
+$accordion-icon: var(--#{$prefix}-acc-ic);
 
 $component-disabled-border-style: dashed;
 
-// --color-primary                   : #1565c0;
-//    --color-primary-darken            : #0B3564;
-//    --color-primary-lighten           : #4F98EC;
+// --clr-primary                   : #1565c0;
+//    --clr-primary-darken            : #0B3564;
+//    --clr-primary-lighten           : #4F98EC;
 
-
-$colors-map: ('accent': $component-background-accent,
-    'accent-hover': $component-background-accent-hover,
-    'accent-active': $component-background-accent-active,
-    'accent-muted': $component-background-accent-muted,
-    'accent-shade': $component-background-accent-shade,
-    'accent-dark': $component-background-accent-dark,
-    'accent-dark-hover': $component-background-accent-dark-hover,
-    'accent-dark-active': $component-background-accent-dark-active,
-    'accent-dark-muted': $component-background-accent-dark-muted,
-    'accent-dark-shade': $component-background-accent-dark-shade,
-    'secondary': $component-background-secondary,
-    'secondary-hover': $component-background-secondary-hover,
-    'secondary-active': $component-background-secondary-active,
-    'secondary-muted': $component-background-secondary-muted,
-    'secondary-shade': $component-background-secondary-shade,
-    'secondary-dark': $component-background-secondary-dark,
-    'secondary-dark-hover': $component-background-secondary-dark-hover,
-    'secondary-dark-active': $component-background-secondary-dark-active,
-    'secondary-dark-muted': $component-background-secondary-dark-muted,
-    'secondary-dark-shade': $component-background-secondary-dark-shade,
-    'success': $component-background-success,
-    'success-hover': $component-background-success-hover,
-    'success-active': $component-background-success-active,
-    'success-muted': $component-background-success-muted,
-    'success-shade': $component-background-success-shade,
-    'success-dark': $component-background-success-dark,
-    'success-dark-hover': $component-background-success-dark-hover,
-    'success-dark-active': $component-background-success-dark-active,
-    'success-dark-muted': $component-background-success-dark-muted,
-    'success-dark-shade': $component-background-success-dark-shade,
-    'error': $component-background-error,
-    'error-dark': $component-background-error-dark,
-    'error-hover': $component-background-error-hover,
-    'error-dark-hover': $component-background-error-dark-hover,
-    'error-active': $component-background-error-active,
-    'error-dark-active': $component-background-error-dark-active,
-    'error-muted': $component-background-error-muted,
-    'error-dark-muted': $component-background-error-dark-muted,
-    'error-shade': $component-background-error-shade,
-    'error-dark-shade': $component-background-error-dark-shade,
-    'warning': $component-background-warning,
-    'warning-dark': $component-background-warning-dark,
-    'warning-hover': $component-background-warning-hover,
-    'warning-dark-hover': $component-background-warning-dark-hover,
-    'warning-active': $component-background-warning-active,
-    'warning-dark-active': $component-background-warning-dark-active,
-    'warning-muted': $component-background-warning-muted,
-    'warning-dark-muted': $component-background-warning-dark-muted,
-    'warning-shade': $component-background-warning-shade,
-    'warning-dark-shade': $component-background-warning-dark-shade);
+$colors-map: (
+	"accent": $component-background-accent,
+	"accent-hover": $component-background-accent-hover,
+	"accent-active": $component-background-accent-active,
+	"accent-muted": $component-background-accent-muted,
+	"accent-shade": $component-background-accent-shade,
+	"accent-dark": $component-background-accent-dark,
+	"accent-dark-hover": $component-background-accent-dark-hover,
+	"accent-dark-active": $component-background-accent-dark-active,
+	"accent-dark-muted": $component-background-accent-dark-muted,
+	"accent-dark-shade": $component-background-accent-dark-shade,
+	"secondary": $component-background-secondary,
+	"secondary-hover": $component-background-secondary-hover,
+	"secondary-active": $component-background-secondary-active,
+	"secondary-muted": $component-background-secondary-muted,
+	"secondary-shade": $component-background-secondary-shade,
+	"secondary-dark": $component-background-secondary-dark,
+	"secondary-dark-hover": $component-background-secondary-dark-hover,
+	"secondary-dark-active": $component-background-secondary-dark-active,
+	"secondary-dark-muted": $component-background-secondary-dark-muted,
+	"secondary-dark-shade": $component-background-secondary-dark-shade,
+	"success": $component-background-success,
+	"success-hover": $component-background-success-hover,
+	"success-active": $component-background-success-active,
+	"success-muted": $component-background-success-muted,
+	"success-shade": $component-background-success-shade,
+	"success-dark": $component-background-success-dark,
+	"success-dark-hover": $component-background-success-dark-hover,
+	"success-dark-active": $component-background-success-dark-active,
+	"success-dark-muted": $component-background-success-dark-muted,
+	"success-dark-shade": $component-background-success-dark-shade,
+	"error": $component-background-error,
+	"error-dark": $component-background-error-dark,
+	"error-hover": $component-background-error-hover,
+	"error-dark-hover": $component-background-error-dark-hover,
+	"error-active": $component-background-error-active,
+	"error-dark-active": $component-background-error-dark-active,
+	"error-muted": $component-background-error-muted,
+	"error-dark-muted": $component-background-error-dark-muted,
+	"error-shade": $component-background-error-shade,
+	"error-dark-shade": $component-background-error-dark-shade,
+	"warning": $component-background-warning,
+	"warning-dark": $component-background-warning-dark,
+	"warning-hover": $component-background-warning-hover,
+	"warning-dark-hover": $component-background-warning-dark-hover,
+	"warning-active": $component-background-warning-active,
+	"warning-dark-active": $component-background-warning-dark-active,
+	"warning-muted": $component-background-warning-muted,
+	"warning-dark-muted": $component-background-warning-dark-muted,
+	"warning-shade": $component-background-warning-shade,
+	"warning-dark-shade": $component-background-warning-dark-shade,
+);
 /*
 * For components border, like buttons, inputs
 */
 
-$component-border-default           : var(--#{$prefix}-color-light-border);
-$component-border-default-hover     : var(--#{$prefix}-color-light-border-hover);
-$component-border-default-active    : var(--#{$prefix}-color-light-border-active);
-$component-border-default-dark      : var(--#{$prefix}-color-dark-border);
-$component-border-default-hover-dark: var(--#{$prefix}-color-dark-border-hover);
-$component-border-default-active-dark: var(--#{$prefix}-color-dark-border-active);
+$component-border-default: var(--#{$prefix}-clr-l-bdr);
+$component-border-default-hover: var(--#{$prefix}-clr-l-bdr-h);
+$component-border-default-active: var(--#{$prefix}-clr-l-bdr-a);
+$component-border-default-dark: var(--#{$prefix}-clr-d-bdr);
+$component-border-default-hover-dark: var(--#{$prefix}-clr-d-cdr-h);
+$component-border-default-active-dark: var(--#{$prefix}-clr-d-bdr-a);

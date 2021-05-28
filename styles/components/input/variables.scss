@@ -1,0 +1,86 @@
+@use '../../variables'as *;
+
+$app-prefix: $prefix;
+$input-font-family: $font-family;
+$input-font-size-default: $font-normal;
+$input-font-size-small: $font-small;
+$input-line-height: $default-line-height;
+$input-background-color: var(--input-background-color);
+
+$input-option-background-color: $component-background-default;
+$input-option-background-color-dark: $component-background-default-dark;
+
+$input-color: $component-color-default;
+$input-color-dark: $component-color-default-dark;
+$input-description-color: $component-color-muted;
+$input-description-color-dark: $component-color-muted-dark;
+
+$input-border-color-inactive: $component-border-default; //$component-color-muted;
+$input-border-color-inactive-hover: $component-border-default-hover; //$component-color-muted;
+$input-border-color-active: $component-border-default-active; //$component-color-default;
+$input-placeholder-color-inactive: $component-color-muted;
+$input-placeholder-color-active: $component-color-muted;
+
+$input-border-color-inactive-dark: $component-border-default-dark; //$component-color-muted-dark;
+$input-border-color-inactive-hover-dark: $component-border-default-hover-dark; //$component-color-default-dark;
+$input-border-color-active-dark: $component-border-default-active-dark; //$component-color-default-dark;
+$input-placeholder-color-inactive-dark: $component-color-muted-dark;
+$input-placeholder-color-active-dark: $component-color-muted-dark;
+
+$input-color-disabled: $component-background-shade-active;
+$input-color-disabled-dark: $component-background-shade-dark-active;
+
+$input-color-error: $component-background-error;
+$input-color-error-hover: $component-background-error-hover;
+$input-color-error-active: $component-background-error-active;
+
+$input-color-error-dark: $component-background-error-dark;
+$input-color-error-dark-hover: $component-background-error-dark-hover;
+$input-color-error-dark-active: $component-background-error-dark-active;
+
+$input-color-warning: $component-background-warning;
+$input-color-warning-hover: $component-background-warning-hover;
+$input-color-warning-active: $component-background-warning-active;
+
+$input-color-warning-dark: $component-background-warning-dark;
+$input-color-warning-dark-hover: $component-background-warning-dark-hover;
+$input-color-warning-dark-active: $component-background-warning-dark-active;
+
+$input-color-success: $component-background-success;
+$input-color-success-active: $component-background-success-active;
+$input-color-success-hover: $component-background-success-hover;
+
+$input-color-success-dark: $component-background-success-dark;
+$input-color-success-dark-active: $component-background-success-dark-active;
+$input-color-success-dark-hover: $component-background-success-dark-hover;
+
+$input-color-accent: $component-background-accent;
+$input-color-accent-hover: $component-background-accent-hover;
+$input-color-accent-active: $component-background-accent-active;
+
+$input-color-accent-dark: $component-background-accent-dark;
+$input-color-accent-dark-hover: $component-background-accent-dark-hover;
+$input-color-accent-dark-active: $component-background-accent-dark-active;
+
+$input-color-secondary: $component-background-secondary;
+$input-color-secondary-hover: $component-background-secondary-hover;
+$input-color-secondary-active: $component-background-secondary-active;
+
+$input-color-secondary-dark: $component-background-secondary-dark;
+$input-color-secondary-dark-hover: $component-background-secondary-dark-hover;
+$input-color-secondary-dark-active: $component-background-secondary-dark-active;
+
+$input-animation-time: $animation-duration-default;
+
+$input-border-radius: $border-radius-default;
+$input-border-radius-small: $border-radius-small;
+$input-padding-default: $padding-global-small;
+$input-outline: $outline-default;
+$input-margin-small: $margin-global-small;
+
+$input-print-color: $component-print-color;
+$input-print-background: $component-print-background;
+
+$input-disabled-border-style: $component-disabled-border-style;
+
+$input-form-element-size: $form-element-size;

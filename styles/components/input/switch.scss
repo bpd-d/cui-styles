@@ -1,0 +1,354 @@
+@use "variables"as *;
+@use "../../mixins"as*;
+
+@mixin input-switch {
+	div.#{$app-prefix}-input-switch {
+		height: 24px;
+		display: inline-block;
+
+		input[type="checkbox"] {
+			margin: 0;
+			font-size: $input-font-size-default;
+			opacity: 0;
+			position: fixed;
+			width: 0;
+			box-sizing: border-box;
+
+			+ .#{$app-prefix}-content {
+				padding: 4px 10px 4px 44px;
+				cursor: pointer;
+				position: relative;
+				display: inline-block;
+				height: 24px;
+				line-height: 16px;
+				content: "";
+
+				&:before {
+					content: "";
+					position: absolute;
+					width: 16px;
+					height: 8px;
+					top: 6px;
+					left: 11px;
+					background-color: $input-background-color;
+					border: 1px solid $input-border-color-inactive;
+					border-radius: 20px;
+					opacity: 0.8;
+				}
+
+				&:after {
+					content: "";
+					position: absolute;
+					height: 16px;
+					width: 16px;
+					top: 3px;
+					left: 3px;
+					box-sizing: border-box;
+					border: 1px solid $input-border-color-inactive;
+					border-radius: 50%;
+					background-color: $input-option-background-color;
+					animation: switchMoveOff $input-animation-time ease-in
+						forwards;
+				}
+			}
+
+			&:checked {
+				+ .#{$app-prefix}-content {
+					&:after {
+						background-color: $input-color;
+						border-color: $input-border-color-active;
+						transform: translateX(18px);
+						animation: switchMoveOn $input-animation-time ease-in
+							forwards;
+					}
+
+					&:before {
+						background-color: $input-border-color-active;
+						opacity: 0.6;
+					}
+				}
+			}
+
+			&:disabled {
+				+ .#{$app-prefix}-content {
+					opacity: 0.6;
+
+					&:after {
+						background-color: $input-color-disabled;
+						border-color: $input-color-disabled;
+					}
+
+					&:before {
+						background-color: $input-color-disabled;
+					}
+				}
+
+				&:checked {
+					+ .#{$app-prefix}-content {
+						opacity: 0.7;
+
+						&:after {
+							background-color: $input-color-disabled;
+							border-color: $input-color-disabled;
+						}
+
+						&:before {
+							background-color: $input-color-disabled;
+						}
+					}
+				}
+			}
+
+			&:focus {
+				+ .#{$app-prefix}-content {
+					&:after,
+					&:before {
+						@include component-highlight-shadow(
+							$input-border-color-active
+						);
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin input-switch-theme {
+	div.#{$app-prefix}-input-switch {
+		&.#{$app-prefix}-accent {
+			input[type="checkbox"] {
+				&:checked {
+					+ .#{$app-prefix}-content {
+						&:after {
+							background-color: $input-color-accent;
+							border-color: $input-color-accent;
+						}
+
+						&:before {
+							background-color: $input-color-accent;
+							opacity: 0.6;
+						}
+					}
+				}
+
+				&:focus:checked {
+					+ .#{$app-prefix}-content {
+						&:after,
+						&:before {
+							@include component-highlight-shadow(
+								$input-color-accent
+							);
+						}
+					}
+				}
+			}
+		}
+
+		&.#{$app-prefix}-secondary {
+			input[type="checkbox"] {
+				&:checked {
+					+ .#{$app-prefix}-content {
+						&:after {
+							background-color: $input-color-secondary;
+							border-color: $input-color-secondary;
+						}
+
+						&:before {
+							background-color: $input-color-secondary;
+							opacity: 0.6;
+						}
+					}
+
+					&:focus:checked {
+						+ .#{$app-prefix}-content {
+							&:after,
+							&:before {
+								@include component-highlight-shadow(
+									$input-color-secondary
+								);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin input-switch-theme-dark {
+	@include mode-dark {
+		div.#{$app-prefix}-input-switch {
+			&.#{$app-prefix}-accent {
+				input[type="checkbox"] {
+					&:checked {
+						+ .#{$app-prefix}-content {
+							&:after {
+								background-color: $input-color-accent-dark;
+								border-color: $input-color-accent-dark;
+							}
+
+							&:before {
+								background-color: $input-color-accent-dark;
+								opacity: 0.6;
+							}
+						}
+					}
+
+					&:focus:checked {
+						+ .#{$app-prefix}-content {
+							&:after,
+							&:before {
+								@include component-highlight-shadow(
+									$input-color-accent-dark
+								);
+							}
+						}
+					}
+				}
+			}
+
+			&.#{$app-prefix}-secondary {
+				input[type="checkbox"] {
+					&:checked {
+						+ .#{$app-prefix}-content {
+							&:after {
+								background-color: $input-color-secondary-dark;
+								border-color: $input-color-secondary-dark;
+							}
+
+							&:before {
+								background-color: $input-color-secondary-dark;
+								opacity: 0.6;
+							}
+						}
+					}
+
+					&:focus:checked {
+						+ .#{$app-prefix}-content {
+							&:after,
+							&:before {
+								@include component-highlight-shadow(
+									$input-color-secondary-dark
+								);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin input-switch-dark {
+	@include mode-dark {
+		div.#{$app-prefix}-input-switch {
+			input[type="checkbox"] {
+				+ .#{$app-prefix}-content {
+					&:before {
+						background-color: $input-border-color-inactive-dark;
+					}
+
+					&:after {
+						border: 1px solid $input-border-color-inactive-dark;
+						background-color: $input-option-background-color-dark;
+					}
+				}
+
+				&:disabled {
+					+ .#{$app-prefix}-content {
+						&:after {
+							background-color: $input-color-disabled-dark;
+							border-color: $input-color-disabled-dark;
+						}
+
+						&:before {
+							background-color: $input-color-disabled-dark;
+						}
+					}
+
+					&:checked {
+						+ .#{$app-prefix}-content {
+							opacity: 0.7;
+
+							&:after {
+								background-color: $input-color-disabled-dark;
+								border-color: $input-color-disabled-dark;
+							}
+
+							&:before {
+								background-color: $input-color-disabled-dark;
+							}
+						}
+					}
+				}
+			}
+
+			&:not(.#{$app-prefix}-accent):not(.#{$app-prefix}-secondary) {
+				input[type="checkbox"] {
+					&:checked {
+						+ .#{$app-prefix}-content {
+							&:after {
+								background-color: $input-color-dark;
+								border-color: $input-border-color-active-dark;
+							}
+
+							&:before {
+								background-color: $input-border-color-active-dark;
+							}
+						}
+					}
+
+					&:focus {
+						+ .#{$app-prefix}-content {
+							&:after,
+							&:before {
+								@include component-highlight-shadow(
+									$input-border-color-active-dark
+								);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin input-switch-print {
+	@include mode-print {
+		div.#{$app-prefix}-input-switch {
+			input[type="checkbox"] {
+				+ .#{$app-prefix}-content {
+					&:before {
+						background-color: $input-print-color;
+					}
+
+					&:after {
+						border: 1px solid $input-print-color;
+						background-color: $input-print-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include input-switch();
+
+	@if (not-option-disabled($options, "dark")) {
+		@include input-switch-dark();
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include input-switch-print();
+	}
+
+	@if (not-option-disabled($options, "theme")) {
+		@include input-switch-theme();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include input-switch-theme-dark();
+		}
+	}
+}

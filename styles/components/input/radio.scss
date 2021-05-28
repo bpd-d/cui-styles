@@ -1,0 +1,210 @@
+@use 'variables' as *;
+@use '../../mixins'  as *;
+@use 'mixins' as ml;
+
+@mixin radio {
+	input[type="radio"] {
+		&.#{$app-prefix}-radio {
+			font-size: $input-font-size-default;
+			@include no-appearance;
+			display: inline-block;
+			width: calc(#{$input-form-element-size} - 4px);
+			height: calc(#{$input-form-element-size} - 4px);
+			border: 1px solid $input-border-color-inactive;
+			border-radius: 100%;
+			margin: 0;
+			box-sizing: border-box;
+			@include ml.input-transition;
+
+			&:hover {
+				//  outline     : none !important;
+				border-color: $input-border-color-active;
+				@include ml.input-transition(hover);
+			}
+
+			&:active,
+			&:focus {
+				outline: none !important;
+				@include ml.input-transition(hover);
+				@include component-highlight-shadow($input-border-color-active);
+			}
+
+			&:checked {
+				border-color: $input-border-color-active;
+				background-color: $input-color;
+				background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle r='3' cy='7' cx='7' id='path842' style='fill:%23ffffff;stroke:none;fill-opacity:1' /%3E%3C/svg%3E%0A");
+			}
+
+			&:disabled {
+				@include ml.input-transition(disabled);
+				opacity: 0.8;
+				border-color: $input-color-disabled;
+
+				&:hover {
+					@include ml.input-transition(disabled);
+					border-color: $input-color-disabled;
+				}
+
+				+ label {
+					color: $input-color-disabled;
+				}
+			}
+		}
+	}
+}
+
+@mixin radio-theme {
+	input[type="radio"] {
+		&.#{$app-prefix}-accent {
+			&:hover {
+				border-color: $input-color-accent;
+			}
+
+			&:checked {
+				border-color: $input-color-accent;
+				background-color: $input-color-accent;
+			}
+
+			&:focus {
+				@include component-highlight-shadow($input-color-accent);
+			}
+		}
+
+		&.#{$app-prefix}-secondary {
+			&:hover {
+				border-color: $input-color-secondary;
+			}
+
+			&:checked {
+				border-color: $input-color-secondary;
+				background-color: $input-color-secondary;
+			}
+
+			&:focus {
+				@include component-highlight-shadow($input-color-secondary);
+			}
+		}
+	}
+}
+
+@mixin radio-theme-dark {
+	@include mode-dark {
+		input[type="radio"] {
+			&.#{$app-prefix}-accent {
+				&:hover {
+					border-color: $input-color-accent-dark;
+				}
+
+				&:checked {
+					border-color: $input-color-accent-dark;
+					background-color: $input-color-accent-dark;
+				}
+
+				&:focus {
+					@include component-highlight-shadow(
+						$input-color-accent-dark
+					);
+				}
+			}
+
+			&.#{$app-prefix}-secondary {
+				&:hover {
+					border-color: $input-color-secondary-dark;
+				}
+
+				&:checked {
+					border-color: $input-color-secondary-dark;
+					background-color: $input-color-secondary-dark;
+				}
+
+				&:focus {
+					@include component-highlight-shadow(
+						$input-color-secondary-dark
+					);
+				}
+			}
+		}
+	}
+}
+
+@mixin radio-dark {
+	@include mode-dark {
+		input[type="radio"] {
+			&.#{$app-prefix}-radio {
+				border-color: $input-border-color-inactive-dark;
+
+				&:not(.#{$app-prefix}-accent):not(.#{$app-prefix}-secondary) {
+					&:hover {
+						border-color: $input-border-color-active-dark;
+					}
+
+					&:checked {
+						border-color: $input-border-color-active-dark;
+						background-color: $input-color-dark;
+						background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle r='3' cy='7' cx='7' id='path842' style='fill:%23222222;stroke:none;fill-opacity:1' /%3E%3C/svg%3E%0A");
+					}
+
+					&:focus {
+						@include component-highlight-shadow(
+							$input-border-color-active-dark
+						);
+					}
+				}
+
+				&:disabled {
+					border-color: $input-color-disabled-dark;
+
+					&:hover {
+						border-color: $input-color-disabled-dark;
+					}
+
+					+ label {
+						color: $input-color-disabled-dark;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin radio-print {
+	@include mode-print {
+		input[type="radio"] {
+			&.#{$app-prefix}-radio {
+				border-color: $input-print-color;
+
+				&:checked {
+					background-color: $input-print-color;
+				}
+
+				&:disabled {
+					border-color: $input-print-color;
+
+					+ label {
+						color: $input-print-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include radio();
+
+	@if (not-option-disabled($options, "dark")) {
+		@include radio-dark();
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include radio-print();
+	}
+
+	@if (not-option-disabled($options, "theme")) {
+		@include radio-theme();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include radio-theme-dark();
+		}
+	}
+}

@@ -1,0 +1,315 @@
+@use 'variables'as *;
+@use '../../mixins'as *;
+
+@mixin input {
+	input.#{$app-prefix}-input {
+		outline: none;
+		padding: $input-padding-default;
+		border: 1px solid $input-border-color-inactive;
+		border-radius: $input-border-radius;
+		font-size: $input-font-size-default;
+		line-height: $input-line-height;
+		box-sizing: border-box;
+		font-family: $input-font-family;
+		background-color: $input-background-color;
+		color: $input-color;
+
+		&::placeholder {
+			color: $input-placeholder-color-inactive;
+		}
+
+		&:hover {
+			outline: none !important;
+			border: 1px solid $input-border-color-inactive-hover;
+		}
+
+		&:focus {
+			border: 1px solid $input-border-color-active;
+			outline: none;
+			@include component-highlight-shadow($input-border-color-active);
+
+			&::placeholder {
+				color: $input-placeholder-color-active;
+			}
+
+			&:hover {
+				border: 1px solid $input-border-color-active;
+			}
+		}
+
+		&:disabled {
+			color: $input-color-disabled;
+			border: 1px $input-disabled-border-style $input-color-disabled !important;
+
+			&:focus {
+				border-color: $input-color-disabled;
+			}
+		}
+
+		&.#{$app-prefix}-transparent {
+			border-color: transparent;
+		}
+
+		&.#{$app-prefix}-large {
+			@include component-padding(normal, true);
+		}
+
+		&.#{$app-prefix}-small {
+			@include component-padding(small, false);
+		}
+
+		&.#{$app-prefix}-round {
+			@include component-padding;
+			border-radius: calc(#{$input-border-radius}* 20);
+		}
+	}
+}
+
+@mixin input-theme {
+	input.#{$app-prefix}-input {
+		&.#{$app-prefix}-accent {
+			border: 1px solid $input-color-accent;
+
+			&:hover {
+				border-color: $input-color-accent-hover;
+			}
+
+			&:focus {
+				border-color: $input-color-accent-active;
+				@include component-highlight-shadow($input-color-accent);
+			}
+		}
+
+		&.#{$app-prefix}-secondary {
+			border: 1px solid $input-color-secondary;
+
+			&:hover {
+				border-color: $input-color-secondary-hover;
+			}
+
+			&:focus {
+				border-color: $input-color-secondary-active;
+				@include component-highlight-shadow($input-color-secondary);
+			}
+		}
+	}
+}
+
+@mixin input-theme-dark {
+	@include mode-dark {
+		input.#{$app-prefix}-input {
+			&.#{$app-prefix}-accent {
+				border: 1px solid $input-color-accent-dark;
+
+				&:hover {
+					border-color: $input-color-accent-dark-hover;
+				}
+
+				&:focus {
+					border-color: $input-color-accent-dark-active;
+					@include component-highlight-shadow(
+						$input-color-accent-dark
+					);
+				}
+			}
+
+			&.#{$app-prefix}-secondary {
+				border: 1px solid $input-color-secondary-dark;
+
+				&:hover {
+					border-color: $input-color-secondary-dark-hover;
+				}
+
+				&:focus {
+					border-color: $input-color-secondary-dark-active;
+					@include component-highlight-shadow(
+						$input-color-secondary-dark
+					);
+				}
+			}
+		}
+	}
+}
+
+@mixin input-signals {
+	input.#{$app-prefix}-input {
+		&.#{$app-prefix}-error {
+			border: 1px solid $input-color-error;
+
+			&:hover {
+				border-color: $input-color-error-hover;
+			}
+
+			&:focus {
+				border-color: $input-color-error-active;
+				@include component-highlight-shadow($input-color-error);
+			}
+		}
+
+		&.#{$app-prefix}-warning {
+			border: 1px solid $input-color-warning;
+
+			&:hover {
+				border-color: $input-color-warning-hover;
+			}
+
+			&:focus {
+				border-color: $input-color-warning-active;
+				@include component-highlight-shadow($input-color-warning);
+			}
+		}
+
+		&.#{$app-prefix}-success {
+			border: 1px solid $input-color-success;
+
+			&:hover {
+				border-color: $input-color-success-hover;
+			}
+
+			&:focus {
+				border-color: $input-color-success-active;
+				@include component-highlight-shadow($input-color-success);
+			}
+		}
+	}
+}
+
+@mixin input-signals-dark {
+	@include mode-dark {
+		input.#{$app-prefix}-input {
+			&.#{$app-prefix}-error {
+				border: 1px solid $input-color-error-dark;
+
+				&:hover {
+					border-color: $input-color-error-dark-hover;
+				}
+
+				&:focus {
+					border-color: $input-color-error-dark-active;
+					@include component-highlight-shadow(
+						$input-color-error-dark
+					);
+				}
+			}
+
+			&.#{$app-prefix}-warning {
+				border: 1px solid $input-color-warning-dark;
+
+				&:hover {
+					border-color: $input-color-warning-dark-hover;
+				}
+
+				&:focus {
+					border-color: $input-color-warning-dark-active;
+					@include component-highlight-shadow(
+						$input-color-warning-dark
+					);
+				}
+			}
+
+			&.#{$app-prefix}-success {
+				border: 1px solid $input-color-success-dark;
+
+				&:hover {
+					border-color: $input-color-success-dark-hover;
+				}
+
+				&:focus {
+					border-color: $input-color-success-dark-active;
+					@include component-highlight-shadow(
+						$input-color-success-dark
+					);
+				}
+			}
+		}
+	}
+}
+
+@mixin input-dark {
+	@include mode-dark {
+		input.#{$app-prefix}-input {
+			color: $input-color-dark;
+
+			&::placeholder {
+				color: $input-placeholder-color-inactive-dark;
+			}
+
+			&:hover {
+				border: 1px solid $input-border-color-inactive-hover-dark;
+			}
+
+			&:focus {
+				&::placeholder {
+					color: $input-placeholder-color-active-dark;
+				}
+			}
+
+			&:disabled {
+				color: $input-color-disabled-dark;
+				border: 1px $input-disabled-border-style
+					$input-color-disabled-dark !important;
+
+				&:focus {
+					border-color: $input-color-disabled-dark;
+				}
+			}
+
+			&:not(.#{$app-prefix}-error):not(.#{$app-prefix}-success):not(.#{$app-prefix}-warning):not(.#{$app-prefix}-accent):not(.#{$app-prefix}-secondary) {
+				border: 1px solid $input-border-color-inactive-dark;
+
+				&:focus {
+					border: 1px solid $input-border-color-active-dark;
+					@include component-highlight-shadow(
+						$input-border-color-active-dark
+					);
+				}
+			}
+		}
+	}
+}
+
+@mixin input-print {
+	@include mode-print {
+		input.#{$app-prefix}-input {
+			color: $input-print-color;
+			border-color: $input-print-color;
+
+			&::placeholder {
+				color: $input-print-color;
+			}
+
+			&:disabled {
+				color: $input-color-disabled;
+				border: 1px $input-disabled-border-style $input-color-disabled !important;
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include input;
+
+	@if (not-option-disabled($options, "dark")) {
+		@include input-dark();
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include input-print();
+	}
+
+	@if (not-option-disabled($options, "theme")) {
+		@include input-theme();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include input-theme-dark();
+		}
+	}
+
+	@if (not-option-disabled($options, "signal")) {
+		@include input-signals;
+
+		@if (not-option-disabled($options, "dark")) {
+			@include input-signals-dark();
+		}
+	}
+}

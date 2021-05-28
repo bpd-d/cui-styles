@@ -1,0 +1,51 @@
+@use '../../mixins'as*;
+@use 'input';
+@use 'mix';
+@use 'range';
+@use 'select';
+@use 'radio';
+@use 'textarea';
+@use 'form';
+@use 'custom';
+@use 'checkbox';
+@use 'switch';
+
+@mixin definitions($options: ()) {
+	@include input.exports($options);
+
+	@if (not-option-disabled($options, "mix")) {
+		@include mix.exports($options);
+	}
+
+	@if (not-option-disabled($options, "range")) {
+		@include range.exports($options);
+	}
+
+	@if (not-option-disabled($options, "select")) {
+		@include select.exports($options);
+	}
+
+	@if (not-option-disabled($options, "radio")) {
+		@include radio.exports($options);
+	}
+
+	@if (not-option-disabled($options, "textarea")) {
+		@include textarea.exports($options);
+	}
+
+	@if (not-option-disabled($options, "form")) {
+		@include form.exports($options);
+	}
+
+	@if (not-option-disabled($options, "custom")) {
+		@include custom.exports($options);
+	}
+
+	@if (not-option-disabled($options, "checkbox")) {
+		@include checkbox.exports($options);
+	}
+
+	@if (not-option-disabled($options, "switch")) {
+		@include switch.exports($options);
+	}
+}

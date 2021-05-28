@@ -1,0 +1,412 @@
+@use 'variables' as *;
+@use '../../mixins' as *;
+
+@mixin input-mix {
+	div.#{$app-prefix}-input-mix {
+		display: inline-flex;
+		position: relative;
+		//	@include createHighlight($radius: $input-border-radius);
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: calc(100% - 2px);
+			border: 1px solid $input-border-color-inactive;
+			border-radius: $input-border-radius;
+			height: calc(100% - 2px);
+			top: 0px;
+			left: 0px;
+			z-index: 0;
+		}
+
+		&:hover {
+			&:before {
+				outline: none !important;
+				border-color: $input-border-color-inactive-hover;
+			}
+		}
+
+		&:focus-within {
+			&:before {
+				border-color: $input-border-color-active;
+				@include component-highlight-shadow($input-border-color-active);
+			}
+		}
+
+		.#{$app-prefix}-input {
+			border: none !important;
+			box-shadow: none !important;
+			background-color: transparent;
+			order: 0;
+			flex: 1 1 auto !important;
+			z-index: 1;
+
+			&:disabled {
+				border: none !important;
+				user-select: none;
+				pointer-events: none;
+
+				+ .#{$app-prefix}-icon,
+				+ .#{$app-prefix}-button {
+					user-select: none;
+					pointer-events: none;
+				}
+			}
+		}
+
+		.#{$app-prefix}-icon,
+		.#{$app-prefix}-button {
+			order: 1;
+			padding: $input-padding-default;
+			border-bottom-left-radius: 0px;
+			border-top-left-radius: 0px;
+			border-bottom-right-radius: calc(#{$input-border-radius} - 1px);
+			border-top-right-radius: calc(#{$input-border-radius} - 1px);
+			flex: 0 0 auto !important;
+			z-index: 1;
+		}
+
+		&.#{$app-prefix}-reverse {
+			.#{$app-prefix}-input {
+				order: 1;
+			}
+
+			.#{$app-prefix}-icon,
+			.#{$app-prefix}-button {
+				order: 0;
+				border-bottom-right-radius: 0px;
+				border-top-right-radius: 0px;
+				border-bottom-left-radius: calc(#{$input-border-radius} - 1px);
+				border-top-left-radius: calc(#{$input-border-radius} - 1px);
+			}
+		}
+
+		&.#{$app-prefix}-disabled {
+			user-select: none;
+			pointer-events: none;
+
+			&:before {
+				border-style: $input-disabled-border-style !important;
+				border-color: $input-color-disabled !important;
+			}
+
+			.#{$app-prefix}-input {
+				border: none !important;
+				color: $input-color-disabled !important;
+			}
+		}
+	}
+}
+
+@mixin input-mix-theme {
+	div.#{$app-prefix}-input-mix {
+		&.#{$app-prefix}-accent {
+			&:before {
+				border-color: $input-color-accent;
+			}
+
+			&:hover {
+				&:before {
+					border-color: $input-color-accent-hover;
+				}
+			}
+
+			&:focus-within {
+				&:before {
+					border-color: $input-color-accent-active;
+					@include component-highlight-shadow(
+						$input-color-accent-active
+					);
+				}
+			}
+		}
+
+		&.#{$app-prefix}-secondary {
+			&:before {
+				border-color: $input-color-secondary;
+			}
+
+			&:hover {
+				&:before {
+					border-color: $input-color-secondary-hover;
+				}
+			}
+
+			&:focus-within {
+				&:before {
+					border-color: $input-color-secondary-active;
+					@include component-highlight-shadow(
+						$input-color-secondary-active
+					);
+				}
+			}
+		}
+	}
+}
+
+@mixin input-mix-theme-dark {
+	@include mode-dark {
+		div.#{$app-prefix}-input-mix {
+			&.#{$app-prefix}-accent {
+				&:before {
+					border-color: $input-color-accent-dark;
+				}
+
+				&:hover {
+					&:before {
+						border-color: $input-color-accent-dark-hover;
+					}
+				}
+
+				&:focus-within {
+					&:before {
+						border-color: $input-color-accent-dark-active;
+						@include component-highlight-shadow(
+							$input-color-accent-dark-active
+						);
+					}
+				}
+			}
+
+			&.#{$app-prefix}-secondary {
+				&:before {
+					border-color: $input-color-secondary-dark;
+				}
+
+				&:hover {
+					&:before {
+						border-color: $input-color-secondary-dark-hover;
+					}
+				}
+
+				&:focus-within {
+					&:before {
+						border-color: $input-color-secondary-dark-active;
+						@include component-highlight-shadow(
+							$input-color-secondary-dark-active
+						);
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin input-mix-signals {
+	div.#{$app-prefix}-input-mix {
+		&.#{$app-prefix}-error {
+			&:before {
+				border-color: $input-color-error;
+			}
+
+			&:hover {
+				&:before {
+					border-color: $input-color-error-hover;
+				}
+			}
+
+			&:focus-within {
+				&:before {
+					border-color: $input-color-error-active;
+					@include component-highlight-shadow(
+						$input-color-error-active
+					);
+				}
+			}
+		}
+
+		&.#{$app-prefix}-warning {
+			&:before {
+				border-color: $input-color-warning;
+			}
+
+			&:hover {
+				&:before {
+					border-color: $input-color-warning-hover;
+				}
+			}
+
+			&:focus-within {
+				&:before {
+					border-color: $input-color-warning-active;
+					@include component-highlight-shadow(
+						$input-color-warning-active
+					);
+				}
+			}
+		}
+
+		&.#{$app-prefix}-success {
+			&:before {
+				border-color: $input-color-success;
+			}
+
+			&:hover {
+				&:before {
+					border-color: $input-color-success-hover;
+				}
+			}
+
+			&:focus-within {
+				&:before {
+					border-color: $input-color-success-active;
+					@include component-highlight-shadow(
+						$input-color-success-active
+					);
+				}
+			}
+		}
+	}
+}
+
+@mixin input-mix-signals-dark {
+	@include mode-dark {
+		div.#{$app-prefix}-input-mix {
+			&.#{$app-prefix}-error {
+				&:before {
+					border-color: $input-color-error-dark;
+				}
+
+				&:hover {
+					&:before {
+						border-color: $input-color-error-dark-hover;
+					}
+				}
+
+				&:focus-within {
+					&:before {
+						border-color: $input-color-error-dark-active;
+						@include component-highlight-shadow(
+							$input-color-error-dark-active
+						);
+					}
+				}
+			}
+
+			&.#{$app-prefix}-warning {
+				&:before {
+					border-color: $input-color-warning-dark;
+				}
+
+				&:hover {
+					&:before {
+						border-color: $input-color-warning-dark-hover;
+					}
+				}
+
+				&:focus-within {
+					&:before {
+						border-color: $input-color-warning-dark-active;
+						@include component-highlight-shadow(
+							$input-color-warning-dark-active
+						);
+					}
+				}
+			}
+
+			&.#{$app-prefix}-success {
+				&:before {
+					border-color: $input-color-success-dark;
+				}
+
+				&:hover {
+					&:before {
+						border-color: $input-color-success-dark-hover;
+					}
+				}
+
+				&:focus-within {
+					&:before {
+						border-color: $input-color-success-dark-active;
+						@include component-highlight-shadow(
+							$input-color-success-dark-active
+						);
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin input-mix-dark {
+	@include mode-dark {
+		div.#{$app-prefix}-input-mix {
+			//@include updateHighlight($color: $highlight-color);
+
+			&:not(.#{$app-prefix}-error):not(.#{$app-prefix}-success):not(.#{$app-prefix}-warning):not(.#{$app-prefix}-accent):not(.#{$app-prefix}-secondary) {
+				&:before {
+					border: 1px solid $input-border-color-inactive-dark;
+				}
+
+				&:hover {
+					border-color: $input-border-color-inactive-hover-dark;
+				}
+
+				&:focus-within {
+					&:before {
+						border-color: $input-border-color-active-dark;
+						@include component-highlight-shadow(
+							$input-border-color-active-dark
+						);
+					}
+				}
+			}
+
+			.#{$app-prefix}-input {
+				border: none !important;
+			}
+
+			&.#{$app-prefix}-disabled {
+				&:before {
+					border-color: $input-color-disabled-dark !important;
+				}
+
+				.#{$app-prefix}-input {
+					color: $input-color-disabled-dark !important;
+				}
+			}
+		}
+	}
+}
+
+@mixin input-mix-print {
+	@include mode-print {
+		div.#{$app-prefix}-input-mix {
+			&:before {
+				border-color: $input-print-color;
+			}
+
+			.#{$app-prefix}-input {
+				border: none !important;
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include input-mix();
+
+	@if (not-option-disabled($options, "dark")) {
+		@include input-mix-dark();
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include input-mix-print();
+	}
+
+	@if (not-option-disabled($options, "theme")) {
+		@include input-mix-theme();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include input-mix-theme-dark();
+		}
+	}
+
+	@if (not-option-disabled($options, "signal")) {
+		@include input-mix-signals();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include input-mix-signals-dark();
+		}
+	}
+}

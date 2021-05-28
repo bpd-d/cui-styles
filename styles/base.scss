@@ -1,6 +1,6 @@
 @use 'mixins'as *;
 @use 'core/flex';
-@use 'core/heads';
+//@use 'core/heads';
 @use 'core/containers';
 @use 'core/section';
 @use 'core/grid';
@@ -11,89 +11,95 @@
 @use 'core/focus';
 @use "sass:map";
 
-$base-elements:("flex",
-    "heading",
-    "container",
-    "section",
-    "grid",
-    "position",
-    "transition",
-    "slide",
-    "sticky");
+$base-elements: (
+	"flex",
+	//"heading",
+	"container",
+	"section",
+	"grid",
+	"position",
+	"transition",
+	"slide",
+	"sticky"
+);
 
-@mixin definitions($base:(), $dark: true, $print: true, $theme: true, $signal: true) {
+@mixin definitions(
+	$base: (),
+	$dark: true,
+	$print: true,
+	$theme: true,
+	$signal: true
+) {
+	$list: $base;
 
-    $list: $base;
+	@if (length($list) ==0) {
+		$list: $base-elements;
+	}
 
-    @if(length($list)==0) {
-        $list: $base-elements;
-    }
+	@each $name, $options in $list {
+		@debug "Compile element: #{$name} with options: ";
+		@debug $options;
 
-    @each $name,
-    $options in $list {
-        @debug "Compile element: #{$name} with options: ";
-        @debug $options;
+		$opts: ();
 
-        $opts: ();
+		@if ($options !=null) {
+			$opts: $options;
+		}
 
-        @if($options !=null) {
-            $opts: $options;
-        }
+		@if not $dark {
+			@warn "Setting option dark to false";
+			$opts: map.set($opts, "dark", false);
+		}
 
-        @if not $dark {
-            @warn "Setting option dark to false";
-            $opts: map.set($opts, "dark", false);
-        }
+		@if not $print {
+			@warn "Setting option print to false";
+			$opts: map.set($opts, "print", false);
+		}
 
-        @if not $print {
-            @warn "Setting option print to false";
-            $opts: map.set($opts, "print", false);
-        }
+		@if not $theme {
+			@warn "Setting option theme to false";
+			$opts: map.set($opts, "theme", false);
+		}
 
-        @if not $theme {
-            @warn "Setting option theme to false";
-            $opts: map.set($opts, "theme", false);
-        }
+		@if not $signal {
+			@warn "Setting option signal to false";
+			$opts: map.set($opts, "signal", false);
+		}
 
-        @if not $signal {
-            @warn "Setting option signal to false";
-            $opts: map.set($opts, "signal", false);
-        }
+		@if $name== "flex" {
+			@include flex.definitions($opts);
+		}
 
-        @if $name=="flex" {
-            @include flex.definitions($opts);
-        }
+		// @if $name=="heading" {
+		//     @include heads.definitions($opts);
+		// }
 
-        @if $name=="heading" {
-            @include heads.definitions($opts);
-        }
+		@if $name== "container" {
+			@include containers.definitions($opts);
+		}
 
-        @if $name=="container" {
-            @include containers.definitions($opts);
-        }
+		@if $name== "section" {
+			@include section.definitions($opts);
+		}
 
-        @if $name=="section" {
-            @include section.definitions($opts);
-        }
+		@if $name== "grid" {
+			@include grid.definitions($opts);
+		}
 
-        @if $name=="grid" {
-            @include grid.definitions($opts);
-        }
+		@if $name== "position" {
+			@include position.definitions($opts);
+		}
 
-        @if $name=="position" {
-            @include position.definitions($opts);
-        }
+		@if $name== "transition" {
+			@include transition.definitions($opts);
+		}
 
-        @if $name=="transition" {
-            @include transition.definitions($opts);
-        }
+		@if $name== "slide" {
+			@include slide.definitions($opts);
+		}
 
-        @if $name=="slide" {
-            @include slide.definitions($opts);
-        }
-
-        @if $name=="sticky" {
-            @include sticky.definitions($opts);
-        }
-    }
+		@if $name== "sticky" {
+			@include sticky.definitions($opts);
+		}
+	}
 }

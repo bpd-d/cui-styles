@@ -1,5 +1,10 @@
 # cUI Styles CHANGELOG:
 
+# [0.4.1] 2020-05-28
+
+-   [Changed] Initial refactoring of components by splitting large and complex components into smaller pieces
+-   [Changed] Flex now initializes with no-shrink, no-grow options for children
+
 # [0.4.0] 2020-05-27
 
 -   [Added] Flex gap for supported browsers

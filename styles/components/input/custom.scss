@@ -1,0 +1,349 @@
+@use 'variables'as *;
+@use '../../mixins.scss'as *;
+
+@mixin radio-custom {
+	div.#{$app-prefix}-radio-custom {
+		display: inline-block;
+		box-sizing: border-box;
+
+		input[type="radio"],
+		input[type="checkbox"] {
+			opacity: 0;
+			position: fixed;
+			width: 0;
+			box-sizing: border-box;
+			margin: 0;
+
+			+ .#{$app-prefix}-content {
+				display: inline-block;
+				overflow: hidden;
+				cursor: pointer;
+				position: relative;
+				@include component-padding;
+
+				&:before {
+					content: "";
+					position: absolute;
+					top: 2px;
+					left: 2px;
+					width: calc(100%-6px);
+					height: calc(100%-6px);
+					border: 1px solid $input-border-color-inactive;
+					border-radius: $input-border-radius;
+				}
+
+				&:hover {
+					&:before {
+						border-color: $input-border-color-active;
+					}
+				}
+			}
+
+			&:checked {
+				+ .#{$app-prefix}-content {
+					&:before {
+						width: calc(100% -8px);
+						height: calc(100% -8px);
+						border-width: 2px;
+						border-color: $input-border-color-active;
+					}
+				}
+			}
+
+			&:focus,
+			&:active {
+				+ .#{$app-prefix}-content {
+					&:before {
+						width: calc(100% -6px);
+						height: calc(100% -6px);
+						border-width: 1px;
+						border-color: $input-border-color-active;
+						@include component-highlight-shadow(
+							$input-border-color-active
+						);
+					}
+				}
+
+				&:checked {
+					+ .#{$app-prefix}-content {
+						&:before {
+							width: calc(100% -8px);
+							height: calc(100% -8px);
+							border-width: 2px;
+						}
+					}
+				}
+			}
+
+			&:disabled {
+				+ .#{$app-prefix}-content {
+					color: $input-color-disabled;
+					user-select: none;
+
+					&:before {
+						width: calc(100%-6px);
+						height: calc(100%-6px);
+						border: 1px $input-disabled-border-style
+							$input-color-disabled !important;
+						user-select: none;
+					}
+				}
+
+				&:active,
+				&:focus {
+					+ .#{$app-prefix}-content {
+						&:before {
+							box-shadow: none !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin radio-custom-theme {
+	div.#{$app-prefix}-radio-custom {
+		&.#{$app-prefix}-accent {
+			input[type="radio"],
+			input[type="checkbox"] {
+				+ .#{$app-prefix}-content {
+					&:hover {
+						&:before {
+							border-color: $input-color-accent-hover;
+						}
+					}
+				}
+
+				&:checked {
+					+ .#{$app-prefix}-content {
+						&:before {
+							border-color: $input-color-accent-active;
+						}
+					}
+				}
+
+				&:focus {
+					+ .#{$app-prefix}-content {
+						&:before {
+							@include component-highlight-shadow(
+								$input-color-accent
+							);
+						}
+					}
+				}
+			}
+		}
+
+		&.#{$app-prefix}-secondary {
+			input[type="radio"],
+			input[type="checkbox"] {
+				+ .#{$app-prefix}-content {
+					&:hover {
+						&:before {
+							border-color: $input-color-secondary-hover;
+						}
+					}
+				}
+
+				&:checked {
+					+ .#{$app-prefix}-content {
+						&:before {
+							border-color: $input-color-secondary-active;
+						}
+					}
+				}
+
+				&:focus {
+					+ .#{$app-prefix}-content {
+						&:before {
+							@include component-highlight-shadow(
+								$input-color-secondary
+							);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin radio-custom-theme-dark {
+	@include mode-dark {
+		div.#{$app-prefix}-radio-custom {
+			&.#{$app-prefix}-accent {
+				input[type="radio"],
+				input[type="checkbox"] {
+					+ .#{$app-prefix}-content {
+						&:before {
+							border-color: $input-border-color-inactive-dark;
+						}
+
+						&:hover {
+							&:before {
+								border-color: $input-color-accent-dark-hover;
+							}
+						}
+					}
+
+					&:checked {
+						+ .#{$app-prefix}-content {
+							&:before {
+								border-color: $input-color-accent-dark-active;
+							}
+						}
+					}
+
+					&:focus {
+						+ .#{$app-prefix}-content {
+							&:before {
+								@include component-highlight-shadow(
+									$input-color-accent-dark
+								);
+							}
+						}
+					}
+				}
+			}
+
+			&.#{$app-prefix}-secondary {
+				input[type="radio"],
+				input[type="checkbox"] {
+					+ .#{$app-prefix}-content {
+						&:before {
+							border-color: $input-border-color-inactive-dark;
+						}
+
+						&:hover {
+							&:before {
+								border-color: $input-color-secondary-dark-hover;
+							}
+						}
+					}
+
+					&:checked {
+						+ .#{$app-prefix}-content {
+							&:before {
+								border-color: $input-color-secondary-dark-active;
+							}
+						}
+					}
+
+					&:focus {
+						+ .#{$app-prefix}-content {
+							&:before {
+								@include component-highlight-shadow(
+									$input-color-secondary-dark
+								);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin radio-custom-dark {
+	@include mode-dark {
+		div.#{$app-prefix}-radio-custom {
+			&:not(.#{$app-prefix}-accent):not(.#{$app-prefix}-secondary) {
+				input[type="radio"],
+				input[type="checkbox"] {
+					+ .#{$app-prefix}-content {
+						&:before {
+							border: 1px solid $input-border-color-inactive-dark;
+						}
+
+						&:hover {
+							&:before {
+								border-color: $input-border-color-active-dark;
+							}
+						}
+					}
+
+					&:checked {
+						+ .#{$app-prefix}-content {
+							&:before {
+								border: 2px solid
+									$input-border-color-active-dark;
+							}
+						}
+					}
+
+					&:focus {
+						+ .#{$app-prefix}-content {
+							&:before {
+								@include component-highlight-shadow(
+									$input-border-color-active-dark
+								);
+							}
+						}
+					}
+				}
+			}
+
+			input[type="radio"] {
+				&:disabled {
+					+ .#{$app-prefix}-content {
+						color: $input-color-disabled-dark !important;
+
+						&:before {
+							border: 1px $input-disabled-border-style
+								$input-color-disabled-dark !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin radio-custom-print {
+	@include mode-print {
+		div.#{$app-prefix}-radio-custom {
+			input[type="radio"],
+			input[type="checkbox"] {
+				+ .#{$app-prefix}-content {
+					&:before {
+						border-color: $input-print-color;
+					}
+
+					&:hover {
+						&:before {
+							border-color: $input-print-color;
+						}
+					}
+				}
+
+				&:checked {
+					+ .#{$app-prefix}-content {
+						&:before {
+							border-color: $input-print-color;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include radio-custom();
+
+	@if (not-option-disabled($options, "dark")) {
+		@include radio-custom-dark();
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include radio-custom-print();
+	}
+
+	@if (not-option-disabled($options, "theme")) {
+		@include radio-custom-theme();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include radio-custom-theme-dark();
+		}
+	}
+}

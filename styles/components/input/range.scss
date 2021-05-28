@@ -1,0 +1,221 @@
+@use "variables" as *;
+@use '../../mixins' as *;
+
+@mixin range {
+	input[type="range"] {
+		&.#{$app-prefix}-range {
+			@include no-appearance;
+			height: 2px;
+			background-color: $input-border-color-inactive;
+			outline: none;
+			opacity: 0.8;
+			transition: opacity $input-animation-time ease-in;
+			border: 1px solid transparent;
+			border-radius: 4px;
+			width: 100%;
+			box-sizing: border-box;
+
+			&:hover,
+			&:focus {
+				opacity: 1;
+
+				&::-webkit-slider-thumb {
+					transform: scale(1.1);
+				}
+
+				&::-moz-range-thumb {
+					transform: scale(1.1);
+				}
+			}
+
+			&::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				appearance: none;
+				width: calc(#{$input-form-element-size} - 4px);
+				height: calc(#{$input-form-element-size} - 4px);
+				background-color: $input-option-background-color;
+				border: 4px solid $input-border-color-active;
+				border-radius: 50%;
+				cursor: pointer;
+				transform: scale(1);
+				transition: transform $input-animation-time ease-in;
+				box-sizing: border-box;
+			}
+
+			&::-moz-range-thumb {
+				width: calc(#{$input-form-element-size} - 4px);
+				height: calc(#{$input-form-element-size} - 4px);
+				background-color: $input-option-background-color;
+				border: 4px solid $input-border-color-active;
+				cursor: pointer;
+				border-radius: 50%;
+				transform: scale(1);
+				transition: transform $input-animation-time ease-in;
+				box-sizing: border-box;
+			}
+
+			&:disabled {
+				background-color: $input-color-disabled;
+				opacity: 0.6;
+
+				&:hover {
+					opacity: 0.6;
+
+					&::-webkit-slider-thumb {
+						transform: scale(1);
+					}
+
+					&::-moz-range-thumb {
+						transform: scale(1);
+					}
+				}
+
+				&::-webkit-slider-thumb {
+					border: 1px solid $input-color-disabled;
+					background-color: $input-color-disabled;
+				}
+
+				&::-moz-range-thumb {
+					border: 1px solid $input-color-disabled;
+					background-color: $input-color-disabled;
+				}
+			}
+		}
+	}
+}
+
+@mixin range-theme {
+	input[type="range"] {
+		&.#{$app-prefix}-range {
+			&.#{$app-prefix}-accent {
+				background-color: $input-color-accent;
+
+				&::-webkit-slider-thumb {
+					border: 4px solid $input-color-accent;
+				}
+
+				&::-moz-range-thumb {
+					border: 4px solid $input-color-accent;
+				}
+			}
+
+			&.#{$app-prefix}-secondary {
+				background-color: $input-color-secondary;
+
+				&::-webkit-slider-thumb {
+					border: 4px solid $input-color-secondary;
+				}
+
+				&::-moz-range-thumb {
+					border: 4px solid $input-color-secondary;
+				}
+			}
+		}
+	}
+}
+
+@mixin range-theme-dark {
+	@include mode-dark {
+		input[type="range"] {
+			&.#{$app-prefix}-range {
+				&.#{$app-prefix}-accent {
+					background-color: $input-color-accent-dark;
+
+					&::-webkit-slider-thumb {
+						border: 4px solid $input-color-accent-dark;
+					}
+
+					&::-moz-range-thumb {
+						border: 4px solid $input-color-accent-dark;
+					}
+				}
+
+				&.#{$app-prefix}-secondary {
+					background-color: $input-color-secondary-dark;
+
+					&::-webkit-slider-thumb {
+						border: 4px solid $input-color-secondary-dark;
+					}
+
+					&::-moz-range-thumb {
+						border: 4px solid $input-color-secondary-dark;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin range-dark {
+	@include mode-dark {
+		input[type="range"] {
+			&.#{$app-prefix}-range {
+				&:not(.#{$app-prefix}-accent):not(.#{$app-prefix}-secondary) {
+					background-color: $input-border-color-inactive-dark;
+
+					&::-webkit-slider-thumb {
+						background-color: $input-option-background-color-dark;
+						border: 4px solid $input-border-color-active-dark;
+					}
+
+					&::-moz-range-thumb {
+						background-color: $input-option-background-color-dark;
+						border: 4px solid $input-border-color-active-dark;
+					}
+				}
+
+				&:disabled {
+					background-color: $input-color-disabled-dark;
+
+					&::-webkit-slider-thumb {
+						border: 1px solid $input-color-disabled-dark;
+						background-color: $input-color-disabled-dark;
+					}
+
+					&::-moz-range-thumb {
+						border: 1px solid $input-color-disabled-dark;
+						background-color: $input-color-disabled-dark;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin range-print {
+	@include mode-print {
+		input[type="range"] {
+			background-color: $input-print-color;
+
+			&::-webkit-slider-thumb {
+				background-color: $input-print-background;
+				border-color: $input-print-color;
+			}
+
+			&::-moz-range-thumb {
+				background-color: $input-print-background;
+				border-color: $input-print-color;
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include range();
+
+	@if (not-option-disabled($options, "dark")) {
+		@include range-dark();
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include range-print();
+	}
+
+	@if (not-option-disabled($options, "theme")) {
+		@include range-theme();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include range-theme-dark();
+		}
+	}
+}

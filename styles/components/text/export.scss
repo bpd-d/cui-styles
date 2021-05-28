@@ -1,0 +1,34 @@
+@use "../../mixins" as *;
+
+@use 'headings';
+@use 'base';
+@use 'blockquote';
+@use 'article';
+@use 'height';
+@use 'placement';
+@use 'options';
+
+@mixin exports($options: ()) {
+	@include base.exports($options);
+	@include options.exports($options);
+
+	@if (not-option-disabled($options, "heading")) {
+		@include headings.exports($options);
+	}
+
+	@if (not-option-disabled($options, "blockquote")) {
+		@include blockquote.exports($options);
+	}
+
+	@if (not-option-disabled($options, "article")) {
+		@include article.exports($options);
+	}
+
+	@if (not-option-disabled($options, "line-height")) {
+		@include height.exports($options);
+	}
+
+	@if (not-option-disabled($options, "placement")) {
+		@include placement.exports($options);
+	}
+}

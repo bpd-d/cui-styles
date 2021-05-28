@@ -1,0 +1,175 @@
+@use 'variables'as *;
+@use '../../mixins'as *;
+
+@mixin textarea {
+	textarea.#{$app-prefix}-textarea {
+		font-size: $input-font-size-default;
+		padding: $input-padding-default;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		border: 1px solid $input-border-color-inactive;
+		border-radius: $input-border-radius;
+		color: $input-color;
+		line-height: $input-line-height;
+		background-color: $input-background-color;
+
+		&::placeholder {
+			color: $input-placeholder-color-inactive;
+		}
+
+		&:hover {
+			border-color: $input-border-color-inactive-hover;
+		}
+
+		&:focus {
+			outline: none !important;
+			border-color: $input-border-color-active;
+			@include component-highlight-shadow($input-border-color-active);
+		}
+
+		&:disabled {
+			color: $input-color-disabled;
+			border: 1px $input-disabled-border-style $input-color-disabled !important;
+			user-select: none;
+			pointer-events: none;
+			resize: none;
+		}
+
+		&.#{$app-prefix}-transparent {
+			border-color: transparent;
+		}
+	}
+}
+
+@mixin textarea-theme {
+	textarea.#{$app-prefix}-textarea {
+		&.#{$app-prefix}-accent {
+			border-color: $input-color-accent;
+
+			&:hover {
+				border-color: $input-color-accent-active;
+			}
+
+			&:focus {
+				border-color: $input-color-accent-active;
+				@include component-highlight-shadow($input-color-accent);
+			}
+		}
+
+		&.#{$app-prefix}-secondary {
+			border-color: $input-color-secondary;
+
+			&:hover {
+				border-color: $input-color-secondary-active;
+			}
+
+			&:focus {
+				border-color: $input-color-secondary-active;
+				@include component-highlight-shadow($input-color-secondary);
+			}
+		}
+	}
+}
+
+@mixin textarea-theme-dark {
+	@include mode-dark {
+		textarea.#{$app-prefix}-textarea {
+			&.#{$app-prefix}-accent {
+				border-color: $input-color-accent-dark;
+
+				&:hover {
+					border-color: $input-color-accent-dark-active;
+				}
+
+				&:focus {
+					border-color: $input-color-accent-dark-active;
+					@include component-highlight-shadow(
+						$input-color-accent-dark
+					);
+				}
+			}
+
+			&.#{$app-prefix}-secondary {
+				border-color: $input-color-secondary-dark;
+
+				&:hover {
+					border-color: $input-color-secondary-dark-active;
+				}
+
+				&:focus {
+					border-color: $input-color-secondary-dark-active;
+					@include component-highlight-shadow(
+						$input-color-secondary-dark
+					);
+				}
+			}
+		}
+	}
+}
+
+@mixin textarea-dark {
+	@include mode-dark {
+		textarea.#{$app-prefix}-textarea {
+			color: $input-color-dark;
+
+			&:hover {
+				border-color: $input-border-color-inactive-hover-dark;
+			}
+
+			&:not(.#{$app-prefix}-accent):not(.#{$app-prefix}-secondary) {
+				border: 1px solid $input-border-color-inactive-dark;
+
+				&:focus {
+					border-color: $input-border-color-active-dark;
+					@include component-highlight-shadow(
+						$input-border-color-active-dark
+					);
+				}
+			}
+
+			&::placeholder {
+				color: $input-placeholder-color-inactive-dark;
+			}
+
+			&:disabled {
+				color: $input-color-disabled-dark !important;
+				border: 1px $input-disabled-border-style
+					$input-color-disabled-dark !important;
+			}
+		}
+	}
+}
+
+@mixin textarea-print {
+	@include mode-print {
+		textarea.#{$app-prefix}-textarea {
+			color: $input-print-color;
+			border-color: $input-print-color;
+
+			&::placeholder {
+				color: $input-print-color;
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+    @include textarea();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include textarea-dark();
+		}
+
+		@if (not-option-disabled($options, "print")) {
+			@include textarea-print();
+		}
+
+		@if (not-option-disabled($options, "theme")) {
+			@include textarea-theme();
+
+			@if (not-option-disabled($options, "dark")) {
+				@include textarea-theme-dark();
+			}
+		}
+}

@@ -1,0 +1,47 @@
+@use '../../variables'as *;
+@use '../../mixins'as *;
+
+$blockquote-background-default: $component-background-shade;
+$blockquote-background-dark: $component-background-shade-dark;
+$blockquote-border-color: $component-background-shade-active;
+$blockquote-border-color-dark: $component-background-shade-dark-active;
+
+@mixin blockquote {
+	.#{$prefix}-blockquote {
+		@include component-padding(normal, true);
+		border-left: 4px solid $blockquote-border-color;
+		background-color: $blockquote-background-default;
+		font-style: italic;
+		margin: 0px;
+	}
+}
+
+@mixin blockquote-dark {
+	@include mode-dark {
+		.#{$prefix}-blockquote {
+			border-color: $blockquote-border-color-dark;
+			background-color: $blockquote-background-dark;
+		}
+	}
+}
+
+@mixin blockquote-print {
+	@include mode-print {
+		.#{$prefix}-blockquote {
+			border-color: $component-print-color;
+			background-color: $component-print-background;
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include blockquote;
+
+	@if (not-option-disabled($options, "print")) {
+		@include blockquote-print();
+	}
+
+	@if (not-option-disabled($options, "dark")) {
+		@include blockquote-dark();
+	}
+}

@@ -1,0 +1,21 @@
+@use '../../variables'as *;
+@use '../../mixins'as *;
+
+$text-xlarge: $font-xlarge;
+$text-large: $font-large;
+
+@mixin article {
+	.#{$prefix}-article-title {
+		font-size: $text-xlarge;
+		font-weight: $text-weight-thin;
+	}
+
+	.#{$prefix}-article-description {
+		font-size: $text-large;
+		font-weight: $text-weight-thin;
+	}
+}
+
+@mixin exports($options: ()) {
+	@include article();
+}

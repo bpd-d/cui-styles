@@ -1,0 +1,121 @@
+@use 'variables'as *;
+@use '../../mixins'as *;
+
+@mixin form {
+	div.#{$app-prefix}-form {
+		display: block;
+
+		> .#{$app-prefix}-form-label {
+			order: 0;
+			display: block;
+		}
+
+		.#{$app-prefix}-form-description {
+			order: 1;
+			color: $input-description-color;
+			font-size: $input-font-size-small;
+
+			&:before {
+				content: "(";
+			}
+
+			&:after {
+				content: ")";
+			}
+		}
+
+		> input,
+		> select,
+		> textarea,
+		> .#{$app-prefix}-input-switch {
+			order: 2;
+			margin-top: $input-margin-small;
+			display: block;
+		}
+
+		&.#{$app-prefix}-inline {
+			.#{$app-prefix}-form-label {
+				display: inline-block;
+				margin-right: $input-margin-small;
+			}
+
+			> input,
+			> select {
+				margin-top: 0px;
+				display: inline-block;
+			}
+		}
+
+		&.#{$app-prefix}-flex {
+			display: flex;
+
+			flex-wrap: nowrap;
+
+			> label,
+			> div,
+			> .#{$app-prefix}-form-label {
+				display: inline-block;
+				margin-right: $input-margin-small;
+				order: 1;
+			}
+
+			> input,
+			> select,
+			> textarea,
+			> .#{$app-prefix}-input-switch {
+				margin-top: 0px;
+				display: inline-block;
+				order: 2;
+			}
+
+			&.#{$app-prefix}-reverse {
+				> label,
+				> div,
+				> .#{$app-prefix}-form-label {
+					margin-left: $input-margin-small;
+					order: 2;
+				}
+
+				> input,
+				> select,
+				> textarea {
+					margin-top: 0px;
+					display: inline-block;
+					order: 1;
+				}
+			}
+		}
+	}
+}
+
+@mixin form-dark {
+	@include mode-dark {
+		div.#{$app-prefix}-form {
+			.#{$app-prefix}-input-description {
+				color: $input-description-color-dark;
+			}
+		}
+	}
+}
+
+@mixin form-print {
+	@include mode-print {
+		div.#{$app-prefix}-form {
+			.#{$app-prefix}-input-description {
+				color: $input-print-color;
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include form();
+
+	@if (not-option-disabled($options, "dark")) {
+		@include form-dark();
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include form-print();
+	}
+}

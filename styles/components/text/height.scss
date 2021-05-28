@@ -1,0 +1,51 @@
+@use '../../variables'as *;
+@use '../../mixins'as *;
+
+$text-line-height: $line-height;
+$text-line-large: $line-height-large;
+$text-line-small: $line-height-small;
+$text-line-xlarge: $line-height-xlarge;
+
+@mixin line-height($size: "") {
+	.#{$prefix}-line-height#{$size} {
+		line-height: $text-line-height;
+	}
+
+	.#{$prefix}-line-height-large#{$size} {
+		line-height: $text-line-large;
+	}
+
+	.#{$prefix}-line-height-xlarge#{$size} {
+		line-height: $text-line-xlarge;
+	}
+
+	.#{$prefix}-line-height-small#{$size} {
+		line-height: $text-line-small;
+	}
+}
+
+@mixin line-height-responsive() {
+	@include media-screen-min-small {
+		@include line-height(--s);
+	}
+
+	@include media-screen-min-medium {
+		@include line-height(--m);
+	}
+
+	@include media-screen-min-large {
+		@include line-height(--l);
+	}
+
+	@include media-screen-min-xlarge {
+		@include line-height(--xl);
+	}
+}
+
+@mixin exports($options: ()) {
+	@include line-height();
+
+	@if (not-option-disabled($options, "responsive")) {
+		@include line-height-responsive();
+	}
+}

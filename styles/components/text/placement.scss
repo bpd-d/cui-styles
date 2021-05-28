@@ -1,0 +1,66 @@
+@use '../../variables'as *;
+@use '../../mixins'as *;
+
+@mixin text-align($size: "") {
+    .#{$prefix}-text-left#{$size} {
+        text-align: left;
+    }
+
+    .#{$prefix}-text-right#{$size} {
+        text-align: right;
+    }
+
+    .#{$prefix}-text-center#{$size} {
+        text-align: center;
+    }
+
+    .#{$prefix}-text-justify#{$size} {
+        text-align: justify;
+    }
+}
+
+
+@mixin text-wrap($size: "") {
+    .#{$prefix}-text-truncate#{$size} {
+        white-space  : nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .#{$prefix}-text-nowrap#{$size} {
+        white-space  : nowrap;
+        text-overflow: clip;
+    }
+}
+
+@mixin text-media {
+    @include media-screen-min-small {
+        @include text-align(--s);
+        @include text-wrap(--s);
+    }
+
+    @include media-screen-min-medium {
+        @include text-align(--m);
+        @include text-wrap(--m);
+    }
+
+    @include media-screen-min-large {
+        @include text-align(--l);
+        @include text-wrap(--l);
+    }
+
+    @include media-screen-min-xlarge {
+        @include text-align(--xl);
+        @include text-wrap(--xl);
+    }
+}
+
+@mixin exports($options: ()) {
+	@if (not-option-disabled($options, "placement")) {
+		@include text-align();
+		@include text-wrap();
+
+		@if (not-option-disabled($options, "responsive")) {
+			@include text-media();
+		}
+	}
+}

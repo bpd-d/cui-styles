@@ -16,7 +16,8 @@
 		justify-content: start;
 		align-items: flex-start;
 
-		& > {
+		> * {
+			flex: 0 0 auto;
 			min-width: 0px;
 			min-height: 0px;
 		}
@@ -25,10 +26,6 @@
 
 @mixin flex-align($size: "") {
 	.#{$prefix}-flex {
-		> * {
-			flex: 0 1 auto;
-		}
-
 		&.#{$prefix}-center#{$size} {
 			justify-content: center !important;
 		}

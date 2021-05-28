@@ -14,7 +14,7 @@
 	// colors
 	// Light
 	--#{$prefix}-clr-l-app-bg: #fdfdfe;
-	--#{$prefix}-clr-l-bg: rgba(255, 255, 255, 0.87);
+	--#{$prefix}-clr-l-bg: rgba(255, 255, 255, 1);
 	--#{$prefix}-clr-l-base: #333435;
 	--#{$prefix}-clr-l-a: #222324;
 	--#{$prefix}-clr-l-m: #aaabac;
@@ -110,7 +110,7 @@
 		}
 
 		--#{$prefix}-clr-d-app-bg: #222324;
-		--#{$prefix}-clr-d-bg: rgba(29, 30, 31, 0.87); //#242526;
+		--#{$prefix}-clr-d-bg: rgba(29, 30, 31, 1); //#242526;
 		--#{$prefix}-clr-d-base: #fff;
 		--#{$prefix}-clr-d-a: #777879;
 		--#{$prefix}-clr-d-m: #dddedf; //#cccdce;

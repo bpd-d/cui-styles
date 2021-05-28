@@ -1,5 +1,5 @@
-@use '../variables'as *;
-@use '../mixins'as *;
+@use '../../variables'as *;
+@use '../../mixins'as *;
 
 $head-text-weight-thin     : $text-weight-thin;
 $head-text-weight-bold     : $text-weight-bold;
@@ -70,7 +70,7 @@ $head-margin-small: $margin-global-small;
     }
 }
 
-@mixin definitions($options: ()) {
+@mixin exports($options: ()) {
 
     @if(not-option-disabled($options, 'title')) {
         @include title;

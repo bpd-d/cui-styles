@@ -1,0 +1,216 @@
+@use 'variables' as*;
+@use '../../mixins'as *;
+@use 'mixins' as ml;
+
+@mixin checkbox {
+	input[type="checkbox"] {
+		&.#{$app-prefix}-checkbox {
+			font-size: $input-font-size-default;
+			margin: 0;
+			@include no-appearance;
+			display: inline-block;
+			width: calc(#{$input-form-element-size} - 4px);
+			height: calc(#{$input-form-element-size} - 4px);
+			border: 1px solid $input-border-color-inactive;
+			border-radius: $input-border-radius-small;
+			background-size: 14px 14px;
+			@include ml.input-transition;
+
+			&:hover {
+				border-color: $input-border-color-active;
+				@include ml.input-transition(hover);
+			}
+
+			&:checked {
+				border-color: $input-border-color-active;
+				background-color: $input-color;
+				background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='16' width='16'%3E%3Cpath d='M 3,8 8,13 13,3' style='fill:none;stroke:%23fff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' /%3E%3C/svg%3E%0A");
+			}
+
+			&:focus {
+				outline: none !important;
+				@include ml.input-transition(hover);
+				@include component-highlight-shadow($input-border-color-active);
+			}
+
+			&:disabled {
+				opacity: 0.8;
+				border-color: $input-color-disabled !important;
+				@include ml.input-transition(disabled);
+
+				&:checked {
+					background-color: $input-color-disabled !important;
+				}
+
+				&:hover {
+					border-color: $input-color-disabled !important;
+					@include ml.input-transition(disabled);
+				}
+
+				+ label {
+					color: $input-color-disabled;
+				}
+			}
+		}
+	}
+}
+
+@mixin checkbox-theme {
+	input[type="checkbox"] {
+		&.#{$app-prefix}-accent {
+			&:hover {
+				border-color: $input-color-accent;
+			}
+
+			&:checked {
+				border-color: $input-color-accent;
+				background-color: $input-color-accent;
+			}
+
+			&:focus:checked {
+				@include component-highlight-shadow($input-color-accent);
+			}
+		}
+
+		&.#{$app-prefix}-secondary {
+			&:hover {
+				border-color: $input-color-secondary;
+			}
+
+			&:checked {
+				border-color: $input-color-secondary;
+				background-color: $input-color-secondary;
+			}
+
+			&:focus:checked {
+				@include component-highlight-shadow($input-color-secondary);
+			}
+		}
+	}
+}
+
+@mixin checkbox-theme-dark {
+	@include mode-dark {
+		input[type="checkbox"] {
+			&.#{$app-prefix}-accent {
+				&:hover {
+					border-color: $input-color-accent-dark;
+				}
+
+				&:checked {
+					border-color: $input-color-accent-dark;
+					background-color: $input-color-accent-dark;
+				}
+
+				&:focus {
+					@include component-highlight-shadow(
+						$input-color-accent-dark
+					);
+				}
+			}
+
+			&.#{$app-prefix}-secondary {
+				&:hover {
+					border-color: $input-color-secondary-dark;
+				}
+
+				&:checked {
+					border-color: $input-color-secondary-dark;
+					background-color: $input-color-secondary-dark;
+				}
+
+				&:focus {
+					@include component-highlight-shadow(
+						$input-color-secondary-dark
+					);
+				}
+			}
+		}
+	}
+}
+
+@mixin checkbox-dark {
+	@include mode-dark {
+		input[type="checkbox"] {
+			&.#{$app-prefix}-checkbox {
+				border: 1px solid $input-border-color-inactive-dark;
+
+				&:not(.#{$app-prefix}-accent):not(.#{$app-prefix}-secondary) {
+					&:hover {
+						border-color: $input-border-color-active-dark;
+					}
+
+					&:checked {
+						border-color: $input-border-color-active-dark;
+						background-color: $input-color-dark;
+						background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='16' width='16'%3E%3Cpath d='M 3,8 8,13 13,3' style='fill:none;stroke:%23222;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' /%3E%3C/svg%3E%0A");
+					}
+
+					&:focus {
+						@include component-highlight-shadow(
+							$input-border-color-active-dark
+						);
+					}
+				}
+
+				&:disabled {
+					opacity: 0.8;
+					border-color: $input-color-disabled-dark !important;
+					@include ml.input-transition(disabled);
+
+					&:checked {
+						background-color: $input-color-disabled-dark !important;
+					}
+
+					&:hover {
+						border-color: $input-color-disabled-dark !important;
+						@include ml.input-transition(disabled);
+					}
+
+					+ label {
+						color: $input-color-disabled-dark;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin checkbox-print {
+	@include mode-print {
+		input[type="checkbox"] {
+			&.#{$app-prefix}-checkbox {
+				border: 1px solid $input-print-color;
+
+				&:hover {
+					border-color: $input-border-color-active-dark;
+				}
+
+				&:checked {
+					border-color: $input-print-color;
+					background-color: $input-print-color;
+				}
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include checkbox();
+
+	@if (not-option-disabled($options, "dark")) {
+		@include checkbox-dark();
+	}
+
+	@if (not-option-disabled($options, "theme")) {
+		@include checkbox-theme();
+
+		@if (not-option-disabled($options, "dark")) {
+			@include checkbox-theme-dark();
+		}
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include checkbox-print();
+	}
+}

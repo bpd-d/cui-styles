@@ -1,0 +1,72 @@
+@use '../../variables'as *;
+@use '../../mixins'as *;
+
+$text-large       : $font-large;
+$text-small       : $font-small;
+$text-xlarge      : $font-xlarge;
+
+@mixin text-weights {
+    .#{$prefix}-text-bold {
+        font-weight: $text-weight-bold;
+    }
+
+    .#{$prefix}-text-thin {
+        font-weight: $text-weight-thin;
+    }
+}
+
+@mixin text-sizes {
+    .#{$prefix}-text-large {
+        font-size: $text-large;
+    }
+
+    .#{$prefix}-text-small {
+        font-size: $text-small;
+    }
+}
+
+@mixin text-decorations {
+    .#{$prefix}-text-underline {
+        text-decoration: underline;
+    }
+
+    .#{$prefix}-text-line {
+        text-decoration: line-through;
+    }
+
+    .#{$prefix}-text-italic {
+        font-style: italic;
+    }
+}
+
+@mixin text-transform {
+    .#{$prefix}-text-upper {
+        text-transform: uppercase;
+    }
+
+    .#{$prefix}-text-lower {
+        text-transform: lowercase;
+    }
+
+    .#{$prefix}-text-capital {
+        text-transform: capitalize;
+    }
+}
+
+@mixin exports($options: ()) {
+	@if (not-option-disabled($options, "size")) {
+		@include text-sizes;
+	}
+
+	@if (not-option-disabled($options, "weight")) {
+		@include text-weights();
+	}
+
+	@if (not-option-disabled($options, "transform")) {
+		@include text-transform();
+	}
+
+	@if (not-option-disabled($options, "decoration")) {
+		@include text-decorations;
+	}
+}

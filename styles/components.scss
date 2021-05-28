@@ -6,11 +6,11 @@
 @use 'components/buttons';
 @use 'components/banner';
 @use 'components/links';
-@use 'components/text';
+@use 'components/text/export' as text;
 @use 'components/icon';
 @use 'components/card';
 @use 'components/breadcrumb';
-@use 'components/input';
+@use 'components/input/export' as input; //@use 'components/input';
 @use 'components/spinner';
 @use 'components/table';
 @use 'components/drop';
@@ -45,254 +45,178 @@
 @use "sass:list";
 @use "sass:string";
 
-$components-list: ("navbar",
-    "accordion",
-    "dialog",
-    "tab",
-    "tooltip",
-    "button",
-    "banner",
-    "link",
-    "text",
-    "icon",
-    "card",
-    "breadcrumb",
-    "input",
-    "spinner",
-    "table",
-    "drop",
-    "switch",
-    "switcher",
-    "list",
-    "overlay",
-    "progress",
-    "background",
-    "badge",
-    "toast",
-    "offcanvas",
-    "hint",
-    "special",
-    "cover",
-    "shadow",
-    "separator",
-    "scrollbar",
-    "code",
-    "selection",
-    "float",
-    "sortable",
-    "corner",
-    "info-box",
-    "sequence",
-    "hover",
-    "border",
-    "notification",
-    "image"
+$components-list: (
+	"navbar",
+	"accordion",
+	"dialog",
+	"tab",
+	"tooltip",
+	"button",
+	"banner",
+	"link",
+	"text",
+	"icon",
+	"card",
+	"breadcrumb",
+	"input",
+	"spinner",
+	"table",
+	"drop",
+	"switch",
+	"switcher",
+	"list",
+	"overlay",
+	"progress",
+	"background",
+	"badge",
+	"toast",
+	"offcanvas",
+	"hint",
+	"special",
+	"cover",
+	"shadow",
+	"separator",
+	"scrollbar",
+	"code",
+	"selection",
+	"float",
+	"sortable",
+	"corner",
+	"info-box",
+	"sequence",
+	"hover",
+	"border",
+	"notification",
+	"image"
 );
 
-@mixin definitions($components:(), $dark: true, $print: true, $theme: true, $signal: true) {
-    $list: $components;
+@mixin definitions(
+	$components: (),
+	$dark: true,
+	$print: true,
+	$theme: true,
+	$signal: true
+) {
+	$list: $components;
 
-    @if(length($list)==0) {
-        $list: $components-list;
-    }
+	@if (length($list) ==0) {
+		$list: $components-list;
+	}
 
-    @each $name,
-    $options in $list {
-        @debug "Compile component: #{$name} with options: ";
-        @debug $options;
+	@each $name, $options in $list {
+		@debug "Compile component: #{$name} with options: ";
+		@debug $options;
 
-        $opts: ();
+		$opts: ();
 
-        @if($options !=null) {
-            $opts: $options;
-        }
+		@if ($options !=null) {
+			$opts: $options;
+		}
 
-        @if not $dark {
-            @warn "Setting option DARK to false";
-            $opts: map.set($opts, "dark", false);
-        }
+		@if not $dark {
+			@warn "Setting option DARK to false";
+			$opts: map.set($opts, "dark", false);
+		}
 
-        @if not $print {
-            @warn "Setting option PRINT to false";
-            $opts: map.set($opts, "print", false);
-        }
+		@if not $print {
+			@warn "Setting option PRINT to false";
+			$opts: map.set($opts, "print", false);
+		}
 
-        @if not $theme {
-            @warn "Setting option THEME to false";
-            $opts: map.set($opts, "theme", false);
-        }
+		@if not $theme {
+			@warn "Setting option THEME to false";
+			$opts: map.set($opts, "theme", false);
+		}
 
-        @if not $signal {
-            @warn "Setting option SIGNAL to false";
-            $opts: map.set($opts, "signal", false);
-        }
+		@if not $signal {
+			@warn "Setting option SIGNAL to false";
+			$opts: map.set($opts, "signal", false);
+		}
 
-        @if $name=="navbar" {
-            @include navbar.definitions($opts);
-        }
-
-        @else if $name=="accordion" {
-            @include accordion.definitions($opts);
-        }
-
-        @else if $name=="dialog" {
-            @include dialog.definitions($opts);
-        }
-
-        @else if $name=="tab" {
-            @include tab.definitions($opts);
-        }
-
-        @else if $name=="tooltip" {
-            @include tooltip.definitions($opts);
-        }
-
-        @else if $name=="button" {
-            @include buttons.definitions($opts);
-        }
-
-        @else if $name=="banner" {
-            @include banner.definitions($opts);
-        }
-
-        @else if $name=="link" {
-            @include links.definitions($opts);
-        }
-
-        @else if $name=="text" {
-            @include text.definitions($opts);
-        }
-
-        @else if $name=="icon" {
-            @include icon.definitions($opts);
-        }
-
-        @else if $name=="card" {
-            @include card.definitions($opts);
-        }
-
-        @else if $name=="breadcrumb" {
-            @include breadcrumb.definitions($opts);
-        }
-
-        @else if $name=="input" {
-            @include input.definitions($opts);
-        }
-
-        @else if $name=="spinner" {
-            @include spinner.definitions($opts);
-        }
-
-        @else if $name=="table" {
-            @include table.definitions($opts);
-        }
-
-        @else if $name=="drop" {
-            @include drop.definitions($opts);
-        }
-
-        @else if $name=="switch" {
-            @include switch.definitions($opts);
-        }
-
-        @else if $name=="switcher" {
-            @include switcher.definitions($opts);
-        }
-
-        @else if $name=="list" {
-            @include lists.definitions($opts);
-        }
-
-        @else if $name=="overlay" {
-            @include overlay.definitions($opts);
-        }
-
-        @else if $name=="progress" {
-            @include progress.definitions($opts);
-        }
-
-        @else if $name=="background" {
-            @include background.definitions($opts);
-        }
-
-        @else if $name=="badge" {
-            @include badge.definitions($opts);
-        }
-
-        @else if $name=="toast" {
-            @include toast.definitions($opts);
-        }
-
-        @else if $name=="offcanvas" {
-            @include offcanvas.definitions($opts);
-        }
-
-        @else if $name=="hint" {
-            @include hint.definitions($opts);
-        }
-
-        @else if $name=="special" {
-            @include special.definitions($opts);
-        }
-
-        @else if $name=="cover" {
-            @include cover.definitions($opts);
-        }
-
-        @else if $name=="shadow" {
-            @include shadows.definitions($opts);
-        }
-
-        @else if $name=="separator" {
-            @include separator.definitions($opts);
-        }
-
-        @else if $name=="scrollbar" {
-            @include scrollbar.definitions($opts);
-        }
-
-        @else if $name=="code" {
-            @include code.definitions($opts);
-        }
-
-        @else if $name=="selection" {
-            @include selection.definitions($opts);
-        }
-
-        @else if $name=="float" {
-            @include float.definitions($opts);
-        }
-
-        @else if $name=="sortable" {
-            @include sortable.definitions($opts);
-        }
-
-        @else if $name=="corner" {
-            @include corner.definitions($opts);
-        }
-
-        @else if $name=="sequence" {
-            @include sequence.definitions($opts);
-        }
-
-        @else if $name=="info-box" {
-            @include info-box.definitions($opts);
-        }
-
-        @else if $name=="hover" {
-            @include hover.definitions($opts);
-        }
-
-        @else if $name=="border" {
-            @include border.definitions($opts);
-        }
-
-        @else if $name=="notification" {
-            @include notification.definitions($opts);
-        }
-
-        @else if $name=="image" {
-            @include image.definitions($opts);
-        }
-    }
+		@if $name== "navbar" {
+			@include navbar.definitions($opts);
+		} @else if $name== "accordion" {
+			@include accordion.definitions($opts);
+		} @else if $name== "dialog" {
+			@include dialog.definitions($opts);
+		} @else if $name== "tab" {
+			@include tab.definitions($opts);
+		} @else if $name== "tooltip" {
+			@include tooltip.definitions($opts);
+		} @else if $name== "button" {
+			@include buttons.definitions($opts);
+		} @else if $name== "banner" {
+			@include banner.definitions($opts);
+		} @else if $name== "link" {
+			@include links.definitions($opts);
+		} @else if $name== "text" {
+			@include text.exports($opts);
+		} @else if $name== "icon" {
+			@include icon.definitions($opts);
+		} @else if $name== "card" {
+			@include card.definitions($opts);
+		} @else if $name== "breadcrumb" {
+			@include breadcrumb.definitions($opts);
+		} @else if $name== "input" {
+			@include input.definitions($opts);
+		} @else if $name== "spinner" {
+			@include spinner.definitions($opts);
+		} @else if $name== "table" {
+			@include table.definitions($opts);
+		} @else if $name== "drop" {
+			@include drop.definitions($opts);
+		} @else if $name== "switch" {
+			@include switch.definitions($opts);
+		} @else if $name== "switcher" {
+			@include switcher.definitions($opts);
+		} @else if $name== "list" {
+			@include lists.definitions($opts);
+		} @else if $name== "overlay" {
+			@include overlay.definitions($opts);
+		} @else if $name== "progress" {
+			@include progress.definitions($opts);
+		} @else if $name== "background" {
+			@include background.definitions($opts);
+		} @else if $name== "badge" {
+			@include badge.definitions($opts);
+		} @else if $name== "toast" {
+			@include toast.definitions($opts);
+		} @else if $name== "offcanvas" {
+			@include offcanvas.definitions($opts);
+		} @else if $name== "hint" {
+			@include hint.definitions($opts);
+		} @else if $name== "special" {
+			@include special.definitions($opts);
+		} @else if $name== "cover" {
+			@include cover.definitions($opts);
+		} @else if $name== "shadow" {
+			@include shadows.definitions($opts);
+		} @else if $name== "separator" {
+			@include separator.definitions($opts);
+		} @else if $name== "scrollbar" {
+			@include scrollbar.definitions($opts);
+		} @else if $name== "code" {
+			@include code.definitions($opts);
+		} @else if $name== "selection" {
+			@include selection.definitions($opts);
+		} @else if $name== "float" {
+			@include float.definitions($opts);
+		} @else if $name== "sortable" {
+			@include sortable.definitions($opts);
+		} @else if $name== "corner" {
+			@include corner.definitions($opts);
+		} @else if $name== "sequence" {
+			@include sequence.definitions($opts);
+		} @else if $name== "info-box" {
+			@include info-box.definitions($opts);
+		} @else if $name== "hover" {
+			@include hover.definitions($opts);
+		} @else if $name== "border" {
+			@include border.definitions($opts);
+		} @else if $name== "notification" {
+			@include notification.definitions($opts);
+		} @else if $name== "image" {
+			@include image.definitions($opts);
+		}
+	}
 }

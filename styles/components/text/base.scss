@@ -1,0 +1,139 @@
+@use '../../variables'as *;
+@use '../../mixins'as *;
+
+$text-color-muted: $component-color-muted;
+$text-color-muted-dark: $component-color-muted-dark;
+$text-color-dark: $component-color-default-dark;
+
+$font-weight: $text-weight-normal;
+$text-line-height: $line-height;
+
+@mixin text {
+	p,
+	a,
+	span {
+		line-height: $text-line-height;
+		font-weight: $font-weight;
+	}
+
+	.#{$prefix}-text-muted {
+		color: $text-color-muted;
+	}
+
+	.#{$prefix}-text-dark {
+		color: $text-color-dark;
+	}
+
+	.#{$prefix}-font-mono {
+		font-family: $font-family-mono;
+	}
+
+	.#{$prefix}-font-alternative {
+		font-family: $font-family-alter;
+	}
+
+	p:first-child {
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+
+	p:only-child {
+		margin: 0px;
+	}
+}
+
+@mixin text-theme {
+	.#{$prefix}-text-accent {
+		@include color("accent");
+	}
+
+	.#{$prefix}-text-secondary {
+		@include color("secondary");
+	}
+}
+
+@mixin text-theme-dark {
+	@include mode-dark {
+		.#{$prefix}-text-accent {
+			@include color("accent-dark");
+		}
+
+		.#{$prefix}-text-secondary {
+			@include color("secondary-dark");
+		}
+	}
+}
+
+@mixin text-signals {
+	.#{$prefix}-text-success {
+		@include color("success");
+	}
+
+	.#{$prefix}-text-warning {
+		@include color("warning");
+	}
+
+	.#{$prefix}-text-error {
+		@include color("error");
+	}
+}
+
+@mixin text-signals-dark {
+	@include mode-dark {
+		.#{$prefix}-text-success {
+			@include color("success-dark");
+		}
+
+		.#{$prefix}-text-warning {
+			@include color("warning-dark");
+		}
+
+		.#{$prefix}-text-error {
+			@include color("error-dark");
+		}
+	}
+}
+
+@mixin text-dark {
+	@include mode-dark {
+		.#{$prefix}-text-muted {
+			color: $text-color-muted-dark;
+		}
+	}
+}
+
+@mixin text-print {
+	@include mode-print {
+		[class*="#{$prefix}-text-"] {
+			color: $component-print-color;
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include text;
+
+	@if (not-option-disabled($options, "dark")) {
+		@include text-dark();
+	}
+
+	@if (not-option-disabled($options, "theme")) {
+		@include text-theme;
+
+		@if (not-option-disabled($options, "dark")) {
+			@include text-theme-dark();
+		}
+	}
+
+	@if (not-option-disabled($options, "signal")) {
+		@include text-signals;
+
+		@if (not-option-disabled($options, "dark")) {
+			@include text-signals-dark();
+		}
+	}
+
+	@if (not-option-disabled($options, "print")) {
+		@include text-print;
+	}
+}

@@ -119,8 +119,8 @@
 		--#{$prefix}-clr-d-bdr-h: #fdfeff50; //#656667;
 		--#{$prefix}-clr-d-bdr-a: #fdfeff70; //#858687;
 
-		--#{$prefix}-clr-sh-l: #ffffff10;
-		--#{$prefix}-clr-sh-lr: #ffffff20;
+		--#{$prefix}-clr-sh-l: rgba(255, 255, 255, 0.04);
+		--#{$prefix}-clr-sh-lr: rgba(255, 255, 255, 0.08);
 	}
 
 	--#{$prefix}-input-background-color: transparent;

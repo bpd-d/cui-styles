@@ -1,0 +1,62 @@
+@use "../../variables" as*;
+@use "../../mixins" as *;
+
+$skeleton-background: $component-background-shade;
+$skeleton-component-background: $component-background-shade-active;
+$skeleton-background-dark: $component-background-shade-dark;
+$skeleton-component-background-dark: $component-background-shade-dark-active;
+
+$skeleton-component-size: $font-normal;
+$skeleton-header-size: $font-xlarge;
+$skeleton-component-margin: $margin-global-small;
+
+$skeleton-radius: $border-radius-default;
+$skeleton-element-radius: $border-radius-small;
+
+@mixin skeleton() {
+	.#{$prefix}-skeleton {
+		background-color: $skeleton-background;
+		padding: $skeleton-component-margin;
+		border-radius: $skeleton-radius;
+
+		.#{$prefix}-skeleton-item {
+			border-radius: $skeleton-element-radius;
+			background-color: $skeleton-component-background;
+			height: $skeleton-component-size;
+			margin: $skeleton-component-margin;
+
+			&.#{$prefix}-line {
+				display: block;
+			}
+
+			&.#{$prefix}-label {
+				display: inline-block;
+			}
+
+			&.#{$prefix}-header {
+				display: block;
+				height: $skeleton-header-size;
+			}
+		}
+	}
+}
+
+@mixin skeleton-dark() {
+	@include mode-dark {
+		.#{$prefix}-skeleton {
+			background-color: $skeleton-background-dark;
+
+			.#{$prefix}-skeleton-item {
+				background-color: $skeleton-component-background-dark;
+			}
+		}
+	}
+}
+
+@mixin exports($options: ()) {
+	@include skeleton();
+
+	@if (not-option-disabled($options, "dark")) {
+		@include skeleton-dark();
+	}
+}

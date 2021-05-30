@@ -1,5 +1,10 @@
 # cUI Styles CHANGELOG:
 
+# [0.4.2] 2020-05-30
+
+-   [Added] Skeleton element
+-   [Changed] Dark shade colors
+
 # [0.4.1] 2020-05-28
 
 -   [Changed] Initial refactoring of components by splitting large and complex components into smaller pieces

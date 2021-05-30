@@ -40,6 +40,7 @@
 @use 'components/border';
 @use 'components/notification';
 @use 'components/image';
+@use 'components/skeleton/exports' as skeleton;
 
 @use "sass:map";
 @use "sass:list";
@@ -87,7 +88,8 @@ $components-list: (
 	"hover",
 	"border",
 	"notification",
-	"image"
+	"image",
+	"skeleton"
 );
 
 @mixin definitions(
@@ -217,6 +219,8 @@ $components-list: (
 			@include notification.definitions($opts);
 		} @else if $name== "image" {
 			@include image.definitions($opts);
+		} @else if $name== "skeleton" {
+			@include skeleton.exports($opts);
 		}
 	}
 }

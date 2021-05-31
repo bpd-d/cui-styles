@@ -6,215 +6,211 @@
 * Options: animation, dropdown, nav
 */
 
+$drop-background-default: $component-background-default;
+$drop-background-default-dark: $component-background-default-dark;
 
-$drop-background-default      : $component-background-default;
-$drop-background-default-dark : $component-background-default-dark;
-
-$drop-color-default            : $component-color-default;
-$drop-color-default-dark       : $component-color-default-dark;
-$drop-nav-hover-background     : $component-background-shade;
+$drop-color-default: $component-color-default;
+$drop-color-default-dark: $component-color-default-dark;
+$drop-nav-hover-background: $component-background-shade;
 $drop-nav-hover-background-dark: $component-background-shade-dark;
-$drop-translate-y              : $component-margin;
-$drop-transition-time          : $animation-duration-short;
+$drop-translate-y: $component-margin;
+$drop-transition-time: $animation-duration-short;
 
 @mixin drop {
-    .#{$prefix}-drop-trigger {
-        position: relative;
-        display : inline-block;
-    }
+	.#{$prefix}-drop-trigger {
+		position: relative;
+		display: inline-block;
+	}
 
-    .#{$prefix}-drop {
-        position  : absolute;
-        z-index   : 1150;
-        box-sizing: border-box;
-        height    : max-content;
-        width     : max-content;
-        opacity   : 0;
-        display   : none;
-        transform : scale(1);
+	.#{$prefix}-drop {
+		position: absolute;
+		z-index: 1150;
+		box-sizing: border-box;
+		height: max-content;
+		width: max-content;
+		opacity: 0;
+		display: none;
+		transform: scale(1);
 
-        &.#{$prefix}-active {
-            opacity: 1;
-            display: block;
-        }
+		&.#{$prefix}-active {
+			opacity: 1;
+			display: block;
+		}
 
-        &.#{$prefix}-drop-position-top-center {
-            transform-origin: bottom center;
-        }
+		&.#{$prefix}-drop-position-top-center {
+			transform-origin: bottom center;
+		}
 
-        &.#{$prefix}-drop-position-bottom-center {
-            transform-origin: top center;
-        }
+		&.#{$prefix}-drop-position-bottom-center {
+			transform-origin: top center;
+		}
 
-        &.#{$prefix}-drop-position-bottom-left {
-            transform-origin: top left;
-        }
+		&.#{$prefix}-drop-position-bottom-left {
+			transform-origin: top left;
+		}
 
-        &.#{$prefix}-drop-position-bottom-right {
-            transform-origin: top right;
-        }
+		&.#{$prefix}-drop-position-bottom-right {
+			transform-origin: top right;
+		}
 
-        &.#{$prefix}-drop-position-top-left {
-            transform-origin: bottom left;
-        }
+		&.#{$prefix}-drop-position-top-left {
+			transform-origin: bottom left;
+		}
 
-        &.#{$prefix}-drop-position-top-right {
-            transform-origin: bottom right;
-        }
-    }
+		&.#{$prefix}-drop-position-top-right {
+			transform-origin: bottom right;
+		}
+	}
 }
 
 @mixin dropdown {
-    .#{$prefix}-dropdown {
-        background-color: $drop-background-default;
-        color           : $drop-color-default;
-        border          : 1px solid transparent;
-        border-radius   : $border-radius-default;
-        box-sizing      : border-box;
-        box-shadow      : $shadow2;
-
-    }
+	.#{$prefix}-dropdown {
+		background-color: $drop-background-default;
+		color: $drop-color-default;
+		border: 1px solid transparent;
+		border-radius: $border-radius-default;
+		box-sizing: border-box;
+		box-shadow: $shadow2;
+		padding: $border-radius-default 0;
+	}
 }
 
 @mixin drop-nav {
-    ul.#{$prefix}-drop-nav {
-        list-style: none;
-        margin    : 0;
-        padding   : 0;
-        min-width : 200px;
-        color     : $drop-color-default;
-        box-sizing: border-box;
-        z-index   : 10;
+	ul.#{$prefix}-drop-nav {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		min-width: 200px;
+		color: $drop-color-default;
+		box-sizing: border-box;
+		z-index: 10;
 
-        li {
-            margin    : 0;
-            padding   : 0;
-            box-sizing: border-box;
-            display   : block;
+		li {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			display: block;
 
-            a {
-                @include component-padding;
-                text-decoration : none;
-                color           : inherit;
-                display         : block;
-                background-color: transparent;
-                @include list-element-interaction($drop-nav-hover-background);
+			a {
+				@include component-padding;
+				text-decoration: none;
+				color: inherit;
+				display: block;
+				background-color: transparent;
+				@include list-element-interaction($drop-nav-hover-background);
 
-                &.#{$prefix}-icon {
-                    display                         : flex;
-                    justify-content                 : flex-start;
-                    @include component-padding($size: small, $same: true);
-                }
-            }
+				&.#{$prefix}-icon {
+					display: flex;
+					justify-content: flex-start;
+					@include component-padding($size: small, $same: true);
+				}
+			}
 
-            &.#{$prefix}-parent {
-                @include component-padding;
-                cursor     : default;
-                font-weight: $text-weight-bold;
-            }
-        }
-    }
+			&.#{$prefix}-parent {
+				@include component-padding;
+				cursor: default;
+				font-weight: $text-weight-bold;
+			}
+		}
+	}
 }
 
 @mixin drop-nav-dark {
-    .#{$prefix}-dark {
+	.#{$prefix}-dark {
+		ul.#{$prefix}-drop-nav {
+			color: $drop-color-default-dark;
 
-        ul.#{$prefix}-drop-nav {
-            color: $drop-color-default-dark;
-
-            li {
-                a {
-                    @include list-element-interaction($drop-nav-hover-background-dark);
-                }
-            }
-        }
-    }
+			li {
+				a {
+					@include list-element-interaction(
+						$drop-nav-hover-background-dark
+					);
+				}
+			}
+		}
+	}
 }
 
 @mixin dropdown-dark {
-    @include mode-dark () {
-        .#{$prefix}-dropdown {
-            background-color: $drop-background-default-dark;
-            color           : $drop-color-default-dark;
-        }
-    }
+	@include mode-dark() {
+		.#{$prefix}-dropdown {
+			background-color: $drop-background-default-dark;
+			color: $drop-color-default-dark;
+		}
+	}
 }
 
 @mixin dropdown-print {
-    @include mode-print() {
-        .#{$prefix}-dropdown {
-            background-color: $component-print-background;
-            color           : $component-print-color;
-            border          : $component-print-border;
-            box-shadow      : $component-print-shadow;
-        }
-    }
-
+	@include mode-print() {
+		.#{$prefix}-dropdown {
+			background-color: $component-print-background;
+			color: $component-print-color;
+			border: $component-print-border;
+			box-shadow: $component-print-shadow;
+		}
+	}
 }
 
 @mixin drop-no-transition {
-    @include not-reduced-motion {
-        .#{$prefix}-drop {
-            &.#{$prefix}-active {
-                opacity: 0;
-                display: block;
-            }
+	@include not-reduced-motion {
+		.#{$prefix}-drop {
+			&.#{$prefix}-active {
+				opacity: 0;
+				display: block;
+			}
 
-            &.cui-drop-animation-in {
-                animation: dropIn $drop-transition-time ease-out forwards;
+			&.cui-drop-animation-in {
+				animation: dropIn $drop-transition-time ease-out forwards;
 
-                @keyframes dropIn {
-                    0% {
-                        opacity  : 0;
-                        transform: scale(0);
-                    }
+				@keyframes dropIn {
+					0% {
+						opacity: 0;
+						transform: scale(0);
+					}
 
-                    70% {
-                        opacity  : 1;
-                        transform: scale(1.1);
-                    }
+					70% {
+						opacity: 1;
+						transform: scale(1.1);
+					}
 
-                    100% {
-                        opacity  : 1;
-                        transform: scale(1);
-                    }
-                }
-            }
-        }
-    }
+					100% {
+						opacity: 1;
+						transform: scale(1);
+					}
+				}
+			}
+		}
+	}
 }
 
 @mixin definitions($options: ()) {
-    @include drop();
+	@include drop();
 
-    @if(not-option-disabled($options, 'animation')) {
-        @include drop-no-transition();
-    }
+	@if (not-option-disabled($options, "animation")) {
+		@include drop-no-transition();
+	}
 
-    @if(not-option-disabled($options, 'dark')) {
-        @if(not-option-disabled($options, 'dropdown')) {
-            @include dropdown-dark();
-        }
+	@if (not-option-disabled($options, "dark")) {
+		@if (not-option-disabled($options, "dropdown")) {
+			@include dropdown-dark();
+		}
 
-        @if(not-option-disabled($options, 'nav')) {
-            @include drop-nav-dark();
-        }
-    }
+		@if (not-option-disabled($options, "nav")) {
+			@include drop-nav-dark();
+		}
+	}
 
-    @if(not-option-disabled($options, 'print')) {
-        @if(not-option-disabled($options, 'dropdown')) {
-            @include dropdown-print();
-        }
-    }
+	@if (not-option-disabled($options, "print")) {
+		@if (not-option-disabled($options, "dropdown")) {
+			@include dropdown-print();
+		}
+	}
 
+	@if (not-option-disabled($options, "dropdown")) {
+		@include dropdown();
+	}
 
-    @if(not-option-disabled($options, 'dropdown')) {
-        @include dropdown();
-
-    }
-
-    @if(not-option-disabled($options, 'nav')) {
-        @include drop-nav();
-    }
-
+	@if (not-option-disabled($options, "nav")) {
+		@include drop-nav();
+	}
 }

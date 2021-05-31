@@ -1,174 +1,227 @@
 @use '../variables'as *;
 @use '../mixins'as *;
 
-$hint-background-default        : $component-background-shade;
-$hint-background-default-dark   : $component-background-shade-dark;
-$hint-background-accent         : $component-background-accent-shade;
-$hint-background-accent-dark    : $component-background-accent-dark-shade;
-$hint-background-secondary      : $component-background-secondary-shade;
-$hint-background-secondary-dark : $component-background-secondary-dark-shade;
-$hint-background-error          : $component-background-error-shade;
-$hint-background-error-dark     : $component-background-error-dark-shade;
-$hint-background-warning        : $component-background-warning-shade;
-$hint-background-warning-dark   : $component-background-warning-dark-shade;
-$hint-background-success        : $component-background-success-shade;
-$hint-background-success-dark   : $component-background-success-dark-shade;
-$hint-color-default             : $component-color-default;
-$hint-color-dark                : $component-color-default-dark;
-$hint-border-color-default      : $component-color-muted;
-$hint-border-color-default-dark : $component-color-muted-dark;
-$hint-border-color-accent       : $component-background-accent;
-$hint-border-color-secondary    : $component-background-secondary;
-$hint-border-color-error        : $component-background-error;
-$hint-border-color-warning      : $component-background-warning;
-$hint-border-color-success      : $component-background-success;
+$hint-background-default: $component-background-shade;
+$hint-background-default-dark: $component-background-shade-dark;
+$hint-background-accent: $component-background-accent-shade;
+$hint-background-accent-dark: $component-background-accent-dark-shade;
+$hint-background-secondary: $component-background-secondary-shade;
+$hint-background-secondary-dark: $component-background-secondary-dark-shade;
+$hint-background-error: $component-background-error-shade;
+$hint-background-error-dark: $component-background-error-dark-shade;
+$hint-background-warning: $component-background-warning-shade;
+$hint-background-warning-dark: $component-background-warning-dark-shade;
+$hint-background-success: $component-background-success-shade;
+$hint-background-success-dark: $component-background-success-dark-shade;
+$hint-color-default: $component-color-default;
+$hint-color-dark: $component-color-default-dark;
+$hint-border-color-default: $component-color-muted;
+$hint-border-color-default-dark: $component-color-muted-dark;
+$hint-border-color-accent: $component-background-accent;
+$hint-border-color-secondary: $component-background-secondary;
+$hint-border-color-error: $component-background-error;
+$hint-border-color-warning: $component-background-warning;
+$hint-border-color-success: $component-background-success;
+
+$hint-side-size: $border-radius-default;
 
 @mixin hint {
-    .#{$prefix}-hint {
-        border-left     : 8px solid $hint-border-color-default;
-        background-color: $hint-background-default;
-        color           : $hint-color-default;
+	.#{$prefix}-hint {
+		//border-left: 8px solid $hint-border-color-default;
+		border-radius: $hint-side-size;
+		background-color: $hint-background-default;
+		color: $hint-color-default;
+		position: relative;
 
+		& > * {
+			margin-left: $hint-side-size;
+		}
 
-        &.#{$prefix}-body {
-            @include component-padding(normal, true);
-        }
+		&:before {
+			content: "";
+			position: absolute;
+			width: $hint-side-size;
+			height: 100%;
+			left: 0;
+			top: 0;
+			border-radius: $hint-side-size;
+			background-color: $hint-border-color-default;
+		}
 
-        .#{$prefix}-hint-title {
-            @include component-header;
-            @include component-padding-complex(header);
-        }
+		&.#{$prefix}-body {
+			@include component-padding(normal, true);
+		}
 
-        .#{$prefix}-hint-body {
-            @include component-padding-complex(body);
-        }
+		.#{$prefix}-hint-title {
+			@include component-header;
+			@include component-padding-complex(header);
+		}
 
-        .#{$prefix}-hint-footer {
-            display        : flex;
-            justify-content: flex-end;
-            align-items    : center;
-            text-align     : end;
-            font-style     : italic;
-            @include component-padding-complex(footer);
-        }
-    }
+		.#{$prefix}-hint-body {
+			@include component-padding-complex(body);
+		}
+
+		.#{$prefix}-hint-footer {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			text-align: end;
+			font-style: italic;
+			@include component-padding-complex(footer);
+		}
+	}
 }
 
 @mixin hint-theme {
-    .#{$prefix}-hint {
-        &.#{$prefix}-accent {
-            background-color: $hint-background-accent;
-            border-color    : $hint-border-color-accent;
-        }
+	.#{$prefix}-hint {
+		&.#{$prefix}-accent {
+			background-color: $hint-background-accent;
 
-        &.#{$prefix}-secondary {
-            background-color: $hint-background-secondary;
-            border-color    : $hint-border-color-secondary;
-        }
-    }
+			&:before {
+				background-color: $hint-border-color-accent;
+			}
+		}
+
+		&.#{$prefix}-secondary {
+			background-color: $hint-background-secondary;
+
+			&:before {
+				background-color: $hint-border-color-secondary;
+			}
+		}
+	}
 }
 
 @mixin hint-signals {
-    .#{$prefix}-hint {
-        &.#{$prefix}-warning {
-            background-color: $hint-background-warning;
-            border-color    : $hint-border-color-warning;
-        }
+	.#{$prefix}-hint {
+		&.#{$prefix}-warning {
+			background-color: $hint-background-warning;
 
-        &.#{$prefix}-error {
-            background-color: $hint-background-error;
-            border-color    : $hint-border-color-error;
-        }
+			&:before {
+				background-color: $hint-border-color-warning;
+			}
+		}
 
-        &.#{$prefix}-success {
-            background-color: $hint-background-success;
-            border-color    : $hint-border-color-success;
-        }
-    }
+		&.#{$prefix}-error {
+			background-color: $hint-background-error;
+
+			&:before {
+				background-color: $hint-border-color-error;
+			}
+		}
+
+		&.#{$prefix}-success {
+			background-color: $hint-background-success;
+
+			&:before {
+				background-color: $hint-border-color-success;
+			}
+		}
+	}
 }
 
 @mixin hint-dark {
-    @include mode-dark {
-        .#{$prefix}-hint {
-            @include not-colors {
-                border-color    : $hint-border-color-default-dark;
-                background-color: $hint-background-default-dark;
-            }
+	@include mode-dark {
+		.#{$prefix}-hint {
+			@include not-colors {
+				background-color: $hint-background-default-dark;
 
-            color : $hint-color-dark;
-        }
+				&:before {
+					background-color: $hint-border-color-default-dark;
+				}
+			}
 
-
-
-    }
+			color: $hint-color-dark;
+		}
+	}
 }
 
 @mixin hint-theme-dark {
-    @include mode-dark {
-        .#{$prefix}-hint {
-            &.#{$prefix}-accent {
-                background-color: $hint-background-accent-dark;
-            }
+	@include mode-dark {
+		.#{$prefix}-hint {
+			&.#{$prefix}-accent {
+				background-color: $hint-background-accent-dark;
 
-            &.#{$prefix}-secondary {
-                background-color: $hint-background-secondary-dark;
-            }
-        }
-    }
+				&:before {
+					background-color: $hint-border-color-accent;
+				}
+			}
+
+			&.#{$prefix}-secondary {
+				background-color: $hint-background-secondary-dark;
+
+				&:before {
+					background-color: $hint-border-color-secondary;
+				}
+			}
+		}
+	}
 }
 
 @mixin hint-signals-dark {
-    @include mode-dark {
-        .#{$prefix}-hint {
-            &.#{$prefix}-warning {
-                background-color: $hint-background-warning-dark;
-            }
+	@include mode-dark {
+		.#{$prefix}-hint {
+			&.#{$prefix}-warning {
+				background-color: $hint-background-warning-dark;
+				&:before {
+					background-color: $hint-border-color-warning;
+				}
+			}
 
-            &.#{$prefix}-error {
-                background-color: $hint-background-error-dark;
-            }
+			&.#{$prefix}-error {
+				background-color: $hint-background-error-dark;
+				&:before {
+					background-color: $hint-border-color-error;
+				}
+			}
 
-            &.#{$prefix}-success {
-                background-color: $hint-background-success-dark;
-            }
-        }
-    }
+			&.#{$prefix}-success {
+				background-color: $hint-background-success-dark;
+				&:before {
+					background-color: $hint-border-color-success;
+				}
+			}
+		}
+	}
 }
 
 @mixin hint-print {
-    @include mode-print {
-        .#{$prefix}-hint {
-            border          : $component-print-border;
-            color           : $component-print-color;
-            background-color: $component-print-background;
-        }
-    }
+	@include mode-print {
+		.#{$prefix}-hint {
+			color: $component-print-color;
+			background-color: $component-print-background;
+
+			&:before {
+				background-color: $component-print-border;
+			}
+		}
+	}
 }
 
 @mixin definitions($options: ()) {
-    @include hint();
+	@include hint();
 
-    @if(not-option-disabled($options, 'dark')) {
-        @include hint-dark();
+	@if (not-option-disabled($options, "dark")) {
+		@include hint-dark();
 
-        @if(not-option-disabled($options, 'theme')) {
-            @include hint-theme-dark();
-        }
+		@if (not-option-disabled($options, "theme")) {
+			@include hint-theme-dark();
+		}
 
-        @if(not-option-disabled($options, 'signal')) {
-            @include hint-signals-dark();
-        }
-    }
+		@if (not-option-disabled($options, "signal")) {
+			@include hint-signals-dark();
+		}
+	}
 
-    @if(not-option-disabled($options, 'print')) {
-        @include hint-print();
-    }
+	@if (not-option-disabled($options, "print")) {
+		@include hint-print();
+	}
 
-    @if(not-option-disabled($options, 'signal')) {
-        @include hint-signals();
-    }
+	@if (not-option-disabled($options, "signal")) {
+		@include hint-signals();
+	}
 
-    @if(not-option-disabled($options, 'theme')) {
-        @include hint-theme();
-    }
+	@if (not-option-disabled($options, "theme")) {
+		@include hint-theme();
+	}
 }

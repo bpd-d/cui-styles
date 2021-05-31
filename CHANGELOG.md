@@ -1,5 +1,10 @@
 # cUI Styles CHANGELOG:
 
+# [0.4.3] 2020-05-31
+
+-   [Changed] Hint style
+-   [Changed] Added padding in dropdown
+
 # [0.4.2] 2020-05-30
 
 -   [Added] Skeleton element
